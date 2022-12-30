@@ -1,0 +1,5 @@
+ "vscode-neovim.neovimInitVimPaths.darwin": "/Users/fitzpj3/.config/nvim/init.vim",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
