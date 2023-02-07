@@ -37,10 +37,10 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 " " Remap HJKL for bigger jumps
-map H 10h
+map H 20h
 map J 10j
 map K 10k
-map L 10l
+map L 20l
 
 " NERDTree settings
 nnoremap <C-n> :NERDTreeToggle<CR>
