@@ -2,7 +2,6 @@ call plug#begin()
 
 Plug 'tpope/vim-surround'
 Plug 'chrisbra/improvedft'
-Plug 'ggandor/lightspeed.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdtree'
@@ -11,18 +10,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'svermeulen/vim-cutlass'
-
+Plug 'ggandor/leap.nvim'
 
 call plug#end()
 
-
 let mapleader = " "
 
-map <leader>s <Plug>Lightspeed_omni_s
-
-lua require'lightspeed'.opts.ignore_case = true
-lua require'lightspeed'.opts.jump_to_unique_chars = false
-lua require'lightspeed'.opts.safe_labels = {}
+lua require('leap').add_default_mappings()
 
 :set ignorecase
 :set autoindent
