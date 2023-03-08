@@ -14,12 +14,12 @@ call plug#end()
 
 
 let mapleader = " "
-"lightspeed settings
-vnoremap z <Plug>Lightspeed_s
-vnoremap Z <Plug>Lightspeed_S
 
-nnoremap z <Plug>Lightspeed_s
-nnoremap Z <Plug>Lightspeed_S
+map <leader>s <Plug>Lightspeed_omni_s
+
+lua require'lightspeed'.opts.ignore_case = true
+lua require'lightspeed'.opts.jump_to_unique_chars = false
+lua require'lightspeed'.opts.safe_labels = {}
 
 :set ignorecase
 :set autoindent
