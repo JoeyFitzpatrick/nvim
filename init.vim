@@ -8,6 +8,9 @@ Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+Plug 'svermeulen/vim-cutlass'
 
 
 call plug#end()
@@ -37,10 +40,16 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 " " Remap HJKL for bigger jumps
-map H 20h
-map J 10j
-map K 10k
-map L 20l
+" map H 20h
+" map J 10j
+" map K 10k
+" map L 20l
+
+" cutlass settings: remap m to cut/move
+nnoremap m d
+xnoremap m d
+nnoremap mm dd
+nnoremap M D
 
 " NERDTree settings
 nnoremap <C-n> :NERDTreeToggle<CR>
