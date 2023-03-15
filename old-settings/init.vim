@@ -11,12 +11,16 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'svermeulen/vim-cutlass'
 Plug 'ggandor/leap.nvim'
+Plug 'svermeulen/vim-subversive'
+Plug 'rhysd/clever-f.vim'
+Plug 'ggandor/leap-spooky.nvim'
 
 call plug#end()
 
 let mapleader = " "
 
 lua require('leap').add_default_mappings()
+lua require('leap-spooky').setup()
 
 :set ignorecase
 :set autoindent
@@ -33,17 +37,26 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" " Remap HJKL for bigger jumps
-" map H 20h
-" map J 10j
-" map K 10k
-" map L 20l
+" Custom text objects
+" ie = inner entire buffer
+onoremap ie :exec "normal! ggVG"<cr>
+
+" iv = current viewable text in the buffer
+onoremap iv :exec "normal! HVL"<cr>
 
 " cutlass settings: remap m to cut/move
 nnoremap m d
 xnoremap m d
 nnoremap mm dd
 nnoremap M D
+
+" subversive settings
+nmap <leader>s <plug>(SubversiveSubstituteRange)
+xmap <leader>s <plug>(SubversiveSubstituteRange)
+nmap <leader>ss <plug>(SubversiveSubstituteWordRange)
+
+" clever-f settings
+" g:clever_f_smart_case = 1
 
 " NERDTree settings
 nnoremap <C-n> :NERDTreeToggle<CR>
