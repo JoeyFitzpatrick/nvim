@@ -4,7 +4,11 @@ vim.call('plug#begin', '~/.local/share/nvim/plugged')
 
 Plug 'tpope/vim-surround'
 Plug 'chrisbra/improvedft'
+
+-- colorschemes
+Plug ('catppuccin/nvim', { as = 'catppuccin' })
 Plug 'rebelot/kanagawa.nvim'
+
 Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdtree'
 Plug('junegunn/fzf', { ['do'] = function() vim.call('fzf#install') end })
@@ -17,6 +21,25 @@ Plug 'svermeulen/vim-subversive'
 Plug 'rhysd/clever-f.vim'
 Plug 'ggandor/leap-spooky.nvim'
 
+-- LSP Support
+Plug 'neovim/nvim-lspconfig'                           -- Required
+Plug('williamboman/mason.nvim', {['do'] = ':MasonUpdate'}) -- Optional
+Plug 'williamboman/mason-lspconfig.nvim'               -- Optional
+
+-- Autocompletion Engine
+Plug 'hrsh7th/nvim-cmp'         -- Required
+Plug 'hrsh7th/cmp-nvim-lsp'     -- Required
+Plug 'hrsh7th/cmp-buffer'       -- Optional
+Plug 'hrsh7th/cmp-path'         -- Optional
+Plug 'saadparwaiz1/cmp_luasnip' -- Optional
+Plug 'hrsh7th/cmp-nvim-lua'     -- Optional
+
+--  Snippets
+Plug 'L3MON4D3/LuaSnip'             -- Required
+Plug 'rafamadriz/friendly-snippets' -- Optional
+
+Plug('VonHeikemen/lsp-zero.nvim', {branch = 'v1.x'})
+
 vim.call('plug#end')
 
 vim.g.mapleader = " "
@@ -26,6 +49,7 @@ require('leap-spooky').setup()
 
 vim.opt.ignorecase = true
 vim.opt.autoindent = true
+vim.opt.scrolloff = 8
 
 -- Copy to clipboard
 vim.keymap.set('v', '<Leader>y', '"+y')
@@ -67,8 +91,8 @@ vim.keymap.set('n', '<Leader>ss', '<plug>(SubversiveSubstituteWordRange', { rema
 vim.keymap.set('n', '<C-n>', ':NERDTreeToggle<CR>')
 
 -- fzf settings
-vim.keymap.set('n', '<silent> <C-f>', ':Files<CR>')
-vim.keymap.set('n', '<silent> <Leader>f', ':Rg<CR>')
+vim.keymap.set('n', '<C-f>', ':Files<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>f', ':Rg<CR>', { silent = true })
 -- don't consider filename as match
 -- command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
@@ -83,6 +107,8 @@ if vim.g.vscode ~= nil then
     -- VSCode only settings
 else
     -- ordinary Neovim settings
+	require('lsp')
 	vim.opt.relativenumber = true
-	vim.cmd('colorscheme kanagawa')
+	-- vim.cmd('colorscheme kanagawa')
+	vim.cmd('colorscheme catppuccin-latte') -- catppuccin, catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 end
