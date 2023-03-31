@@ -7,8 +7,14 @@ lsp.preset({
   suggest_lsp_servers = false,
 })
 
+-- More servers can be found here: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
 lsp.ensure_installed({
   'tsserver',
+  'pyright',
+  'jdtls',
+  'eslint',
+  'sqlls',
+  'svelte',
   'rust_analyzer',
 })
 
