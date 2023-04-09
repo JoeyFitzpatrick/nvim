@@ -1,3 +1,9 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+require('set')
+require('remap')
+
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.local/share/nvim/plugged')
@@ -46,8 +52,6 @@ vim.call('plug#end')
 require('leap').add_default_mappings()
 require('leap-spooky').setup()
 require('treesitter-config')
-require('remap')
-require('set')
 
 -- clever-f settings
 -- g:clever_f_smart_case = 1
