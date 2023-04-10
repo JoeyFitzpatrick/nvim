@@ -4,13 +4,26 @@ return {
     'chrisbra/improvedft',
 
     -- colorschemes
-    {'nvim-treesitter/nvim-treesitter', cmd =  'TSUpdate'},
+    {'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate'},
     {'catppuccin/nvim', name = 'catppuccin'},
     'rebelot/kanagawa.nvim',
 
     'tpope/vim-commentary',
-    'preservim/nerdtree',
+    'tpope/vim-fugitive',
+    { 'nvim-telescope/telescope.nvim', tag = '0.1.1', dependencies = { 'nvim-lua/plenary.nvim' } },
+    {
+      "nvim-tree/nvim-tree.lua",
+      version = "*",
+      dependencies = {
+        "nvim-tree/nvim-web-devicons",
+      },
+      config = function()
+        require("nvim-tree").setup {}
+      end,
+    },
+    -- Font for icons here: https://webinstall.dev/nerdfont/
     -- {'junegunn/fzf', cmd = function() vim.call('fzf#install') end},
+    'junegunn/fzf',
     'junegunn/fzf.vim',
     'tpope/vim-repeat',
     'tpope/vim-unimpaired',

@@ -14,6 +14,12 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "L", "gt")
 vim.keymap.set("n", "H", "gT")
 
+-- Better switching between splits
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+
 -- Copy to clipboard
 vim.keymap.set('v', '<Leader>y', '"+y')
 vim.keymap.set('n', '<leader>Y', '"+yg_')
@@ -44,12 +50,21 @@ vim.keymap.set('n', '<Leader>s', '<plug>(SubversiveSubstituteRange)', { remap = 
 vim.keymap.set('x', '<Leader>s', '<plug>(SubversiveSubstituteRange)', { remap = true })
 vim.keymap.set('n', '<Leader>ss', '<plug>(SubversiveSubstituteWordRange', { remap = true })
 
--- NERDTree settings
-vim.keymap.set('n', '<C-n>', ':NERDTreeToggle<CR>')
+-- telescope settings
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+-- nvim-tree settings
+vim.keymap.set('n', '<Leader>n', ':NvimTreeToggle<CR>', { remap = true })
+vim.keymap.set('n', '<Leader>N', ':NvimTreeFocus<CR>', { remap = true })
 
 -- fzf settings
 vim.keymap.set('n', '<C-f>', ':Files<CR>', { silent = true })
-vim.keymap.set('n', '<Leader>f', ':Rg<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>fr', ':Rg<CR>', { silent = true })
 -- don't consider filename as match
 -- command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
