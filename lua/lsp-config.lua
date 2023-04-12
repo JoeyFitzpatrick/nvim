@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero')
+vim.lsp.set_log_level("debug")
 
 lsp.preset({
   name = 'minimal',
@@ -31,7 +32,29 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
+lsp.on_attach(function(client, bufnr)
+    lsp.default_keymaps({
+      buffer = bufnr,
+      preserve_mappings = false
+    })
+end)
+
 -- (Optional) Configure lua language server for neovim
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+-- More servers can be found here: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
+lsp.setup_servers({
+  'tsserver',
+  'pyright',
+  'jdtls',
+  'eslint',
+  'sqlls',
+  'svelte',
+  'rust_analyzer',
+  'lua_ls',
+})
+
 lsp.nvim_workspace()
 
 lsp.setup()
+

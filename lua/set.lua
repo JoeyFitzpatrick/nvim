@@ -9,3 +9,4 @@ vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.autoindent = true
 vim.opt.scrolloff = 8
+

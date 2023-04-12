@@ -22,12 +22,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
+require('lsp-config')
 
 require('leap').add_default_mappings(true)
 require('set')
 require('remap')
 require('leap-spooky').setup()
 require('treesitter-config')
+-- require'telescope'.load_extension('project')
 
 -- clever-f settings
 -- g:clever_f_smart_case = 1
@@ -37,7 +39,7 @@ if vim.g.vscode ~= nil then
     -- VSCode only settings
 else
     -- ordinary Neovim settings
-	require('lsp')
+	-- require('lsp')
 	vim.opt.relativenumber = true
 	vim.cmd('colorscheme kanagawa')
 	-- vim.cmd('colorscheme catppuccin-latte') -- catppuccin, catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
