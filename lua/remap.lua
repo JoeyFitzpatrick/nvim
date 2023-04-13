@@ -1,3 +1,9 @@
+-- Sick of pressing shift colon
+vim.keymap.set("n", ";", ":", { noremap = true })
+vim.keymap.set("v", ";", ":", { noremap = true })
+vim.keymap.set("n", ":", ";", { noremap = true })
+vim.keymap.set("v", ":", ";", { noremap = true })
+
 -- Visual move lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -44,19 +50,6 @@ vim.keymap.set('n', 'm', 'd')
 vim.keymap.set('x', 'm', 'd')
 vim.keymap.set('n', 'mm', 'dd')
 vim.keymap.set('n', 'M', 'D')
-
--- subversive settings
-vim.keymap.set('n', '<Leader>s', '<plug>(SubversiveSubstituteRange)', { remap = true })
-vim.keymap.set('x', '<Leader>s', '<plug>(SubversiveSubstituteRange)', { remap = true })
-vim.keymap.set('n', '<Leader>ss', '<plug>(SubversiveSubstituteWordRange', { remap = true })
-
--- telescope settings
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 -- nvim-tree settings
 vim.keymap.set('n', '<Leader>n', ':NvimTreeToggle<CR>', { remap = true })

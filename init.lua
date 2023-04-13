@@ -22,23 +22,20 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
-require('lsp-config')
 
 require('leap').add_default_mappings(true)
 require('set')
 require('remap')
-require('leap-spooky').setup()
-require('treesitter-config')
--- require'telescope'.load_extension('project')
+require('leap-spooky').setup({ paste_on_remote_yank = true })
 
--- clever-f settings
--- g:clever_f_smart_case = 1
-
--- non-vscode settings
 if vim.g.vscode ~= nil then
     -- VSCode only settings
+    require('vscode')
 else
     -- ordinary Neovim settings
+    require('non-vscode')
+    require('treesitter-config')
+    require('lsp-config')
 	-- require('lsp')
 	vim.opt.relativenumber = true
 	vim.cmd('colorscheme kanagawa')

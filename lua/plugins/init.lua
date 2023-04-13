@@ -1,11 +1,11 @@
-
+local not_vscode = vim.g.vscode == nil
 return {
     'tpope/vim-surround',
     'chrisbra/improvedft',
 
     -- colorschemes
-    {'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate'},
-    {'catppuccin/nvim', name = 'catppuccin'},
+    {'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate', cond = not_vscode},
+    {'catppuccin/nvim', name = 'catppuccin', cond = not_vscode},
     'rebelot/kanagawa.nvim',
 
     'tpope/vim-commentary',
@@ -20,6 +20,7 @@ return {
       config = function()
         require("nvim-tree").setup {}
       end,
+      cond = not_vscode,
     },
     -- Font for icons here: https://webinstall.dev/nerdfont/
     -- {'junegunn/fzf', cmd = function() vim.call('fzf#install') end},
@@ -29,7 +30,6 @@ return {
     'tpope/vim-unimpaired',
     'svermeulen/vim-cutlass',
     'ggandor/leap.nvim',
-    'svermeulen/vim-subversive',
     'rhysd/clever-f.vim',
     'ggandor/leap-spooky.nvim',
 
@@ -52,7 +52,8 @@ return {
         {'hrsh7th/nvim-cmp'},     -- Required
         {'hrsh7th/cmp-nvim-lsp'}, -- Required
         {'L3MON4D3/LuaSnip'},     -- Required
-      }
+      },
+      cond = not_vscode
     },
-    'mfussenegger/nvim-jdtls', -- uncomment this when ready for better java setup
+    { 'mfussenegger/nvim-jdtls', cond = not_vscode }, -- uncomment this when ready for better java setup
 }
