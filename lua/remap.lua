@@ -4,6 +4,9 @@ vim.keymap.set("v", ";", ":", { noremap = true })
 vim.keymap.set("n", ":", ";", { noremap = true })
 vim.keymap.set("v", ":", ";", { noremap = true })
 
+-- Remap marks so I can use m for other commands
+vim.keymap.set("n", "<leader>m", "m", { noremap = true })
+
 -- Visual move lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
