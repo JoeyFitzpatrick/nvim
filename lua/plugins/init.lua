@@ -56,4 +56,6 @@ return {
       cond = not_vscode
     },
     { 'mfussenegger/nvim-jdtls', cond = not_vscode }, -- uncomment this when ready for better java setup
+    'kana/vim-textobj-user',
+    'bps/vim-textobj-python',
 }
