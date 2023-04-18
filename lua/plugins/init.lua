@@ -6,10 +6,10 @@ return {
     -- colorschemes
     {'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate', cond = not_vscode},
     {'catppuccin/nvim', name = 'catppuccin', cond = not_vscode},
-    'rebelot/kanagawa.nvim',
+    {'rebelot/kanagawa.nvim', cond = not_vscode},
 
     'tpope/vim-commentary',
-    'tpope/vim-fugitive',
+    {'tpope/vim-fugitive', cond = not_vscode},
     { 'nvim-telescope/telescope.nvim', tag = '0.1.1', dependencies = { 'nvim-lua/plenary.nvim' } },
     {
       "nvim-tree/nvim-tree.lua",
