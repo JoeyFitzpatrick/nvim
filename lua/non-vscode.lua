@@ -7,3 +7,18 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
+
+-- Easier tab navigation
+vim.keymap.set("n", "L", "gt")
+vim.keymap.set("n", "H", "gT")
+
+-- fzf settings
+vim.keymap.set('n', '<C-f>', ':Files<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>fr', ':Rg<CR>', { silent = true })
+-- don't consider filename as match
+-- command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+-- command! -bang -nargs=* Rg
+--   \ call fzf#vim#grep(
+--   \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+--   \   fzf#vim#with_preview(), <bang>0)

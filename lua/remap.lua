@@ -19,9 +19,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- Easier tab navigation
-vim.keymap.set("n", "L", "gt")
-vim.keymap.set("n", "H", "gT")
 
 -- Better switching between splits
 vim.keymap.set("n", "<C-h>", "<C-w>h")
@@ -61,13 +58,3 @@ vim.keymap.set('v', 'S', '<Plug>VSurround', { remap = false })
 vim.keymap.set('n', '<Leader>n', ':NvimTreeToggle<CR>', { remap = true })
 vim.keymap.set('n', '<Leader>N', ':NvimTreeFocus<CR>', { remap = true })
 
--- fzf settings
-vim.keymap.set('n', '<C-f>', ':Files<CR>', { silent = true })
-vim.keymap.set('n', '<Leader>fr', ':Rg<CR>', { silent = true })
--- don't consider filename as match
--- command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
--- command! -bang -nargs=* Rg
---   \ call fzf#vim#grep(
---   \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
---   \   fzf#vim#with_preview(), <bang>0)
