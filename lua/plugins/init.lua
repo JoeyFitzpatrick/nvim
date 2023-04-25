@@ -1,11 +1,12 @@
 local not_vscode = vim.g.vscode == nil
+print(not_vscode)
 return {
     'tpope/vim-surround',
     'chrisbra/improvedft',
 
     -- colorschemes
-    {'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate', cond = not_vscode},
-    {'catppuccin/nvim', name = 'catppuccin', cond = not_vscode},
+    {'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate', cond = not_vscode, lazy = true},
+    -- {'catppuccin/nvim', name = 'catppuccin', cond = not_vscode},
     {'rebelot/kanagawa.nvim', cond = not_vscode},
 
     'tpope/vim-commentary',
@@ -21,6 +22,7 @@ return {
         require("nvim-tree").setup {}
       end,
       cond = not_vscode,
+      lazy = true,
     },
     -- Font for icons here: https://webinstall.dev/nerdfont/
     -- {'junegunn/fzf', cmd = function() vim.call('fzf#install') end},
@@ -53,9 +55,8 @@ return {
         {'hrsh7th/cmp-nvim-lsp'}, -- Required
         {'L3MON4D3/LuaSnip'},     -- Required
       },
-      cond = not_vscode
+      cond = not_vscode,
+      lazy = true,
     },
-    { 'mfussenegger/nvim-jdtls', cond = not_vscode }, -- uncomment this when ready for better java setup
-    'kana/vim-textobj-user',
-    'bps/vim-textobj-python',
+    { 'mfussenegger/nvim-jdtls', cond = not_vscode, lazy = true }, -- uncomment this when ready for better java setup
 }

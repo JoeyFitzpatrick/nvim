@@ -34,6 +34,7 @@ keymap('n', '<leader>rn', notify ('editor.action.rename'), { silent = true })
 keymap('n', '<leader>fd', notify ('editor.action.formatDocument'), { silent = true })
 keymap('v', '<leader>fs', v_notify ('editor.action.formatSelection'), { silent = true })
 keymap('n', '<leader>rf', notify ('editor.action.refactor'), { silent = true }) -- language code actions
+keymap('n', '<leader>ss', notify ('workbench.action.gotoSymbol'), { silent = true }) -- show symbols
 
 keymap('n', '<leader>sf', notify ('workbench.action.findInFiles'), { silent = true }) -- use ripgrep to search files
 -- keymap('n', '<leader>ts', notify ('workbench.action.toggleSidebarVisibility'), { silent = true })

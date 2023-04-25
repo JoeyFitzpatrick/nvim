@@ -41,3 +41,4 @@ else
 	vim.cmd('colorscheme kanagawa')
 	-- vim.cmd('colorscheme catppuccin-latte') -- catppuccin, catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 end
+

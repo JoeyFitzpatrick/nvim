@@ -54,7 +54,4 @@ vim.keymap.set('n', 'M', 'D')
 -- Remap for surround to avoid clashing with leap
 vim.keymap.set('v', 'S', '<Plug>VSurround', { remap = false })
 
--- nvim-tree settings
-vim.keymap.set('n', '<Leader>n', ':NvimTreeToggle<CR>', { remap = true })
-vim.keymap.set('n', '<Leader>N', ':NvimTreeFocus<CR>', { remap = true })
 

@@ -10,7 +10,7 @@ local config = {
             runtimes = {
               {
                 name = "JavaSE-1.8",
-                path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/",
+                path = "/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/",
               },
               {
                 name = "JavaSE-11",
@@ -18,7 +18,7 @@ local config = {
               },
               {
                 name = "JavaSE-17",
-                path = "/usr/lib/jvm/java-17-openjdk/",
+                path = "/usr/lib/jvm/amazon-corretto-17.jdk/",
               },
             }
           }
