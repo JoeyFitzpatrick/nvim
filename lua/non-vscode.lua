@@ -1,3 +1,5 @@
+require('lualine').setup()
+
 vim.g.mapleader = " "
 
 -- telescope settings
@@ -13,6 +15,9 @@ vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
 -- Easier tab navigation
 vim.keymap.set("n", "L", "gt")
 vim.keymap.set("n", "H", "gT")
+
+-- Lazygit
+vim.keymap.set('n', '<Leader>lg', ':LazyGit<CR>', { silent = true })
 
 -- nvim-tree settings
 vim.keymap.set('n', '<Leader>n', ';NvimTreeToggle<CR>', { remap = true })

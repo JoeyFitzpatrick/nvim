@@ -1,7 +1,7 @@
 local not_vscode = vim.g.vscode == nil
-print(not_vscode)
 return {
     'tpope/vim-surround',
+    'kdheepak/lazygit.nvim',
     'chrisbra/improvedft',
 
     -- colorschemes
@@ -19,17 +19,21 @@ return {
         "nvim-tree/nvim-web-devicons",
       },
       config = function()
-        require("nvim-tree").setup {}
+        require("nvim-tree").setup {
+            view = { width = {} },
+            update_focused_file = {
+              enable = true,
+              update_root = true,
+           },
+        }
       end,
       cond = not_vscode,
-      lazy = true,
     },
     -- Font for icons here: https://webinstall.dev/nerdfont/
     -- {'junegunn/fzf', cmd = function() vim.call('fzf#install') end},
     'junegunn/fzf',
     'junegunn/fzf.vim',
     'tpope/vim-repeat',
-    'tpope/vim-unimpaired',
     'svermeulen/vim-cutlass',
     'ggandor/leap.nvim',
     'rhysd/clever-f.vim',
@@ -59,4 +63,9 @@ return {
       lazy = true,
     },
     { 'mfussenegger/nvim-jdtls', cond = not_vscode, lazy = true }, -- uncomment this when ready for better java setup
+    { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end },
+    {
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
+}
 }

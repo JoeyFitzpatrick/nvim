@@ -4,6 +4,11 @@ vim.keymap.set("v", ";", ":", { noremap = true })
 vim.keymap.set("n", ":", ";", { noremap = true })
 vim.keymap.set("v", ":", ";", { noremap = true })
 
+-- Quality of life new lines
+vim.keymap.set("n", "<leader>o", "o<esc>k", { noremap = true })
+vim.keymap.set("n", "<leader>O", "O<esc>j", { noremap = true })
+
+
 -- Remap marks so I can use m for other commands
 vim.keymap.set("n", "<leader>m", "m", { noremap = true })
 
