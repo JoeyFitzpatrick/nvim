@@ -11,7 +11,12 @@ return {
 
     'tpope/vim-commentary',
     {'tpope/vim-fugitive', cond = not_vscode},
-    { 'nvim-telescope/telescope.nvim', tag = '0.1.1', dependencies = { 'nvim-lua/plenary.nvim' } },
+    { 'nvim-telescope/telescope.nvim', tag = '0.1.1', dependencies = {
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope-project.nvim',
+        'nvim-telescope/telescope-file-browser.nvim',
+        }
+    },
     {
       "nvim-tree/nvim-tree.lua",
       version = "*",
@@ -21,10 +26,12 @@ return {
       config = function()
         require("nvim-tree").setup {
             view = { width = {} },
+            sync_root_with_cwd = true,
+            respect_buf_cwd = true,
             update_focused_file = {
-              enable = true,
-              update_root = true,
-           },
+            enable = true,
+            update_root = true
+  },
         }
       end,
       cond = not_vscode,
@@ -67,5 +74,5 @@ return {
     {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
-}
+},
 }
