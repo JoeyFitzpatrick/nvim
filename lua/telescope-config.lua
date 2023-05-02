@@ -6,8 +6,7 @@ require('telescope').setup {
     project = {
       base_dirs = {
         { '~/Tools/bitbucket/', max_depth = 4 },
-        -- { '~/Tools/bitbucket/web/student-search', max_depth = 4 },
-        -- {'~/dev/src3', max_depth = 4},
+        { '~/.config/nvim', max_depth = 2 },
         -- {path = '~/dev/src4'},
         -- {path = '~/dev/src5', max_depth = 2},
       },
