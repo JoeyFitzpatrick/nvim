@@ -75,4 +75,8 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
 },
+{
+  'ThePrimeagen/harpoon',
+  dependencies = { 'nvim-lua/plenary.nvim' }
+}
 }

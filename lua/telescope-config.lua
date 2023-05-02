@@ -1,6 +1,8 @@
 require'telescope'.load_extension('project')
 
 local project_actions = require("telescope._extensions.project.actions")
+local builtin = require("telescope.builtin")
+
 require('telescope').setup {
   extensions = {
     project = {
@@ -20,7 +22,16 @@ require('telescope').setup {
         project_actions.change_working_directory(prompt_bufnr, false)
       end
     }
-  }
+  },
+    defaults = {
+    -- Default configuration for telescope goes here:
+    -- config_key = value,
+    mappings = {
+      i = {
+        ["<C-q>"] = builtin.quickfix
+      }
+    }
+  },
 }
 
 vim.keymap.set( 'n', '<C-p>', ":lua require'telescope'.extensions.project.project{}<CR>", {noremap = true, silent = true})
