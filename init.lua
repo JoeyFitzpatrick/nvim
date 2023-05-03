@@ -34,9 +34,6 @@ if vim.g.vscode ~= nil then
 else
     -- ordinary Neovim settings
     require('non-vscode')
-    require('treesitter-config')
-    require('lsp-config')
-    require('telescope-config')
 	vim.opt.relativenumber = true
 	vim.cmd('colorscheme kanagawa')
 	-- vim.cmd('colorscheme catppuccin-latte') -- catppuccin, catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
