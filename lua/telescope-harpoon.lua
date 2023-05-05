@@ -7,8 +7,10 @@ M.mark_file = function(tb)
   actions.drop_all(tb)
   actions.add_selection(tb)
   utils.map_selections(tb, function(selection)
-    pcall(require('harpoon.mark').add_file, selection[1])
+    local extracted = selection[1]:match('^(.-):')
+    pcall(require('harpoon.mark').add_file, extracted)
   end)
+  actions.move_selection_worse(tb)
   actions.remove_selection(tb)
 end
 

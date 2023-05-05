@@ -72,5 +72,6 @@ return {
   'ThePrimeagen/harpoon',
   dependencies = { 'nvim-lua/plenary.nvim' }
 },
-{'flazz/vim-colorschemes', lazy = true},
+{'flazz/vim-colorschemes'},
+{'christoomey/vim-tmux-navigator'},
 }
