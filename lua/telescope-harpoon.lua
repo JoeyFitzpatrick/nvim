@@ -1,3 +1,7 @@
+-- local s = "test.java:123:456"
+-- if s:find(':') then s = s:match('^(.-):') end
+-- print(s)
+
 M = {}
 
 local utils = require("telescope.actions.utils")
@@ -7,8 +11,9 @@ M.mark_file = function(tb)
   actions.drop_all(tb)
   actions.add_selection(tb)
   utils.map_selections(tb, function(selection)
-    local extracted = selection[1]:match('^(.-):')
-    pcall(require('harpoon.mark').add_file, extracted)
+    local s = selection[1]
+    if s:find(':') then s = s:match('^(.-):') end
+    pcall(require('harpoon.mark').add_file, s)
   end)
   actions.move_selection_worse(tb)
   actions.remove_selection(tb)
