@@ -17,7 +17,11 @@ vim.keymap.set('n', '<leader>q', builtin.quickfix, {})
 vim.keymap.set('n', '<C-p>', ":lua require'telescope'.extensions.project.project{}<CR>",
 { noremap = true, silent = true })
 
-require("harpoon").setup({})
+require("harpoon").setup({
+    menu = {
+        width = vim.api.nvim_win_get_width(0) - 4,
+    }
+})
 local ui = require("harpoon.ui")
 local mark = require("harpoon.mark")
 vim.keymap.set('n', '<leader>hs', ui.toggle_quick_menu, {})

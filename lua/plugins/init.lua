@@ -30,9 +30,6 @@ return {
       cond = not_vscode,
     },
     -- Font for icons here: https://webinstall.dev/nerdfont/
-    -- {'junegunn/fzf', cmd = function() vim.call('fzf#install') end},
-    'junegunn/fzf',
-    'junegunn/fzf.vim',
     'tpope/vim-repeat',
     'svermeulen/vim-cutlass',
     'ggandor/leap.nvim',

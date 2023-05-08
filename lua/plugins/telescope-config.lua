@@ -12,7 +12,6 @@ require 'telescope'.load_extension('project')
 
 local project_actions = require("telescope._extensions.project.actions")
 local builtin = require("telescope.builtin")
-local actions = require("telescope.actions")
         require('telescope').setup {
             extensions = {
                 project = {

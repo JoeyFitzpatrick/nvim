@@ -1,5 +1,8 @@
 local config = {
-    cmd = {'/Users/fitzpj3/.local/opt/jdtls-launcher/jdtls/bin/jdtls'},
+    cmd = {
+        '/Users/fitzpj3/.local/opt/jdtls-launcher/jdtls/bin/jdtls',
+        '/Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home/bin/java'
+    },
     root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
       settings = {
         java = {
