@@ -68,7 +68,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-  vim.keymap.set({'n', 'x'}, '<leader>F', function() vim.lsp.buf.format({async = false, timeout_ms = 10000}) end, opts)
+  vim.keymap.set({'n', 'x', 'v'}, '<leader>F', function() vim.lsp.buf.format({async = false, timeout_ms = 10000}) end, opts)
 end)
 
 lsp.nvim_workspace()
