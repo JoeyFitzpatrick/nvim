@@ -11,12 +11,14 @@ lsp.preset({
 -- More servers can be found here: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
 lsp.ensure_installed({
   'tsserver',
+  'eslint',
   'pyright',
   'jdtls',
   'eslint',
   'sqlls',
   'svelte',
   'rust_analyzer',
+  'lua_ls',
 })
 
 local cmp = require("cmp")
@@ -59,6 +61,7 @@ lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
   vim.keymap.set("n", "<leader>h", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
@@ -69,7 +72,15 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set({'n', 'x', 'v'}, '<leader>F', function() vim.lsp.buf.format({async = false, timeout_ms = 10000}) end, opts)
+  vim.keymap.set("n", "<leader>ic", function() vim.lsp.buf.incoming_calls() end, opts)
+  vim.keymap.set("n", "<leader>oc", function() vim.lsp.buf.outgoing_calls() end, opts)
 end)
+
+vim.diagnostic.config({
+    update_in_insert = true,
+    underline = true,
+    severity_sort = true,
+})
 
 lsp.nvim_workspace()
 

@@ -1,6 +1,7 @@
 require('lualine').setup()
 require('treesitter-config')
 require('lsp-config')
+require('transparent').setup()
 
 vim.g.mapleader = " "
 
@@ -45,3 +46,6 @@ vim.keymap.set('n', '<Leader>lg', ':LazyGit<CR>', { silent = true })
 -- nvim-tree settings
 vim.keymap.set('n', '<Leader>n', ';NvimTreeToggle<CR>', { remap = true })
 vim.keymap.set('n', '<Leader>N', ';NvimTreeFocus<CR>', { remap = true })
+
+vim.keymap.set('n', '<Leader>t', ';TransparentToggle<CR>', { remap = true })
+vim.keymap.set('n', '<Leader>b', ';GitBlameToggle<CR>', { remap = true })

@@ -5,7 +5,7 @@ return {
     'chrisbra/improvedft',
 
     -- colorschemes
-    { 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate', cond = not_vscode, lazy = true },
+    { 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate', cond = not_vscode, lazy = false },
     -- {'catppuccin/nvim', name = 'catppuccin', cond = not_vscode},
     { 'rebelot/kanagawa.nvim',           cond = not_vscode },
 
@@ -58,9 +58,9 @@ return {
             { 'L3MON4D3/LuaSnip' },     -- Required
         },
         cond = not_vscode,
-        lazy = true,
+        lazy = false,
     },
-    { 'mfussenegger/nvim-jdtls', cond = not_vscode,                                         lazy = true },
+    { 'mfussenegger/nvim-jdtls', cond = not_vscode, lazy = false },
     { "windwp/nvim-autopairs",   config = function() require("nvim-autopairs").setup {} end },
     {
         'nvim-lualine/lualine.nvim',
@@ -70,7 +70,7 @@ return {
         'ThePrimeagen/harpoon',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    { 'flazz/vim-colorschemes' },
+    { 'flazz/vim-colorschemes', cond = not_vscode, lazy = true },
     { 'christoomey/vim-tmux-navigator' },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -98,5 +98,7 @@ return {
                 },
             }
         end
-    }
+    },
+    {'xiyaowong/transparent.nvim'},
+    {'f-person/git-blame.nvim'},
 }

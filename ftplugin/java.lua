@@ -1,7 +1,16 @@
 local config = {
     cmd = {
         -- '/Users/fitzpj3/.local/opt/jdtls-launcher/jdtls/bin/jdtls',
-        '/Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home/bin/java'
+        '/Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home/bin/java',
+        '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        '-Dosgi.bundles.defaultStartLevel=4',
+        '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        '-Dlog.protocol=true',
+        '-Dlog.level=ALL',
+        '-Xmx1g',
+        '--add-modules=ALL-SYSTEM',
+        '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
     },
     root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
     settings = {
@@ -27,11 +36,8 @@ local config = {
             },
             format = {
                 settings = {
-                    -- Use Google Java style guidelines for formatting
-                    -- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
-                    -- and place it in the ~/.local/share/eclipse directory
-                    url = "/.local/share/eclipse/eclipse-java-google-style.xml",
-                    profile = "GoogleStyle",
+                    url = "~/.local/share/eclipse/vanderbilt-format-2.2.xml",
+                    profile = "Vanderbilt",
                 },
             },
         }
