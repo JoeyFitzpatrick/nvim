@@ -12,8 +12,6 @@ vim.keymap.set('n', '<leader>f', builtin.find_files, {})
 vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>H', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>d', builtin.diagnostics, {})
-vim.keymap.set('n', '<C-p>', ":lua require'telescope'.extensions.project.project{}<CR>",
-{ noremap = true, silent = true })
 
 require("harpoon").setup({
     menu = {
@@ -49,3 +47,4 @@ vim.keymap.set('n', '<Leader>N', ';NvimTreeFocus<CR>', { remap = true })
 
 vim.keymap.set('n', '<Leader>t', ';TransparentToggle<CR>', { remap = true })
 vim.keymap.set('n', '<Leader>b', ';GitBlameToggle<CR>', { remap = true })
+

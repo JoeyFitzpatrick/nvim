@@ -11,6 +11,7 @@ local config = {
         '--add-modules=ALL-SYSTEM',
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        '-jar', '/Users/fitzpj3/eclipse/jee-2023-03/Eclipse.app/Contents/Eclipse/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
     },
     root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
     settings = {
