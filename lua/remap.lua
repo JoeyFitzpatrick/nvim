@@ -3,6 +3,7 @@ vim.keymap.set("n", ";", ":", { noremap = true })
 vim.keymap.set("v", ";", ":", { noremap = true })
 vim.keymap.set("n", ":", ";", { noremap = true })
 vim.keymap.set("v", ":", ";", { noremap = true })
+vim.keymap.set("n", "Q", ":qa<CR>", { noremap = true })
 
 -- Quality of life new lines
 vim.keymap.set("n", "<leader>o", "o<esc>k", { noremap = true })
@@ -42,6 +43,12 @@ vim.keymap.set('n', '<Leader>p', '"+p')
 vim.keymap.set('n', '<leader>P', '"+P')
 vim.keymap.set('v', '<Leader>p', '"+p')
 vim.keymap.set('v', '<Leader>P', '"+P')
+
+-- Cut to clipboard
+vim.keymap.set('v', '<Leader>d', '"+d')
+vim.keymap.set('n', '<leader>D', '"+dg_')
+vim.keymap.set('n', '<Leader>d', '"+d')
+vim.keymap.set('n', '<Leader>dd', '"+dd')
 
 -- Custom text objects
 -- ie = inner entire buffer

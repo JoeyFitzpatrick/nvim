@@ -57,8 +57,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-    vim.keymap.set({ 'n', 'x', 'v' }, '<leader>F', function() vim.lsp.buf.format({ async = false, timeout_ms = 10000 }) end,
-        opts)
+    vim.keymap.set({ 'n', 'x', 'v' }, '<leader>F', function() vim.lsp.buf.format({ async = false, timeout_ms = 10000 }) end, opts)
     vim.keymap.set("n", "<leader>ic", function() vim.lsp.buf.incoming_calls() end, opts)
     vim.keymap.set("n", "<leader>oc", function() vim.lsp.buf.outgoing_calls() end, opts)
 end)
@@ -97,3 +96,27 @@ cmp.setup({
     mapping = cmp_mappings,
     sources = cmp_sources,
 })
+
+require('sonarlint').setup({
+   server = {
+      cmd = { 
+         'sonarlint-language-server',
+         -- Ensure that sonarlint-language-server uses stdio channel
+         '-stdio',
+         '-analyzers',
+         -- paths to the analyzers you need, using those for python and java in this example
+         vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarpython.jar"),
+         vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarcfamily.jar"),
+         vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarjava.jar"),
+      }
+   },
+   filetypes = {
+      -- Tested and working
+      'python',
+      'cpp',
+      -- Requires nvim-jdtls, otherwise an error message will be printed
+      'java',
+   }
+})
+
+require('helpers.linters')

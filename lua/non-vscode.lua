@@ -1,7 +1,7 @@
 require('lualine').setup()
 require('treesitter-config')
 require('lsp-config')
-require('transparent').setup()
+require('toggle_lsp_diagnostics').init()
 
 vim.g.mapleader = " "
 
@@ -10,6 +10,7 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, {})
 -- vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
 vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
+vim.keymap.set('v', '<leader>g', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>H', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>d', builtin.diagnostics, {})
 
@@ -48,3 +49,26 @@ vim.keymap.set('n', '<Leader>N', ';NvimTreeFocus<CR>', { remap = true })
 vim.keymap.set('n', '<Leader>t', ';TransparentToggle<CR>', { remap = true })
 vim.keymap.set('n', '<Leader>b', ';GitBlameToggle<CR>', { remap = true })
 
+vim.keymap.set("n", "<leader>G", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+
+function vim.getVisualSelection()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg('v')
+	vim.fn.setreg('v', {})
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ''
+	end
+end
+
+local opts = { noremap = true, silent = true }
+
+vim.keymap.set('v', '<space>g', function()
+	local text = vim.getVisualSelection()
+	builtin.live_grep({ default_text = text })
+end, opts)
+
+vim.keymap.set('n', '<Leader>t', ';ToggleDiag<CR>', { remap = true })

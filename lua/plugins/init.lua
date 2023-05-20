@@ -6,9 +6,7 @@ return {
 
     -- colorschemes
     { 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate', cond = not_vscode, lazy = false },
-    -- {'catppuccin/nvim', name = 'catppuccin', cond = not_vscode},
     { 'rebelot/kanagawa.nvim',           cond = not_vscode },
-
     'tpope/vim-commentary',
     {
         "nvim-tree/nvim-tree.lua",
@@ -31,7 +29,6 @@ return {
     },
     -- Font for icons here: https://webinstall.dev/nerdfont/
     'tpope/vim-repeat',
-    'svermeulen/vim-cutlass',
     'ggandor/leap.nvim',
     'rhysd/clever-f.vim',
     'ggandor/leap-spooky.nvim',
@@ -99,6 +96,9 @@ return {
             }
         end
     },
-    {'xiyaowong/transparent.nvim'},
     {'f-person/git-blame.nvim'},
+    {'https://gitlab.com/schrieveslaach/sonarlint.nvim'},
+    {'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'},
+    {'mfussenegger/nvim-lint'},
+    {'jose-elias-alvarez/null-ls.nvim'},
 }
