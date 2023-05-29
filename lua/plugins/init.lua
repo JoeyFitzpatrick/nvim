@@ -101,4 +101,5 @@ return {
     {'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'},
     {'mfussenegger/nvim-lint'},
     {'jose-elias-alvarez/null-ls.nvim'},
+    {'nvim-pack/nvim-spectre'},
 }

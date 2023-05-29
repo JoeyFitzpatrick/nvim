@@ -1,7 +1,3 @@
--- local s = "test.java:123:456"
--- if s:find(':') then s = s:match('^(.-):') end
--- print(s)
-
 M = {}
 
 local utils = require("telescope.actions.utils")

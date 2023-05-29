@@ -13,12 +13,13 @@ lsp.ensure_installed({
     'tsserver',
     'eslint',
     'pyright',
-    'jdtls',
+    -- 'jdtls',
     'eslint',
-    'sqlls',
+    -- 'sqlls',
     'svelte',
     'rust_analyzer',
     'lua_ls',
+    'hls',
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -30,17 +31,19 @@ end)
 
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+-- require'lspconfig'.sqlls.setup{}
 
 -- More servers can be found here: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
 lsp.setup_servers({
     'tsserver',
     'pyright',
-    'jdtls',
+    -- 'jdtls',
     'eslint',
-    'sqlls',
+    -- 'sqlls',
     'svelte',
     'rust_analyzer',
     'lua_ls',
+    'hls',
 })
 
 lsp.on_attach(function(client, bufnr)
