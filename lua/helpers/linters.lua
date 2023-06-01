@@ -1,5 +1,5 @@
 require("lint").linters_by_ft = {
-    markdown = { "vale" },
+    -- markdown = { "vale" },
     javascript = { "eslint" },
     typescript = { "eslint" },
     sql = { "sqlfluff" },
@@ -25,5 +25,6 @@ null_ls.setup({
         null_ls.builtins.diagnostics.sqlfluff.with({
             extra_args = { "--dialect", "oracle" }, -- change to your dialect
         }),
+        null_ls.builtins.formatting.jq,
     },
 })

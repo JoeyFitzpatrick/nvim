@@ -45,10 +45,20 @@ vim.keymap.set('v', '<Leader>p', '"+p')
 vim.keymap.set('v', '<Leader>P', '"+P')
 
 -- Cut to clipboard
-vim.keymap.set('v', '<Leader>d', '"+d')
-vim.keymap.set('n', '<leader>D', '"+dg_')
-vim.keymap.set('n', '<Leader>d', '"+d')
-vim.keymap.set('n', '<Leader>dd', '"+dd')
+vim.keymap.set('n', '<leader>D', '""D')
+vim.keymap.set('v', '<Leader>d', '""d')
+vim.keymap.set('n', '<Leader>d', '""d')
+vim.keymap.set('n', '<Leader>dd', '""dd')
+
+-- Delete without cutting
+vim.keymap.set('n', 'D', '"_D')
+vim.keymap.set('v', 'd', '"_d')
+vim.keymap.set('n', 'd', '"_d')
+vim.keymap.set('n', 'dd', '"_dd')
+
+-- Paste without yanking the pasted over text
+vim.keymap.set('v', 'p', '"0p')
+vim.keymap.set('v', 'P', '"0P')
 
 -- Custom text objects
 -- ie = inner entire buffer

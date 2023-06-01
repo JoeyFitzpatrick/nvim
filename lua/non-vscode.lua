@@ -13,6 +13,7 @@ vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
 vim.keymap.set('v', '<leader>g', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>H', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>ds', builtin.diagnostics, {})
+vim.keymap.set('n', '<leader>M', builtin.marks, {})
 
 require("harpoon").setup({
     menu = {

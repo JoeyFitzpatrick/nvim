@@ -102,4 +102,5 @@ return {
     {'mfussenegger/nvim-lint'},
     {'jose-elias-alvarez/null-ls.nvim'},
     {'nvim-pack/nvim-spectre'},
+    {'tpope/vim-dadbod'},
 }
