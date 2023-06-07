@@ -1,9 +1,14 @@
 require("lint").linters_by_ft = {
-    -- markdown = { "vale" },
+    markdown = { "vale" },
     javascript = { "eslint" },
     typescript = { "eslint" },
-    sql = { "sqlfluff" },
+    haskell = { "hlint" },
+    html = { "tidy" },
+    -- sql = { "sqlfluff" },
 }
+
+local tidy = require('lint').linters.tidy
+tidy.ignore_exitcode = true
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     callback = function()
@@ -17,8 +22,6 @@ null_ls.setup({
     sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettier,
-        null_ls.builtins.diagnostics.eslint,
-        -- null_ls.builtins.completion.spell,
         null_ls.builtins.formatting.sqlfluff.with({
             extra_args = { "--dialect", "oracle" }, -- change to your dialect
         }),

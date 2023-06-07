@@ -20,6 +20,7 @@ lsp.ensure_installed({
     'rust_analyzer',
     'lua_ls',
     'hls',
+    'efm',
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -44,6 +45,7 @@ lsp.setup_servers({
     'rust_analyzer',
     'lua_ls',
     'hls',
+    'efm',
 })
 
 lsp.on_attach(function(client, bufnr)

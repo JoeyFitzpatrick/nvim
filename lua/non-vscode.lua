@@ -14,6 +14,8 @@ vim.keymap.set('v', '<leader>g', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>H', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>ds', builtin.diagnostics, {})
 vim.keymap.set('n', '<leader>M', builtin.marks, {})
+vim.keymap.set('n', '<leader>q', ":Telescope macros<CR>", {})
+vim.keymap.set('n', '<leader>Q', ":EditMacros<CR>", {})
 
 require("harpoon").setup({
     menu = {

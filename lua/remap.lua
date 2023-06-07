@@ -3,15 +3,11 @@ vim.keymap.set("n", ";", ":", { noremap = true })
 vim.keymap.set("v", ";", ":", { noremap = true })
 vim.keymap.set("n", ":", ";", { noremap = true })
 vim.keymap.set("v", ":", ";", { noremap = true })
-vim.keymap.set("n", "Q", ":qa<CR>", { noremap = true })
+vim.keymap.set("n", "<c-q>", ":qa<CR>", { noremap = true })
 
 -- Quality of life new lines
 vim.keymap.set("n", "<leader>o", "o<esc>k", { noremap = true })
 vim.keymap.set("n", "<leader>O", "O<esc>j", { noremap = true })
-
-
--- Remap marks so I can use m for other commands
-vim.keymap.set("n", "<leader>m", "m", { noremap = true })
 
 -- Visual move lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -66,12 +62,6 @@ vim.keymap.set('o', 'ie', ':exec "normal! ggVG"<cr>')
 
 -- iv = current viewable text in the buffer
 vim.keymap.set('o', 'iv', ':exec "normal! HVL"<cr>')
-
--- cutlass settings: remap m to cut/move
-vim.keymap.set('n', 'm', 'd')
-vim.keymap.set('x', 'm', 'd')
-vim.keymap.set('n', 'mm', 'dd')
-vim.keymap.set('n', 'M', 'D')
 
 -- Remap for surround to avoid clashing with leap
 vim.keymap.set('v', 'S', '<Plug>VSurround', { remap = false })
