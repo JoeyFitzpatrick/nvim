@@ -5,7 +5,24 @@ return {
 	"chrisbra/improvedft",
 
 	-- colorschemes
-	{ "nvim-treesitter/nvim-treesitter", cmd = "TSUpdate", cond = not_vscode, lazy = false },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		cmd = "TSUpdate",
+		cond = not_vscode,
+		lazy = false,
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "<Enter>",
+						node_incremental = "<Enter>",
+						node_decremental = "<BS>",
+					},
+				},
+			})
+		end,
+	},
 	{ "rebelot/kanagawa.nvim", cond = not_vscode },
 	"tpope/vim-commentary",
 	{
@@ -30,7 +47,6 @@ return {
 	-- Font for icons here: https://webinstall.dev/nerdfont/
 	"tpope/vim-repeat",
 	"ggandor/leap.nvim",
-	"rhysd/clever-f.vim",
 	"ggandor/leap-spooky.nvim",
 
 	-- LSP Support
@@ -83,7 +99,6 @@ return {
 	{ "mfussenegger/nvim-lint" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "nvim-pack/nvim-spectre", cond = not_vscode, lazy = true },
-	-- { "tpope/vim-dadbod", cond = not_vscode, lazy = true },
 	{
 		"goolord/alpha-nvim",
 		cond = not_vscode,
@@ -102,5 +117,56 @@ return {
 		config = function()
 			require("marks").setup({})
 		end,
+	},
+	{
+		"mrcjkb/haskell-tools.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim", -- optional
+		},
+		branch = "1.x.x", -- recommended
+	},
+	{
+		"tzachar/highlight-undo.nvim",
+		lazy = true,
+		config = function()
+			require("highlight-undo").setup({
+				hlgroup = "HighlightUndo",
+				duration = 300,
+				keymaps = {
+					{ "n", "u", "undo", {} },
+					{ "n", "<C-r>", "redo", {} },
+				},
+			})
+		end,
+	},
+	{
+		"dpayne/CodeGPT.nvim",
+		lazy = true,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("codegpt.config")
+		end,
+	},
+	{ "folke/neodev.nvim", opts = {} },
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 1000
+		end,
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+	},
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	},
 }

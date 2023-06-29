@@ -1,3 +1,5 @@
+local opts =  { silent = true, remap = true }
+
 -- Sick of pressing shift colon
 vim.keymap.set("n", ";", ":", { noremap = true })
 vim.keymap.set("v", ";", ":", { noremap = true })
@@ -66,4 +68,8 @@ vim.keymap.set('o', 'iv', ':exec "normal! HVL"<cr>')
 -- Remap for surround to avoid clashing with leap
 vim.keymap.set('v', 'S', '<Plug>VSurround', { remap = false })
 
+vim.keymap.set('v', 'y', 'ygv<esc>', { remap = false })
 
+-- Easier tab navigation
+vim.keymap.set({"n", "v"}, "L", "$")
+vim.keymap.set({"n", "v"}, "H", "_")

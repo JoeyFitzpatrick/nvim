@@ -4,7 +4,6 @@ require("lint").linters_by_ft = {
     typescript = { "eslint" },
     haskell = { "hlint" },
     html = { "tidy" },
-    -- sql = { "sqlfluff" },
 }
 
 local tidy = require('lint').linters.tidy
@@ -22,12 +21,8 @@ null_ls.setup({
     sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.sqlfluff.with({
-            extra_args = { "--dialect", "oracle" }, -- change to your dialect
-        }),
-        null_ls.builtins.diagnostics.sqlfluff.with({
-            extra_args = { "--dialect", "oracle" }, -- change to your dialect
-        }),
+        -- null_ls.builtins.formatting.sqlfluff.with({ extra_args = { "--dialect", "oracle" }, }),
         null_ls.builtins.formatting.jq,
+        null_ls.builtins.formatting.black,
     },
 })

@@ -23,9 +23,6 @@ end
 
 vim.g.mapleader = " "
 
-keymap('n', 'H', notify('workbench.action.previousEditor'), { silent = true })
-keymap('n', 'L', notify('workbench.action.nextEditor'), { silent = true })
-
 keymap('n', '<leader>fr', notify('references-view.findReferences'), { silent = true }) -- language references
 keymap('n', '<leader>vp', notify ('workbench.actions.view.problems'), { silent = true }) -- language diagnostics
 keymap('n', 'gr', notify ('editor.action.goToReferences'), { silent = true })

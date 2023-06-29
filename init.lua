@@ -39,3 +39,5 @@ else
 	-- vim.cmd('colorscheme catppuccin-latte') -- catppuccin, catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 end
 
+-- vim.api.nvim_create_autocmd("FileType", {pattern = 'hs', command = [[:HlsStart]]})
+

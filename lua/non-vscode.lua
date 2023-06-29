@@ -38,10 +38,6 @@ vim.keymap.set('n', '<leader>h7', function() ui.nav_file(7) end, {})
 vim.keymap.set('n', '<leader>h8', function() ui.nav_file(8) end, {})
 vim.keymap.set('n', '<leader>h9', function() ui.nav_file(9) end, {})
 
--- Easier tab navigation
-vim.keymap.set("n", "L", "gt")
-vim.keymap.set("n", "H", "gT")
-
 -- Lazygit
 vim.keymap.set('n', '<Leader>lg', ':LazyGit<CR>', { silent = true })
 
@@ -53,6 +49,32 @@ vim.keymap.set('n', '<Leader>t', ';TransparentToggle<CR>', { remap = true })
 vim.keymap.set('n', '<Leader>b', ';GitBlameToggle<CR>', { remap = true })
 
 vim.keymap.set("n", "<leader>G", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+
+
+-- Enable telescope fzf native, if installed
+pcall(require('telescope').load_extension, 'fzf')
+
+vim.keymap.set('n', '<leader>/', function()
+  -- You can pass additional configuration to telescope to change theme, layout, etc.
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end, { desc = '[/] Fuzzily search in current buffer' })
+
+  -- In this case, we create a function that lets us more easily define mappings specific
+  -- for LSP related items. It sets the mode, buffer and description for us each time.
+  local nmap = function(keys, func, desc)
+    if desc then
+      desc = 'LSP: ' .. desc
+    end
+    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+
+nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+nmap('<leader>s', require('telescope.builtin').lsp_document_symbols, 'Document [S]ymbols') -- This conflicts with current diagnostics remap
+nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+vim.keymap.set("n", ":", "<cmd>lua require('telescope.builtin').resume()<cr>")
 
 function vim.getVisualSelection()
 	vim.cmd('noau normal! "vy"')
