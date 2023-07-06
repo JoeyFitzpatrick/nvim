@@ -1,15 +1,52 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.1",
-	lazy = true,
+	lazy = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-live-grep-args.nvim",
 	},
 	config = function()
-		require("telescope").load_extension("live_grep_args")
-        require('telescope').load_extension("macros")
 		local builtin = require("telescope.builtin")
+		vim.keymap.set("n", "<leader>f", builtin.find_files, {})
+		-- vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
+		vim.keymap.set("n", "<leader>g", builtin.live_grep, {})
+		vim.keymap.set("v", "<leader>g", builtin.grep_string, {})
+		vim.keymap.set("n", "<leader>H", builtin.help_tags, {})
+		vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
+		vim.keymap.set("n", "<leader>M", builtin.marks, {})
+		vim.keymap.set("n", "<leader>q", ":Telescope macros<CR>", {})
+		vim.keymap.set("n", "<leader>Q", ":EditMacros<CR>", {})
+
+		vim.keymap.set("n", "<leader>G", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+
+		-- Enable telescope fzf native, if installed
+		pcall(require("telescope").load_extension, "fzf")
+
+		vim.keymap.set("n", "<leader>/", function()
+			-- You can pass additional configuration to telescope to change theme, layout, etc.
+			require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+				winblend = 10,
+				previewer = false,
+			}))
+		end, { desc = "[/] Fuzzily search in current buffer" })
+
+		-- In this case, we create a function that lets us more easily define mappings specific
+		-- for LSP related items. It sets the mode, buffer and description for us each time.
+		local nmap = function(keys, func, desc)
+			if desc then
+				desc = "LSP: " .. desc
+			end
+			vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+		end
+
+		nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+		nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols") -- This conflicts with current diagnostics remap
+		nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+		vim.keymap.set("n", "<leader>tr", "<cmd>lua require('telescope.builtin').resume()<cr>")
+
+		require("telescope").load_extension("live_grep_args")
+		require("telescope").load_extension("macros")
 		require("telescope").setup({
 			defaults = {
 				layout_config = {

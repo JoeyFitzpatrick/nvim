@@ -23,10 +23,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup('plugins')
 
-require('leap').add_default_mappings(true)
+-- require('leap').add_default_mappings(true)
+-- require('leap-spooky').setup({ paste_on_remote_yank = true })
+
 require('set')
 require('remap')
-require('leap-spooky').setup({ paste_on_remote_yank = true })
 
 if vim.g.vscode ~= nil then
     -- VSCode only settings

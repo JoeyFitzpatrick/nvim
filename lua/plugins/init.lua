@@ -2,9 +2,6 @@ local not_vscode = vim.g.vscode == nil
 return {
 	"tpope/vim-surround",
 	"kdheepak/lazygit.nvim",
-	"chrisbra/improvedft",
-
-	-- colorschemes
 	{
 		"nvim-treesitter/nvim-treesitter",
 		cmd = "TSUpdate",
@@ -46,8 +43,8 @@ return {
 	},
 	-- Font for icons here: https://webinstall.dev/nerdfont/
 	"tpope/vim-repeat",
-	"ggandor/leap.nvim",
-	"ggandor/leap-spooky.nvim",
+	-- "ggandor/leap.nvim",
+	-- "ggandor/leap-spooky.nvim",
 
 	-- LSP Support
 	{
