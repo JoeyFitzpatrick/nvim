@@ -21,6 +21,7 @@ return {
 		end,
 	},
 	{ "rebelot/kanagawa.nvim", cond = not_vscode },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	"tpope/vim-commentary",
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -137,17 +138,6 @@ return {
 			})
 		end,
 	},
-	{
-		"dpayne/CodeGPT.nvim",
-		lazy = true,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-		},
-		config = function()
-			require("codegpt.config")
-		end,
-	},
 	{ "folke/neodev.nvim", opts = {} },
 	{
 		"folke/which-key.nvim",
@@ -165,5 +155,19 @@ return {
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	},
+	{
+		"gelguy/wilder.nvim",
+		config = function()
+			local wilder = require("wilder")
+			wilder.setup({ modes = { ":", "/", "?" } })
+		end,
+	},
+	{
+		"NeogitOrg/neogit",
+		dependencies = "nvim-lua/plenary.nvim",
+		config = function() 
+            require('neogit').setup{}
+        end,
 	},
 }

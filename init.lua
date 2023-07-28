@@ -30,15 +30,12 @@ require('set')
 require('remap')
 
 if vim.g.vscode ~= nil then
-    -- VSCode only settings
     require('vscode')
 else
-    -- ordinary Neovim settings
     require('non-vscode')
 	vim.opt.relativenumber = true
-	vim.cmd('colorscheme kanagawa')
-	-- vim.cmd('colorscheme catppuccin-latte') -- catppuccin, catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+	-- vim.cmd('colorscheme kanagawa')
+    vim.cmd.colorscheme "catppuccin" -- catppuccin, catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 end
 
 -- vim.api.nvim_create_autocmd("FileType", {pattern = 'hs', command = [[:HlsStart]]})
-

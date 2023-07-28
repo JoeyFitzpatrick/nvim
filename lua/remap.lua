@@ -76,3 +76,8 @@ vim.keymap.set({ "n", "v" }, "H", "_")
 vim.keymap.set("n", "<leader>bo", ':lua require("dbee").open()<CR>', { desc = "Open db" })
 vim.keymap.set("n", "<leader>bc", ':lua require("dbee").close()<CR>', { desc = "Close db" })
 
+vim.keymap.set("n", "<leader>ai", ':ChatGPT<CR>', { desc = "Open GPT prompt" })
+vim.keymap.set("n", "<leader>aa", ':ChatGPTActAs<CR>', { desc = "Open premade GPT prompt" })
+vim.keymap.set("n", "<leader>ac", ':ChatGPTCompleteCode<CR>', { desc = "[a]i auto[c]omplete" })
+vim.keymap.set("v", "<leader>ai", '<Esc>:ChatGPTEditWithInstructions<CR>', { desc = "Edit selected text with GPT" })
+vim.keymap.set("v", "<leader>aa", '<Esc>:ChatGPTRun', { desc = "Run actions on code with GPT" })

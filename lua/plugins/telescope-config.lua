@@ -45,6 +45,26 @@ return {
 		nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 		vim.keymap.set("n", "<leader>tr", "<cmd>lua require('telescope.builtin').resume()<cr>")
 
+		function vim.getVisualSelection()
+			vim.cmd('noau normal! "vy"')
+			local text = vim.fn.getreg("v")
+			vim.fn.setreg("v", {})
+
+			text = string.gsub(text, "\n", "")
+			if #text > 0 then
+				return text
+			else
+				return ""
+			end
+		end
+
+		local opts = { noremap = true, silent = true }
+
+		vim.keymap.set("v", "<space>g", function()
+			local text = vim.getVisualSelection()
+			builtin.live_grep({ default_text = text })
+		end, opts)
+
 		require("telescope").load_extension("live_grep_args")
 		require("telescope").load_extension("macros")
 		require("telescope").setup({

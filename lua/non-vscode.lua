@@ -34,31 +34,11 @@ vim.keymap.set('n', '<Leader>lg', ':LazyGit<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>n', ';NvimTreeToggle<CR>', { remap = true })
 vim.keymap.set('n', '<Leader>N', ';NvimTreeFocus<CR>', { remap = true })
 
-vim.keymap.set('n', '<Leader>t', ';TransparentToggle<CR>', { remap = true })
 vim.keymap.set('n', '<Leader>b', ';GitBlameToggle<CR>', { remap = true })
 
 
-function vim.getVisualSelection()
-	vim.cmd('noau normal! "vy"')
-	local text = vim.fn.getreg('v')
-	vim.fn.setreg('v', {})
 
-	text = string.gsub(text, "\n", "")
-	if #text > 0 then
-		return text
-	else
-		return ''
-	end
-end
-
-local opts = { noremap = true, silent = true }
-
-vim.keymap.set('v', '<space>g', function()
-	local text = vim.getVisualSelection()
-	builtin.live_grep({ default_text = text })
-end, opts)
-
-vim.keymap.set('n', '<Leader>t', ';ToggleDiag<CR>', { remap = true })
+vim.keymap.set('n', '<Leader>td', ';ToggleDiag<CR>', { remap = true, desc = "[T]oggle [d]iagnostics" })
 
 vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>', {
     desc = "Open Spectre"
