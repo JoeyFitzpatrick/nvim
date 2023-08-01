@@ -163,11 +163,11 @@ return {
 			wilder.setup({ modes = { ":", "/", "?" } })
 		end,
 	},
-	{
-		"NeogitOrg/neogit",
-		dependencies = "nvim-lua/plenary.nvim",
-		config = function() 
-            require('neogit').setup{}
-        end,
-	},
+	-- {
+	-- 	"NeogitOrg/neogit",
+	-- 	dependencies = "nvim-lua/plenary.nvim",
+	-- 	config = function() 
+            -- require('neogit').setup{}
+        -- end,
+	-- },
 }
