@@ -1,9 +1,9 @@
 local lsp = require("lsp-zero")
+require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 vim.lsp.set_log_level("debug")
 
-require("neodev").setup({
-	-- add any options here, or leave empty to use the default settings
-})
+local opts = {silent = true, noremap = true}
+vim.keymap.set("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
 lsp.preset({
 	name = "minimal",
@@ -12,19 +12,16 @@ lsp.preset({
 	suggest_lsp_servers = false,
 })
 
--- More servers can be found here: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
-lsp.ensure_installed({
-	"tsserver",
-	"eslint",
+local servers = {
 	"pyright",
-	"eslint",
-	-- 'sqlls',
 	"svelte",
 	"rust_analyzer",
 	"lua_ls",
-	-- 'hls',
-	-- 'efm',
-})
+	"eslint",
+}
+
+-- More servers can be found here: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
+lsp.ensure_installed(servers)
 
 lsp.on_attach(function(client, bufnr)
 	lsp.default_keymaps({
@@ -46,17 +43,7 @@ lspconfig.lua_ls.setup({
 })
 
 -- More servers can be found here: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
-lsp.setup_servers({
-	"tsserver",
-	"pyright",
-	"eslint",
-	-- 'sqlls',
-	"svelte",
-	"rust_analyzer",
-	"lua_ls",
-	-- 'hls',
-	-- 'efm',
-})
+lsp.setup_servers(servers)
 
 
 lsp.on_attach(function(client, bufnr)
@@ -124,13 +111,12 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 	["<Enter>"] = cmp.mapping.confirm({ select = true }),
-	["<Tab>"] = cmp.mapping.confirm({ select = true }),
 	["<C-Space>"] = cmp.mapping.complete(),
 })
 
 local cmp_sources = {
 	{ name = "nvim_lsp" },
-	{ name = "luasnip" },
+	-- { name = "luasnip" },
 	{ name = "cmp_luasnip" },
 }
 

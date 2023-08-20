@@ -1,5 +1,6 @@
 return {
   'abecodes/tabout.nvim',
+  cond = vim.g.vscode == nil,
   dependencies = {"nvim-treesitter/nvim-treesitter"},
   config = function()
     require('tabout').setup {

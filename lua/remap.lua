@@ -1,4 +1,4 @@
-local opts = { silent = true, remap = true }
+local opts = { silent = true, noremap = true }
 
 -- Sick of pressing shift colon
 vim.keymap.set("n", ";", ":", { noremap = true })
@@ -81,3 +81,5 @@ vim.keymap.set("n", "<leader>aa", ':ChatGPTActAs<CR>', { desc = "Open premade GP
 vim.keymap.set("n", "<leader>ac", ':ChatGPTCompleteCode<CR>', { desc = "[a]i auto[c]omplete" })
 vim.keymap.set("v", "<leader>ai", '<Esc>:ChatGPTEditWithInstructions<CR>', { desc = "Edit selected text with GPT" })
 vim.keymap.set("v", "<leader>aa", '<Esc>:ChatGPTRun', { desc = "Run actions on code with GPT" })
+
+vim.keymap.set("n", "<leader>N", ':Navbuddy<CR>', { desc = "Run Navbuddy" })
