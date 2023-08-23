@@ -67,6 +67,7 @@ return {
 
 		require("telescope").load_extension("live_grep_args")
 		require("telescope").load_extension("macros")
+        local actions = require("telescope.actions")
 		require("telescope").setup({
 			defaults = {
 				layout_config = {
@@ -75,7 +76,7 @@ return {
 				layout_strategy = "vertical",
 				mappings = {
 					i = {
-						["<C-q>"] = builtin.quickfix,
+						["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
 						["<C-a>"] = require("telescope-harpoon").mark_file,
 					},
 				},

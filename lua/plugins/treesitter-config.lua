@@ -1,4 +1,40 @@
 return {
+		"nvim-treesitter/nvim-treesitter",
+		cmd = "TSUpdate",
+		cond = not_vscode,
+		lazy = false,
+		dependencies = "JoosepAlviste/nvim-ts-context-commentstring",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "<Enter>",
+						node_incremental = "<Enter>",
+						node_decremental = "<BS>",
+					},
+				},
+				ensure_installed = {
+					"css",
+					"html",
+					"javascript",
+					"lua",
+					"python",
+					"scss",
+					"svelte",
+					"tsx",
+					"typescript",
+					"vim",
+					"vue",
+				},
+
+				context_commentstring = {
+					enable = true,
+				},
+			})
+		end,
+	},
+ {
     "nvim-treesitter/nvim-treesitter-textobjects",
     cond = vim.g.vscode == nil,
     dependencies = "nvim-treesitter/nvim-treesitter",
