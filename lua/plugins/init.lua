@@ -60,7 +60,7 @@ return {
 			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
 			{
 				"L3MON4D3/LuaSnip",
-				dependencies = { "honza/vim-snippets", "saadparwaiz1/cmp_luasnip" },
+				dependencies = { "honza/vim-snippets", "saadparwaiz1/cmp_luasnip", "mlaursen/vim-react-snippets" },
 			}, -- Required
 		},
 		cond = not_vscode,
@@ -159,6 +159,11 @@ return {
 	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	},
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
 	},
 }

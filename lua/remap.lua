@@ -7,10 +7,6 @@ vim.keymap.set("n", ":", ";", { noremap = true })
 vim.keymap.set("v", ":", ";", { noremap = true })
 vim.keymap.set("n", "<c-q>", ":qa<CR>", { noremap = true })
 
--- Quality of life new lines
-vim.keymap.set("n", "<leader>o", "o<esc>k", { noremap = true })
-vim.keymap.set("n", "<leader>O", "O<esc>j", { noremap = true })
-
 -- Visual move lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -22,12 +18,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- Center screen after search
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-
--- Better switching between splits
--- vim.keymap.set("n", "<C-h>", "<C-w>h")
--- vim.keymap.set("n", "<C-j>", "<C-w>j")
--- vim.keymap.set("n", "<C-k>", "<C-w>k")
--- vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Copy to clipboard
 vim.keymap.set("v", "<Leader>y", '"+y')
@@ -61,20 +51,15 @@ vim.keymap.set("v", "P", '"0P')
 -- ie = inner entire buffer
 vim.keymap.set("o", "ie", ':exec "normal! ggVG"<cr>')
 
--- iv = current viewable text in the buffer
-vim.keymap.set("o", "iv", ':exec "normal! HVL"<cr>')
-
 -- Remap for surround to avoid clashing with leap
 vim.keymap.set("v", "S", "<Plug>VSurround", { remap = false })
 
 vim.keymap.set("v", "y", "ygv<esc>", { remap = false })
 
--- Easier tab navigation
+-- Easier jumps to start/end of line
 vim.keymap.set({ "n", "v" }, "L", "$")
 vim.keymap.set({ "n", "v" }, "H", "_")
 
-vim.keymap.set("n", "<leader>bo", ':lua require("dbee").open()<CR>', { desc = "Open db" })
-vim.keymap.set("n", "<leader>bc", ':lua require("dbee").close()<CR>', { desc = "Close db" })
 
 vim.keymap.set("n", "<leader>ai", ':ChatGPT<CR>', { desc = "Open GPT prompt" })
 vim.keymap.set("n", "<leader>aa", ':ChatGPTActAs<CR>', { desc = "Open premade GPT prompt" })
@@ -83,3 +68,5 @@ vim.keymap.set("v", "<leader>ai", '<Esc>:ChatGPTEditWithInstructions<CR>', { des
 vim.keymap.set("v", "<leader>aa", '<Esc>:ChatGPTRun', { desc = "Run actions on code with GPT" })
 
 vim.keymap.set("n", "<leader>N", ':Navbuddy<CR>', { desc = "Run Navbuddy" })
+
+vim.keymap.set("n", "<leader>xx", ':TroubleToggle<CR>', { desc = "Toggle diagnostics via Trouble.nvim" })

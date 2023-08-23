@@ -119,8 +119,8 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 
 local cmp_sources = {
     { name = "nvim_lsp" },
-    -- { name = "luasnip" },
     { name = "cmp_luasnip" },
+    { name = "luasnip" },
 }
 
 cmp.setup({
@@ -142,7 +142,6 @@ require("sonarlint").setup({
         },
     },
     filetypes = {
-        -- Tested and working
         "python",
         "cpp",
         -- Requires nvim-jdtls, otherwise an error message will be printed
