@@ -67,12 +67,12 @@ return {
 		lazy = false,
 	},
 	{ "mfussenegger/nvim-jdtls", cond = not_vscode, lazy = false },
-	{
-		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
-	},
+	-- {
+	-- 	"windwp/nvim-autopairs",
+	-- 	config = function()
+	-- 		require("nvim-autopairs").setup({})
+	-- 	end,
+	-- },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
@@ -94,11 +94,6 @@ return {
 		config = function()
 			require("alpha").setup(require("alpha.themes.startify").config)
 		end,
-	},
-	{
-		"ecthelionvi/NeoComposer.nvim",
-		dependencies = { "kkharji/sqlite.lua" },
-		opts = {},
 	},
 	{
 		"chentoast/marks.nvim",
@@ -166,4 +161,6 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
 	},
+	{ "https://github.com/windwp/nvim-ts-autotag" },
 }
+

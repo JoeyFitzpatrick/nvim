@@ -69,4 +69,5 @@ vim.keymap.set("v", "<leader>aa", '<Esc>:ChatGPTRun', { desc = "Run actions on c
 
 vim.keymap.set("n", "<leader>N", ':Navbuddy<CR>', { desc = "Run Navbuddy" })
 
-vim.keymap.set("n", "<leader>xx", ':TroubleToggle<CR>', { desc = "Toggle diagnostics via Trouble.nvim" })
+vim.keymap.set("n", "<leader>tt", ':TroubleToggle<CR>', { desc = "[T]oggle [T]rouble diagnostics" })
+vim.keymap.set("n", "<leader>tw", ':TroubleToggle workspace_diagnostics<CR>', { desc = "[T]oggle [W]orkspace diagnostics" })

@@ -120,13 +120,14 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 local cmp_sources = {
     { name = "nvim_lsp" },
     { name = "cmp_luasnip" },
-    { name = "luasnip" },
+    -- { name = "luasnip" },
 }
 
 cmp.setup({
     mapping = cmp_mappings,
     sources = cmp_sources,
 })
+
 
 require("sonarlint").setup({
     server = {
