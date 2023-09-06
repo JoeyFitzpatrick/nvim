@@ -1,6 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.1",
+	branch = "0.1.x",
 	lazy = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -15,8 +15,6 @@ return {
 		vim.keymap.set("n", "<leader>H", builtin.help_tags, {})
 		vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
 		vim.keymap.set("n", "<leader>M", builtin.marks, {})
-		vim.keymap.set("n", "<leader>q", ":Telescope macros<CR>", {})
-		vim.keymap.set("n", "<leader>Q", ":EditMacros<CR>", {})
 
 		vim.keymap.set("n", "<leader>G", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 
@@ -66,7 +64,7 @@ return {
 		end, opts)
 
 		require("telescope").load_extension("live_grep_args")
-		require("telescope").load_extension("macros")
+        local actions = require("telescope.actions")
 		require("telescope").setup({
 			defaults = {
 				layout_config = {
@@ -75,7 +73,7 @@ return {
 				layout_strategy = "vertical",
 				mappings = {
 					i = {
-						["<C-q>"] = builtin.quickfix,
+						["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
 						["<C-a>"] = require("telescope-harpoon").mark_file,
 					},
 				},
