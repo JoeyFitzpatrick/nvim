@@ -60,14 +60,24 @@ vim.keymap.set("v", "y", "ygv<esc>", { remap = false })
 vim.keymap.set({ "n", "v" }, "L", "$")
 vim.keymap.set({ "n", "v" }, "H", "_")
 
+vim.keymap.set("n", "<leader>ai", ":ChatGPT<CR>", { desc = "Open GPT prompt" })
+vim.keymap.set("n", "<leader>aa", ":ChatGPTActAs<CR>", { desc = "Open premade GPT prompt" })
+vim.keymap.set("n", "<leader>ac", ":ChatGPTCompleteCode<CR>", { desc = "[a]i auto[c]omplete" })
+vim.keymap.set("v", "<leader>ai", "<Esc>:ChatGPTEditWithInstructions<CR>", { desc = "Edit selected text with GPT" })
+vim.keymap.set("v", "<leader>aa", "<Esc>:ChatGPTRun", { desc = "Run actions on code with GPT" })
 
-vim.keymap.set("n", "<leader>ai", ':ChatGPT<CR>', { desc = "Open GPT prompt" })
-vim.keymap.set("n", "<leader>aa", ':ChatGPTActAs<CR>', { desc = "Open premade GPT prompt" })
-vim.keymap.set("n", "<leader>ac", ':ChatGPTCompleteCode<CR>', { desc = "[a]i auto[c]omplete" })
-vim.keymap.set("v", "<leader>ai", '<Esc>:ChatGPTEditWithInstructions<CR>', { desc = "Edit selected text with GPT" })
-vim.keymap.set("v", "<leader>aa", '<Esc>:ChatGPTRun', { desc = "Run actions on code with GPT" })
+vim.keymap.set("n", "<leader>N", ":Navbuddy<CR>", { desc = "Run Navbuddy" })
 
-vim.keymap.set("n", "<leader>N", ':Navbuddy<CR>', { desc = "Run Navbuddy" })
+vim.keymap.set("n", "<leader>tt", ":TroubleToggle<CR>", { desc = "[T]oggle [T]rouble diagnostics" })
+vim.keymap.set(
+	"n",
+	"<leader>tw",
+	":TroubleToggle workspace_diagnostics<CR>",
+	{ desc = "[T]oggle [W]orkspace diagnostics" }
+)
 
-vim.keymap.set("n", "<leader>tt", ':TroubleToggle<CR>', { desc = "[T]oggle [T]rouble diagnostics" })
-vim.keymap.set("n", "<leader>tw", ':TroubleToggle workspace_diagnostics<CR>', { desc = "[T]oggle [W]orkspace diagnostics" })
+
+vim.cmd([[
+        imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
+        let g:copilot_no_tab_map = v:true
+]])
