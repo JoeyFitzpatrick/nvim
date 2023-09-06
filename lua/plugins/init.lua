@@ -170,4 +170,5 @@ return {
             require('neogit').setup{}
         end,
 	},
+    { "github/copilot.vim" },
 }
