@@ -15,6 +15,8 @@ vim.o.undofile = true
 
 vim.o.completeopt = 'menuone,noselect'
 
+vim.o.updatetime = 500
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

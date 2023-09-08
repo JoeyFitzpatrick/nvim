@@ -144,10 +144,21 @@ require("sonarlint").setup({
     },
     filetypes = {
         "python",
-        "cpp",
+        "typescript",
+        "javascript",
         -- Requires nvim-jdtls, otherwise an error message will be printed
         "java",
     },
 })
 
 require("helpers.linters")
+
+local diagnostics_active = true
+vim.keymap.set('n', '<leader>ty', function()
+  diagnostics_active = not diagnostics_active
+  if diagnostics_active then
+    vim.diagnostic.show()
+  else
+    vim.diagnostic.hide()
+  end
+end)

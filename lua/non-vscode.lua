@@ -1,7 +1,6 @@
 require('lualine').setup()
 require('treesitter-config')
 require('lsp-config')
-require('toggle_lsp_diagnostics').init()
 
 vim.g.mapleader = " "
 
@@ -35,9 +34,6 @@ vim.keymap.set('n', '<Leader>n', ';NvimTreeToggle<CR>', { remap = true })
 
 vim.keymap.set('n', '<Leader>b', ';GitBlameToggle<CR>', { remap = true })
 
-
-
-vim.keymap.set('n', '<Leader>td', ';ToggleDiag<CR>', { remap = true, desc = "[T]oggle [d]iagnostics" })
 
 vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>', {
     desc = "Open Spectre"

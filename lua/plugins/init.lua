@@ -31,21 +31,7 @@ return {
 		branch = "v2.x",
 		dependencies = {
 			-- LSP Support
-			{
-				"neovim/nvim-lspconfig",
-				dependencies = {
-					{
-						"SmiteshP/nvim-navbuddy",
-						dependencies = {
-							"SmiteshP/nvim-navic",
-							"MunifTanjim/nui.nvim",
-							"numToStr/Comment.nvim", -- Optional
-							"nvim-telescope/telescope.nvim", -- Optional
-						},
-						opts = { lsp = { auto_attach = true } },
-					},
-				},
-			}, -- Required
+			{ "neovim/nvim-lspconfig" }, -- Required
 			{
 				-- Optional
 				"williamboman/mason.nvim",
@@ -67,12 +53,6 @@ return {
 		lazy = false,
 	},
 	{ "mfussenegger/nvim-jdtls", cond = not_vscode, lazy = false },
-	-- {
-	-- 	"windwp/nvim-autopairs",
-	-- 	config = function()
-	-- 		require("nvim-autopairs").setup({})
-	-- 	end,
-	-- },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
@@ -84,7 +64,6 @@ return {
 	{ "christoomey/vim-tmux-navigator" },
 	{ "f-person/git-blame.nvim" },
 	{ "https://gitlab.com/schrieveslaach/sonarlint.nvim" },
-	{ "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim" },
 	{ "mfussenegger/nvim-lint" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "nvim-pack/nvim-spectre", cond = not_vscode, lazy = true },
@@ -112,7 +91,6 @@ return {
 	},
 	{
 		"tzachar/highlight-undo.nvim",
-		lazy = true,
 		config = function()
 			require("highlight-undo").setup({
 				hlgroup = "HighlightUndo",
@@ -132,11 +110,7 @@ return {
 			vim.o.timeout = true
 			vim.o.timeoutlen = 1000
 		end,
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
+		opts = {},
 	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
@@ -189,5 +163,15 @@ return {
 			}
 		end,
 	},
-    { "github/copilot.vim" },
+	{ "github/copilot.vim", lazy = true },
+	-- {
+	-- 	"NeogitOrg/neogit",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim", -- required
+	-- 		"nvim-telescope/telescope.nvim", -- optional
+	-- 		"sindrets/diffview.nvim", -- optional
+	-- 		"ibhagwan/fzf-lua", -- optional
+	-- 	},
+	-- 	config = true,
+	-- },
 }
