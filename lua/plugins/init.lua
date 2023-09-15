@@ -2,7 +2,7 @@ local not_vscode = vim.g.vscode == nil
 return {
 	"tpope/vim-surround",
 	"kdheepak/lazygit.nvim",
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000, event = "VeryLazy" },
 	"tpope/vim-commentary",
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -63,7 +63,7 @@ return {
 	},
 	{ "christoomey/vim-tmux-navigator" },
 	{ "f-person/git-blame.nvim" },
-	{ "https://gitlab.com/schrieveslaach/sonarlint.nvim" },
+	-- { "https://gitlab.com/schrieveslaach/sonarlint.nvim" },
 	{ "mfussenegger/nvim-lint" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "nvim-pack/nvim-spectre", cond = not_vscode, lazy = true },
@@ -83,24 +83,12 @@ return {
 	},
 	{
 		"mrcjkb/haskell-tools.nvim",
+		event = "VeryLazy",
 		requires = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim", -- optional
 		},
 		branch = "1.x.x", -- recommended
-	},
-	{
-		"tzachar/highlight-undo.nvim",
-		config = function()
-			require("highlight-undo").setup({
-				hlgroup = "HighlightUndo",
-				duration = 300,
-				keymaps = {
-					{ "n", "u", "undo", {} },
-					{ "n", "<C-r>", "redo", {} },
-				},
-			})
-		end,
 	},
 	{
 		"folke/which-key.nvim",
@@ -163,7 +151,14 @@ return {
 			}
 		end,
 	},
-	{ "github/copilot.vim", lazy = true },
+	{ "github/copilot.vim", lazy = false },
+	{
+		"ramojus/mellifluous.nvim",
+		config = function()
+			require("mellifluous").setup({})
+			vim.cmd("colorscheme mellifluous")
+		end,
+	},
 	-- {
 	-- 	"NeogitOrg/neogit",
 	-- 	dependencies = {
