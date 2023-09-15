@@ -155,7 +155,16 @@ return {
 	{
 		"ramojus/mellifluous.nvim",
 		config = function()
-			require("mellifluous").setup({})
+			require("mellifluous").setup({
+                color_set = "mountain",
+				mountain = {
+					color_overrides = {
+						dark = {
+							bg = "#14191f",
+						},
+					},
+				},
+			})
 			vim.cmd("colorscheme mellifluous")
 		end,
 	},
