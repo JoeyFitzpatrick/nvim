@@ -1,5 +1,6 @@
 return {
   'abecodes/tabout.nvim',
+  event = "VeryLazy",
   cond = vim.g.vscode == nil,
   dependencies = {"nvim-treesitter/nvim-treesitter"},
   config = function()

@@ -6,6 +6,7 @@ return {
 	"tpope/vim-commentary",
 	{
 		"nvim-tree/nvim-tree.lua",
+        event = "VeryLazy",
 		version = "*",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
@@ -28,6 +29,7 @@ return {
 	-- LSP Support
 	{
 		"VonHeikemen/lsp-zero.nvim",
+        event = "VeryLazy",
 		branch = "v2.x",
 		dependencies = {
 			-- LSP Support
@@ -50,7 +52,6 @@ return {
 			}, -- Required
 		},
 		cond = not_vscode,
-		lazy = false,
 	},
 	{ "mfussenegger/nvim-jdtls", cond = not_vscode, lazy = false },
 	{
@@ -62,7 +63,7 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{ "christoomey/vim-tmux-navigator" },
-	{ "f-person/git-blame.nvim" },
+	{ "f-person/git-blame.nvim", event = "VeryLazy" },
 	{ "https://gitlab.com/schrieveslaach/sonarlint.nvim" },
 	{ "mfussenegger/nvim-lint" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
@@ -120,10 +121,11 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
+        event = "VeryLazy",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
 	},
-	{ "https://github.com/windwp/nvim-ts-autotag" },
+	{ "https://github.com/windwp/nvim-ts-autotag", event = "VeryLazy", },
 	{
 		"https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
 		config = function()
@@ -140,13 +142,13 @@ return {
 					lua = "rainbow-blocks",
 				},
 				highlight = {
-					"RainbowDelimiterRed",
 					"RainbowDelimiterYellow",
 					"RainbowDelimiterBlue",
 					"RainbowDelimiterOrange",
 					"RainbowDelimiterGreen",
 					"RainbowDelimiterViolet",
 					"RainbowDelimiterCyan",
+                    "RainbowDelimiterRed",
 				},
 			}
 		end,
@@ -155,6 +157,7 @@ return {
 	{
 		"ramojus/mellifluous.nvim",
 		config = function()
+            vim.opt.background = 'light'
 			require("mellifluous").setup({
                 color_set = "mountain",
 				mountain = {

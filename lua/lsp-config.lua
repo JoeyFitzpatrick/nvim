@@ -18,7 +18,6 @@ local servers = {
     "rust_analyzer",
     "lua_ls",
     "eslint",
-    "sonarlint-language-server",
 }
 
 -- More servers can be found here: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
