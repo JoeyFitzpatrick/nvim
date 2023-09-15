@@ -63,7 +63,7 @@ return {
 	},
 	{ "christoomey/vim-tmux-navigator" },
 	{ "f-person/git-blame.nvim" },
-	-- { "https://gitlab.com/schrieveslaach/sonarlint.nvim" },
+	{ "https://gitlab.com/schrieveslaach/sonarlint.nvim" },
 	{ "mfussenegger/nvim-lint" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "nvim-pack/nvim-spectre", cond = not_vscode, lazy = true },

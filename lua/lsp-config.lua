@@ -18,6 +18,7 @@ local servers = {
     "rust_analyzer",
     "lua_ls",
     "eslint",
+    "sonarlint-language-server",
 }
 
 -- More servers can be found here: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
@@ -129,27 +130,28 @@ cmp.setup({
 })
 
 
--- require("sonarlint").setup({
---     server = {
---         cmd = {
---             "sonarlint-language-server",
---             -- Ensure that sonarlint-language-server uses stdio channel
---             "-stdio",
---             "-analyzers",
---             -- paths to the analyzers you need, using those for python and java in this example
---             vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarpython.jar"),
---             vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarcfamily.jar"),
---             vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarjava.jar"),
---         },
---     },
---     filetypes = {
---         "python",
---         "typescript",
---         "javascript",
---         -- Requires nvim-jdtls, otherwise an error message will be printed
---         "java",
---     },
--- })
+local sonar_path = "~/.local/share/nvim/mason/share/sonarlint-analyzers"
+require("sonarlint").setup({
+    server = {
+        cmd = {
+            "sonarlint-language-server",
+            -- Ensure that sonarlint-language-server uses stdio channel
+            "-stdio",
+            "-analyzers",
+            -- paths to the analyzers you need, using those for python and java in this example
+            vim.fn.expand(sonar_path .. "/sonarpython.jar"),
+            vim.fn.expand(sonar_path .. "/sonarjava.jar"),
+            vim.fn.expand(sonar_path .. "/sonarjs.jar"),
+        },
+    },
+    filetypes = {
+        "python",
+        "typescript",
+        "javascript",
+        -- Requires nvim-jdtls, otherwise an error message will be printed
+        "java",
+    },
+})
 
 require("helpers.linters")
 
