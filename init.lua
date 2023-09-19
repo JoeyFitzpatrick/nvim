@@ -23,9 +23,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 
--- require('leap').add_default_mappings(true)
--- require('leap-spooky').setup({ paste_on_remote_yank = true })
-
 require("set")
 require("remap")
 
@@ -34,15 +31,9 @@ if vim.g.vscode ~= nil then
 else
 	require("non-vscode")
 	vim.opt.relativenumber = true
-
-    -- Make the background transparent
-	vim.cmd([[
-        augroup user_colors
-          autocmd!
-          autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-          augroup END
-    ]])
-	-- vim.cmd.colorscheme("catppuccin") -- catppuccin, catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 end
 
--- vim.api.nvim_create_autocmd("FileType", {pattern = 'hs', command = [[:HlsStart]]})
+--vim.cmd("colorscheme rose-pine")
+function light() vim.cmd("set background=light | colorscheme rose-pine") end
+function dark() vim.cmd("set background=dark | colorscheme mellifluous") end
+vim.cmd("command Light silent lua light()") vim.cmd("command Dark silent lua dark()")

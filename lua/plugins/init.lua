@@ -1,12 +1,11 @@
 local not_vscode = vim.g.vscode == nil
 return {
-	"tpope/vim-surround",
-	"kdheepak/lazygit.nvim",
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000, event = "VeryLazy" },
-	"tpope/vim-commentary",
+	{ "tpope/vim-surround", event = "VeryLazy" },
+	{ "kdheepak/lazygit.nvim", event = "VeryLazy" },
+	{ "tpope/vim-commentary", event = "VeryLazy" },
 	{
 		"nvim-tree/nvim-tree.lua",
-        event = "VeryLazy",
+		event = "VeryLazy",
 		version = "*",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
@@ -24,12 +23,12 @@ return {
 		end,
 		cond = not_vscode,
 	},
-	"tpope/vim-repeat",
+	{ "tpope/vim-repeat", event = "VeryLazy" },
 
 	-- LSP Support
 	{
 		"VonHeikemen/lsp-zero.nvim",
-        event = "VeryLazy",
+		event = "VeryLazy",
 		branch = "v2.x",
 		dependencies = {
 			-- LSP Support
@@ -53,20 +52,21 @@ return {
 		},
 		cond = not_vscode,
 	},
-	{ "mfussenegger/nvim-jdtls", cond = not_vscode, lazy = false },
+	{ "mfussenegger/nvim-jdtls", cond = not_vscode, event = "VeryLazy" },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
 	},
 	{
 		"ThePrimeagen/harpoon",
+		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
-	{ "christoomey/vim-tmux-navigator" },
+	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
 	{ "f-person/git-blame.nvim", event = "VeryLazy" },
-	{ "https://gitlab.com/schrieveslaach/sonarlint.nvim" },
-	{ "mfussenegger/nvim-lint" },
-	{ "jose-elias-alvarez/null-ls.nvim" },
+	{ "https://gitlab.com/schrieveslaach/sonarlint.nvim", event = "VeryLazy" },
+	{ "mfussenegger/nvim-lint", event = "VeryLazy" },
+	{ "jose-elias-alvarez/null-ls.nvim", event = "VeryLazy" },
 	{ "nvim-pack/nvim-spectre", cond = not_vscode, lazy = true },
 	{
 		"goolord/alpha-nvim",
@@ -77,6 +77,7 @@ return {
 	},
 	{
 		"chentoast/marks.nvim",
+		event = "VeryLazy",
 		cond = not_vscode,
 		config = function()
 			require("marks").setup({})
@@ -103,11 +104,13 @@ return {
 	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
+		event = "VeryLazy",
 		cond = not_vscode,
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	},
 	{
 		"gelguy/wilder.nvim",
+		event = "VeryLazy",
 		cond = not_vscode,
 		config = function()
 			local wilder = require("wilder")
@@ -116,18 +119,20 @@ return {
 	},
 	{
 		"pmizio/typescript-tools.nvim",
+		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 	},
 	{
 		"folke/trouble.nvim",
-        event = "VeryLazy",
+		event = "VeryLazy",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
 	},
-	{ "https://github.com/windwp/nvim-ts-autotag", event = "VeryLazy", },
+	{ "https://github.com/windwp/nvim-ts-autotag", event = "VeryLazy" },
 	{
 		"https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+		event = "VeryLazy",
 		config = function()
 			-- This module contains a number of default definitions
 			local rainbow_delimiters = require("rainbow-delimiters")
@@ -148,18 +153,18 @@ return {
 					"RainbowDelimiterGreen",
 					"RainbowDelimiterViolet",
 					"RainbowDelimiterCyan",
-                    "RainbowDelimiterRed",
+					"RainbowDelimiterRed",
 				},
 			}
 		end,
 	},
-	{ "github/copilot.vim", lazy = false },
+	{ "github/copilot.vim", lazy = false, event = "VeryLazy" },
+    { 'rose-pine/neovim', name = 'rose-pine', event = "VeryLazy", },
 	{
 		"ramojus/mellifluous.nvim",
 		config = function()
-            vim.opt.background = 'light'
 			require("mellifluous").setup({
-                color_set = "mountain",
+				color_set = "mountain",
 				mountain = {
 					color_overrides = {
 						dark = {
@@ -168,7 +173,7 @@ return {
 					},
 				},
 			})
-			vim.cmd("colorscheme mellifluous")
+            vim.cmd("colorscheme mellifluous")
 		end,
 	},
 	-- {
