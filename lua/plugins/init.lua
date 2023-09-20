@@ -83,15 +83,15 @@ return {
 			require("marks").setup({})
 		end,
 	},
-	{
-		"mrcjkb/haskell-tools.nvim",
-		event = "VeryLazy",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim", -- optional
-		},
-		branch = "1.x.x", -- recommended
-	},
+	-- {
+	-- 	"mrcjkb/haskell-tools.nvim",
+	-- 	event = "VeryLazy",
+	-- 	requires = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-telescope/telescope.nvim", -- optional
+	-- 	},
+	-- 	branch = "1.x.x", -- recommended
+	-- },
 	{
 		"folke/which-key.nvim",
 		cond = not_vscode,
