@@ -66,8 +66,6 @@ vim.keymap.set("n", "<leader>ac", ":ChatGPTCompleteCode<CR>", { desc = "[a]i aut
 vim.keymap.set("v", "<leader>ai", "<Esc>:ChatGPTEditWithInstructions<CR>", { desc = "Edit selected text with GPT" })
 vim.keymap.set("v", "<leader>aa", "<Esc>:ChatGPTRun", { desc = "Run actions on code with GPT" })
 
-vim.keymap.set("n", "<leader>N", ":Navbuddy<CR>", { desc = "Run Navbuddy" })
-
 vim.keymap.set("n", "<leader>tt", ":TroubleToggle<CR>", { desc = "[T]oggle [T]rouble diagnostics" })
 vim.keymap.set(
 	"n",

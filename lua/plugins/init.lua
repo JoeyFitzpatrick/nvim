@@ -159,7 +159,7 @@ return {
 		end,
 	},
 	{ "github/copilot.vim", lazy = false, event = "VeryLazy" },
-    { 'rose-pine/neovim', name = 'rose-pine', event = "VeryLazy", },
+	{ "rose-pine/neovim", name = "rose-pine", event = "VeryLazy" },
 	{
 		"ramojus/mellifluous.nvim",
 		config = function()
@@ -173,9 +173,15 @@ return {
 					},
 				},
 			})
-            vim.cmd("colorscheme mellifluous")
+			vim.cmd("colorscheme mellifluous")
 		end,
 	},
+	{
+		"stevearc/conform.nvim",
+        event = "VeryLazy",
+		opts = {},
+	},
+    { "rhysd/clever-f.vim", event = "VeryLazy" },
 	-- {
 	-- 	"NeogitOrg/neogit",
 	-- 	dependencies = {
