@@ -39,7 +39,7 @@ null_ls.setup({
 	},
 })
 
-function use_custom_linter()
+local function use_custom_linter()
 	local filetype = vim.bo.filetype
 	local filename = vim.api.nvim_buf_get_name(0)
 	local commands = {
@@ -61,7 +61,7 @@ end
 
 vim.keymap.set("n", "<leader>cl", "<cmd>lua use_custom_linter()<CR>", { noremap = true, desc = "[C]ustom [l]inter" })
 
-function use_custom_formatter()
+local function use_custom_formatter()
 	local filetype = vim.bo.filetype
 	local filename = vim.api.nvim_buf_get_name(0)
 	local commands = {
