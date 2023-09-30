@@ -159,7 +159,7 @@ return {
 		end,
 	},
 	{ "github/copilot.vim", lazy = false, event = "VeryLazy" },
-	{ "rose-pine/neovim", name = "rose-pine", event = "VeryLazy" },
+    { "catppuccin/nvim", name = "catppuccin", event = "VeryLazy" },
 	{
 		"ramojus/mellifluous.nvim",
 		config = function()
