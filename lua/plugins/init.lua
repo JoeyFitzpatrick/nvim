@@ -66,7 +66,6 @@ return {
 	{ "f-person/git-blame.nvim", event = "VeryLazy" },
 	{ "https://gitlab.com/schrieveslaach/sonarlint.nvim", event = "VeryLazy" },
 	{ "mfussenegger/nvim-lint", event = "VeryLazy" },
-	{ "jose-elias-alvarez/null-ls.nvim", event = "VeryLazy" },
 	{ "nvim-pack/nvim-spectre", cond = not_vscode, lazy = true },
 	{
 		"goolord/alpha-nvim",
