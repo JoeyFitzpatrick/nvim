@@ -37,11 +37,16 @@ vim.keymap.set("v", "<Leader>d", '""d')
 vim.keymap.set("n", "<Leader>d", '""d')
 vim.keymap.set("n", "<Leader>dd", '""dd')
 
--- Delete without cutting
+-- Delete and copy without yanking
 vim.keymap.set("n", "D", '"_D')
 vim.keymap.set("v", "d", '"_d')
 vim.keymap.set("n", "d", '"_d')
 vim.keymap.set("n", "dd", '"_dd')
+
+vim.keymap.set("n", "C", '"_C')
+vim.keymap.set("v", "c", '"_c')
+vim.keymap.set("n", "c", '"_c')
+vim.keymap.set("n", "cc", '"_cc')
 
 -- Paste without yanking the pasted over text
 vim.keymap.set("v", "p", '"0p')
