@@ -27,17 +27,6 @@ vim.keymap.set({ "n", "x", "v" }, "<C-f>", function()
 	require("conform").format({ async = false, timeout_ms = 10000 })
 end, {})
 
-local null_ls = require("null-ls")
-
-null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettier,
-		-- null_ls.builtins.formatting.sqlfluff.with({ extra_args = { "--dialect", "oracle" }, }),
-		null_ls.builtins.formatting.jq,
-		null_ls.builtins.formatting.black,
-	},
-})
 
 local function use_custom_linter()
 	local filetype = vim.bo.filetype
