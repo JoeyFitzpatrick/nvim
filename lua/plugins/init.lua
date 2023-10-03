@@ -3,6 +3,8 @@ return {
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "kdheepak/lazygit.nvim", event = "VeryLazy" },
 	{ "tpope/vim-commentary", event = "VeryLazy" },
+	{ "tpope/vim-abolish", event = "VeryLazy" },
+	{ "tpope/vim-sensible", event = "VeryLazy" },
 	{
 		"nvim-tree/nvim-tree.lua",
 		event = "VeryLazy",
@@ -158,7 +160,7 @@ return {
 		end,
 	},
 	{ "github/copilot.vim", lazy = false, event = "VeryLazy" },
-    { "catppuccin/nvim", name = "catppuccin", event = "VeryLazy" },
+	{ "catppuccin/nvim", name = "catppuccin", event = "VeryLazy" },
 	{
 		"ramojus/mellifluous.nvim",
 		config = function()
@@ -177,10 +179,17 @@ return {
 	},
 	{
 		"stevearc/conform.nvim",
-        event = "VeryLazy",
+		event = "VeryLazy",
 		opts = {},
 	},
-    { "rhysd/clever-f.vim", event = "VeryLazy" },
+	{ "rhysd/clever-f.vim", event = "VeryLazy" },
+	{
+		"mbbill/undotree",
+		event = "VeryLazy",
+		config = function()
+			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+		end,
+	},
 	-- {
 	-- 	"NeogitOrg/neogit",
 	-- 	dependencies = {
