@@ -20,11 +20,14 @@ require("conform").setup({
 		python = { "isort", "black" },
 		-- Use a sub-list to run only the first available formatter
 		javascript = { { "prettierd", "prettier" } },
+		typescript = { { "prettierd", "prettier" } },
+		javascriptreact = { { "prettierd", "prettier" } },
+		typescriptreact = { { "prettierd", "prettier" } },
 	},
 })
 
 vim.keymap.set({ "n", "x", "v" }, "<C-f>", function()
-	require("conform").format({ async = false, timeout_ms = 10000 })
+	require("conform").format({ async = true, timeout_ms = 10000 })
 end, {})
 
 
