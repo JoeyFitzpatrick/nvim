@@ -54,7 +54,7 @@ return {
 		},
 		cond = not_vscode,
 	},
-	{ "mfussenegger/nvim-jdtls", cond = not_vscode, event = "VeryLazy" },
+	{ "mfussenegger/nvim-jdtls", cond = not_vscode, lazy = true },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },

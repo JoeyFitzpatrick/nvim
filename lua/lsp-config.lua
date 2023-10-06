@@ -149,6 +149,7 @@ require("sonarlint").setup({
     filetypes = {
         "python",
         "typescript",
+        "typescriptreact",
         "javascript",
         -- Requires nvim-jdtls, otherwise an error message will be printed
         "java",
