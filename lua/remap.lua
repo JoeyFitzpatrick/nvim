@@ -52,6 +52,9 @@ vim.keymap.set("n", "cc", '"_cc')
 vim.keymap.set("v", "p", '"0p')
 vim.keymap.set("v", "P", '"0P')
 
+-- Same thing for x
+vim.api.nvim_set_keymap('n', 'x', '"_x', {noremap = true})
+
 -- Custom text objects
 -- ie = inner entire buffer
 vim.keymap.set("o", "ie", ':exec "normal! ggVG"<cr>')
@@ -69,7 +72,7 @@ vim.keymap.set({ "n", "v" }, "H", "_")
 vim.keymap.set({ "n", "v" }, "j", "gj")
 vim.keymap.set({ "n", "v" }, "k", "gk")
 
--- Save with ctrl+s
+-- Save with ctrl+w
 vim.keymap.set("n", "<C-w>", "<cmd>wa<CR>")
 
 vim.keymap.set("n", "<leader>ai", ":ChatGPT<CR>", { desc = "Open GPT prompt" })
