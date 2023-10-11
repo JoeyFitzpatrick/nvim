@@ -1,9 +1,8 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	cmd = "TSUpdate",
-	cond = vim.g.vscode == nil,
     event = "VeryLazy",
-	dependencies = "JoosepAlviste/nvim-ts-context-commentstring",
+	dependencies = {"JoosepAlviste/nvim-ts-context-commentstring", "nvim-treesitter/nvim-treesitter-textobjects"},
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			incremental_selection = {
@@ -27,19 +26,9 @@ return {
 				"vim",
 				"vue",
 			},
-
 			context_commentstring = {
 				enable = true,
 			},
-		})
-	end,
-}, {
-	"nvim-treesitter/nvim-treesitter-textobjects",
-	cond = vim.g.vscode == nil,
-	dependencies = "nvim-treesitter/nvim-treesitter",
-	lazy = false,
-	config = function()
-		require("nvim-treesitter.configs").setup({
 			textobjects = {
 				select = {
 					enable = true,

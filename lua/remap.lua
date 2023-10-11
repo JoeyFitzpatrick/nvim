@@ -89,7 +89,6 @@ vim.keymap.set(
 	{ desc = "[T]oggle [W]orkspace diagnostics" }
 )
 
-
 vim.cmd([[
         imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
         let g:copilot_no_tab_map = v:true
