@@ -33,6 +33,11 @@ else
 	vim.opt.relativenumber = true
 end
 
-function light() vim.cmd("set background=light | colorscheme catppuccin-latte") end
-function dark() vim.cmd("set background=dark | colorscheme mellifluous") end
-vim.cmd("command Light silent lua light()") vim.cmd("command Dark silent lua dark()")
+function light()
+	vim.cmd("set background=light | colorscheme catppuccin-latte")
+end
+function dark()
+	vim.cmd("set background=dark | colorscheme mellifluous")
+end
+vim.cmd("command Light silent lua light()")
+vim.cmd("command Dark silent lua dark()")

@@ -24,12 +24,16 @@ require("conform").setup({
 		javascriptreact = { { "prettierd", "prettier" } },
 		typescriptreact = { { "prettierd", "prettier" } },
 	},
+	format_on_save = {
+		-- These options will be passed to conform.format()
+		timeout_ms = 500,
+		lsp_fallback = true,
+	},
 })
 
 vim.keymap.set({ "n", "x", "v" }, "<C-f>", function()
 	require("conform").format({ async = true, timeout_ms = 10000 })
 end, {})
-
 
 local function use_custom_linter()
 	local filetype = vim.bo.filetype
