@@ -1,7 +1,13 @@
 local not_vscode = vim.g.vscode == nil
 return {
 	{ "tpope/vim-surround", event = "VeryLazy" },
-	{ "kdheepak/lazygit.nvim", event = "VeryLazy" },
+	{
+		"kdheepak/lazygit.nvim",
+		event = "VeryLazy",
+		config = function()
+			vim.g.lazygit_floating_window_scaling_factor = 1.0
+		end,
+	},
 	{ "tpope/vim-commentary", event = "VeryLazy" },
 	-- { "tpope/vim-abolish",     event = "VeryLazy" },
 	{ "tpope/vim-sensible", event = "VeryLazy" },
