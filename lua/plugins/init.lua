@@ -5,7 +5,7 @@ return {
 		"kdheepak/lazygit.nvim",
 		event = "VeryLazy",
 		config = function()
-			vim.g.lazygit_floating_window_scaling_factor = 1.0
+			vim.g.lazygit_floating_window_scaling_factor = 0.95
 		end,
 	},
 	{ "tpope/vim-commentary", event = "VeryLazy" },
@@ -201,14 +201,33 @@ return {
 			require("textcase").setup({})
 		end,
 	},
-	-- {
-	-- 	"NeogitOrg/neogit",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim", -- required
-	-- 		"nvim-telescope/telescope.nvim", -- optional
-	-- 		"sindrets/diffview.nvim", -- optional
-	-- 		"ibhagwan/fzf-lua", -- optional
-	-- 	},
-	-- 	config = true,
-	-- },
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"nvim-telescope/telescope.nvim", -- optional
+			"sindrets/diffview.nvim", -- optional
+			"ibhagwan/fzf-lua", -- optional
+		},
+		config = true,
+	},
+	{
+		"rlane/pounce.nvim",
+		event = "VeryLazy",
+		config = function()
+			local map = vim.keymap.set
+			map("n", "s", function()
+				require("pounce").pounce({})
+			end)
+			map("n", "S", function()
+				require("pounce").pounce({ do_repeat = true })
+			end)
+			map("x", "s", function()
+				require("pounce").pounce({})
+			end)
+			map("o", "gs", function()
+				require("pounce").pounce({})
+			end)
+		end,
+	},
 }

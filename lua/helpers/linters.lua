@@ -19,10 +19,11 @@ require("conform").setup({
 		-- Conform will run multiple formatters sequentially
 		python = { "isort", "black" },
 		-- Use a sub-list to run only the first available formatter
-		javascript = { { "prettierd", "prettier" } },
-		typescript = { { "prettierd", "prettier" } },
-		javascriptreact = { { "prettierd", "prettier" } },
-		typescriptreact = { { "prettierd", "prettier" } },
+		javascript = { "eslint_d", { "prettierd", "prettier" } },
+		typescript = { "eslint_d", { "prettierd", "prettier" } },
+		javascriptreact = { "eslint_d", { "prettierd", "prettier" } },
+		typescriptreact = { "eslint_d", { "prettierd", "prettier" } },
+		sql = { "sql_formatter" },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()

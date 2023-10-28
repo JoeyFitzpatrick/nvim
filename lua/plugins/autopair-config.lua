@@ -9,7 +9,7 @@ return {
 			{
 				enable_normal = true,
 				enable_reverse = true,
-                faster = false,
+				faster = false,
 				map = "<C-a>",
 				rmap = "<C-s>",
 				cmap = "<C-a>",
