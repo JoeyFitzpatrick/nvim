@@ -3,6 +3,7 @@ return {
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{
 		"kdheepak/lazygit.nvim",
+		"kdheepak/lazygit.nvim",
 		event = "VeryLazy",
 		config = function()
 			vim.g.lazygit_floating_window_scaling_factor = 0.95
@@ -203,6 +204,7 @@ return {
 	},
 	{
 		"NeogitOrg/neogit",
+		event = "VeryLazy",
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- required
 			"nvim-telescope/telescope.nvim", -- optional
@@ -228,6 +230,19 @@ return {
 			map("o", "gs", function()
 				require("pounce").pounce({})
 			end)
+		end,
+	},
+	{
+		"gbprod/yanky.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("yanky").setup({
+				highlight = {
+					on_put = true,
+					on_yank = false,
+					timer = 200,
+				},
+			})
 		end,
 	},
 }
