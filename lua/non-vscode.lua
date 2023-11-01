@@ -44,13 +44,13 @@ vim.keymap.set("n", "<leader>h9", function()
 end, {})
 
 -- Lazygit and Neogit
-vim.keymap.set("n", "<Leader>lg", ":LazyGit<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>N", "<cmd>Neogit<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>lg", "<cmd>LazyGit<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>j", "<cmd>Neogit<CR>", { silent = true })
 
 -- nvim-tree settings
-vim.keymap.set("n", "<Leader>n", ";NvimTreeToggle<CR>", { remap = true })
+vim.keymap.set("n", "<Leader>n", "<cmd>NvimTreeToggle<CR>", { remap = true })
 
-vim.keymap.set("n", "<Leader>b", ";GitBlameToggle<CR>", { remap = true })
+vim.keymap.set("n", "<Leader>b", "<cmd>GitBlameToggle<CR>", { remap = true })
 
 vim.keymap.set("n", "<leader>S", '<cmd>lua require("spectre").open()<CR>', {
 	desc = "Open Spectre",
