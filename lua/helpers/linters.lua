@@ -23,7 +23,7 @@ require("conform").setup({
 		typescript = { "eslint_d", { "prettierd", "prettier" } },
 		javascriptreact = { "eslint_d", { "prettierd", "prettier" } },
 		typescriptreact = { "eslint_d", { "prettierd", "prettier" } },
-		sql = { "sql_formatter" },
+		-- sql = { "sql_formatter" },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()
