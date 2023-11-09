@@ -56,7 +56,10 @@ return {
 			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
 			{
 				"L3MON4D3/LuaSnip",
-				dependencies = { "honza/vim-snippets", "saadparwaiz1/cmp_luasnip", "mlaursen/vim-react-snippets" },
+				dependencies = {
+					"saadparwaiz1/cmp_luasnip",
+					-- "rafamadriz/friendly-snippets",
+				},
 			}, -- Required
 		},
 		cond = not_vscode,
@@ -203,17 +206,6 @@ return {
 		end,
 	},
 	{
-		"NeogitOrg/neogit",
-		event = "VeryLazy",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"nvim-telescope/telescope.nvim", -- optional
-			"sindrets/diffview.nvim", -- optional
-			"ibhagwan/fzf-lua", -- optional
-		},
-		config = true,
-	},
-	{
 		"rlane/pounce.nvim",
 		event = "VeryLazy",
 		config = function()
@@ -230,19 +222,6 @@ return {
 			map("o", "gs", function()
 				require("pounce").pounce({})
 			end)
-		end,
-	},
-	{
-		"gbprod/yanky.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("yanky").setup({
-				highlight = {
-					on_put = true,
-					on_yank = false,
-					timer = 200,
-				},
-			})
 		end,
 	},
 }

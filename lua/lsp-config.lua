@@ -107,7 +107,7 @@ local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_action = require("lsp-zero").cmp_action()
 
-require("luasnip.loaders.from_snipmate").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 
 local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -122,8 +122,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 
 local cmp_sources = {
 	{ name = "nvim_lsp" },
-	{ name = "cmp_luasnip" },
-	-- { name = "luasnip" },
+	{ name = "luasnip" },
 }
 
 cmp.setup({

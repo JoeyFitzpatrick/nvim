@@ -84,3 +84,22 @@ vim.keymap.set(
 	"<cmd>lua use_custom_formatter()<CR>",
 	{ noremap = true, desc = "[C]ustom [f]ormatter" }
 )
+
+local function run_file()
+	local filetype = vim.bo.filetype
+	local filename = vim.api.nvim_buf_get_name(0)
+	local commands = {
+		typescript = "npx tsx " .. filename,
+	}
+
+	if commands[filetype] ~= nil then
+		vim.cmd("w")
+		os.execute(commands[filetype])
+	else
+		print("No command found for " .. filetype .. " file type")
+	end
+end
+
+-- vim.keymap.set("n", "R", function()
+-- 	run_file()
+-- end, { noremap = true, silent = false })
