@@ -28,6 +28,9 @@ return {
 					enable = true,
 					update_root = true,
 				},
+				filters = {
+					git_ignored = false,
+				},
 			})
 		end,
 		cond = not_vscode,
@@ -65,15 +68,10 @@ return {
 		cond = not_vscode,
 	},
 	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
-	},
-	{
 		"ThePrimeagen/harpoon",
 		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
-	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
 	{ "f-person/git-blame.nvim", event = "VeryLazy" },
 	{ "https://gitlab.com/schrieveslaach/sonarlint.nvim", event = "VeryLazy" },
 	{ "mfussenegger/nvim-lint", event = "VeryLazy" },
@@ -85,23 +83,6 @@ return {
 			require("alpha").setup(require("alpha.themes.startify").config)
 		end,
 	},
-	{
-		"chentoast/marks.nvim",
-		event = "VeryLazy",
-		cond = not_vscode,
-		config = function()
-			require("marks").setup({})
-		end,
-	},
-	-- {
-	-- 	"mrcjkb/haskell-tools.nvim",
-	-- 	event = "VeryLazy",
-	-- 	requires = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 		"nvim-telescope/telescope.nvim", -- optional
-	-- 	},
-	-- 	branch = "1.x.x", -- recommended
-	-- },
 	{
 		"folke/which-key.nvim",
 		cond = not_vscode,

@@ -1,4 +1,3 @@
-require("lualine").setup()
 require("treesitter-config")
 require("lsp-config")
 
