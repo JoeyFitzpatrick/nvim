@@ -72,6 +72,7 @@ return {
 		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
+	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
 	{ "f-person/git-blame.nvim", event = "VeryLazy" },
 	{ "https://gitlab.com/schrieveslaach/sonarlint.nvim", event = "VeryLazy" },
 	{ "mfussenegger/nvim-lint", event = "VeryLazy" },
