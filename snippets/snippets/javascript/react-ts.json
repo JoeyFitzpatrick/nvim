@@ -104,11 +104,6 @@
         "body": ["describe('$1', () => {", "  $0", "})", ""],
         "description": "Testing `describe` block"
     },
-    "testBlock": {
-        "prefix": "test",
-        "body": ["test('should $1', () => {", "  $0", "})", ""],
-        "description": "Testing `test` block"
-    },
     "itBlock": {
         "prefix": "tit",
         "body": ["it('should $1', () => {", "  $0", "})", ""],
