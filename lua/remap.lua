@@ -59,6 +59,24 @@ vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
 -- ie = inner entire buffer
 vim.keymap.set("o", "ie", ':exec "normal! ggVG"<cr>')
 
+-- "A" in visual mode select around a text objext in visual line mode
+local text_object_chars = {
+	"(",
+	")",
+	"[",
+	"]",
+	"{",
+	"}",
+	"<",
+	">",
+	"'",
+	'"',
+	"`",
+}
+for _, char in pairs(text_object_chars) do
+	vim.keymap.set("v", "A" .. char, "a" .. char .. "V", { remap = true })
+end
+
 -- Remap for surround to avoid clashing with leap
 vim.keymap.set("v", "S", "<Plug>VSurround", { remap = false })
 
