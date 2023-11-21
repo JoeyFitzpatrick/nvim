@@ -73,8 +73,18 @@ local text_object_chars = {
 	'"',
 	"`",
 }
+local operations = {
+	"d",
+	"y",
+	"c",
+}
 for _, char in pairs(text_object_chars) do
 	vim.keymap.set("v", "A" .. char, "a" .. char .. "V", { remap = true })
+	for _, op in pairs(operations) do
+		local leader_op = "<leader>" .. op
+		vim.keymap.set("n", op .. "A" .. char, "<esc>vA" .. char .. op, { remap = true })
+		vim.keymap.set("n", leader_op .. "A" .. char, "<esc>vA" .. char .. leader_op, { remap = true })
+	end
 end
 
 -- Remap for surround to avoid clashing with leap
