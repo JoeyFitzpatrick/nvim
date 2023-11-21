@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.o.cmdheight = 2
 
--- Saved macros
+-- Saved macros, useful for persisting macros
 vim.cmd([[
     :let @a = "iHello\<CR>bye\<Esc>"
 ]])
