@@ -3,7 +3,6 @@ return {
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{
 		"kdheepak/lazygit.nvim",
-		"kdheepak/lazygit.nvim",
 		event = "VeryLazy",
 		config = function()
 			vim.g.lazygit_floating_window_scaling_factor = 0.95
@@ -204,6 +203,18 @@ return {
 			map("o", "gs", function()
 				require("pounce").pounce({})
 			end)
+		end,
+	},
+	{
+		"akinsho/toggleterm.nvim",
+		-- event = "VeryLazy",
+		version = "*",
+		config = function()
+			require("toggleterm").setup({
+				start_in_insert = false,
+				open_mapping = [[<c-e>]], -- <c-e> has no special meaning, just chose is because it doesn't conflict with anything
+				insert_mappings = true,
+			})
 		end,
 	},
 }

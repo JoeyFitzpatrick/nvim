@@ -25,6 +25,7 @@ require("lazy").setup("plugins")
 
 require("set")
 require("remap")
+require("helpers.neovide")
 
 if vim.g.vscode ~= nil then
 	require("vscode")
