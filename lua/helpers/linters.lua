@@ -30,6 +30,10 @@ require("conform").setup({
 		-- These options will be passed to conform.format()
 		timeout_ms = 500,
 		lsp_fallback = true,
+		filter = function()
+			local filetype = vim.bo.filetype
+			return filetype ~= "prisma"
+		end,
 	},
 })
 
