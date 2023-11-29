@@ -43,8 +43,7 @@ vim.keymap.set("n", "<leader>h9", function()
 end, {})
 
 -- Lazygit and Neogit
-vim.keymap.set("n", "<Leader>lg", "<cmd>LazyGit<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>j", "<cmd>Neogit<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>j", "<cmd>LazyGit<CR>", { silent = true })
 
 -- nvim-tree settings
 vim.keymap.set("n", "<Leader>n", "<cmd>NvimTreeToggle<CR>", { remap = true })
