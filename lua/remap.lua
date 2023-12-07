@@ -104,6 +104,9 @@ vim.keymap.set({ "n", "v" }, "k", "gk")
 vim.keymap.set("n", "<C-w>", "<cmd>wa<CR>")
 vim.keymap.set("i", "<C-w>", "<esc><cmd>wa<CR>")
 
+-- Close tabs
+vim.keymap.set("n", "<leader>x", "<cmd>tabc<CR>")
+
 vim.keymap.set("n", "<leader>ai", ":ChatGPT<CR>", { desc = "Open GPT prompt" })
 vim.keymap.set("n", "<leader>aa", ":ChatGPTActAs<CR>", { desc = "Open premade GPT prompt" })
 vim.keymap.set("n", "<leader>ac", ":ChatGPTCompleteCode<CR>", { desc = "[a]i auto[c]omplete" })
@@ -111,6 +114,7 @@ vim.keymap.set("v", "<leader>ai", "<Esc>:ChatGPTEditWithInstructions<CR>", { des
 vim.keymap.set("v", "<leader>aa", "<Esc>:ChatGPTRun", { desc = "Run actions on code with GPT" })
 
 vim.keymap.set("n", "<leader>tt", ":TroubleToggle<CR>", { desc = "[T]oggle [T]rouble diagnostics" })
+vim.keymap.set("n", "<leader>v", ":DiffviewOpen<CR>", { desc = "Diff[v]iew open" })
 vim.keymap.set(
 	"n",
 	"<leader>tw",
@@ -123,21 +127,22 @@ vim.cmd([[
         let g:copilot_no_tab_map = v:true
 ]])
 
-vim.keymap.set("n", "<leader>T", [[<Cmd>ToggleTermToggleAll<CR>]], opts)
-for _, i in pairs({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }) do
-	vim.keymap.set({ "n", "i" }, "<c-" .. i .. ">", i .. [[<c-e>]], { remap = true })
-end
-function _G.set_terminal_keymaps()
-	local toggleterm_opts = { buffer = 0 }
-	vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], toggleterm_opts)
-	vim.keymap.set("t", "<C-q>", [[<C-\><C-n><cmd>q<CR>]], toggleterm_opts)
-	vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], toggleterm_opts)
-	vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], toggleterm_opts)
-	vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], toggleterm_opts)
-	vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], toggleterm_opts)
-	vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], toggleterm_opts)
-	for _, i in pairs({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }) do
-		vim.keymap.set("t", "<c-" .. i .. ">", i .. [[<c-e>]], { remap = true })
-	end
-end
-vim.cmd([[autocmd! TermOpen term://* lua set_terminal_keymaps()]])
+-- ToggleTerm settings
+-- vim.keymap.set("n", "<leader>T", [[<Cmd>ToggleTermToggleAll<CR>]], opts)
+-- for _, i in pairs({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }) do
+-- 	vim.keymap.set({ "n", "i" }, "<c-" .. i .. ">", i .. [[<c-e>]], { remap = true })
+-- end
+-- function _G.set_terminal_keymaps()
+-- 	local toggleterm_opts = { buffer = 0 }
+-- 	vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], toggleterm_opts)
+-- 	vim.keymap.set("t", "<C-q>", [[<C-\><C-n><cmd>q<CR>]], toggleterm_opts)
+-- 	vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], toggleterm_opts)
+-- 	vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], toggleterm_opts)
+-- 	vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], toggleterm_opts)
+-- 	vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], toggleterm_opts)
+-- 	vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], toggleterm_opts)
+-- 	for _, i in pairs({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }) do
+-- 		vim.keymap.set("t", "<c-" .. i .. ">", i .. [[<c-e>]], { remap = true })
+-- 	end
+-- end
+-- vim.cmd([[autocmd! TermOpen term://* lua set_terminal_keymaps()]])

@@ -1,5 +1,4 @@
 require("treesitter-config")
-require("lsp-config")
 
 vim.g.mapleader = " "
 
@@ -48,8 +47,6 @@ vim.keymap.set("n", "<Leader>j", "<cmd>LazyGit<CR>", { silent = true })
 -- nvim-tree settings
 vim.keymap.set("n", "<Leader>n", "<cmd>NvimTreeToggle<CR>", { remap = true })
 
-vim.keymap.set("n", "<Leader>b", "<cmd>GitBlameToggle<CR>", { remap = true })
-
 vim.keymap.set("n", "<leader>S", '<cmd>lua require("spectre").open()<CR>', {
 	desc = "Open Spectre",
 })
@@ -62,3 +59,5 @@ vim.keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual(
 vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
 	desc = "Search on current file",
 })
+
+require("lsp-config")

@@ -206,15 +206,7 @@ return {
 		end,
 	},
 	{
-		"akinsho/toggleterm.nvim",
-		-- event = "VeryLazy",
-		version = "*",
-		config = function()
-			require("toggleterm").setup({
-				start_in_insert = false,
-				open_mapping = [[<c-e>]], -- <c-e> has no special meaning, just chose is because it doesn't conflict with anything
-				insert_mappings = true,
-			})
-		end,
+		"sindrets/diffview.nvim",
+		event = "VeryLazy",
 	},
 }

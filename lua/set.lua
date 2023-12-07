@@ -33,3 +33,7 @@ vim.o.cmdheight = 2
 vim.cmd([[
     :let @a = "iHello\<CR>bye\<Esc>"
 ]])
+
+vim.cmd([[ 
+    :iabbrev flase false
+]])
