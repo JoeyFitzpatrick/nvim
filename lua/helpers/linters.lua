@@ -13,17 +13,24 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	end,
 })
 
-require("conform").setup({
+local conform = require("conform")
+
+conform.formatters.eslint_d = {
+	cmd = "eslint_d",
+	args = { "--fix", "--cache", vim.api.nvim_buf_get_name(0) },
+	stdin = false,
+}
+
+conform.setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		-- Conform will run multiple formatters sequentially
 		python = { "isort", "black" },
-		-- Use a sub-list to run only the first available formatter
-		javascript = { "eslint_d", { "prettierd", "prettier" } },
-		typescript = { "eslint_d", { "prettierd", "prettier" } },
-		javascriptreact = { "eslint_d", { "prettierd", "prettier" } },
-		typescriptreact = { "eslint_d", { "prettierd", "prettier" } },
-		svelte = { "eslint_d", { "prettierd", "prettier" } },
+		javascript = { "prettierd", "eslint_d" },
+		typescript = { "prettierd", "eslint_d" },
+		javascriptreact = { "prettierd", "eslint_d" },
+		typescriptreact = { "prettierd", "eslint_d" },
+		svelte = { "prettierd", "eslint_d" },
 		-- sql = { "sql_formatter" },
 	},
 	format_on_save = {
@@ -38,17 +45,17 @@ require("conform").setup({
 })
 
 vim.keymap.set({ "n", "x", "v" }, "<C-f>", function()
-	require("conform").format({ async = true, timeout_ms = 10000 })
+	conform.format({ async = true, timeout_ms = 10000 })
 end, {})
 
-local function use_custom_linter()
+function use_custom_linter()
 	local filetype = vim.bo.filetype
 	local filename = vim.api.nvim_buf_get_name(0)
 	local commands = {
-		javascript = "npx eslint --fix " .. filename,
-		typescript = "npx eslint --fix " .. filename,
-		javascriptreact = "npx eslint --fix " .. filename,
-		typescriptreact = "npx eslint --fix " .. filename,
+		javascript = "eslint_d --fix " .. filename,
+		typescript = "eslint_d --fix --cache " .. filename,
+		javascriptreact = "eslint_d --fix " .. filename,
+		typescriptreact = "eslint_d --fix --cache " .. filename,
 	}
 
 	if commands[filetype] ~= nil then
@@ -63,7 +70,7 @@ end
 
 vim.keymap.set("n", "<leader>cl", "<cmd>lua use_custom_linter()<CR>", { noremap = true, desc = "[C]ustom [l]inter" })
 
-local function use_custom_formatter()
+function use_custom_formatter()
 	local filetype = vim.bo.filetype
 	local filename = vim.api.nvim_buf_get_name(0)
 	local commands = {
@@ -71,6 +78,7 @@ local function use_custom_formatter()
 		typescript = "npx prettier --write " .. filename,
 		javascriptreact = "npx prettier --write " .. filename,
 		typescriptreact = "npx prettier --write " .. filename,
+		prisma = "npx prisma format",
 	}
 
 	if commands[filetype] ~= nil then

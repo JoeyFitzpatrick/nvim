@@ -164,4 +164,4 @@ vim.keymap.set("n", "<leader>ty", function()
 	else
 		vim.diagnostic.hide()
 	end
-end)
+end, { desc = "Toggle diagnostics" })

@@ -150,7 +150,14 @@ return {
 		end,
 	},
 	{ "github/copilot.vim", lazy = false, event = "VeryLazy" },
-	{ "catppuccin/nvim", name = "catppuccin", event = "VeryLazy" },
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		event = "VeryLazy",
+		config = function()
+			vim.cmd("colorscheme catppuccin-mocha")
+		end,
+	},
 	{
 		"ramojus/mellifluous.nvim",
 		config = function()
@@ -164,7 +171,7 @@ return {
 					},
 				},
 			})
-			vim.cmd("colorscheme mellifluous")
+			-- vim.cmd("colorscheme mellifluous")
 		end,
 	},
 	{
@@ -208,5 +215,20 @@ return {
 	{
 		"sindrets/diffview.nvim",
 		event = "VeryLazy",
+	},
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"nvim-telescope/telescope.nvim", -- optional
+			"sindrets/diffview.nvim", -- optional
+			"ibhagwan/fzf-lua", -- optional
+		},
+		config = true,
+	},
+	{
+		"dmmulroy/tsc.nvim",
+		event = "VeryLazy",
+		config = true,
 	},
 }
