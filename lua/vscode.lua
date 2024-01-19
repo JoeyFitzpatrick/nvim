@@ -42,28 +42,3 @@ keymap("n", "<leader>sc", notify("workbench.action.showCommands"), { silent = tr
 keymap("v", "<leader>sc", v_notify("workbench.action.showCommands"), { silent = true })
 keymap("n", "<leader>ch", notify("references-view.showCallHierarchy"), { silent = true }) -- show call hierarchy of function
 keymap("n", "<leader>ff", notify("workbench.action.quickOpen"), { silent = true }) -- find files
-
--- TODO: use Harpoon keymaps instead (<leader>h1, etc)
-keymap("n", "<leader>ba", notify("numberedBookmarks.jumpToBookmark1"), { silent = true }) -- remap numbered bookmark
-keymap("n", "<leader>bs", notify("numberedBookmarks.jumpToBookmark2"), { silent = true })
-keymap("n", "<leader>bd", notify("numberedBookmarks.jumpToBookmark3"), { silent = true })
-keymap("n", "<leader>bf", notify("numberedBookmarks.jumpToBookmark4"), { silent = true })
-keymap("n", "<leader>bg", notify("numberedBookmarks.jumpToBookmark5"), { silent = true })
-keymap("n", "<leader>bq", notify("numberedBookmarks.jumpToBookmark6"), { silent = true })
-keymap("n", "<leader>bw", notify("numberedBookmarks.jumpToBookmark7"), { silent = true })
-keymap("n", "<leader>be", notify("numberedBookmarks.jumpToBookmark8"), { silent = true })
-keymap("n", "<leader>br", notify("numberedBookmarks.jumpToBookmark9"), { silent = true })
-
-keymap("n", "<leader>ma", notify("numberedBookmarks.toggleBookmark1"), { silent = true }) -- remap numbered bookmark
-keymap("n", "<leader>ms", notify("numberedBookmarks.toggleBookmark2"), { silent = true })
-keymap("n", "<leader>md", notify("numberedBookmarks.toggleBookmark3"), { silent = true })
-keymap("n", "<leader>mf", notify("numberedBookmarks.toggleBookmark4"), { silent = true })
-keymap("n", "<leader>mg", notify("numberedBookmarks.toggleBookmark5"), { silent = true })
-keymap("n", "<leader>mq", notify("numberedBookmarks.toggleBookmark6"), { silent = true })
-keymap("n", "<leader>mw", notify("numberedBookmarks.toggleBookmark7"), { silent = true })
-keymap("n", "<leader>me", notify("numberedBookmarks.toggleBookmark8"), { silent = true })
-keymap("n", "<leader>mr", notify("numberedBookmarks.toggleBookmark9"), { silent = true })
-
-keymap("n", "<leader>bl", notify("numberedBookmarks.listFromAllFiles"), { silent = true })
-keymap("n", "<leader>bc", notify("numberedBookmarks.clearFromAllFiles"), { silent = true })
-return M
