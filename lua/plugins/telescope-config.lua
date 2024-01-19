@@ -1,7 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
-    event = "VeryLazy",
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-live-grep-args.nvim",
@@ -64,17 +64,20 @@ return {
 		end, opts)
 
 		require("telescope").load_extension("live_grep_args")
-        local actions = require("telescope.actions")
+		local lga_actions = require("telescope-live-grep-args.actions")
+		local actions = require("telescope.actions")
 		require("telescope").setup({
 			defaults = {
 				layout_config = {
-					vertical = { width = 0.9, preview_cutoff = 0, },
+					vertical = { width = 0.9, preview_cutoff = 0 },
 				},
 				layout_strategy = "vertical",
 				mappings = {
 					i = {
 						["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
 						["<C-a>"] = require("telescope-harpoon").mark_file,
+						["<C-t>"] = lga_actions.quote_prompt({ postfix = " --type " }),
+						["<C-n>"] = lga_actions.quote_prompt({ postfix = " --glob *" }),
 					},
 				},
 			},
