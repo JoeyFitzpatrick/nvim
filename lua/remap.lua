@@ -107,6 +107,9 @@ vim.keymap.set("i", "<C-w>", "<esc><cmd>wa<CR>")
 -- Close tabs
 vim.keymap.set("n", "<leader>x", "<cmd>tabc<CR>")
 
+-- Restart LSP
+vim.keymap.set("n", "<leader>l", ":LspRestart<CR>", { desc = "Restart [l]sp" })
+
 vim.keymap.set("n", "<leader>ai", ":ChatGPT<CR>", { desc = "Open GPT prompt" })
 vim.keymap.set("n", "<leader>aa", ":ChatGPTActAs<CR>", { desc = "Open premade GPT prompt" })
 vim.keymap.set("n", "<leader>ac", ":ChatGPTCompleteCode<CR>", { desc = "[a]i auto[c]omplete" })
@@ -121,6 +124,47 @@ vim.keymap.set(
 	":TroubleToggle workspace_diagnostics<CR>",
 	{ desc = "[T]oggle [W]orkspace diagnostics" }
 )
+
+local butterfish_opts = { noremap = true, silent = false }
+vim.keymap.set("n", "<leader><leader>p", ":BFFilePrompt ", butterfish_opts)
+vim.keymap.set("n", "<leader><leader>r", ":BFRewrite ", butterfish_opts)
+vim.keymap.set("v", "<leader><leader>r", ":BFRewrite ", butterfish_opts)
+vim.keymap.set("n", "<leader><leader>c", ":BFComment<CR>", butterfish_opts)
+vim.keymap.set("v", "<leader><leader>c", ":BFComment<CR>", butterfish_opts)
+vim.keymap.set("n", "<leader><leader>e", ":BFExplain<CR>", butterfish_opts)
+vim.keymap.set("v", "<leader><leader>e", ":BFExplain<CR>", butterfish_opts)
+vim.keymap.set("n", "<leader><leader>f", ":BFFix<CR>", butterfish_opts)
+vim.keymap.set("n", "<leader><leader>i", ":BFImplement<CR>", butterfish_opts)
+vim.keymap.set("n", "<leader><leader>d", ":BFEdit ", butterfish_opts)
+vim.keymap.set("n", "<leader><leader>h", ":BFHammer<CR>", butterfish_opts)
+vim.keymap.set("n", "<leader><leader>q", ":BFQuestion ", butterfish_opts)
+vim.keymap.set("v", "<leader><leader>q", ":BFQuestion ", butterfish_opts)
+
+-- Set keybindings for quickfix window only
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "qf",
+-- 	callback = function()
+-- 		vim.keymap.set("n", "q", ":q<CR>", { buffer = true })
+-- 	end,
+-- })
+-- Create an autocmd for FileType with pattern "qf"
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "qf",
+	callback = function()
+		-- Undo the modified j and k keybindings in the quickfix window
+		vim.keymap.set("n", "j", "j", { buffer = true, noremap = true })
+		vim.keymap.set("n", "k", "k", { buffer = true, noremap = true })
+		-- Set 'q' to close the quickfix window in normal mode
+		vim.keymap.set("n", "q", ":q<CR>", { buffer = true })
+		-- Set 'dd' to remove an item from the quickfix list in normal mode
+		vim.keymap.set("n", "dd", function()
+			local qf_idx = vim.fn.line(".") -- Get the current line number, which corresponds to the quickfix item index
+			local qf_list = vim.fn.getqflist() -- Get the current quickfix list
+			table.remove(qf_list, qf_idx)
+			vim.fn.setqflist(qf_list)
+		end, { buffer = true })
+	end,
+})
 
 vim.cmd([[
         imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")

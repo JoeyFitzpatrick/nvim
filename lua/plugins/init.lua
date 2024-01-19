@@ -231,4 +231,12 @@ return {
 		event = "VeryLazy",
 		config = true,
 	},
+	{
+		"bakks/butterfish.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("butterfish")
+		end,
+		dependencies = { "tpope/vim-commentary" },
+	},
 }
