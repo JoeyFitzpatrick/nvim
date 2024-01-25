@@ -77,7 +77,7 @@ return {
 						["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
 						["<C-a>"] = require("telescope-harpoon").mark_file,
 						["<C-t>"] = lga_actions.quote_prompt({ postfix = " --type " }),
-						["<C-n>"] = lga_actions.quote_prompt({ postfix = " --glob *" }),
+						["<C-l>"] = lga_actions.quote_prompt({ postfix = " --glob *" }),
 					},
 				},
 			},

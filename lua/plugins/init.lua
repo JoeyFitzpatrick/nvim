@@ -239,4 +239,27 @@ return {
 		end,
 		dependencies = { "tpope/vim-commentary" },
 	},
+	{
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+	{ "kevinhwang91/nvim-bqf", event = "VeryLazy" },
+	{
+		"stevearc/oil.nvim",
+		event = "VeryLazy",
+		opts = {},
+		config = function()
+			require("oil").setup({
+				view_options = {
+					show_hidden = true,
+				},
+			})
+			local oil = require("oil")
+			vim.keymap.set("n", "<leader>N", function()
+				oil.toggle_float(nil)
+			end, { silent = true })
+		end,
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 }
