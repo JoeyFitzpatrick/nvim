@@ -138,11 +138,12 @@ vim.keymap.set("n", "<leader><leader>i", ":BFImplement<CR>", butterfish_opts)
 vim.keymap.set("n", "<leader><leader>d", ":BFEdit ", butterfish_opts)
 vim.keymap.set("n", "<leader><leader>h", ":BFHammer<CR>", butterfish_opts)
 vim.keymap.set("n", "<leader><leader>q", ":BFQuestion ", butterfish_opts)
-vim.keymap.set("v", "<leader><leader>q", ":BFQuestion ", butterfish_opts)
 
 vim.keymap.set("n", "cn", ":cnext<cr>", opts)
 vim.keymap.set("n", "cp", ":cprev<cr> ", opts)
-vim.keymap.set("n", "<leader>q", ":copen<cr> ", opts)
+vim.keymap.set("n", "<leader>q", function()
+	require("helpers.quickfix").toggle_qf()
+end, opts)
 
 -- Set keybindings for quickfix window only
 -- vim.api.nvim_create_autocmd("FileType", {

@@ -10,13 +10,13 @@ return {
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>f", builtin.find_files, {})
 		-- vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
-		vim.keymap.set("n", "<leader>g", builtin.live_grep, {})
+		-- vim.keymap.set("n", "<leader>g", builtin.live_grep, {})
 		vim.keymap.set("v", "<leader>g", builtin.grep_string, {})
 		vim.keymap.set("n", "<leader>H", builtin.help_tags, {})
 		vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
 		vim.keymap.set("n", "<leader>M", builtin.marks, {})
 
-		vim.keymap.set("n", "<leader>G", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+		vim.keymap.set("n", "<leader>g", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 
 		-- Enable telescope fzf native, if installed
 		pcall(require("telescope").load_extension, "fzf")
