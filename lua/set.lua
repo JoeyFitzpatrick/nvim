@@ -17,6 +17,7 @@ vim.o.completeopt = "menuone,noselect"
 vim.o.updatetime = 500
 
 vim.opt.cursorline = true
+vim.cmd([[hi CursorLine guibg=#282837]])
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
