@@ -3,6 +3,7 @@ return {
 	cmd = "TSUpdate",
 	event = "VeryLazy",
 	-- commit = "cc360a9beb1b30d172438f640e2c3450358c4086",
+	-- tag = "v0.9.1",
 	dependencies = { "JoosepAlviste/nvim-ts-context-commentstring", "nvim-treesitter/nvim-treesitter-textobjects" },
 	config = function()
 		require("ts_context_commentstring").setup({})
