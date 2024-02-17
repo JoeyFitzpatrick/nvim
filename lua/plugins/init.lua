@@ -19,6 +19,16 @@ return {
 		opts = { indent = { char = { "│" } } },
 	},
 	{
+		"AckslD/nvim-neoclip.lua",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		config = function()
+			set("n", "<leader>tn", "<cmd>Telescope neoclip<CR>", { silent = true })
+			require("neoclip").setup()
+		end,
+	},
+	{
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
