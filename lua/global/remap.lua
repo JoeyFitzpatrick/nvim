@@ -118,38 +118,17 @@ set("i", "<C-w>", "<esc><cmd>wa<CR>")
 -- Close tabs
 set("n", "<leader>x", "<cmd>tabc<CR>")
 
--- Restart LSP
-set("n", "<leader>l", ":LspRestart<CR>", { desc = "Restart [l]sp" })
-
-set("n", "<leader>ai", ":ChatGPT<CR>", { desc = "Open GPT prompt" })
-set("n", "<leader>aa", ":ChatGPTActAs<CR>", { desc = "Open premade GPT prompt" })
-set("n", "<leader>ac", ":ChatGPTCompleteCode<CR>", { desc = "[a]i auto[c]omplete" })
-set("v", "<leader>ai", "<Esc>:ChatGPTEditWithInstructions<CR>", { desc = "Edit selected text with GPT" })
-set("v", "<leader>aa", "<Esc>:ChatGPTRun", { desc = "Run actions on code with GPT" })
-
-set("n", "<leader>tt", ":TroubleToggle<CR>", { desc = "[T]oggle [T]rouble diagnostics" })
-set("n", "<leader>v", ":DiffviewOpen<CR>", { desc = "Diff[v]iew open" })
-set("n", "<leader>tw", ":TroubleToggle workspace_diagnostics<CR>", { desc = "[T]oggle [W]orkspace diagnostics" })
-
-local butterfish_opts = { noremap = true, silent = false }
-set("n", "<leader><leader>p", ":BFFilePrompt ", butterfish_opts)
-set("n", "<leader><leader>r", ":BFRewrite ", butterfish_opts)
-set("v", "<leader><leader>r", ":BFRewrite ", butterfish_opts)
-set("n", "<leader><leader>c", ":BFComment<CR>", butterfish_opts)
-set("v", "<leader><leader>c", ":BFComment<CR>", butterfish_opts)
-set("n", "<leader><leader>e", ":BFExplain<CR>", butterfish_opts)
-set("v", "<leader><leader>e", ":BFExplain<CR>", butterfish_opts)
-set("n", "<leader><leader>f", ":BFFix<CR>", butterfish_opts)
-set("n", "<leader><leader>i", ":BFImplement<CR>", butterfish_opts)
-set("n", "<leader><leader>d", ":BFEdit ", butterfish_opts)
-set("n", "<leader><leader>h", ":BFHammer<CR>", butterfish_opts)
-set("n", "<leader><leader>q", ":BFQuestion ", butterfish_opts)
-
 set("n", "cn", ":cnext<cr>", opts)
 set("n", "cp", ":cprev<cr> ", opts)
 set("n", "<leader>q", function()
 	require("helpers.quickfix").toggle_qf()
 end, opts)
+
+-- better window navigation. Install tmux navigator plugin if using tmux.
+set("n", "<C-H>", "<C-W>h", { noremap = true })
+set("n", "<C-J>", "<C-W>j", { noremap = true })
+set("n", "<C-K>", "<C-W>k", { noremap = true })
+set("n", "<C-L>", "<C-W>l", { noremap = true })
 
 -- Set keybindings for quickfix window only
 -- vim.api.nvim_create_autocmd("FileType", {

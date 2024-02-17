@@ -1,28 +1,28 @@
 return {
-	"VonHeikemen/lsp-zero.nvim",
-	event = "VeryLazy",
-	branch = "v2.x",
-	dependencies = {
-		-- LSP Support
-		{ "neovim/nvim-lspconfig" }, -- Required
-		{
-			-- Optional
-			"williamboman/mason.nvim",
-			build = function()
-				pcall(vim.cmd, "MasonUpdate")
-			end,
-		},
-		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+	-- lsp-zero plugins
+	{ "williamboman/mason.nvim" },
+	{ "williamboman/mason-lspconfig.nvim" },
 
-		-- Autocompletion
-		{ "hrsh7th/nvim-cmp" }, -- Required
-		{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-		{
-			"L3MON4D3/LuaSnip",
-			dependencies = {
-				"saadparwaiz1/cmp_luasnip",
-				-- "rafamadriz/friendly-snippets",
-			},
+	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
+	{ "neovim/nvim-lspconfig" },
+	{ "hrsh7th/cmp-nvim-lsp" },
+	{ "hrsh7th/nvim-cmp" },
+	{ "L3MON4D3/LuaSnip" },
+
+	-- other lsp plugins
+	{
+		"pmizio/typescript-tools.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	},
+	{ "dmmulroy/tsc.nvim", config = true, cmd = "TSC" },
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		keys = {
+			{ "<leader>ld", "<cmd>TroubleToggle document_diagnostics<CR>", desc = "Document Diagnostics" },
+			{ "<leader>lw", "<cmd>TroubleToggle workspace_diagnostics<CR>", desc = "Workspace Diagnostics" },
 		},
 	},
 }

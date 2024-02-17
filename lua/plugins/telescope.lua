@@ -1,10 +1,15 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	branch = "0.1.x",
+	tag = "0.1.5",
 	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-live-grep-args.nvim",
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			event = "VeryLazy",
+			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		},
 	},
 	config = function()
 		local builtin = require("telescope.builtin")
@@ -66,6 +71,22 @@ return {
 		require("telescope").load_extension("live_grep_args")
 		local lga_actions = require("telescope-live-grep-args.actions")
 		local actions = require("telescope.actions")
+
+		local telescope_harpoon = {}
+		local utils = require("telescope.actions.utils")
+		telescope_harpoon.mark_file = function(tb)
+			actions.drop_all(tb)
+			actions.add_selection(tb)
+			utils.map_selections(tb, function(selection)
+				local s = selection[1]
+				if s:find(":") then
+					s = s:match("^(.-):")
+				end
+				pcall(require("harpoon.mark").add_file, s)
+			end)
+			actions.move_selection_worse(tb)
+			actions.remove_selection(tb)
+		end
 		require("telescope").setup({
 			defaults = {
 				layout_config = {
@@ -75,9 +96,10 @@ return {
 				mappings = {
 					i = {
 						["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
-						["<C-a>"] = require("telescope-harpoon").mark_file,
+						["<C-a>"] = telescope_harpoon.mark_file,
 						["<C-t>"] = lga_actions.quote_prompt({ postfix = " --type " }),
 						["<C-l>"] = lga_actions.quote_prompt({ postfix = " --glob *" }),
+						["<C-f>"] = lga_actions.quote_prompt({ postfix = " " }),
 					},
 				},
 			},

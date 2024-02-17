@@ -1,6 +1,5 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.lsp.set_log_level("error")
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -21,26 +20,21 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
+-- these remaps are here because vim-visual-multi is weird
+vim.cmd([[
+    let g:VM_maps = {}
+    let g:VM_maps['Find Under']         = '<C-d>'           " replace C-n
+    let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
+]])
 
-require("set")
-require("remap")
-require("autocmd")
-require("helpers.neovide")
+require("lazy").setup("plugins", {
+	change_detection = {
+		notify = false,
+	},
+})
 
-if vim.g.vscode ~= nil then
-	require("vscode")
-else
-	require("non-vscode")
-	vim.opt.relativenumber = true
-end
-
-function light()
-	vim.cmd("set background=light | colorscheme catppuccin-latte")
-end
-function dark()
-	vim.cmd("set background=dark | colorscheme catppuccin-mocha")
-	-- vim.cmd("set background=dark | colorscheme mellifluous")
-end
-vim.cmd("command Light silent lua light()")
-vim.cmd("command Dark silent lua dark()")
+require("global.set")
+require("global.remap")
+require("global.plugin-remaps")
+require("global.lsp-config")
+require("global.utils")

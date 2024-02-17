@@ -1,9 +1,10 @@
-vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.hlsearch = false
+
+vim.opt.relativenumber = true
 
 vim.opt.ignorecase = true
 vim.o.smartcase = true
@@ -14,10 +15,10 @@ vim.o.undofile = true
 
 vim.o.completeopt = "menuone,noselect"
 
-vim.o.updatetime = 500
+vim.o.updatetime = 300
 
 vim.opt.cursorline = true
-vim.cmd([[hi CursorLine guibg=#282837]])
+-- vim.cmd([[hi CursorLine guibg=#282837]])
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`

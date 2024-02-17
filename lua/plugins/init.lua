@@ -1,59 +1,131 @@
+local set = vim.keymap.set
+
 return {
 	{ "tpope/vim-surround", event = "VeryLazy" },
+	{ "tpope/vim-commentary", event = "VeryLazy" },
+	{ "tpope/vim-repeat", event = "VeryLazy" },
+	{ "rhysd/clever-f.vim", event = "BufEnter" },
+	{ "jinh0/eyeliner.nvim", event = "BufEnter", enabled = false },
+	{ "tpope/vim-fugitive", event = "VeryLazy" },
+	{
+		"mg979/vim-visual-multi",
+		branch = "master",
+		event = "BufEnter",
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		event = "BufEnter",
+		opts = { indent = { char = { "│" } } },
+	},
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		config = function()
+			vim.cmd("colorscheme tokyonight-moon")
+			function light()
+				vim.cmd("set background=light | colorscheme tokyonight-day")
+			end
+			function dark()
+				vim.cmd("set background=dark | colorscheme tokyonight-moon")
+			end
+			vim.cmd("command Light silent lua light()")
+			vim.cmd("command Dark silent lua dark()")
+		end,
+	},
+	{
+		"ThePrimeagen/harpoon",
+		event = "VeryLazy",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("harpoon").setup({
+				menu = {
+					width = vim.api.nvim_win_get_width(0) - 4,
+				},
+			})
+		end,
+	},
+	{
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("nvim-tree").setup({
+				view = { width = {} },
+				sync_root_with_cwd = true,
+				respect_buf_cwd = true,
+				update_focused_file = {
+					enable = true,
+					update_root = false,
+				},
+				filters = {
+					git_ignored = false,
+					custom = { "node_modules" },
+				},
+			})
+			set("n", "<leader>n", "<cmd>NvimTreeToggle<CR>", { silent = true })
+		end,
+	},
 	{
 		"kdheepak/lazygit.nvim",
 		event = "VeryLazy",
 		config = function()
 			vim.g.lazygit_floating_window_scaling_factor = 1
+			set("n", "<leader>j", "<cmd>LazyGit<CR>", { silent = true })
 		end,
 	},
-	{ "tpope/vim-commentary", event = "VeryLazy" },
-	-- { "tpope/vim-abolish",     event = "VeryLazy" },
-	{ "tpope/vim-sensible", event = "VeryLazy" },
-	{ "tpope/vim-repeat", event = "VeryLazy" },
-	{ "ThePrimeagen/harpoon", event = "VeryLazy", dependencies = { "nvim-lua/plenary.nvim" } },
-	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
-	{ "f-person/git-blame.nvim", event = "VeryLazy" },
-	{ "https://gitlab.com/schrieveslaach/sonarlint.nvim", event = "VeryLazy" },
-	{ "mfussenegger/nvim-lint", event = "VeryLazy" },
 	{
-		"goolord/alpha-nvim",
+		"altermo/ultimate-autopair.nvim",
+		event = { "InsertEnter", "CmdlineEnter" },
+		branch = "v0.6",
+		opts = {
+			fastwarp = {
+				multi = true,
+				{},
+				{
+					enable_normal = true,
+					enable_reverse = true,
+					faster = false,
+					map = "<C-a>",
+					rmap = "<C-s>",
+					cmap = "<C-a>",
+					rcmap = "<C-s>",
+				},
+			},
+		},
+	},
+	{
+		"nvim-pack/nvim-spectre",
+		build = false,
+		cmd = "Spectre",
+		opts = { open_cmd = "noswapfile vnew" },
+		keys = {
+			{
+				"<leader>sr",
+				function()
+					require("spectre").open()
+				end,
+				desc = "Replace in files (Spectre)",
+			},
+		},
+	},
+	{
+		"johmsalas/text-case.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
 		config = function()
-			require("alpha").setup(require("alpha.themes.startify").config)
+			require("textcase").setup({})
+			require("telescope").load_extension("textcase")
 		end,
+		cmd = "Subs",
+		keys = {
+			"ga", -- Default invocation prefix
+			{ "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "v" }, desc = "Telescope" },
+		},
 	},
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 1000
-		end,
-		opts = {},
-	},
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		event = "VeryLazy",
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	},
-	{
-		"gelguy/wilder.nvim",
-		event = "VeryLazy",
-		config = function()
-			local wilder = require("wilder")
-			wilder.setup({ modes = { ":", "/", "?" } })
-		end,
-	},
-	{
-		"pmizio/typescript-tools.nvim",
-		event = "VeryLazy",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
-	},
-	{ "folke/trouble.nvim", event = "VeryLazy", dependencies = { "nvim-tree/nvim-web-devicons" }, opts = {} },
-	{ "https://github.com/windwp/nvim-ts-autotag", event = "VeryLazy" },
-	{ "stevearc/conform.nvim", event = "VeryLazy", opts = {} },
-	{ "rhysd/clever-f.vim", event = "VeryLazy" },
 	{
 		"mbbill/undotree",
 		event = "VeryLazy",
@@ -62,23 +134,12 @@ return {
 		end,
 	},
 	{
-		"johmsalas/text-case.nvim",
-		config = function()
-			require("textcase").setup({})
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 500
 		end,
+		opts = {},
 	},
-	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"nvim-telescope/telescope.nvim", -- optional
-			"sindrets/diffview.nvim", -- optional
-			"ibhagwan/fzf-lua", -- optional
-		},
-		config = true,
-	},
-	{ "dmmulroy/tsc.nvim", event = "VeryLazy", config = true },
-	{ "stevearc/dressing.nvim", event = "VeryLazy", opts = {} },
-	{ "kevinhwang91/nvim-bqf", event = "VeryLazy" },
-	{ "folke/neodev.nvim", event = "VeryLazy", opts = {} },
 }
