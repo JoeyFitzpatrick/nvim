@@ -14,6 +14,7 @@ return {
 				-- to open commits in browser with fugitive
 				"tpope/vim-rhubarb",
 			},
+
 			config = function()
 				vim.keymap.set("n", "<leader>J", "<cmd>AdvancedGitSearch<CR>", { noremap = true, silent = true })
 				require("telescope").load_extension("advanced_git_search")

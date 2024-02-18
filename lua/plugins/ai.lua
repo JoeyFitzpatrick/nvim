@@ -1,19 +1,13 @@
 return {
 	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
-		-- commit = "d4aa4d9e31d620a0c01006e59f4449ffc7eb33ce",
-		config = function()
-			require("chatgpt").setup({ openai_params = { model = "gpt-4" } })
-		end,
+		"robitx/gp.nvim",
 		keys = {
-			{ "<leader>ag", ":ChatGPT<CR>", { desc = "Open GPT prompt" } },
+			{ "<leader>ag", "<cmd>GpChatToggle popup<CR>", desc = "Open GPT Prompt" },
+			{ "<leader>aG", "<cmd>GpChatFinder<CR>", desc = "Open GPT Chat Finder" },
 		},
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
+		config = function()
+			require("gp").setup()
+		end,
 	},
 	{
 		"bakks/butterfish.nvim",
