@@ -4,7 +4,7 @@ return {
 	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope-live-grep-args.nvim",
+		"fdschmidt93/telescope-egrepify.nvim",
 		{
 			"aaronhallaert/advanced-git-search.nvim",
 			dependencies = {
@@ -36,10 +36,13 @@ return {
 		vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
 		vim.keymap.set("n", "<leader>M", builtin.marks, {})
 
-		vim.keymap.set("n", "<leader>g", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-
 		-- Enable telescope fzf native, if installed
 		pcall(require("telescope").load_extension, "fzf")
+
+		require("telescope").load_extension("egrepify")
+		vim.keymap.set("n", "<leader>g", function()
+			require("telescope").extensions.egrepify.egrepify({})
+		end)
 
 		vim.keymap.set("n", "<leader>/", function()
 			-- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -83,8 +86,6 @@ return {
 			builtin.live_grep({ default_text = text })
 		end, opts)
 
-		require("telescope").load_extension("live_grep_args")
-		local lga_actions = require("telescope-live-grep-args.actions")
 		local actions = require("telescope.actions")
 
 		local telescope_harpoon = {}
@@ -112,9 +113,6 @@ return {
 					i = {
 						["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
 						["<C-a>"] = telescope_harpoon.mark_file,
-						["<C-t>"] = lga_actions.quote_prompt({ postfix = " --type " }),
-						["<C-l>"] = lga_actions.quote_prompt({ postfix = " --glob *" }),
-						["<C-f>"] = lga_actions.quote_prompt({ postfix = " " }),
 						["<esc>"] = actions.close,
 					},
 				},
@@ -144,6 +142,9 @@ return {
 							layout_config = { width = 0.4, height = 0.4 },
 						},
 					},
+				},
+				egrepify = {
+					permutations = true,
 				},
 			},
 		})
