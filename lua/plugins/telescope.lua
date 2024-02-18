@@ -16,7 +16,7 @@ return {
 			},
 
 			config = function()
-				vim.keymap.set("n", "<leader>J", "<cmd>AdvancedGitSearch<CR>", { noremap = true, silent = true })
+				vim.keymap.set("n", "<leader>tj", "<cmd>AdvancedGitSearch<CR>", { noremap = true, silent = true })
 				require("telescope").load_extension("advanced_git_search")
 			end,
 		},
@@ -115,6 +115,7 @@ return {
 						["<C-t>"] = lga_actions.quote_prompt({ postfix = " --type " }),
 						["<C-l>"] = lga_actions.quote_prompt({ postfix = " --glob *" }),
 						["<C-f>"] = lga_actions.quote_prompt({ postfix = " " }),
+						["<esc>"] = actions.close,
 					},
 				},
 			},

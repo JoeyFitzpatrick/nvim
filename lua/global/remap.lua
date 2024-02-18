@@ -6,7 +6,6 @@ set("n", ";", ":", { noremap = true })
 set("v", ";", ":", { noremap = true })
 set("n", ":", ";", { noremap = true })
 set("v", ":", ";", { noremap = true })
-set("n", "<c-q>", ":qa<CR>", { noremap = true })
 
 -- Visual move lines
 set("v", "J", ":m '>+1<CR>gv=gv")
@@ -115,8 +114,12 @@ set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result
 set("n", "<C-w>", "<cmd>wa<CR>")
 set("i", "<C-w>", "<esc><cmd>wa<CR>")
 
--- Close tabs
-set("n", "<leader>x", "<cmd>tabc<CR>")
+-- Quit with ctrl+q
+set("n", "<c-q>", ":q<CR>", { noremap = true })
+
+-- Tabs
+set("n", "<Tab>", "gt")
+set("n", "<S-Tab>", "gT")
 
 set("n", "cn", ":cnext<cr>", opts)
 set("n", "cp", ":cprev<cr> ", opts)

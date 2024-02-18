@@ -6,7 +6,13 @@ return {
 	{ "tpope/vim-repeat", event = "VeryLazy" },
 	{ "rhysd/clever-f.vim", event = "BufEnter" },
 	{ "jinh0/eyeliner.nvim", event = "BufEnter", enabled = false },
-	{ "tpope/vim-fugitive", event = "VeryLazy" },
+	{
+		"tpope/vim-fugitive",
+		event = "VeryLazy",
+		config = function()
+			set("n", "<leader>J", "<cmd>tab Git<CR>", { silent = true })
+		end,
+	},
 	{
 		"mg979/vim-visual-multi",
 		branch = "master",
