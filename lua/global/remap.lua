@@ -92,9 +92,9 @@ set("v", "S", "<Plug>VSurround", { remap = false })
 
 set("v", "y", "ygv<esc>", { remap = false })
 
--- Easier jumps to start/end of line
-set({ "n", "v" }, "L", "$")
-set({ "n", "v" }, "H", "_")
+-- -- Easier jumps to start/end of line
+-- set({ "n", "v" }, "L", "$")
+-- set({ "n", "v" }, "H", "_")
 
 -- better navigation for wrapped lines
 set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -118,8 +118,8 @@ set("i", "<C-w>", "<esc><cmd>wa<CR>")
 set("n", "<c-q>", ":q<CR>", { noremap = true })
 
 -- Tabs
-set("n", "<Tab>", "gt")
-set("n", "<S-Tab>", "gT")
+set("n", "L", "gt")
+set("n", "H", "gT")
 
 set("n", "cn", ":cnext<cr>", opts)
 set("n", "cp", ":cprev<cr> ", opts)
