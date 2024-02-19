@@ -24,8 +24,8 @@ vim.opt.rtp:prepend(lazypath)
 -- these remaps are here because vim-visual-multi is weird
 vim.cmd([[
     let g:VM_maps = {}
-    let g:VM_maps['Find Under']         = '<C-d>'           " replace C-n
-    let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
+    let g:VM_maps['Find Under']         = '<C-m>'           " replace C-n
+    let g:VM_maps['Find Subword Under'] = '<C-m>'           " replace visual C-n
 ]])
 
 require("lazy").setup("plugins", {

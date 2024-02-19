@@ -64,6 +64,14 @@ return {
 		end,
 	},
 	{
+		"LeonHeidelbach/trailblazer.nvim",
+		config = function()
+			require("trailblazer").setup({
+				-- your custom config goes here
+			})
+		end,
+	},
+	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
 		dependencies = {
