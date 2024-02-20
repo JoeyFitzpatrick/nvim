@@ -31,7 +31,7 @@ return {
 					-- 0 turns off fuzzy matching
 					-- 1 turns on fuzzy matching
 					-- 2 partial fuzzy matching (match does not have to begin with the same first letter)
-					fuzzy = 2,
+					fuzzy = 1,
 				}),
 				wilder.python_search_pipeline({
 					-- can be set to wilder#python_fuzzy_delimiter_pattern() for stricter fuzzy matching
