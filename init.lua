@@ -24,8 +24,8 @@ vim.opt.rtp:prepend(lazypath)
 -- this is here because vim-visual-multi is weird
 vim.cmd([[
     let g:VM_maps = {}
-    let g:VM_maps['Find Under']         = '<C-m>'           " replace C-n
-    let g:VM_maps['Find Subword Under'] = '<C-m>'           " replace visual C-n
+    let g:VM_maps['Find Under']         = '<C-i>'           " replace C-n
+    let g:VM_maps['Find Subword Under'] = '<C-i>'           " replace visual C-n
     let g:VM_theme = 'neon'
     let g:VM_Mono_hl   = 'DiffText'
     let g:VM_Extend_hl = 'DiffAdd'

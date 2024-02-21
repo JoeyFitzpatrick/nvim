@@ -8,6 +8,7 @@ return {
 	{ "rhysd/clever-f.vim", event = "BufEnter" },
 	{ "jinh0/eyeliner.nvim", event = "BufEnter", enabled = false },
 	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, config = true },
+	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{
 		"tpope/vim-fugitive",
 		event = "VeryLazy",

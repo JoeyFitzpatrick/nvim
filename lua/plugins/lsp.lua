@@ -12,7 +12,7 @@ return {
 	-- other lsp plugins
 	{
 		"pmizio/typescript-tools.nvim",
-		event = "VeryLazy",
+		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 	},

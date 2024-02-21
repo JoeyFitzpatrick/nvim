@@ -121,25 +121,13 @@ set("n", "<c-q>", ":q<CR>", { noremap = true })
 set("n", "L", "gt")
 set("n", "H", "gT")
 
-set("n", "cn", ":cnext<cr>", opts)
-set("n", "cp", ":cprev<cr> ", opts)
-set("n", "<leader>q", function()
-	require("helpers.quickfix").toggle_qf()
-end, opts)
-
 -- better window navigation. Install tmux navigator plugin if using tmux.
 set("n", "<C-H>", "<C-W>h", { noremap = true })
 set("n", "<C-J>", "<C-W>j", { noremap = true })
 set("n", "<C-K>", "<C-W>k", { noremap = true })
 set("n", "<C-L>", "<C-W>l", { noremap = true })
 
--- Set keybindings for quickfix window only
--- vim.api.nvim_create_autocmd("FileType", {
--- 	pattern = "qf",
--- 	callback = function()
--- 		set("n", "q", ":q<CR>", { buffer = true })
--- 	end,
--- })
+-- quickfix
 -- Create an autocmd for FileType with pattern "qf"
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "qf",
@@ -159,27 +147,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+set("n", "<leader>q", function()
+	require("global.helpers.quickfix").toggle_qf()
+end, opts)
+set("n", "<A-n>", "<cmd>cnext<CR>", opts)
+set("n", "<A-p>", "<cmd>cprev<CR>", opts)
+
 vim.cmd([[
         imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
         let g:copilot_no_tab_map = v:true
 ]])
-
--- ToggleTerm settings
--- set("n", "<leader>T", [[<Cmd>ToggleTermToggleAll<CR>]], opts)
--- for _, i in pairs({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }) do
--- 	set({ "n", "i" }, "<c-" .. i .. ">", i .. [[<c-e>]], { remap = true })
--- end
--- function _G.set_terminal_keymaps()
--- 	local toggleterm_opts = { buffer = 0 }
--- 	set("t", "<esc>", [[<C-\><C-n>]], toggleterm_opts)
--- 	set("t", "<C-q>", [[<C-\><C-n><cmd>q<CR>]], toggleterm_opts)
--- 	set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], toggleterm_opts)
--- 	set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], toggleterm_opts)
--- 	set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], toggleterm_opts)
--- 	set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], toggleterm_opts)
--- 	set("t", "<C-w>", [[<C-\><C-n><C-w>]], toggleterm_opts)
--- 	for _, i in pairs({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }) do
--- 		set("t", "<c-" .. i .. ">", i .. [[<c-e>]], { remap = true })
--- 	end
--- end
--- vim.cmd([[autocmd! TermOpen term://* lua set_terminal_keymaps()]])

@@ -1,5 +1,3 @@
-vim.keymap.set("n", "<C-m>", "<Plug>(VM-Find-Under)")
-
 local ui = require("harpoon.ui")
 local mark = require("harpoon.mark")
 vim.keymap.set("n", "<leader>hs", ui.toggle_quick_menu, {})
