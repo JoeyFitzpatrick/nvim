@@ -121,12 +121,6 @@ set("n", "<c-q>", ":q<CR>", { noremap = true })
 set("n", "L", "gt")
 set("n", "H", "gT")
 
--- better window navigation. Install tmux navigator plugin if using tmux.
-set("n", "<C-H>", "<C-W>h", { noremap = true })
-set("n", "<C-J>", "<C-W>j", { noremap = true })
-set("n", "<C-K>", "<C-W>k", { noremap = true })
-set("n", "<C-L>", "<C-W>l", { noremap = true })
-
 -- quickfix
 -- Create an autocmd for FileType with pattern "qf"
 vim.api.nvim_create_autocmd("FileType", {

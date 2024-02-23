@@ -13,6 +13,10 @@ return {
 	{
 		"pmizio/typescript-tools.nvim",
 		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+		keys = {
+			{ "gd", "<cmd>TSToolsGoToSourceDefinition<cr>", desc = "Go to source definition" },
+			{ "<leader>ts", "<cmd>TSTools<cr>", desc = "Typescript tools" },
+		},
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 	},

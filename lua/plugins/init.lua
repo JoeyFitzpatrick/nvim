@@ -74,7 +74,7 @@ return {
 				mappings = { -- rename this to "force_mappings" to completely override default mappings and not merge with them
 					nv = { -- Mode union: normal & visual mode. Can be extended by adding i, x, ...
 						motions = {
-							new_trail_mark = "<C-l>",
+							new_trail_mark = "<C-t>",
 							track_back = "<C-b>",
 							peek_move_next_down = "<C-J>",
 							peek_move_previous_up = "<C-K>",
@@ -85,7 +85,6 @@ return {
 							delete_all_trail_marks = "<C-L>",
 							paste_at_last_trail_mark = "<C-p>",
 							paste_at_all_trail_marks = "<C-P>",
-							set_trail_mark_select_mode = "<C-t>",
 							switch_to_next_trail_mark_stack = "<C-.>",
 							switch_to_previous_trail_mark_stack = "<C-,>",
 							set_trail_mark_stack_sort_mode = "<C-s>",
@@ -200,5 +199,23 @@ return {
 			vim.o.timeoutlen = 500
 		end,
 		opts = {},
+	},
+	{
+		"christoomey/vim-tmux-navigator",
+		event = "VeryLazy",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+		},
+		keys = {
+			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+		},
 	},
 }
