@@ -1,11 +1,16 @@
+local typescript_commands = {
+	lint = "eslint_d --fix --cache",
+	format = "npx prettier --write",
+}
+
 local function run_command(command)
 	local filetype = vim.bo.filetype
 	local filename = vim.api.nvim_buf_get_name(0)
 	local commands = {
-		javascript = { lint = "eslint_d --fix --cache", format = "npx prettier --write" },
-		typescript = { lint = "eslint_d --fix --cache", format = "npx prettier --write" },
-		javascriptreact = { lint = "eslint_d --fix --cache", format = "npx prettier --write" },
-		typescriptreact = { lint = "eslint_d --fix --cache", format = "npx prettier --write" },
+		javascript = typescript_commands,
+		typescript = typescript_commands,
+		javascriptreact = typescript_commands,
+		typescriptreact = typescript_commands,
 		prisma = { format = "npx prisma format" },
 	}
 

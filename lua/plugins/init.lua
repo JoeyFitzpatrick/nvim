@@ -218,4 +218,17 @@ return {
 			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
 		},
 	},
+	{
+		"haya14busa/vim-asterisk",
+		event = "VeryLazy",
+		config = function()
+			vim.cmd([[
+                            map *  <Plug>(asterisk-z*)
+                            map #  <Plug>(asterisk-z#)
+                            map g* <Plug>(asterisk-gz*)
+                            map g# <Plug>(asterisk-gz#)
+                            let g:asterisk#keeppos = 1
+                        ]])
+		end,
+	},
 }
