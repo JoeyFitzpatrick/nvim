@@ -92,10 +92,6 @@ set("v", "S", "<Plug>VSurround", { remap = false })
 
 set("v", "y", "ygv<esc>", { remap = false })
 
--- -- Easier jumps to start/end of line
--- set({ "n", "v" }, "L", "$")
--- set({ "n", "v" }, "H", "_")
-
 -- better navigation for wrapped lines
 set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -116,10 +112,6 @@ set("i", "<C-w>", "<esc><cmd>wa<CR>")
 
 -- Quit with ctrl+q
 set("n", "<c-q>", ":q<CR>", { noremap = true })
-
--- Tabs
-set("n", "L", "gt")
-set("n", "H", "gT")
 
 -- quickfix
 -- Create an autocmd for FileType with pattern "qf"
