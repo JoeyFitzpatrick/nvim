@@ -18,9 +18,28 @@ return {
 		-- 	{ "<leader>ts", "<cmd>TSTools<cr>", desc = "Typescript tools" },
 		-- },
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		config = function()
+			require("typescript-tools").setup({
+				on_attach = function()
+					vim.keymap.set("n", "<leader>ts", ":TSTools", { noremap = true, silent = false })
+					vim.keymap.set("n", "gd", "<cmd>TSToolsGoToSourceDefinition<cr>", { noremap = true, silent = true })
+				end,
+			})
+		end,
 		opts = {},
 	},
-	{ "dmmulroy/tsc.nvim", config = true, cmd = "TSC" },
+	{
+		"dmmulroy/tsc.nvim",
+		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+		config = true,
+		cmd = "TSC",
+	},
+	{
+		"dmmulroy/ts-error-translator.nvim",
+		-- enabled = false,
+		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+		config = true,
+	},
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },

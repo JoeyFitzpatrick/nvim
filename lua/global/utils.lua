@@ -32,3 +32,14 @@ end, { noremap = true, desc = "[C]ustom [l]inter" })
 vim.keymap.set("n", "<leader>cf", function()
 	run_command("format")
 end, { noremap = true, desc = "[C]ustom [f]ormatter" })
+
+local M = {}
+M.run_command = run_command
+M.get_visual_selection = function()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg("v")
+	vim.fn.setreg("v", {})
+	return text or ""
+end
+
+return M
