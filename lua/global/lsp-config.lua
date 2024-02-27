@@ -37,6 +37,7 @@ require("mason-lspconfig").setup({
 			require("lspconfig").lua_ls.setup(lua_opts)
 		end,
 		eslint = function()
+			-- Docs for this setup is here: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
 			require("lspconfig").eslint.setup({
 				rulesCustomizations = {
 					rule = "prettier/prettier",

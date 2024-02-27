@@ -211,12 +211,22 @@ return {
 			"TmuxNavigatePrevious",
 		},
 		keys = {
-			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+			-- { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
 			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
 			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
 			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
 			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
 		},
+		config = function()
+			set("n", "<c-h>", function()
+				local column = vim.api.nvim_win_get_position(0)[2]
+				if column == 0 then
+					vim.cmd("wincmd h")
+				else
+					vim.cmd("TmuxNavigateLeft")
+				end
+			end)
+		end,
 	},
 	{
 		"haya14busa/vim-asterisk",
