@@ -15,6 +15,12 @@ lsp_zero.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>rn", function()
 		vim.lsp.buf.rename()
 	end, { desc = "Lsp Rename" })
+	vim.keymap.set("n", "<leader>ic", function()
+		vim.lsp.buf.incoming_calls()
+	end)
+	vim.keymap.set("n", "<leader>oc", function()
+		vim.lsp.buf.outgoing_calls()
+	end)
 end)
 
 -- to learn how to use mason.nvim with lsp-zero
