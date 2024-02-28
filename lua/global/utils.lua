@@ -33,6 +33,49 @@ vim.keymap.set("n", "<leader>cf", function()
 	run_command("format")
 end, { noremap = true, desc = "[C]ustom [f]ormatter" })
 
+local loaded_clients = {}
+
+local function trigger_workspace_diagnostics(client, bufnr, workspace_files)
+	if vim.tbl_contains(loaded_clients, client.id) then
+		return
+	end
+	table.insert(loaded_clients, client.id)
+
+	if not vim.tbl_get(client.server_capabilities, "textDocumentSync", "openClose") then
+		return
+	end
+
+	for _, path in ipairs(workspace_files) do
+		if path == vim.api.nvim_buf_get_name(bufnr) then
+			goto continue
+		end
+
+		local filetype = vim.filetype.match({ filename = path })
+
+		if not vim.tbl_contains(client.config.filetypes, filetype) then
+			goto continue
+		end
+
+		local params = {
+			textDocument = {
+				uri = vim.uri_from_fname(path),
+				version = 0,
+				text = vim.fn.join(vim.fn.readfile(path), "\n"),
+				languageId = filetype,
+			},
+		}
+		client.notify("textDocument/didOpen", params)
+
+		::continue::
+	end
+end
+
+local workspace_files = vim.fn.split(vim.fn.system("fd . 'src/shared'"), "\n")
+-- convert paths to absolute
+for i, path in ipairs(workspace_files) do
+	workspace_files[i] = vim.fn.fnamemodify(path, ":p")
+end
+
 local M = {}
 M.run_command = run_command
 M.get_visual_selection = function()
@@ -41,5 +84,7 @@ M.get_visual_selection = function()
 	vim.fn.setreg("v", {})
 	return text or ""
 end
+M.trigger_workspace_diagnostics = trigger_workspace_diagnostics
+M.workspace_files = workspace_files
 
 return M

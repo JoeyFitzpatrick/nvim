@@ -1,7 +1,6 @@
 local set = vim.keymap.set
 
 return {
-
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "tpope/vim-commentary", event = "VeryLazy" },
 	{ "rhysd/clever-f.vim", event = "BufEnter" },

@@ -20,9 +20,13 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		config = function()
 			require("typescript-tools").setup({
-				on_attach = function()
+				on_attach = function(client, bufnr)
 					vim.keymap.set("n", "<leader>ts", ":TSTools", { noremap = true, silent = false })
 					vim.keymap.set("n", "gd", "<cmd>TSToolsGoToSourceDefinition<cr>", { noremap = true, silent = true })
+					-- can't get workspace diagnostics working :(
+					-- Here's an article that could help: https://artem.rocks/posts/workspace_diagnostics_nvim
+					-- local files = require("global.utils").workspace_files
+					-- require("global.utils").trigger_workspace_diagnostics(client, bufnr, files)
 				end,
 			})
 		end,
