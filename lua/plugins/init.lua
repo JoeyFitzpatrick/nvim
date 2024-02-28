@@ -4,10 +4,7 @@ return {
 
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "tpope/vim-commentary", event = "VeryLazy" },
-	{ "tpope/vim-repeat", event = "VeryLazy" },
 	{ "rhysd/clever-f.vim", event = "BufEnter" },
-	{ "jinh0/eyeliner.nvim", event = "BufEnter", enabled = false },
-	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, config = true },
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{
 		"tpope/vim-fugitive",
@@ -32,6 +29,7 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
+			{ "kkharji/sqlite.lua", module = "sqlite" },
 		},
 		config = function()
 			set("n", "<leader>tn", "<cmd>Telescope neoclip<CR>", { silent = true })
@@ -63,33 +61,6 @@ return {
 			require("harpoon").setup({
 				menu = {
 					width = vim.api.nvim_win_get_width(0) - 4,
-				},
-			})
-		end,
-	},
-	{
-		"LeonHeidelbach/trailblazer.nvim",
-		config = function()
-			require("trailblazer").setup({
-				mappings = { -- rename this to "force_mappings" to completely override default mappings and not merge with them
-					nv = { -- Mode union: normal & visual mode. Can be extended by adding i, x, ...
-						motions = {
-							new_trail_mark = "<C-t>",
-							track_back = "<C-b>",
-							peek_move_next_down = "<C-J>",
-							peek_move_previous_up = "<C-K>",
-							move_to_nearest = "<C-n>",
-							toggle_trail_mark_list = "<C-m>",
-						},
-						actions = {
-							delete_all_trail_marks = "<C-L>",
-							paste_at_last_trail_mark = "<C-p>",
-							paste_at_all_trail_marks = "<C-P>",
-							switch_to_next_trail_mark_stack = "<C-.>",
-							switch_to_previous_trail_mark_stack = "<C-,>",
-							set_trail_mark_stack_sort_mode = "<C-s>",
-						},
-					},
 				},
 			})
 		end,

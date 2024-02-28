@@ -6,21 +6,6 @@ return {
 		"nvim-lua/plenary.nvim",
 		"fdschmidt93/telescope-egrepify.nvim",
 		{
-			"aaronhallaert/advanced-git-search.nvim",
-			dependencies = {
-				"nvim-telescope/telescope.nvim",
-				-- to show diff splits and open commits in browser
-				"tpope/vim-fugitive",
-				-- to open commits in browser with fugitive
-				"tpope/vim-rhubarb",
-			},
-
-			config = function()
-				vim.keymap.set("n", "<leader>tj", "<cmd>AdvancedGitSearch<CR>", { noremap = true, silent = true })
-				require("telescope").load_extension("advanced_git_search")
-			end,
-		},
-		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			event = "VeryLazy",
 			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
