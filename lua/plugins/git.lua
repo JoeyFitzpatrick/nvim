@@ -13,4 +13,9 @@ return {
 			)
 		end,
 	},
+	{
+		"rhysd/git-messenger.vim",
+		cmd = "GitMessenger",
+		keys = { { "<leader>km", "<cmd>GitMessenger<CR>", { desc = "Git messenger" } } },
+	},
 }
