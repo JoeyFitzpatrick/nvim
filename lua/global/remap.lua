@@ -52,6 +52,17 @@ set("n", "cc", '"_cc')
 set("v", "p", '"0p')
 set("v", "P", '"0P')
 
+-- better tab navigation
+set("n", "<leader><Tab>", "gt", { noremap = true, silent = true })
+set("n", "<C-q>", function()
+	if #vim.api.nvim_list_tabpages() <= 1 then
+		vim.cmd("qa")
+	else
+		vim.cmd("tabclose")
+	end
+end, { silent = true })
+set("n", "<leader>te", "<cmd>tabedit %<CR>", { noremap = true, silent = true })
+
 -- Same thing for x
 vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
 
@@ -109,9 +120,6 @@ set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result
 -- Save with ctrl+w
 set("n", "<C-w>", "<cmd>wa<CR>")
 set("i", "<C-w>", "<esc><cmd>wa<CR>")
-
--- Quit with ctrl+q
-set("n", "<c-q>", ":q<CR>", { noremap = true })
 
 -- quickfix
 -- Create an autocmd for FileType with pattern "qf"

@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
-vim.o.cmdheight = 0
+vim.o.cmdheight = 2
 
 -- Saved macros, useful for persisting macros
 vim.cmd([[

@@ -6,13 +6,6 @@ return {
 	{ "rhysd/clever-f.vim", event = "BufEnter" },
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{
-		"tpope/vim-fugitive",
-		event = "VeryLazy",
-		config = function()
-			set("n", "<leader>J", "<cmd>tab Git<CR>", { silent = true })
-		end,
-	},
-	{
 		"mg979/vim-visual-multi",
 		branch = "master",
 		event = "BufEnter",
