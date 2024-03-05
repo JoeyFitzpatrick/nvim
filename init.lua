@@ -8,6 +8,12 @@ vim.g.nvim_tree_disable_netrw = 0
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
+nmap = function(lhs, rhs, desc, opts)
+	opts = opts or {}
+	opts.desc = desc
+	vim.keymap.set("n", lhs, rhs, opts)
+end
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -33,7 +39,7 @@ require("lazy").setup("plugins", {
 require("global.set")
 require("global.remap")
 require("global.autocmd")
-require("global.plugin-remaps")
+-- require("global.plugin-remaps")
 require("global.lsp-config")
 require("global.utils")
 require("global.helpers.tmux")

@@ -23,6 +23,6 @@ local function run_in_tmux_pane(command)
 	end
 end
 
-vim.keymap.set("n", "<leader>mt", function()
+vim.keymap.set("n", "<leader>xt", function()
 	run_in_tmux_pane("test")
 end, { noremap = true, desc = "Run tests in tmux pane" })

@@ -2,20 +2,23 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.opt.relativenumber = true
+vim.opt.showmode = false
 
 vim.opt.ignorecase = true
-vim.o.smartcase = true
+vim.opt.smartcase = true
 vim.opt.autoindent = true
 vim.opt.scrolloff = 8
+vim.opt.inccommand = "split"
 
-vim.o.undofile = true
+vim.opt.undofile = true
 
-vim.o.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menuone,noselect"
 
-vim.o.updatetime = 300
+vim.opt.updatetime = 300
 
 vim.opt.cursorline = true
 -- vim.cmd([[hi CursorLine guibg=#282837]])

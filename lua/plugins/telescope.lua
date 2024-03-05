@@ -20,7 +20,7 @@ return {
 		vim.keymap.set("v", "<leader>g", builtin.grep_string, {})
 		vim.keymap.set("n", "<leader>H", builtin.help_tags, {})
 		vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
-		vim.keymap.set("n", "<leader>M", builtin.marks, {})
+		-- vim.keymap.set("n", "<leader>M", builtin.marks, {})
 
 		-- Enable telescope fzf native, if installed
 		pcall(require("telescope").load_extension, "fzf")
