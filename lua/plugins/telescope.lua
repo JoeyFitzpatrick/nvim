@@ -74,21 +74,6 @@ return {
 
 		local actions = require("telescope.actions")
 
-		local telescope_harpoon = {}
-		local utils = require("telescope.actions.utils")
-		telescope_harpoon.mark_file = function(tb)
-			actions.drop_all(tb)
-			actions.add_selection(tb)
-			utils.map_selections(tb, function(selection)
-				local s = selection[1]
-				if s:find(":") then
-					s = s:match("^(.-):")
-				end
-				pcall(require("harpoon.mark").add_file, s)
-			end)
-			actions.move_selection_worse(tb)
-			actions.remove_selection(tb)
-		end
 		require("telescope").setup({
 			defaults = {
 				layout_config = {
@@ -98,7 +83,6 @@ return {
 				mappings = {
 					i = {
 						["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
-						["<C-a>"] = telescope_harpoon.mark_file,
 						["<esc>"] = actions.close,
 					},
 				},
