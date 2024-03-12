@@ -39,7 +39,6 @@ require("lazy").setup("plugins", {
 require("global.set")
 require("global.remap")
 require("global.autocmd")
--- require("global.plugin-remaps")
 require("global.lsp-config")
 require("global.utils")
 require("global.helpers.tmux")

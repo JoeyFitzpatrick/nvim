@@ -6,6 +6,8 @@ return {
 	{ "tpope/vim-sleuth", event = "VeryLazy" },
 	{ "rhysd/clever-f.vim", event = "BufEnter" },
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
+	{ "hrsh7th/cmp-cmdline", event = "VeryLazy" },
+	{ "girishji/fFtT.vim", event = "VeryLazy" },
 	{ "nvim-lualine/lualine.nvim", config = true, dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{
 		"mg979/vim-visual-multi",
@@ -45,18 +47,6 @@ return {
 			end
 			vim.cmd("command Light silent lua light()")
 			vim.cmd("command Dark silent lua dark()")
-		end,
-	},
-	{
-		"ThePrimeagen/harpoon",
-		event = "VeryLazy",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("harpoon").setup({
-				menu = {
-					width = vim.api.nvim_win_get_width(0) - 4,
-				},
-			})
 		end,
 	},
 	{
@@ -205,5 +195,29 @@ return {
                             let g:asterisk#keeppos = 1
                         ]])
 		end,
+	},
+	{
+		"luckasRanarison/nvim-devdocs",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		opts = {
+			previewer_cmd = "glow",
+			cmd_args = { "-s", "dark", "-w", "80" },
+		},
+		keys = {
+			{ "<leader>td", "<cmd>DevdocsOpenCurrentFloat<CR>", desc = "Open Devdocs for current file type" },
+			{ "<leader>tD", "<cmd>DevdocsOpenFloat<CR>", desc = "Open Devdocs for any file type" },
+		},
+		cmd = {
+			"DevdocsFetch",
+			"DevdocsInstall",
+			"DevdocsUninstall",
+			"DevdocsOpen",
+			"DevdocsOpenCurrent",
+			"DevdocsUpdateAll",
+		},
 	},
 }

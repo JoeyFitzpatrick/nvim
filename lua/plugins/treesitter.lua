@@ -40,11 +40,15 @@ return {
 							["if"] = "@function.inner",
 							["ac"] = "@class.outer",
 							["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+							["is"] = { query = "@scope.inner", desc = "Select inner part of a scope" },
+							["as"] = { query = "@scope.outer", desc = "Select outer part of a scope" },
 						},
 						selection_modes = {
 							["@parameter.outer"] = "v", -- charwise
 							["@function.outer"] = "V", -- linewise
 							["@class.outer"] = "<c-v>", -- blockwise
+							["@scope.outer"] = "V",
+							["@scope.inner"] = "v",
 						},
 						include_surrounding_whitespace = false,
 					},
