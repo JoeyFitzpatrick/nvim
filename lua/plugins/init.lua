@@ -8,6 +8,7 @@ return {
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{ "hrsh7th/cmp-cmdline", event = "VeryLazy" },
 	{ "girishji/fFtT.vim", event = "VeryLazy" },
+	{ "folke/neodev.nvim", opts = {} },
 	{ "nvim-lualine/lualine.nvim", config = true, dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{
 		"mg979/vim-visual-multi",
@@ -219,5 +220,57 @@ return {
 			"DevdocsOpenCurrent",
 			"DevdocsUpdateAll",
 		},
+	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		event = "BufEnter",
+		config = function()
+			require("todo-comments").setup({})
+			nmap("<leader>lt", "<cmd>TodoTrouble<CR>", "Todos")
+		end,
+	},
+	-- lazy.nvim
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+		config = function()
+			require("noice").setup({
+				lsp = {
+					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+					override = {
+						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+						["vim.lsp.util.stylize_markdown"] = true,
+						["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+					},
+				},
+				-- you can enable a preset for easier configuration
+				presets = {
+					bottom_search = true, -- use a classic bottom cmdline for search
+					command_palette = true, -- position the cmdline and popupmenu together
+					long_message_to_split = true, -- long messages will be sent to a split
+					inc_rename = false, -- enables an input dialog for inc-rename.nvim
+					lsp_doc_border = false, -- add a border to hover docs and signature help
+				},
+				routes = {
+					{
+						filter = {
+							event = "msg_show",
+							kind = "",
+							find = "written",
+						},
+						opts = { skip = true },
+					},
+					{
+						view = "notify",
+						filter = { event = "msg_showmode" },
+					},
+				},
+			})
+		end,
 	},
 }

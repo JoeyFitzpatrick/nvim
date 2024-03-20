@@ -47,15 +47,10 @@ return {
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+		event = "VeryLazy",
 		keys = {
 			{ "<leader>ld", "<cmd>TroubleToggle document_diagnostics<CR>", desc = "Document Diagnostics" },
 			{ "<leader>lw", "<cmd>TroubleToggle workspace_diagnostics<CR>", desc = "Workspace Diagnostics" },
 		},
-	},
-	{
-		"linrongbin16/lsp-progress.nvim",
-		config = function()
-			require("lsp-progress").setup()
-		end,
 	},
 }
