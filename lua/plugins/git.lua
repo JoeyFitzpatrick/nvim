@@ -1,5 +1,9 @@
 return {
-	{ "tpope/vim-fugitive", cmd = { "Git", "G" } },
+	{
+		"tpope/vim-fugitive",
+		cmd = { "Git", "G" },
+		keys = { { "<leader>kl", "<cmd>Git blame -w -C -C -C<CR>", desc = "Git B[l]ame (with helpful args)" } },
+	},
 	{
 		"sindrets/diffview.nvim",
 		event = "VeryLazy",

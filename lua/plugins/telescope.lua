@@ -74,6 +74,9 @@ return {
 
 		local actions = require("telescope.actions")
 
+		vim.keymap.set("n", "<leader>ks", require("global.telescope-custom").git_commands, { desc = "Git commands" })
+		vim.keymap.set("n", "<leader>kb", require("global.telescope-custom").git_branches, { desc = "Git branches" })
+
 		require("telescope").setup({
 			defaults = {
 				layout_config = {

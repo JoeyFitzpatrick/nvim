@@ -92,6 +92,14 @@
     },
     "locpcall": {
         "prefix": "lpca",
+        "body": [
+            "local M = {}\n\n\n",
+            "return M"
+        ],
+        "description": "module boilerplate"
+    },
+    "local-M": {
+        "prefix": "lM",
         "body": ["local ${1:status}, ${2:err_or_value} = pcall(${3:function})"],
         "description": "Protect call a function as a variable"
     }

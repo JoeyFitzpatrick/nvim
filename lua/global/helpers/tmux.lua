@@ -23,6 +23,23 @@ local function run_in_tmux_pane(command)
 	end
 end
 
+local function run_raw_command_in_tmux_pane(command)
+	os.execute("tmux split-window -h")
+	os.execute("tmux send-keys '" .. command .. "' Enter")
+end
+
 vim.keymap.set("n", "<leader>xt", function()
 	run_in_tmux_pane("test")
 end, { noremap = true, desc = "Run tests in tmux pane" })
+
+vim.keymap.set("n", "<leader>kc", function()
+	vim.ui.input({ prompt = "enter commit message: " }, function(input)
+		if input == nil or input == "" then
+			vim.notify("No commit message provided, aborting...")
+			return
+		end
+		-- Escape spaces in the command to work with tmux
+		input = '"' .. input .. '"'
+		run_raw_command_in_tmux_pane("git commit -m " .. input)
+	end)
+end, { noremap = true, desc = "Commit in tmux pane" })
