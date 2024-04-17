@@ -2,6 +2,7 @@ local set = vim.keymap.set
 
 return {
 	{ "tpope/vim-surround", event = "VeryLazy" },
+	{ "tpope/vim-commentary", event = "VeryLazy" },
 	{ "tpope/vim-sleuth", event = "VeryLazy" },
 	{ "rhysd/clever-f.vim", event = "BufEnter" },
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
