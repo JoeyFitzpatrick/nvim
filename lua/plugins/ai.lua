@@ -30,7 +30,6 @@ return {
 		config = function()
 			require("butterfish")
 		end,
-		dependencies = { "tpope/vim-commentary" },
 	},
 	{ "github/copilot.vim", lazy = false, event = "VeryLazy" },
 	{
