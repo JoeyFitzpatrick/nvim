@@ -1,10 +1,5 @@
 return {
 	{
-		"tpope/vim-fugitive",
-		cmd = { "Git", "G" },
-		keys = { { "<leader>kl", "<cmd>Git blame -w -C -C -C<CR>", desc = "Git B[l]ame (with helpful args)" } },
-	},
-	{
 		"sindrets/diffview.nvim",
 		event = "VeryLazy",
 		config = function()
@@ -17,7 +12,6 @@ return {
 			)
 		end,
 	},
-
 	{
 		"NeogitOrg/neogit",
 		dependencies = {
@@ -29,5 +23,17 @@ return {
 			"ibhagwan/fzf-lua", -- optional
 		},
 		config = true,
+	},
+	{
+		"FabijanZulj/blame.nvim",
+		config = function()
+			require("blame").setup({
+				date_format = "%m/%d/%Y",
+			})
+		end,
+		keys = {
+			{ "<leader>kl", "<cmd>BlameToggle<CR>", desc = "Toggle blame window" },
+			{ "<leader>kL", "<cmd>BlameToggle virtual<CR>", desc = "Toggle virtual blame" },
+		},
 	},
 }

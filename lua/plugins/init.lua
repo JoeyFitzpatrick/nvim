@@ -3,7 +3,6 @@ local set = vim.keymap.set
 return {
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "tpope/vim-commentary", event = "VeryLazy" },
-	{ "tpope/vim-sleuth", event = "VeryLazy" },
 	{ "rhysd/clever-f.vim", event = "BufEnter" },
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{ "hrsh7th/cmp-cmdline", event = "VeryLazy" },
@@ -48,18 +47,6 @@ return {
 			end
 			vim.cmd("command Light silent lua light()")
 			vim.cmd("command Dark silent lua dark()")
-		end,
-	},
-	{
-		"chentoast/marks.nvim",
-		keys = { "m" },
-		config = function()
-			require("marks").setup({
-				mappings = {
-					next = "<A-m>",
-					prev = "<A-M>",
-				},
-			})
 		end,
 	},
 	{
@@ -230,7 +217,6 @@ return {
 			nmap("<leader>lt", "<cmd>TodoTrouble<CR>", "Todos")
 		end,
 	},
-	-- lazy.nvim
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
