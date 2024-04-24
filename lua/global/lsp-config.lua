@@ -4,7 +4,7 @@ lsp_zero.on_attach(function(client, bufnr)
 	-- see :help lsp-zero-keybindings
 	-- to learn the available actions
 	lsp_zero.default_keymaps({ buffer = bufnr })
-	vim.keymap.set("n", "<leader>e", function()
+	vim.keymap.set("n", "<leader>le", function()
 		vim.diagnostic.open_float()
 	end)
 	vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Lsp Restart" })
@@ -22,9 +22,6 @@ lsp_zero.on_attach(function(client, bufnr)
 		vim.lsp.buf.outgoing_calls()
 	end)
 end)
-
--- to learn how to use mason.nvim with lsp-zero
--- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guide/integrate-with-mason-nvim.md
 
 local servers = {
 	"pyright",
@@ -55,7 +52,7 @@ require("mason-lspconfig").setup({
 })
 
 local cmp = require("cmp")
-local cmp_format = require("lsp-zero").cmp_format()
+local cmp_format = require("lsp-zero").cmp_format({})
 
 cmp.setup({
 	sources = {
@@ -90,7 +87,7 @@ cmp.setup({
 	},
 })
 
-require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
+-- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 
 -- `/` cmdline setup.
 cmp.setup.cmdline("/", {

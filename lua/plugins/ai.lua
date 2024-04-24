@@ -40,7 +40,7 @@ return {
 		opts = {},
 		keys = {
 			{
-				"aw",
+				"<leader>aw",
 				mode = { "n", "x" },
 				function()
 					require("wtf").ai()
@@ -49,7 +49,7 @@ return {
 			},
 			{
 				mode = { "n" },
-				"aW",
+				"<leader>aW",
 				function()
 					require("wtf").search()
 				end,
