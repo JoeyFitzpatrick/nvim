@@ -55,10 +55,18 @@ local cmp = require("cmp")
 local cmp_format = require("lsp-zero").cmp_format({})
 
 cmp.setup({
-	sources = {
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+			-- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+		end,
+	},
+	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
-	},
+	}, {
+		{ name = "buffer" },
+	}),
 	mapping = {
 		["<C-k>"] = cmp.mapping(function()
 			if cmp.visible() then
