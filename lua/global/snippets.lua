@@ -51,17 +51,38 @@ ls.add_snippets("lua", {
 		i(0),
 		t({ "", "}" }),
 	}),
-	s(
-		-- example of a snippet with filename
-		"fi",
-		f(function(args, snip)
-			local env = snip.env
-			return env.TM_FILENAME:match("^[^.]*")
-		end, {})
-	),
+	-- s(
+	-- 	-- example of a snippet with filename
+	-- 	"fi",
+	-- 	f(function(args, snip)
+	-- 		local env = snip.env
+	-- 		return env.TM_FILENAME:match("^[^.]*")
+	-- 	end, {})
+	-- ),
 	s("mod", {
 		t({ "local M = {}", "", "", "", "return M" }),
 	}),
+})
+
+ls.filetype_extend("typescript", { "javascript" })
+ls.filetype_extend("typescriptreact", { "javascript" })
+ls.filetype_extend("javascriptreact", { "javascript" })
+
+ls.add_snippets("javascript", {
+	s(
+		-- example of a snippet with filename
+		"fi",
+		{
+			t("export function "),
+			f(function(args, snip)
+				local env = snip.env
+				return env.TM_FILENAME:match("^[^.]*")
+			end, {}),
+			t("("),
+			i(1, "args"),
+			t({ ") {", "\t", "}" }),
+		}
+	),
 })
 
 nmap("<leader><leader>s", function()
