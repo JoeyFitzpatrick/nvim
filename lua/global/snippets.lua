@@ -26,6 +26,10 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
+local function copy(args)
+	return args[1]
+end
+
 ls.add_snippets("all", {
 	s("t", {
 		-- equivalent to "${1:cond} ? ${2:then} : ${3:else}"
@@ -37,7 +41,36 @@ ls.add_snippets("all", {
 	}),
 })
 
-vim.keymap.set({ "i" }, "<C-e>", function()
+ls.add_snippets("lua", {
+	s("fn", {
+		t({ "", "function " }),
+		i(1),
+		t("("),
+		i(2, "int foo"),
+		t({ ") {", "\t" }),
+		i(0),
+		t({ "", "}" }),
+	}),
+	s(
+		-- example of a snippet with filename
+		"fi",
+		f(function(args, snip)
+			local env = snip.env
+			return env.TM_FILENAME:match("^[^.]*")
+		end, {})
+	),
+	s("mod", {
+		t({ "local M = {}", "", "", "", "return M" }),
+	}),
+})
+
+nmap("<leader><leader>s", function()
+	ls.cleanup()
+	vim.cmd("source ~/.config/nvim/lua/global/snippets.lua")
+	vim.print("Snippets reloaded")
+end, "reload snippets")
+
+vim.keymap.set({ "i" }, "<C-k>", function()
 	if ls.expand_or_jumpable() then
 		ls.expand_or_jump()
 	end
@@ -45,11 +78,11 @@ end, { silent = true })
 -- vim.keymap.set({ "i", "s" }, "<C-L>", function()
 -- 	ls.jump(1)
 -- end, { silent = true })
--- vim.keymap.set({ "i", "s" }, "<C-J>", function()
--- 	ls.jump(-1)
--- end, { silent = true })
--- vim.keymap.set({ "i", "s" }, "<C-E>", function()
--- 	if ls.choice_active() then
--- 		ls.change_choice(1)
--- 	end
--- end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-J>", function()
+	ls.jump(-1)
+end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-E>", function()
+	if ls.choice_active() then
+		ls.change_choice(1)
+	end
+end, { silent = true })

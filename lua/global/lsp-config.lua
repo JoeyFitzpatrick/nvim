@@ -68,20 +68,6 @@ cmp.setup({
 		{ name = "buffer" },
 	}),
 	mapping = {
-		["<C-k>"] = cmp.mapping(function()
-			if cmp.visible() then
-				cmp.select_prev_item({ behavior = "insert" })
-			else
-				cmp.complete()
-			end
-		end),
-		["<C-j>"] = cmp.mapping(function()
-			if cmp.visible() then
-				cmp.select_next_item({ behavior = "insert" })
-			else
-				cmp.complete()
-			end
-		end),
 		["<Enter>"] = cmp.mapping.confirm({ select = true }),
 		["<C-h>"] = cmp.mapping.complete(),
 		-- scroll up and down the documentation window
