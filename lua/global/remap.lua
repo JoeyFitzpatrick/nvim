@@ -146,6 +146,8 @@ set("n", "<leader>q", function()
 end, opts)
 set("n", "<A-n>", "<cmd>cnext<CR>", opts)
 set("n", "<A-p>", "<cmd>cprev<CR>", opts)
+set("n", "cn", "<cmd>cnext<CR>", opts)
+set("n", "cp", "<cmd>cprev<CR>", opts)
 
 vim.cmd([[
         imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")

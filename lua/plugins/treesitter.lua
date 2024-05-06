@@ -15,6 +15,8 @@ return {
 					"tsx",
 					"javascript",
 				},
+				ignore_install = {},
+				modules = {},
 				sync_install = false,
 				auto_install = true,
 				highlight = { enable = true },
@@ -53,6 +55,18 @@ return {
 						include_surrounding_whitespace = false,
 					},
 				},
+				textsubjects = {
+					enable = true,
+					-- prev_selection = ";", -- (Optional) keymap to select the previous selection
+					keymaps = {
+						["."] = "textsubjects-smart",
+						["o"] = "textsubjects-container-outer",
+						[","] = {
+							"textsubjects-container-inner",
+							desc = "Select inside containers (classes, functions, etc.)",
+						},
+					},
+				},
 			})
 		end,
 	},
@@ -61,5 +75,6 @@ return {
 		"windwp/nvim-ts-autotag",
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		"https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+		"RRethy/nvim-treesitter-textsubjects",
 	},
 }

@@ -1,100 +1,130 @@
 return {
-	"nvim-telescope/telescope.nvim",
-	tag = "0.1.5",
-	event = "VeryLazy",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"fdschmidt93/telescope-egrepify.nvim",
-		{
-			"nvim-telescope/telescope-fzf-native.nvim",
-			event = "VeryLazy",
-			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.5",
+		event = "VeryLazy",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"fdschmidt93/telescope-egrepify.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				event = "VeryLazy",
+				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+			},
 		},
-	},
-	config = function()
-		local builtin = require("telescope.builtin")
-		vim.keymap.set("n", "<leader>f", builtin.find_files, {})
-		vim.keymap.set("v", "<leader>f", function()
-			builtin.find_files({ default_text = require("global.utils").get_visual_selection() })
-		end, {})
-		vim.keymap.set("v", "<leader>g", builtin.grep_string, {})
-		vim.keymap.set("n", "<leader>H", builtin.help_tags, {})
-		vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
-		-- vim.keymap.set("n", "<leader>M", builtin.marks, {})
+		config = function()
+			local builtin = require("telescope.builtin")
+			vim.keymap.set("n", "<leader>f", function()
+				require("telescope").extensions.smart_open.smart_open({
+					cwd_only = true,
+					filename_first = true,
+				})
+			end, {})
+			-- vim.keymap.set("n", "<leader>f", builtin.find_files, {})
+			vim.keymap.set("v", "<leader>f", function()
+				builtin.find_files({ default_text = require("global.utils").get_visual_selection() })
+			end, {})
+			vim.keymap.set("v", "<leader>g", builtin.grep_string, {})
+			vim.keymap.set("n", "<leader>H", builtin.help_tags, {})
+			vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
+			-- vim.keymap.set("n", "<leader>M", builtin.marks, {})
 
-		-- Enable telescope fzf native, if installed
-		pcall(require("telescope").load_extension, "fzf")
+			-- Enable telescope fzf native, if installed
+			pcall(require("telescope").load_extension, "fzf")
 
-		require("telescope").load_extension("egrepify")
-		vim.keymap.set("n", "<leader>g", function()
-			require("telescope").extensions.egrepify.egrepify({})
-		end)
+			require("telescope").load_extension("egrepify")
+			vim.keymap.set("n", "<leader>g", function()
+				require("telescope").extensions.egrepify.egrepify({})
+			end)
 
-		vim.keymap.set("n", "<leader>/", function()
-			-- You can pass additional configuration to telescope to change theme, layout, etc.
-			require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-				winblend = 10,
-				previewer = false,
-			}))
-		end, { desc = "[/] Fuzzily search in current buffer" })
+			vim.keymap.set("n", "<leader>/", function()
+				-- You can pass additional configuration to telescope to change theme, layout, etc.
+				require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+					winblend = 10,
+					previewer = false,
+				}))
+			end, { desc = "[/] Fuzzily search in current buffer" })
 
-		-- In this case, we create a function that lets us more easily define mappings specific
-		-- for LSP related items. It sets the mode, buffer and description for us each time.
-		local nmap = function(keys, func, desc)
-			if desc then
-				desc = "LSP: " .. desc
+			-- In this case, we create a function that lets us more easily define mappings specific
+			-- for LSP related items. It sets the mode, buffer and description for us each time.
+			local nmap = function(keys, func, desc)
+				if desc then
+					desc = "LSP: " .. desc
+				end
+				vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 			end
-			vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-		end
 
-		nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-		nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols") -- This conflicts with current diagnostics remap
-		nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-		vim.keymap.set("n", "<leader>tr", "<cmd>lua require('telescope.builtin').resume()<cr>")
+			nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+			nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols") -- This conflicts with current diagnostics remap
+			nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+			vim.keymap.set("n", "<leader>tr", "<cmd>lua require('telescope.builtin').resume()<cr>")
 
-		function vim.getVisualSelection()
-			vim.cmd('noau normal! "vy"')
-			local text = vim.fn.getreg("v")
-			vim.fn.setreg("v", {})
+			function vim.getVisualSelection()
+				vim.cmd('noau normal! "vy"')
+				local text = vim.fn.getreg("v")
+				vim.fn.setreg("v", {})
 
-			text = string.gsub(text, "\n", "")
-			if #text > 0 then
-				return text
-			else
-				return ""
+				text = string.gsub(text, "\n", "")
+				if #text > 0 then
+					return text
+				else
+					return ""
+				end
 			end
-		end
 
-		local opts = { noremap = true, silent = true }
+			local opts = { noremap = true, silent = true }
 
-		vim.keymap.set("v", "<space>g", function()
-			local text = vim.getVisualSelection()
-			builtin.live_grep({ default_text = text })
-		end, opts)
+			vim.keymap.set("v", "<space>g", function()
+				local text = vim.getVisualSelection()
+				builtin.live_grep({ default_text = text })
+			end, opts)
 
-		local actions = require("telescope.actions")
+			local actions = require("telescope.actions")
 
-		vim.keymap.set("n", "<leader>ks", require("global.telescope-custom").git_commands, { desc = "Git commands" })
-		vim.keymap.set("n", "<leader>kb", require("global.telescope-custom").git_branches, { desc = "Git branches" })
+			vim.keymap.set(
+				"n",
+				"<leader>ks",
+				require("global.telescope-custom").git_commands,
+				{ desc = "Git commands" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>kb",
+				require("global.telescope-custom").git_branches,
+				{ desc = "Git branches" }
+			)
 
-		require("telescope").setup({
-			defaults = {
-				layout_config = {
-					vertical = { width = 0.9, preview_cutoff = 0 },
-				},
-				layout_strategy = "vertical",
-				mappings = {
-					i = {
-						["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
-						["<esc>"] = actions.close,
+			require("telescope").setup({
+				defaults = {
+					layout_config = {
+						vertical = { width = 0.9, preview_cutoff = 0 },
+					},
+					layout_strategy = "vertical",
+					mappings = {
+						i = {
+							["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
+							["<esc>"] = actions.close,
+						},
 					},
 				},
-			},
-			extensions = {
-				egrepify = {
-					permutations = true,
+				extensions = {
+					egrepify = {
+						permutations = true,
+					},
 				},
-			},
-		})
-	end,
+			})
+		end,
+	},
+	{
+		"danielfalk/smart-open.nvim",
+		branch = "0.2.x",
+		config = function()
+			require("telescope").load_extension("smart_open")
+		end,
+		dependencies = {
+			"kkharji/sqlite.lua",
+			-- Optional.  If installed, native fzy will be used when match_algorithm is fzy
+			{ "nvim-telescope/telescope-fzy-native.nvim" },
+		},
+	},
 }
