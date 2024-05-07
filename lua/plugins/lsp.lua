@@ -72,4 +72,17 @@ return {
 			{ "<leader>lw", "<cmd>TroubleToggle workspace_diagnostics<CR>", desc = "Workspace Diagnostics" },
 		},
 	},
+	{
+		"danymat/neogen",
+		version = "*",
+		config = function()
+			require("neogen").setup({})
+			nmap(
+				"<Leader>lg",
+				":lua require('neogen').generate()<CR>",
+				"Generate annotation",
+				{ noremap = true, silent = true }
+			)
+		end,
+	},
 }

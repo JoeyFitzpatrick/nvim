@@ -24,6 +24,7 @@ return {
 			vim.keymap.set("v", "<leader>f", function()
 				builtin.find_files({ default_text = require("global.utils").get_visual_selection() })
 			end, {})
+			vim.keymap.set("n", "<leader>g", builtin.live_grep, {})
 			vim.keymap.set("v", "<leader>g", builtin.grep_string, {})
 			vim.keymap.set("n", "<leader>H", builtin.help_tags, {})
 			vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
@@ -33,7 +34,7 @@ return {
 			pcall(require("telescope").load_extension, "fzf")
 
 			require("telescope").load_extension("egrepify")
-			vim.keymap.set("n", "<leader>g", function()
+			vim.keymap.set("n", "<leader>G", function()
 				require("telescope").extensions.egrepify.egrepify({})
 			end)
 
@@ -55,7 +56,7 @@ return {
 			end
 
 			nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-			nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols") -- This conflicts with current diagnostics remap
+			nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 			nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 			vim.keymap.set("n", "<leader>tr", "<cmd>lua require('telescope.builtin').resume()<cr>")
 
@@ -97,9 +98,10 @@ return {
 			require("telescope").setup({
 				defaults = {
 					layout_config = {
-						vertical = { width = 0.9, preview_cutoff = 0 },
+						horizontal = { width = 0.95, preview_width = 0.6, preview_cutoff = 0 },
 					},
-					layout_strategy = "vertical",
+					layout_strategy = "horizontal",
+					path_display = { "smart" },
 					mappings = {
 						i = {
 							["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
@@ -110,6 +112,7 @@ return {
 				extensions = {
 					egrepify = {
 						permutations = true,
+						title = false,
 					},
 				},
 			})

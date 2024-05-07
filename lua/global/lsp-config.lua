@@ -37,6 +37,7 @@ require("mason-lspconfig").setup({
 		lua_ls = function()
 			-- (Optional) Configure lua language server for neovim
 			local lua_opts = lsp_zero.nvim_lua_ls()
+			lua_opts.settings.Lua.workspace.library = vim.api.nvim_get_runtime_file("lua", true)
 			require("lspconfig").lua_ls.setup(lua_opts)
 		end,
 		eslint = function()
