@@ -60,7 +60,7 @@ return {
 					-- prev_selection = ";", -- (Optional) keymap to select the previous selection
 					keymaps = {
 						["."] = "textsubjects-smart",
-						["o"] = "textsubjects-container-outer",
+						-- ["o"] = "textsubjects-container-outer",
 						[","] = {
 							"textsubjects-container-inner",
 							desc = "Select inside containers (classes, functions, etc.)",

@@ -1,8 +1,34 @@
+local tmux_pane_id = nil
+
+local function tmux_split()
+	if tmux_pane_id == nil then
+		os.execute("tmux split-window -h")
+		tmux_pane_id = vim.fn.system("tmux display-message -p '#D'"):gsub("\n", "")
+	else
+		os.execute("tmux select-pane -t " .. tmux_pane_id)
+		os.execute("tmux send-keys 'C-z' Enter 'clear' Enter")
+	end
+end
+
+local function tmux_close_split()
+	if tmux_pane_id ~= nil then
+		os.execute("tmux kill-pane -t " .. tmux_pane_id)
+		tmux_pane_id = nil
+	end
+end
+
 local typescript_commands = {
-	test = "pnpm vitest",
+	test = function(filename)
+		local path = vim.api.nvim_buf_get_name(0)
+		if string.match(path, "e2e") then
+			return "pnpm test:e2e --ui " .. filename
+		else
+			return "pnpm vitest " .. filename
+		end
+	end,
 }
 
-local function run_in_tmux_pane(command)
+local function run_in_tmux_pane(command_type)
 	local filetype = vim.bo.filetype
 	local full_path = vim.api.nvim_buf_get_name(0)
 	local filename = full_path:match("^.+/(.+)$")
@@ -12,21 +38,26 @@ local function run_in_tmux_pane(command)
 		javascriptreact = typescript_commands,
 		typescriptreact = typescript_commands,
 	}
-
-	if commands[filetype] ~= nil and commands[filetype][command] ~= nil then
-		local full_command = commands[filetype][command] .. " " .. filename
-		os.execute("tmux split-window -h")
-		os.execute("tmux send-keys '" .. full_command .. "' Enter")
-		os.execute("tmux select-pane -L")
-	else
-		print("No command found for " .. filetype .. " file type and command " .. command)
+	if commands[filetype] == nil or commands[filetype][command_type] == nil then
+		print("No command found for " .. filetype .. " file type")
+		return
 	end
+
+	local cmd = commands[filetype][command_type]
+	local full_command = cmd(filename)
+	tmux_split()
+	os.execute("tmux send-keys '" .. full_command .. "' Enter")
+	os.execute("tmux select-pane -L")
 end
 
 local function run_raw_command_in_tmux_pane(command)
-	os.execute("tmux split-window -h")
+	tmux_split()
 	os.execute("tmux send-keys '" .. command .. "' Enter")
 end
+
+vim.keymap.set("n", "<leader>xx", function()
+	tmux_close_split()
+end, { noremap = true, desc = "Close tmux split" })
 
 vim.keymap.set("n", "<leader>xt", function()
 	run_in_tmux_pane("test")
