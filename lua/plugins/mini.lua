@@ -2,9 +2,8 @@ return {
 	"echasnovski/mini.nvim",
 	version = false,
 	config = function()
-		require("mini.cursorword").setup()
+		require("mini.git").setup()
 		require("mini.files").setup({
-
 			mappings = {
 				close = "q",
 				go_in = "l",

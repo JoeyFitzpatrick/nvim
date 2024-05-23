@@ -149,6 +149,12 @@ set("n", "<A-p>", "<cmd>cprev<CR>", opts)
 set("n", "cn", "<cmd>cnext<CR>", opts)
 set("n", "cp", "<cmd>cprev<CR>", opts)
 
+set("n", "<leader>N", function()
+	local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":.")
+	vim.fn.setreg("+", filename)
+	print("Copied to clipboard: " .. filename)
+end)
+
 vim.cmd([[
         imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
         let g:copilot_no_tab_map = v:true

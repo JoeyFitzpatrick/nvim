@@ -6,7 +6,7 @@ local function tmux_split()
 		tmux_pane_id = vim.fn.system("tmux display-message -p '#D'"):gsub("\n", "")
 	else
 		os.execute("tmux select-pane -t " .. tmux_pane_id)
-		os.execute("tmux send-keys 'C-z' Enter 'clear' Enter")
+		os.execute("tmux send-keys 'C-c' Enter 'C-c' Enter 'clear' Enter")
 	end
 end
 
@@ -55,15 +55,15 @@ local function run_raw_command_in_tmux_pane(command)
 	os.execute("tmux send-keys '" .. command .. "' Enter")
 end
 
-vim.keymap.set("n", "<leader>xx", function()
+vim.keymap.set("n", "<leader>mx", function()
 	tmux_close_split()
 end, { noremap = true, desc = "Close tmux split" })
 
-vim.keymap.set("n", "<leader>xt", function()
+vim.keymap.set("n", "<leader>mt", function()
 	run_in_tmux_pane("test")
 end, { noremap = true, desc = "Run tests in tmux pane" })
 
-vim.keymap.set("n", "<leader>kc", function()
+vim.keymap.set("n", "<leader>mc", function()
 	vim.ui.input({ prompt = "enter commit message: " }, function(input)
 		if input == nil or input == "" then
 			vim.notify("No commit message provided, aborting...")

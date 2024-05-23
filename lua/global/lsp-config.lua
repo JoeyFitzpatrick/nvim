@@ -67,6 +67,7 @@ cmp.setup({
 		{ name = "luasnip" },
 	}, {
 		{ name = "buffer" },
+		{ name = "path" },
 	}),
 	mapping = {
 		["<Enter>"] = cmp.mapping.confirm({ select = true }),

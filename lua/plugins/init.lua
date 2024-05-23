@@ -33,17 +33,16 @@ return {
 		end,
 	},
 	{
-		"folke/tokyonight.nvim",
+		"rebelot/kanagawa.nvim",
 		lazy = false,
 		priority = 1000,
-		opts = {},
 		config = function()
-			vim.cmd("colorscheme tokyonight-moon")
+			vim.cmd("colorscheme kanagawa")
 			function light()
-				vim.cmd("set background=light | colorscheme tokyonight-day")
+				vim.cmd("set background=light | colorscheme kanagawa-lotus")
 			end
 			function dark()
-				vim.cmd("set background=dark | colorscheme tokyonight-moon")
+				vim.cmd("set background=dark | colorscheme kanagawa-wave")
 			end
 			vim.cmd("command Light silent lua light()")
 			vim.cmd("command Dark silent lua dark()")
