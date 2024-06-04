@@ -23,6 +23,11 @@ lsp_zero.on_attach(function(client, bufnr)
 	end)
 end)
 
+nmap("gr", "<cmd>Glance references<CR>", "Glance LSP references")
+nmap("gd", "<cmd>Glance definitions<CR>", "Glance LSP definitions")
+nmap("gy", "<cmd>Glance type_definitions<CR>", "Glance LSP type definitions")
+nmap("gm", "<cmd>Glance implementations<CR>", "Glance LSP implementations")
+
 local servers = {
 	"pyright",
 	"svelte",

@@ -33,6 +33,10 @@ return {
 			-- Enable telescope fzf native, if installed
 			pcall(require("telescope").load_extension, "fzf")
 
+			require("telescope").load_extension("git_worktree")
+			nmap("<leader>tw", require("telescope").extensions.git_worktree.git_worktrees, "Git worktrees")
+			nmap("<leader>tW", require("telescope").extensions.git_worktree.create_git_worktree, "Create git worktree")
+
 			require("telescope").load_extension("egrepify")
 			vim.keymap.set("n", "<leader>G", function()
 				require("telescope").extensions.egrepify.egrepify({})
@@ -55,7 +59,7 @@ return {
 				vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 			end
 
-			nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+			-- nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 			nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 			nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 			vim.keymap.set("n", "<leader>tr", "<cmd>lua require('telescope.builtin').resume()<cr>")
@@ -104,7 +108,7 @@ return {
 					path_display = { "smart" },
 					mappings = {
 						i = {
-							["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
+							["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 							["<esc>"] = actions.close,
 						},
 					},
