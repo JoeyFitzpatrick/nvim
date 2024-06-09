@@ -32,11 +32,6 @@ return {
 
 			-- Enable telescope fzf native, if installed
 			pcall(require("telescope").load_extension, "fzf")
-
-			require("telescope").load_extension("git_worktree")
-			nmap("<leader>tw", require("telescope").extensions.git_worktree.git_worktrees, "Git worktrees")
-			nmap("<leader>tW", require("telescope").extensions.git_worktree.create_git_worktree, "Create git worktree")
-
 			require("telescope").load_extension("egrepify")
 			vim.keymap.set("n", "<leader>G", function()
 				require("telescope").extensions.egrepify.egrepify({})
