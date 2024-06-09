@@ -7,7 +7,6 @@ return {
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{ "hrsh7th/cmp-cmdline", event = "VeryLazy" },
 	{ "girishji/fFtT.vim", event = "VeryLazy" },
-	{ "folke/neodev.nvim", opts = {} },
 	{ "nvim-lualine/lualine.nvim", config = true, dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{
 		"mg979/vim-visual-multi",
