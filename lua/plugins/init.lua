@@ -3,10 +3,8 @@ local set = vim.keymap.set
 return {
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "tpope/vim-commentary", event = "VeryLazy" },
-	{ "rhysd/clever-f.vim", event = "BufEnter" },
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{ "hrsh7th/cmp-cmdline", event = "VeryLazy" },
-	{ "girishji/fFtT.vim", event = "VeryLazy" },
 	{ "nvim-lualine/lualine.nvim", config = true, dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{
 		"mg979/vim-visual-multi",
