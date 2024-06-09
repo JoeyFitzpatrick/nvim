@@ -1,7 +1,7 @@
 local M = {}
 
 -- TODO: make brackets work
-local raw_special_chars = vim.fn.escape("{}()<>\"'`", "[]{}()<>\"'`")
+local raw_special_chars = vim.fn.escape("%[%]{}()<>\"'`", "{}()<>\"'`")
 local special_chars = "[" .. raw_special_chars .. "]"
 local special_chars_reverse = special_chars .. "[^" .. raw_special_chars .. "]*$"
 
