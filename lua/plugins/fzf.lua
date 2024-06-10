@@ -3,7 +3,15 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local fzf = require("fzf-lua")
-		nmap("<leader>F", fzf.files)
-		-- nmap("<leader>G", fzf.live_grep_glob)
+		fzf.setup({
+			winopts = {
+				height = 0.95,
+				width = 0.95, -- window width
+				row = 0.35, -- window row position (0=top, 1=bottom)
+				col = 0.50,
+			},
+		})
+		nmap("<leader>g", fzf.live_grep_glob)
+		nmap("<leader><leader>g", fzf.resume)
 	end,
 }
