@@ -181,30 +181,6 @@ return {
 		end,
 	},
 	{
-		"luckasRanarison/nvim-devdocs",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		opts = {
-			previewer_cmd = "glow",
-			cmd_args = { "-s", "dark", "-w", "80" },
-		},
-		keys = {
-			{ "<leader>td", "<cmd>DevdocsOpenCurrentFloat<CR>", desc = "Open Devdocs for current file type" },
-			{ "<leader>tD", "<cmd>DevdocsOpenFloat<CR>", desc = "Open Devdocs for any file type" },
-		},
-		cmd = {
-			"DevdocsFetch",
-			"DevdocsInstall",
-			"DevdocsUninstall",
-			"DevdocsOpen",
-			"DevdocsOpenCurrent",
-			"DevdocsUpdateAll",
-		},
-	},
-	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		event = "BufEnter",

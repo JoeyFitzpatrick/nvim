@@ -71,8 +71,23 @@ return {
 		end,
 	},
 	{
+
+		"https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+		config = function()
+			---@type rainbow_delimiters.config
+			vim.g.rainbow_delimiters = {
+				highlight = {
+					"RainbowDelimiterRed",
+					"RainbowDelimiterBlue",
+					"RainbowDelimiterGreen",
+					"RainbowDelimiterViolet",
+					"RainbowDelimiterCyan",
+				},
+			}
+		end,
+	},
+	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		"windwp/nvim-ts-autotag",
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		"https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
 		"RRethy/nvim-treesitter-textsubjects",

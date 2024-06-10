@@ -5,7 +5,6 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"fdschmidt93/telescope-egrepify.nvim",
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
 				event = "VeryLazy",
@@ -32,10 +31,6 @@ return {
 
 			-- Enable telescope fzf native, if installed
 			pcall(require("telescope").load_extension, "fzf")
-			require("telescope").load_extension("egrepify")
-			vim.keymap.set("n", "<leader>G", function()
-				require("telescope").extensions.egrepify.egrepify({})
-			end)
 
 			vim.keymap.set("n", "<leader>/", function()
 				-- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -106,12 +101,6 @@ return {
 							["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 							["<esc>"] = actions.close,
 						},
-					},
-				},
-				extensions = {
-					egrepify = {
-						permutations = true,
-						title = false,
 					},
 				},
 			})
