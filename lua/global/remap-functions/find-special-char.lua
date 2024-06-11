@@ -51,7 +51,4 @@ M.find_previous_special_char = function()
 	end
 end
 
-nmap(")", M.find_next_special_char, "Find next special char")
-nmap("(", M.find_previous_special_char, "Find previous special char")
-
 return M

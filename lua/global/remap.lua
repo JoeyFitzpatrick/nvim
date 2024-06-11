@@ -155,6 +155,9 @@ set("n", "<leader>N", function()
 	print("Copied to clipboard: " .. filename)
 end)
 
+nmap(")", require("global.remap-functions").find_next_special_char, "Find next special char")
+nmap("(", require("global.remap-functions").find_previous_special_char, "Find previous special char")
+
 vim.cmd([[
         imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
         let g:copilot_no_tab_map = v:true
