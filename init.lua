@@ -27,9 +27,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- this is here because vim-visual-multi is weird
-require("global.visual-multi")
-
 require("lazy").setup("plugins", {
 	change_detection = {
 		notify = false,

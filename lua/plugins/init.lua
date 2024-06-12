@@ -5,18 +5,6 @@ return {
 	{ "tpope/vim-commentary", event = "VeryLazy" },
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{ "hrsh7th/cmp-cmdline", event = "VeryLazy" },
-	{ "nvim-lualine/lualine.nvim", config = true, dependencies = { "nvim-tree/nvim-web-devicons" } },
-	{
-		"mg979/vim-visual-multi",
-		branch = "master",
-		event = "BufEnter",
-	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		event = "BufEnter",
-		opts = { indent = { char = { "│" } } },
-	},
 	{
 		"AckslD/nvim-neoclip.lua",
 		event = "VeryLazy",
@@ -95,21 +83,6 @@ return {
 				},
 			},
 		},
-	},
-	{
-		"nvim-pack/nvim-spectre",
-		build = false,
-		cmd = "Spectre",
-		opts = { open_cmd = "noswapfile vnew" },
-		-- keys = {
-		-- 	{
-		-- 		"<leader>sr",
-		-- 		function()
-		-- 			require("spectre").open()
-		-- 		end,
-		-- 		desc = "Replace in files (Spectre)",
-		-- 	},
-		-- },
 	},
 	{
 		"johmsalas/text-case.nvim",
