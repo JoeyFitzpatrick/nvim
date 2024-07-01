@@ -34,29 +34,6 @@ return {
 		end,
 	},
 	{
-		"nvim-tree/nvim-tree.lua",
-		version = "*",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("nvim-tree").setup({
-				view = { width = {} },
-				sync_root_with_cwd = true,
-				respect_buf_cwd = true,
-				update_focused_file = {
-					enable = true,
-					update_root = false,
-				},
-				filters = {
-					git_ignored = false,
-					custom = { "node_modules" },
-				},
-			})
-			set("n", "<leader>n", "<cmd>NvimTreeToggle<CR>", { silent = true })
-		end,
-	},
-	{
 		"kdheepak/lazygit.nvim",
 		event = "VeryLazy",
 		config = function()
@@ -102,15 +79,6 @@ return {
 		keys = {
 			{ "<leader>u", "<cmd>UndotreeToggle<CR>", { silent = true, desc = "Undo Tree" } },
 		},
-	},
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 500
-		end,
-		opts = {},
 	},
 	{
 		"christoomey/vim-tmux-navigator",
