@@ -104,10 +104,10 @@ set("v", "S", "<Plug>VSurround", { remap = false })
 set("v", "y", "ygv<esc>", { remap = false })
 
 -- better navigation for wrapped lines
-set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 --
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 set("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
@@ -157,6 +157,8 @@ end)
 
 nmap(")", require("global.remap-functions").find_next_special_char, "Find next special char")
 nmap("(", require("global.remap-functions").find_previous_special_char, "Find previous special char")
+
+-- vim.keymap.set("t", "<esc>", "<C-\\><C-N> ")
 
 vim.cmd([[
         imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")

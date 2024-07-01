@@ -52,7 +52,9 @@ ls.add_snippets("lua", {
 		t({ "", "}" }),
 	}),
 	s("mod", {
-		t({ "local M = {}", "", "", "", "return M" }),
+		t({ "local M = {}", "", "" }),
+		i(0),
+		t({ "", "", "return M" }),
 	}),
 })
 

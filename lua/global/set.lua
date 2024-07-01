@@ -17,8 +17,6 @@ vim.opt.cursorline = true
 vim.opt.shortmess = "at" -- abbreviate messages and truncate file messages in cmd line
 vim.opt.cmdheight = 2
 
--- vim.cmd([[hi CursorLine guibg=#282837]])
-
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
