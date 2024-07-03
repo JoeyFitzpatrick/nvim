@@ -17,6 +17,7 @@ return {
 			},
 		})
 		nmap("<leader>g", fzf.live_grep_glob)
+		vim.keymap.set("v", "<leader>g", fzf.grep_visual, { noremap = true, silent = true })
 		nmap("<leader><leader>g", fzf.resume)
 	end,
 }

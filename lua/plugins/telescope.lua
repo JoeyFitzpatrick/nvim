@@ -19,12 +19,9 @@ return {
 					filename_first = true,
 				})
 			end, {})
-			-- vim.keymap.set("n", "<leader>f", builtin.find_files, {})
 			vim.keymap.set("v", "<leader>f", function()
 				builtin.find_files({ default_text = require("global.utils").get_visual_selection() })
 			end, {})
-			-- vim.keymap.set("n", "<leader>g", builtin.live_grep, {})
-			-- vim.keymap.set("v", "<leader>g", builtin.grep_string, {})
 			vim.keymap.set("n", "<leader>th", builtin.help_tags, {})
 			vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
 			-- vim.keymap.set("n", "<leader>M", builtin.marks, {})
@@ -54,26 +51,6 @@ return {
 			nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 			vim.keymap.set("n", "<leader>tr", "<cmd>lua require('telescope.builtin').resume()<cr>")
 
-			function vim.getVisualSelection()
-				vim.cmd('noau normal! "vy"')
-				local text = vim.fn.getreg("v")
-				vim.fn.setreg("v", {})
-
-				text = string.gsub(text, "\n", "")
-				if #text > 0 then
-					return text
-				else
-					return ""
-				end
-			end
-
-			local opts = { noremap = true, silent = true }
-
-			vim.keymap.set("v", "<space>g", function()
-				local text = vim.getVisualSelection()
-				builtin.live_grep({ default_text = text })
-			end, opts)
-
 			local actions = require("telescope.actions")
 
 			vim.keymap.set(
@@ -81,12 +58,6 @@ return {
 				"<leader>ks",
 				require("global.telescope-custom").git_commands,
 				{ desc = "Git commands" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>kb",
-				require("global.telescope-custom").git_branches,
-				{ desc = "Git branches" }
 			)
 
 			require("telescope").setup({
