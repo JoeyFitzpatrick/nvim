@@ -56,14 +56,20 @@ cmp.setup({
 		end,
 	},
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp", group_index = 1 },
-		{ name = "luasnip", group_index = 3 },
-	}, {
-		{ name = "buffer" },
-		{ name = "path" },
+		{
+			name = "nvim_lsp",
+			group_index = 1,
+			entry_filter = function(entry)
+				return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
+			end,
+		},
+		{ name = "luasnip", group_index = 2 },
 	}),
 	mapping = {
 		["<C-h>"] = cmp.mapping.complete(),
+		["<C-y>"] = cmp.mapping.confirm(),
+		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<C-p>"] = cmp.mapping.select_prev_item(),
 		-- scroll up and down the documentation window
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
@@ -73,8 +79,6 @@ cmp.setup({
 		completeopt = "menu,menuone,noinsert",
 	},
 })
-
--- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 
 -- `/` cmdline setup.
 cmp.setup.cmdline("/", {

@@ -62,36 +62,14 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		event = "VeryLazy",
-		keys = {
-			{ "<leader>ld", "<cmd>TroubleToggle document_diagnostics<CR>", desc = "Document Diagnostics" },
-			{ "<leader>lw", "<cmd>TroubleToggle workspace_diagnostics<CR>", desc = "Workspace Diagnostics" },
-		},
-	},
-	{
-		"folke/trouble.nvim",
-		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		opts = {},
 		cmd = "Trouble",
 		keys = {
-			{
-				"<leader>lw",
-				"<cmd>Trouble diagnostics toggle<cr>",
-				desc = "Diagnostics (Trouble)",
-			},
-			{
-				"<leader>ld",
-				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-				desc = "Buffer Diagnostics (Trouble)",
-			},
-			{
-				"<leader>ls",
-				"<cmd>Trouble symbols toggle focus=false<cr>",
-				desc = "Symbols (Trouble)",
-			},
+			{ "<leader>ld", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Buffer Diagnostics" },
+			{ "<leader>lw", "<cmd>Trouble diagnostics toggle<CR>", desc = "Workspace Diagnostics" },
 			{
 				"<leader>ll",
-				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				"<cmd>Trouble lsp toggle focus=false win.position=left<cr>",
 				desc = "LSP Definitions / references / ... (Trouble)",
 			},
 		},

@@ -38,7 +38,7 @@ return {
 		config = function()
 			require("copilot").setup({})
 			local suggestion = require("copilot.suggestion")
-			vim.keymap.set("i", "<C-k>", suggestion.next)
+			vim.keymap.set("i", "<C-h>", suggestion.next)
 			vim.keymap.set("i", "<C-l>", suggestion.accept)
 		end,
 	},

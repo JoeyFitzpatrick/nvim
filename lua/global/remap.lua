@@ -118,8 +118,8 @@ set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result
 set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- Save with ctrl+w
-set("n", "<C-w>", "<cmd>wa<CR>")
-set("i", "<C-w>", "<esc><cmd>wa<CR>")
+set("n", "<C-w>", "<cmd>wa<CR>", { noremap = true, nowait = true })
+set("i", "<C-w>", "<esc><cmd>wa<CR>", { noremap = true, nowait = true })
 
 -- quickfix
 -- Create an autocmd for FileType with pattern "qf"
@@ -158,9 +158,7 @@ end)
 nmap(")", require("global.remap-functions").find_next_special_char, "Find next special char")
 nmap("(", require("global.remap-functions").find_previous_special_char, "Find previous special char")
 
--- vim.keymap.set("t", "<esc>", "<C-\\><C-N> ")
-
---vim.cmd([[
---imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
---let g:copilot_no_tab_map = v:true
---]])
+nmap("<M-Up>", "<C-w>+<C-w>+", "Increase window height", { noremap = true })
+nmap("<M-Down>", "<C-w>-<C-w>-", "Decrease window height", { noremap = true })
+nmap("<M-Left>", "<C-w><<C-w><", "Decrease window width", { noremap = true })
+nmap("<M-Right>", "<C-w>><C-w>>", "Increase window width", { noremap = true })
