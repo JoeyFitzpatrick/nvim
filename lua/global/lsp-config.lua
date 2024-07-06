@@ -1,27 +1,19 @@
-local lsp_zero = require("lsp-zero")
-
-lsp_zero.on_attach(function(client, bufnr)
-	-- see :help lsp-zero-keybindings
-	-- to learn the available actions
-	lsp_zero.default_keymaps({ buffer = bufnr })
-	vim.keymap.set("n", "<leader>le", function()
-		vim.diagnostic.open_float()
-	end)
-	vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Lsp Restart" })
-	vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "Lsp Info" })
-	vim.keymap.set("n", "<leader>la", function()
-		vim.lsp.buf.code_action()
-	end, { desc = "Lsp Code Action" })
-	vim.keymap.set("n", "<leader>rn", function()
-		vim.lsp.buf.rename()
-	end, { desc = "Lsp Rename" })
-	vim.keymap.set("n", "<leader>ic", function()
-		vim.lsp.buf.incoming_calls()
-	end)
-	vim.keymap.set("n", "<leader>oc", function()
-		vim.lsp.buf.outgoing_calls()
-	end)
-end)
+vim.api.nvim_create_autocmd("LspAttach", {
+	desc = "LSP actions",
+	callback = function(event)
+		local opts = { buffer = event.buf }
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+		vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float)
+		vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Lsp Restart" })
+		vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "Lsp Info" })
+		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Lsp Code Action" })
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Lsp Rename" })
+		vim.keymap.set("n", "<leader>ic", vim.lsp.buf.incoming_calls)
+		vim.keymap.set("n", "<leader>oc", vim.lsp.buf.outgoing_calls)
+	end,
+})
 
 local servers = {
 	"pyright",
@@ -29,17 +21,19 @@ local servers = {
 	"lua_ls",
 	"eslint",
 }
+
+local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+local default_setup = function(server)
+	require("lspconfig")[server].setup({
+		capabilities = lsp_capabilities,
+	})
+end
+
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = servers,
 	handlers = {
-		lsp_zero.default_setup,
-		lua_ls = function()
-			-- (Optional) Configure lua language server for neovim
-			local lua_opts = lsp_zero.nvim_lua_ls()
-			lua_opts.settings.Lua.workspace.library = vim.api.nvim_get_runtime_file("lua", true)
-			require("lspconfig").lua_ls.setup(lua_opts)
-		end,
+		default_setup,
 		eslint = function()
 			-- Docs for this setup is here: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
 			require("lspconfig").eslint.setup({
@@ -53,7 +47,6 @@ require("mason-lspconfig").setup({
 })
 
 local cmp = require("cmp")
-local cmp_format = require("lsp-zero").cmp_format({})
 
 cmp.setup({
 	snippet = {
@@ -75,7 +68,6 @@ cmp.setup({
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
 	},
-	formatting = cmp_format,
 	preselect = "item",
 	completion = {
 		completeopt = "menu,menuone,noinsert",
