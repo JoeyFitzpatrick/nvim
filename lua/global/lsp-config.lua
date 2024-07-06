@@ -23,11 +23,6 @@ lsp_zero.on_attach(function(client, bufnr)
 	end)
 end)
 
-nmap("gr", "<cmd>Glance references<CR>", "Glance LSP references")
-nmap("gd", "<cmd>Glance definitions<CR>", "Glance LSP definitions")
-nmap("gy", "<cmd>Glance type_definitions<CR>", "Glance LSP type definitions")
-nmap("gm", "<cmd>Glance implementations<CR>", "Glance LSP implementations")
-
 local servers = {
 	"pyright",
 	"svelte",
@@ -68,14 +63,14 @@ cmp.setup({
 		end,
 	},
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
+		{ name = "nvim_lsp", group_index = 1 },
+		{ name = "copilot", group_index = 2 },
+		{ name = "luasnip", group_index = 3 },
 	}, {
 		{ name = "buffer" },
 		{ name = "path" },
 	}),
 	mapping = {
-		["<Enter>"] = cmp.mapping.confirm({ select = true }),
 		["<C-h>"] = cmp.mapping.complete(),
 		-- scroll up and down the documentation window
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),

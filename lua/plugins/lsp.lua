@@ -112,7 +112,6 @@ return {
 			)
 		end,
 	},
-	{ "dnlhc/glance.nvim", config = true },
 	{
 		"ray-x/go.nvim",
 		dependencies = {

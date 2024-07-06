@@ -23,6 +23,7 @@ return {
 				builtin.find_files({ default_text = require("global.utils").get_visual_selection() })
 			end, {})
 			vim.keymap.set("n", "<leader>th", builtin.help_tags, {})
+			vim.keymap.set("n", "<leader>th", builtin.help_tags, {})
 			vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
 			-- vim.keymap.set("n", "<leader>M", builtin.marks, {})
 

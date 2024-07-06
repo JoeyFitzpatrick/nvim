@@ -160,7 +160,7 @@ nmap("(", require("global.remap-functions").find_previous_special_char, "Find pr
 
 -- vim.keymap.set("t", "<esc>", "<C-\\><C-N> ")
 
-vim.cmd([[
-        imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
-        let g:copilot_no_tab_map = v:true
-]])
+--vim.cmd([[
+--imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
+--let g:copilot_no_tab_map = v:true
+--]])
