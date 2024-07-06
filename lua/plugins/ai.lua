@@ -31,35 +31,15 @@ return {
 			require("butterfish")
 		end,
 	},
-	{ "github/copilot.vim", enabled = false, lazy = false, event = "VeryLazy" },
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
 		event = "InsertEnter",
 		config = function()
-			require("copilot").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-			})
+			require("copilot").setup({})
 			local suggestion = require("copilot.suggestion")
-			vim.keymap.set("i", "<M-n>", suggestion.next)
-			vim.keymap.set("i", "<M-p>", suggestion.prev)
-			vim.keymap.set("i", "<M-y>", suggestion.accept)
-			vim.keymap.set("i", "<M-d>", suggestion.dismiss)
-			local cmp = require("cmp")
-			cmp.event:on("menu_opened", function()
-				vim.b.copilot_suggestion_hidden = true
-			end)
-
-			cmp.event:on("menu_closed", function()
-				vim.b.copilot_suggestion_hidden = false
-			end)
-		end,
-	},
-	{
-		"zbirenbaum/copilot-cmp",
-		config = function()
-			require("copilot_cmp").setup()
+			vim.keymap.set("i", "<C-k>", suggestion.next)
+			vim.keymap.set("i", "<C-l>", suggestion.accept)
 		end,
 	},
 }
