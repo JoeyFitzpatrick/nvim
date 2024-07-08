@@ -1,8 +1,8 @@
-local find_special_char = require("global.remap-functions.find-special-char")
+local find_special = require("global.remap-functions.find-special")
 
 local M = {}
 
-M.find_next_special_char = find_special_char.find_next_special_char
-M.find_previous_special_char = find_special_char.find_previous_special_char
+M.next_special = find_special.next_special
+M.prev_special = find_special.prev_special
 
 return M

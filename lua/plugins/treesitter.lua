@@ -21,9 +21,6 @@ return {
 				auto_install = true,
 				highlight = { enable = true },
 				indent = { enable = true },
-				autotag = {
-					enable = true,
-				},
 				incremental_selection = {
 					enable = true,
 					keymaps = {
@@ -79,7 +76,6 @@ return {
 		end,
 	},
 	{
-
 		"https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
 		config = function()
 			---@type rainbow_delimiters.config
@@ -92,6 +88,18 @@ return {
 					"RainbowDelimiterCyan",
 				},
 			}
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup({
+				opts = {
+					enable_close = true, -- Auto close tags
+					enable_rename = true, -- Auto rename pairs of tags
+					enable_close_on_slash = false, -- Auto close on trailing </
+				},
+			})
 		end,
 	},
 	{

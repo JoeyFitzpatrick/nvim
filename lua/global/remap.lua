@@ -155,8 +155,8 @@ set("n", "<leader>N", function()
 	print("Copied to clipboard: " .. filename)
 end)
 
-nmap(")", require("global.remap-functions").find_next_special_char, "Find next special char")
-nmap("(", require("global.remap-functions").find_previous_special_char, "Find previous special char")
+nmap(")", require("global.remap-functions").next_special, "Find next (word)")
+nmap("(", require("global.remap-functions").prev_special, "Find previous (word)")
 
 nmap("<M-Up>", "<C-w>+<C-w>+", "Increase window height", { noremap = true })
 nmap("<M-Down>", "<C-w>-<C-w>-", "Decrease window height", { noremap = true })

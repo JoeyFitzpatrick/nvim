@@ -130,9 +130,5 @@ return {
 			nmap("<leader>lt", "<cmd>TodoTrouble<CR>", "Todos")
 		end,
 	},
-	{
-		"brenoprata10/nvim-highlight-colors",
-		config = true,
-		event = "BufEnter",
-	},
+	{ "brenoprata10/nvim-highlight-colors", config = true, event = "BufEnter" },
 }
