@@ -1,7 +1,8 @@
 return {
 	"stevearc/conform.nvim",
 	opts = {},
-	event = "VeryLazy",
+	event = { "BufWritePre" },
+	cmd = { "ConformInfo" },
 	config = function()
 		local conform = require("conform")
 
@@ -22,10 +23,8 @@ return {
 				javascriptreact = { "prettierd", "eslint_d" },
 				typescriptreact = { "prettierd", "eslint_d" },
 				svelte = { "prettierd", "eslint_d" },
-				-- sql = { "sql_formatter" },
 			},
 			format_on_save = {
-				-- These options will be passed to conform.format()
 				timeout_ms = 1000,
 				lsp_fallback = true,
 				-- use a filter to not format some file types on save

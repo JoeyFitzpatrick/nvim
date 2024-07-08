@@ -66,9 +66,14 @@ cmp.setup({
 		{ name = "luasnip", group_index = 2 },
 	}),
 	mapping = {
-		["<C-h>"] = cmp.mapping.complete(),
 		["<C-y>"] = cmp.mapping.confirm(),
-		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<C-n>"] = function()
+			if cmp.visible() then
+				cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+			else
+				cmp.complete()
+			end
+		end,
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		-- scroll up and down the documentation window
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
