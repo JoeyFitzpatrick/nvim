@@ -31,15 +31,4 @@ return {
 			require("butterfish")
 		end,
 	},
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({})
-			local suggestion = require("copilot.suggestion")
-			vim.keymap.set("i", "<C-h>", suggestion.next)
-			vim.keymap.set("i", "<C-l>", suggestion.accept)
-		end,
-	},
 }

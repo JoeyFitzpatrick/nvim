@@ -29,8 +29,6 @@ return {
 			end,
 		},
 	},
-	{ "saadparwaiz1/cmp_luasnip" },
-
 	-- other lsp plugins
 	{
 		"pmizio/typescript-tools.nvim",
@@ -100,11 +98,22 @@ return {
 		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 	},
 	{
-		{
-			"folke/lazydev.nvim",
-			ft = "lua", -- only load on lua files
-			opts = {},
-		},
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {},
+	},
+	-- some code that doesn't work, to add busted types to lazydev
+	-- { "LuaCATS/busted", name = "busted-types", lazy = true },
+	-- {
+	-- 	"folke/lazydev.nvim",
+	-- 	opts = function(_, opts)
+	-- 		-- opts.runtime = "~/nvim-macos/share/nvim/runtime/"
+	-- 		vim.list_extend(opts.library, {
+	-- 			{ path = "busted-types/library", words = { "describe" } },
+	-- 		})
+	-- 	end,
+	-- },
+	{
 		{ -- optional completion source for require statements and module annotations
 			"hrsh7th/nvim-cmp",
 			opts = function(_, opts)

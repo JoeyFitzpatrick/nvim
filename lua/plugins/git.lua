@@ -1,15 +1,9 @@
 return {
 	{
-		"FabijanZulj/blame.nvim",
-		config = function()
-			require("blame").setup({
-				date_format = "%m/%d/%Y",
-			})
-		end,
+		"tpope/vim-fugitive",
+		cmd = { "G", "Git" },
 		keys = {
-			{ "<leader>kl", "<cmd>BlameToggle<CR>", desc = "Toggle blame window" },
-			{ "<leader>kL", "<cmd>BlameToggle virtual<CR>", desc = "Toggle virtual blame" },
+			{ "gb", "<cmd>Git blame -w -C -C -C<CR>" },
 		},
 	},
-	{ "tpope/vim-fugitive" },
 }

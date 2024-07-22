@@ -131,4 +131,11 @@ return {
 		end,
 	},
 	{ "brenoprata10/nvim-highlight-colors", config = true, event = "BufEnter" },
+	{
+		"lervag/vimtex",
+		lazy = false, -- we don't want to lazy load VimTeX
+		init = function()
+			vim.g.vimtex_view_method = "skim"
+		end,
+	},
 }
