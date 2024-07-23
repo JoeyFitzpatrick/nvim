@@ -102,17 +102,6 @@ return {
 		ft = "lua", -- only load on lua files
 		opts = {},
 	},
-	-- some code that doesn't work, to add busted types to lazydev
-	-- { "LuaCATS/busted", name = "busted-types", lazy = true },
-	-- {
-	-- 	"folke/lazydev.nvim",
-	-- 	opts = function(_, opts)
-	-- 		-- opts.runtime = "~/nvim-macos/share/nvim/runtime/"
-	-- 		vim.list_extend(opts.library, {
-	-- 			{ path = "busted-types/library", words = { "describe" } },
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		{ -- optional completion source for require statements and module annotations
 			"hrsh7th/nvim-cmp",

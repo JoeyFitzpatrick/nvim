@@ -28,6 +28,13 @@ local typescript_commands = {
 	end,
 }
 
+local lua_commands = {
+	test = function()
+		local filename = vim.api.nvim_buf_get_name(0)
+		return 'busted --lpath="./lua/?.lua" ' .. filename
+	end,
+}
+
 local function run_in_tmux_pane(command_type)
 	local filetype = vim.bo.filetype
 	local full_path = vim.api.nvim_buf_get_name(0)
@@ -37,6 +44,7 @@ local function run_in_tmux_pane(command_type)
 		typescript = typescript_commands,
 		javascriptreact = typescript_commands,
 		typescriptreact = typescript_commands,
+		lua = lua_commands,
 	}
 	if commands[filetype] == nil or commands[filetype][command_type] == nil then
 		print("No command found for " .. filetype .. " file type")
