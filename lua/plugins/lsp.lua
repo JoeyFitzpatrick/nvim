@@ -97,10 +97,17 @@ return {
 		ft = { "go", "gomod" },
 		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 	},
+	{ "LuaCATS/luassert", name = "luassert-types", lazy = true },
+	{ "LuaCATS/busted", name = "busted-types", lazy = true },
 	{
 		"folke/lazydev.nvim",
 		ft = "lua", -- only load on lua files
-		opts = {},
+		opts = {
+			library = {
+				{ path = "luassert-types/library" },
+				{ path = "busted-types/library" },
+			},
+		},
 	},
 	{
 		{ -- optional completion source for require statements and module annotations
