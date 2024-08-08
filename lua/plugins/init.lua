@@ -3,7 +3,7 @@ local set = vim.keymap.set
 return {
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "tpope/vim-commentary", event = "VeryLazy" },
-	{ "kevinhwang91/nvim-bqf", ft = "qf" },
+	{ "stevearc/quicker.nvim", opts = {} },
 	{ "hrsh7th/cmp-cmdline", event = "VeryLazy" },
 	{
 		"AckslD/nvim-neoclip.lua",
