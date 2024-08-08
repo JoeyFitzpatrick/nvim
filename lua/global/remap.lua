@@ -126,9 +126,6 @@ set("i", "<C-w>", "<esc><cmd>wa<CR>", { noremap = true, nowait = true })
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "qf",
 	callback = function()
-		-- Undo the modified j and k keybindings in the quickfix window
-		set("n", "j", "j", { buffer = true, noremap = true })
-		set("n", "k", "k", { buffer = true, noremap = true })
 		-- Set 'q' to close the quickfix window in normal mode
 		set("n", "q", ":q<CR>", { buffer = true })
 		-- Set 'dd' to remove an item from the quickfix list in normal mode
@@ -141,9 +138,9 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-set("n", "<leader>q", function()
-	require("global.helpers.quickfix").toggle_qf()
-end, opts)
+-- set("n", "<leader>q", function()
+-- 	require("global.helpers.quickfix").toggle_qf()
+-- end, opts)
 set("n", "<A-n>", "<cmd>cnext<CR>", opts)
 set("n", "<A-p>", "<cmd>cprev<CR>", opts)
 set("n", "cn", "<cmd>cnext<CR>", opts)
