@@ -7,5 +7,6 @@ return {
 		nmap("<leader>s", alien.status, "Alien Status")
 		nmap("<leader>b", alien.local_branches, "Alien Branches")
 		nmap("<leader>S", "<cmd>Lazy reload alien<cr>", "Reload Alien")
+		nmap("gb", alien.blame, "Alien Blame")
 	end,
 }

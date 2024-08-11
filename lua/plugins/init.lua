@@ -17,22 +17,6 @@ return {
 		end,
 	},
 	{
-		"rebelot/kanagawa.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.cmd("colorscheme kanagawa")
-			function light()
-				vim.cmd("set background=light | colorscheme kanagawa-lotus")
-			end
-			function dark()
-				vim.cmd("set background=dark | colorscheme kanagawa-wave")
-			end
-			vim.cmd("command Light silent lua light()")
-			vim.cmd("command Dark silent lua dark()")
-		end,
-	},
-	{
 		"kdheepak/lazygit.nvim",
 		event = "VeryLazy",
 		config = function()
