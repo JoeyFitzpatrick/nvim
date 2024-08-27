@@ -3,7 +3,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
 		local opts = { buffer = event.buf }
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float)
 		vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Lsp Restart" })

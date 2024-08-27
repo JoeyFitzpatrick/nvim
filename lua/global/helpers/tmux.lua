@@ -31,8 +31,7 @@ local typescript_commands = {
 local lua_commands = {
 	test = function()
 		local filename = vim.api.nvim_buf_get_name(0)
-		-- return "busted " .. filename
-		return 'nvim --headless -c "PlenaryBustedDirectory ' .. filename .. '"'
+		return "busted " .. filename
 	end,
 }
 
