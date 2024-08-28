@@ -121,4 +121,16 @@ return {
 			vim.g.vimtex_view_method = "skim"
 		end,
 	},
+	{
+		"otavioschwanck/arrow.nvim",
+		config = function()
+			require("arrow").setup({
+				show_icons = true,
+				leader_key = ",",
+				buffer_leader_key = "m",
+			})
+			vim.keymap.set("n", "H", require("arrow.persist").previous)
+			vim.keymap.set("n", "L", require("arrow.persist").next)
+		end,
+	},
 }
