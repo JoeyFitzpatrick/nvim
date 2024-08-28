@@ -3,7 +3,16 @@ return {
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/nvim-cmp" },
+	{
+		"yioneko/nvim-cmp",
+		branch = "perf",
+		opts = {
+			performance = {
+				debounce = 0,
+				throttle = 0,
+			},
+		},
+	},
 	{
 		{
 			"L3MON4D3/LuaSnip",
@@ -111,7 +120,7 @@ return {
 	},
 	{
 		{ -- optional completion source for require statements and module annotations
-			"hrsh7th/nvim-cmp",
+			"yioneko/nvim-cmp",
 			opts = function(_, opts)
 				opts.sources = opts.sources or {}
 				table.insert(opts.sources, {
