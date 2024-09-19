@@ -91,6 +91,11 @@ ls.add_snippets("javascript", {
 		i(0),
 		t({ "", "});" }),
 	}),
+	s("logn", {
+		t('console.log("\\n\\n", '),
+		i(0),
+		t(', "\\n\\n")'),
+	}),
 })
 
 nmap("<leader><leader>s", function()
