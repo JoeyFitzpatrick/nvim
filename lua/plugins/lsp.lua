@@ -11,6 +11,55 @@ return {
 				debounce = 0,
 				throttle = 0,
 			},
+			sources = {
+				{ "cmp-dbee" },
+			},
+		},
+		dependencies = {
+			{
+				"MattiasMTS/cmp-dbee",
+				dependencies = {
+					{
+						"kndndrj/nvim-dbee",
+						dependencies = {
+							"MunifTanjim/nui.nvim",
+						},
+						build = function()
+							-- Install tries to automatically detect the install method.
+							-- if it fails, try calling it with one of these parameters:
+							--    "curl", "wget", "bitsadmin", "go"
+							require("dbee").install()
+						end,
+						config = function()
+							require("dbee").setup({
+								sources = {
+									-- require("dbee.sources").MemorySource:new({
+									-- 	{
+									-- 		id = "josephfitzpatrick1",
+									-- 		name = "josephfitzpatrick",
+									-- 		type = "postgres",
+									-- 		url = "postgres://josephfitzpatrick:cloudatlas@localhost:5432/josephfitzpatrick?sslmode=disable",
+									-- 	},
+									-- }),
+									require("dbee.sources").MemorySource:new({
+										{
+											id = "nba1",
+											name = "nba",
+											type = "postgres",
+											url = "postgres://josephfitzpatrick:cloudatlas@localhost:5432/nba?sslmode=disable",
+										},
+									}),
+								},
+							})
+							nmap("do", function()
+								require("dbee").toggle()
+							end, "Toggle dbee")
+						end,
+					},
+				},
+				ft = "sql", -- optional but good to have
+				opts = {}, -- needed
+			},
 		},
 	},
 	{

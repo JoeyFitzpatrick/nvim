@@ -23,6 +23,7 @@ return {
 				javascriptreact = { "prettierd", "eslint_d" },
 				typescriptreact = { "prettierd", "eslint_d" },
 				svelte = { "prettierd", "eslint_d" },
+				sql = { "sql_formatter" },
 			},
 			format_on_save = {
 				timeout_ms = 1000,

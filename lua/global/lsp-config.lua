@@ -74,7 +74,7 @@ cmp.setup({
 				cmp.complete()
 			end
 		end,
-		["<up>"] = function()
+		["<down>"] = function()
 			if cmp.visible() then
 				cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
 			else
@@ -82,7 +82,7 @@ cmp.setup({
 			end
 		end,
 		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<down>"] = cmp.mapping.select_prev_item(),
+		["<up>"] = cmp.mapping.select_prev_item(),
 		-- scroll up and down the documentation window
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
