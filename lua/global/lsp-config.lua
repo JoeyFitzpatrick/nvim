@@ -64,6 +64,7 @@ cmp.setup({
 			end,
 		},
 		{ name = "luasnip", group_index = 2 },
+		{ name = "cmp-dbee" },
 	}),
 	mapping = {
 		["<C-y>"] = cmp.mapping.confirm(),

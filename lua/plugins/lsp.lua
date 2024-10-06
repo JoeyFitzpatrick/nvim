@@ -4,15 +4,11 @@ return {
 	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{
-		"yioneko/nvim-cmp",
-		branch = "perf",
+		"iguanacucumber/magazine.nvim",
 		opts = {
 			performance = {
 				debounce = 0,
 				throttle = 0,
-			},
-			sources = {
-				{ "cmp-dbee" },
 			},
 		},
 		dependencies = {
