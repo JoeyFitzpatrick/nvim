@@ -35,17 +35,26 @@ local lua_commands = {
 	end,
 }
 
+local python_commands = {
+	run = function()
+		local filename = vim.api.nvim_buf_get_name(0)
+		return "python3 " .. filename
+	end,
+}
+
+local commands = {
+	javascript = typescript_commands,
+	typescript = typescript_commands,
+	javascriptreact = typescript_commands,
+	typescriptreact = typescript_commands,
+	lua = lua_commands,
+	python = python_commands,
+}
+
 local function run_in_tmux_pane(command_type)
 	local filetype = vim.bo.filetype
 	local full_path = vim.api.nvim_buf_get_name(0)
 	local filename = full_path:match("^.+/(.+)$")
-	local commands = {
-		javascript = typescript_commands,
-		typescript = typescript_commands,
-		javascriptreact = typescript_commands,
-		typescriptreact = typescript_commands,
-		lua = lua_commands,
-	}
 	if commands[filetype] == nil or commands[filetype][command_type] == nil then
 		print("No command found for " .. filetype .. " file type")
 		return
@@ -71,14 +80,6 @@ vim.keymap.set("n", "<leader>mt", function()
 	run_in_tmux_pane("test")
 end, { noremap = true, desc = "Run tests in tmux pane" })
 
-vim.keymap.set("n", "<leader>mc", function()
-	vim.ui.input({ prompt = "enter commit message: " }, function(input)
-		if input == nil or input == "" then
-			vim.notify("No commit message provided, aborting...")
-			return
-		end
-		-- Escape spaces in the command to work with tmux
-		input = '"' .. input .. '"'
-		run_raw_command_in_tmux_pane("git commit -m " .. input)
-	end)
-end, { noremap = true, desc = "Commit in tmux pane" })
+vim.keymap.set("n", "<leader>mr", function()
+	run_in_tmux_pane("run")
+end, { noremap = true, desc = "Run file in tmux pane" })
