@@ -2,63 +2,42 @@ return {
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "neovim/nvim-lspconfig" },
-	{ "hrsh7th/cmp-nvim-lsp" },
 	{
-		"iguanacucumber/magazine.nvim",
-		commit = "b356f2c",
-		enabled = true,
-		opts = {
-			performance = {
-				debounce = 0,
-				throttle = 0,
-			},
-		},
+		"kndndrj/nvim-dbee",
 		dependencies = {
-			{
-				"MattiasMTS/cmp-dbee",
-				dependencies = {
-					{
-						"kndndrj/nvim-dbee",
-						dependencies = {
-							"MunifTanjim/nui.nvim",
-						},
-						build = function()
-							-- Install tries to automatically detect the install method.
-							-- if it fails, try calling it with one of these parameters:
-							--    "curl", "wget", "bitsadmin", "go"
-							require("dbee").install()
-						end,
-						config = function()
-							require("dbee").setup({
-								sources = {
-									-- require("dbee.sources").MemorySource:new({
-									-- 	{
-									-- 		id = "josephfitzpatrick1",
-									-- 		name = "josephfitzpatrick",
-									-- 		type = "postgres",
-									-- 		url = "postgres://josephfitzpatrick:cloudatlas@localhost:5432/josephfitzpatrick?sslmode=disable",
-									-- 	},
-									-- }),
-									require("dbee.sources").MemorySource:new({
-										{
-											id = "nba1",
-											name = "nba",
-											type = "postgres",
-											url = "postgres://josephfitzpatrick:cloudatlas@localhost:5432/nba?sslmode=disable",
-										},
-									}),
-								},
-							})
-							nmap("do", function()
-								require("dbee").toggle()
-							end, "Toggle dbee")
-						end,
-					},
-				},
-				ft = "sql", -- optional but good to have
-				opts = {}, -- needed
-			},
+			"MunifTanjim/nui.nvim",
 		},
+		build = function()
+			-- Install tries to automatically detect the install method.
+			-- if it fails, try calling it with one of these parameters:
+			--    "curl", "wget", "bitsadmin", "go"
+			require("dbee").install()
+		end,
+		config = function()
+			require("dbee").setup({
+				sources = {
+					-- require("dbee.sources").MemorySource:new({
+					-- 	{
+					-- 		id = "josephfitzpatrick1",
+					-- 		name = "josephfitzpatrick",
+					-- 		type = "postgres",
+					-- 		url = "postgres://josephfitzpatrick:cloudatlas@localhost:5432/josephfitzpatrick?sslmode=disable",
+					-- 	},
+					-- }),
+					require("dbee.sources").MemorySource:new({
+						{
+							id = "nba1",
+							name = "nba",
+							type = "postgres",
+							url = "postgres://josephfitzpatrick:cloudatlas@localhost:5432/nba?sslmode=disable",
+						},
+					}),
+				},
+			})
+			nmap("do", function()
+				require("dbee").toggle()
+			end, "Toggle dbee")
+		end,
 	},
 	{
 		{
@@ -168,20 +147,8 @@ return {
 	},
 	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 	{
-		{ -- optional completion source for require statements and module annotations
-			"yioneko/nvim-cmp",
-			opts = function(_, opts)
-				opts.sources = opts.sources or {}
-				table.insert(opts.sources, {
-					name = "lazydev",
-					group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-				})
-			end,
-		},
-	},
-	{
 		"saghen/blink.cmp",
-		enabled = false,
+		enabled = true,
 		lazy = false, -- lazy loading handled internally
 
 		-- use a release tag to download pre-built binaries
@@ -190,6 +157,20 @@ return {
 		-- build = 'cargo build --release',
 
 		opts = {
+			keymap = {
+				show = {},
+				hide = {},
+				accept = "<C-y>",
+				select_prev = { "<Up>", "<C-p>" },
+				select_next = { "<Down>", "<C-n>" },
+				show_documentation = {},
+				hide_documentation = {},
+				scroll_documentation_up = "<C-b>",
+				scroll_documentation_down = "<C-f>",
+
+				snippet_forward = {},
+				snippet_backward = {},
+			},
 			highlight = {
 				-- sets the fallback highlight groups to nvim-cmp's highlight groups
 				-- useful for when your theme doesn't support blink.cmp

@@ -22,7 +22,45 @@ local servers = {
 	"eslint",
 }
 
-local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+local lsp_capabilities = {
+	textDocument = {
+		completion = {
+			completionItem = {
+				commitCharactersSupport = true,
+				deprecatedSupport = true,
+				insertReplaceSupport = true,
+				insertTextModeSupport = {
+					valueSet = { 1, 2 },
+				},
+				labelDetailsSupport = true,
+				preselectSupport = true,
+				resolveSupport = {
+					properties = {
+						"documentation",
+						"detail",
+						"additionalTextEdits",
+						"sortText",
+						"filterText",
+						"insertText",
+						"textEdit",
+						"insertTextFormat",
+						"insertTextMode",
+					},
+				},
+				snippetSupport = true,
+				tagSupport = {
+					valueSet = { 1 },
+				},
+			},
+			completionList = {
+				itemDefaults = { "commitCharacters", "editRange", "insertTextFormat", "insertTextMode", "data" },
+			},
+			contextSupport = true,
+			dynamicRegistration = false,
+			insertTextMode = 1,
+		},
+	},
+}
 local default_setup = function(server)
 	require("lspconfig")[server].setup({
 		capabilities = lsp_capabilities,
@@ -44,75 +82,4 @@ require("mason-lspconfig").setup({
 			})
 		end,
 	},
-})
-
-local cmp = require("cmp")
-
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
-			-- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
-		end,
-	},
-	sources = cmp.config.sources({
-		{
-			name = "nvim_lsp",
-			group_index = 1,
-			entry_filter = function(entry)
-				return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
-			end,
-		},
-		{ name = "luasnip", group_index = 2 },
-		{ name = "cmp-dbee" },
-	}),
-	mapping = {
-		["<C-y>"] = cmp.mapping.confirm(),
-		["<C-n>"] = function()
-			if cmp.visible() then
-				cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-			else
-				cmp.complete()
-			end
-		end,
-		["<down>"] = function()
-			if cmp.visible() then
-				cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-			else
-				cmp.complete()
-			end
-		end,
-		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<up>"] = cmp.mapping.select_prev_item(),
-		-- scroll up and down the documentation window
-		["<C-u>"] = cmp.mapping.scroll_docs(-4),
-		["<C-d>"] = cmp.mapping.scroll_docs(4),
-	},
-	preselect = "item",
-	completion = {
-		completeopt = "menu,menuone,noinsert",
-	},
-})
-
--- `/` cmdline setup.
-cmp.setup.cmdline("/", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-		{ name = "buffer" },
-	},
-})
-
--- `:` cmdline setup.
-cmp.setup.cmdline(":", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = "path" },
-	}, {
-		{
-			name = "cmdline",
-			option = {
-				ignore_cmds = { "Man", "!" },
-			},
-		},
-	}),
 })
