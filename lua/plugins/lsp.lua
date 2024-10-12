@@ -15,24 +15,7 @@ return {
 		end,
 		config = function()
 			require("dbee").setup({
-				sources = {
-					-- require("dbee.sources").MemorySource:new({
-					-- 	{
-					-- 		id = "josephfitzpatrick1",
-					-- 		name = "josephfitzpatrick",
-					-- 		type = "postgres",
-					-- 		url = "postgres://josephfitzpatrick:cloudatlas@localhost:5432/josephfitzpatrick?sslmode=disable",
-					-- 	},
-					-- }),
-					require("dbee.sources").MemorySource:new({
-						{
-							id = "nba1",
-							name = "nba",
-							type = "postgres",
-							url = "postgres://josephfitzpatrick:cloudatlas@localhost:5432/nba?sslmode=disable",
-						},
-					}),
-				},
+				sources = {},
 			})
 			nmap("do", function()
 				require("dbee").toggle()
