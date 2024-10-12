@@ -148,7 +148,6 @@ return {
 	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 	{
 		"saghen/blink.cmp",
-		enabled = true,
 		lazy = false, -- lazy loading handled internally
 
 		-- use a release tag to download pre-built binaries
@@ -158,7 +157,7 @@ return {
 
 		opts = {
 			keymap = {
-				show = {},
+				show = "<C-l>",
 				hide = {},
 				accept = "<C-y>",
 				select_prev = { "<Up>", "<C-p>" },
@@ -168,8 +167,8 @@ return {
 				scroll_documentation_up = "<C-b>",
 				scroll_documentation_down = "<C-f>",
 
-				snippet_forward = {},
-				snippet_backward = {},
+				snippet_forward = "<C-k>",
+				snippet_backward = "<C-j>",
 			},
 			highlight = {
 				-- sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -179,6 +178,20 @@ return {
 			},
 			-- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- adjusts spacing to ensure icons are aligned
+			sources = {
+				-- similar to nvim-cmp's sources, but we point directly to the source's lua module
+				-- multiple groups can be provided, where it'll fallback to the next group if the previous
+				-- returns no completion items
+				-- WARN: This API will have breaking changes during the beta
+				providers = {
+					{
+						{ "blink.cmp.sources.lsp", name = "LSP" },
+						{ "blink.cmp.sources.path", name = "Path", score_offset = 3 },
+						-- { "blink.cmp.sources.snippets", score_offset = -3 },
+						-- { "blink.cmp.sources.buffer", name = "Buffer", fallback_for = { "LSP" } },
+					},
+				},
+			},
 			nerd_font_variant = "normal",
 
 			-- experimental auto-brackets support
