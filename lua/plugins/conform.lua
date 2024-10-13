@@ -22,6 +22,7 @@ return {
 				typescript = { "prettierd", "eslint_d" },
 				javascriptreact = { "prettierd", "eslint_d" },
 				typescriptreact = { "prettierd", "eslint_d" },
+				htmldjango = { "djlint" },
 				svelte = { "prettierd", "eslint_d" },
 				sql = { "sql_formatter" },
 			},

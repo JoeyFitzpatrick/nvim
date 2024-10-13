@@ -6,16 +6,12 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	group = last_position_group,
 })
 
--- local insert_mode_group = vim.api.nvim_create_augroup("InsertModeGroup", { clear = true })
--- vim.api.nvim_create_autocmd("InsertEnter", {
--- 	desc = "Highlight the current line only in insert mode",
--- 	pattern = "*",
--- 	command = "hi CursorLine guibg=#24332c",
--- 	group = insert_mode_group,
--- })
--- vim.api.nvim_create_autocmd("InsertLeave", {
--- 	desc = "un-highlight the current line after leaving insert mode",
--- 	pattern = "*",
--- 	command = "hi CursorLine guibg=#282837",
--- 	group = insert_mode_group,
--- })
+local html_filetype_group = vim.api.nvim_create_augroup("UpdateHtmlFiletype", { clear = true })
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	desc = "Change html filetypes to htmldjango",
+	pattern = { "html", "htmlangular" },
+	callback = function()
+		vim.bo.filetype = "htmldjango"
+	end,
+	group = html_filetype_group,
+})
