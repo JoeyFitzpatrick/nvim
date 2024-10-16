@@ -137,7 +137,6 @@ return {
 		version = "v0.*",
 		-- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 		-- build = 'cargo build --release',
-
 		opts = {
 			keymap = {
 				show = "<C-l>",
@@ -159,20 +158,12 @@ return {
 				-- will be removed in a future release, assuming themes add support
 				use_nvim_cmp_as_default = true,
 			},
-			-- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-			-- adjusts spacing to ensure icons are aligned
 			sources = {
-				-- similar to nvim-cmp's sources, but we point directly to the source's lua module
-				-- multiple groups can be provided, where it'll fallback to the next group if the previous
-				-- returns no completion items
-				-- WARN: This API will have breaking changes during the beta
 				providers = {
-					{
-						{ "blink.cmp.sources.lsp", name = "LSP" },
-						{ "blink.cmp.sources.path", name = "Path", score_offset = 3 },
-						-- { "blink.cmp.sources.snippets", score_offset = -3 },
-						-- { "blink.cmp.sources.buffer", name = "Buffer", fallback_for = { "LSP" } },
-					},
+					{ "blink.cmp.sources.lsp", name = "LSP" },
+					{ "blink.cmp.sources.path", name = "Path", score_offset = 3 },
+					-- { "blink.cmp.sources.snippets", score_offset = -3 },
+					-- { "blink.cmp.sources.buffer", name = "Buffer", fallback_for = { "LSP" } },
 				},
 			},
 			nerd_font_variant = "normal",
