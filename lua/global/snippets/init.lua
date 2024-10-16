@@ -58,6 +58,16 @@ ls.add_snippets("lua", {
 	}),
 })
 
+ls.add_snippets("htmldjango", {
+	s("b", {
+		t("{% block "),
+		i(1),
+		t({ " %}", "\t" }),
+		i(2),
+		t({ "", "{% endblock %}" }),
+	}),
+})
+
 ls.filetype_extend("typescript", { "javascript" })
 ls.filetype_extend("typescriptreact", { "javascript" })
 ls.filetype_extend("javascriptreact", { "javascript" })

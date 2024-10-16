@@ -149,8 +149,8 @@ return {
 				scroll_documentation_up = "<C-b>",
 				scroll_documentation_down = "<C-f>",
 
-				snippet_forward = "<C-k>",
-				snippet_backward = "<C-j>",
+				snippet_forward = {},
+				snippet_backward = {},
 			},
 			highlight = {
 				-- sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -167,6 +167,11 @@ return {
 				},
 			},
 			nerd_font_variant = "normal",
+			windows = {
+				autocomplete = {
+					selection = "auto_insert",
+				},
+			},
 
 			-- experimental auto-brackets support
 			-- accept = { auto_brackets = { enabled = true } }
