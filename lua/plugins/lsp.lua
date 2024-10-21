@@ -4,6 +4,7 @@ return {
 	{ "neovim/nvim-lspconfig" },
 	{
 		"kndndrj/nvim-dbee",
+		enabled = false,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},
@@ -102,18 +103,6 @@ return {
 				{ noremap = true, silent = true }
 			)
 		end,
-	},
-	{
-		"ray-x/go.nvim",
-		dependencies = {
-			"ray-x/guihua.lua",
-			"neovim/nvim-lspconfig",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		config = true,
-		-- event = { "CmdlineEnter" },
-		ft = { "go", "gomod" },
-		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 	},
 	{ "LuaCATS/luassert", name = "luassert-types", lazy = true },
 	{ "LuaCATS/busted", name = "busted-types", lazy = true },

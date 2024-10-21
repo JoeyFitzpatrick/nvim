@@ -16,14 +16,6 @@ return {
 		end,
 	},
 	{
-		"kdheepak/lazygit.nvim",
-		event = "VeryLazy",
-		config = function()
-			vim.g.lazygit_floating_window_scaling_factor = 1
-			set("n", "<leader>j", "<cmd>LazyGit<CR>", { silent = true })
-		end,
-	},
-	{
 		"altermo/ultimate-autopair.nvim",
 		event = { "InsertEnter", "CmdlineEnter" },
 		branch = "v0.6",
@@ -115,6 +107,7 @@ return {
 	{ "brenoprata10/nvim-highlight-colors", config = true, event = "BufEnter" },
 	{
 		"lervag/vimtex",
+		enabled = false,
 		lazy = false, -- we don't want to lazy load VimTeX
 		init = function()
 			vim.g.vimtex_view_method = "skim"

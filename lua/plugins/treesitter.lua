@@ -105,7 +105,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"JoosepAlviste/nvim-ts-context-commentstring",
-		"https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
 		"RRethy/nvim-treesitter-textsubjects",
 	},
 }

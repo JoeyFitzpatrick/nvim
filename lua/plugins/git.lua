@@ -18,6 +18,7 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
+		enabled = false,
 		config = function()
 			require("diffview").setup({
 				view = {
@@ -26,6 +27,14 @@ return {
 					},
 				},
 			})
+		end,
+	},
+	{
+		"kdheepak/lazygit.nvim",
+		event = "VeryLazy",
+		config = function()
+			vim.g.lazygit_floating_window_scaling_factor = 1
+			vim.keymap.set("n", "<leader>j", "<cmd>LazyGit<CR>", { silent = true })
 		end,
 	},
 }
