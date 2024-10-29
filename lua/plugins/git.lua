@@ -7,7 +7,8 @@ return {
 		dir = "~/plugins/alien.nvim",
 		name = "alien",
 		config = function()
-			require("alien").setup({ command_mode_commands = { "G" } })
+			vim.g.alien_configuration = { command_mode_commands = { "G" } }
+			require("alien").setup()
 			local alien = require("alien")
 			nmap("<leader>s", alien.status, "Alien Status")
 			nmap("<leader>b", alien.local_branches, "Alien Branches")
