@@ -10,8 +10,8 @@ return {
 			vim.g.alien_configuration = { command_mode_commands = { "G" } }
 			require("alien").setup()
 			local alien = require("alien")
-			nmap("<leader>s", alien.status, "Alien Status")
-			nmap("<leader>b", alien.local_branches, "Alien Branches")
+			nmap("<leader>s", "<cmd>G status<CR>", "Alien Status")
+			nmap("<leader>b", "<cmd>G branch<CR>", "Alien Branches")
 			nmap("<leader>S", "<cmd>Lazy reload alien<cr>", "Reload Alien")
 			nmap("gb", alien.blame, "Alien Blame")
 			nmap("gs", "<cmd>G stash list<CR>", "Alien Stash")
