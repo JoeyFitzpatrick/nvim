@@ -95,15 +95,6 @@ return {
                         ]])
 		end,
 	},
-	{
-		"folke/todo-comments.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		event = "BufEnter",
-		config = function()
-			require("todo-comments").setup({})
-			nmap("<leader>lt", "<cmd>TodoTrouble<CR>", "Todos")
-		end,
-	},
 	{ "brenoprata10/nvim-highlight-colors", config = true, event = "BufEnter" },
 	{
 		"lervag/vimtex",
