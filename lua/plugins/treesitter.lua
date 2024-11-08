@@ -29,41 +29,6 @@ return {
 						node_decremental = "<BS>",
 					},
 				},
-				textobjects = {
-					select = {
-						enable = true,
-						-- Automatically jump forward to textobj, similar to targets.vim
-						lookahead = true,
-						keymaps = {
-							["af"] = "@function.outer",
-							["if"] = "@function.inner",
-							["ac"] = "@class.outer",
-							["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-							["is"] = { query = "@scope.inner", desc = "Select inner part of a scope" },
-							["as"] = { query = "@scope.outer", desc = "Select outer part of a scope" },
-						},
-						selection_modes = {
-							["@parameter.outer"] = "v", -- charwise
-							["@function.outer"] = "V", -- linewise
-							["@class.outer"] = "<c-v>", -- blockwise
-							["@scope.outer"] = "V",
-							["@scope.inner"] = "v",
-						},
-						include_surrounding_whitespace = false,
-					},
-				},
-				textsubjects = {
-					enable = true,
-					-- prev_selection = ";", -- (Optional) keymap to select the previous selection
-					keymaps = {
-						["<enter>"] = "textsubjects-smart",
-						-- ["o"] = "textsubjects-container-outer",
-						[","] = {
-							"textsubjects-container-inner",
-							desc = "Select inside containers (classes, functions, etc.)",
-						},
-					},
-				},
 			})
 			-- folding config
 			vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -102,9 +67,5 @@ return {
 			})
 		end,
 	},
-	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		"RRethy/nvim-treesitter-textsubjects",
-	},
+	{ "JoosepAlviste/nvim-ts-context-commentstring" },
 }

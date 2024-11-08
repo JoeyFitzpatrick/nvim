@@ -17,10 +17,11 @@ return {
 	},
 	{
 		"kdheepak/lazygit.nvim",
-		event = "VeryLazy",
+		keys = {
+			{ "<leader>j", "<cmd>LazyGit<CR>", { silent = true } },
+		},
 		config = function()
 			vim.g.lazygit_floating_window_scaling_factor = 1
-			vim.keymap.set("n", "<leader>j", "<cmd>LazyGit<CR>", { silent = true })
 		end,
 	},
 }
