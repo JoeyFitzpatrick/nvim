@@ -25,6 +25,7 @@ return {
 				css = { "prettier" },
 				htmldjango = { "djlint" },
 				svelte = { "prettierd", "eslint_d" },
+				vue = { "prettierd", "eslint_d" },
 				sql = { "sql_formatter" },
 			},
 			format_on_save = {

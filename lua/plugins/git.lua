@@ -24,4 +24,9 @@ return {
 			vim.g.lazygit_floating_window_scaling_factor = 1
 		end,
 	},
+	{
+		"sindrets/diffview.nvim",
+		enabled = true,
+		event = "VeryLazy",
+	},
 }
