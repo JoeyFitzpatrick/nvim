@@ -6,6 +6,7 @@ return {
 	{
 		dir = "~/plugins/alien.nvim",
 		name = "alien",
+		enabled = true,
 		config = function()
 			vim.g.alien_configuration = { command_mode_commands = { "G" } }
 			require("alien").setup()
