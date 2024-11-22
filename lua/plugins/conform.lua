@@ -6,12 +6,12 @@ return {
 	config = function()
 		local conform = require("conform")
 
-		-- speed up eslint
-		conform.formatters.eslint_d = {
-			cmd = "eslint_d",
-			args = { "--fix", "--cache", vim.api.nvim_buf_get_name(0) },
-			stdin = false,
-		}
+		-- -- speed up eslint
+		-- conform.formatters.eslint_d = {
+		-- 	cmd = "eslint_d",
+		-- 	args = { "--fix", "--cache", vim.api.nvim_buf_get_name(0) },
+		-- 	stdin = false,
+		-- }
 
 		conform.setup({
 			formatters_by_ft = {
