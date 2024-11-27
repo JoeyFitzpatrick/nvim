@@ -11,10 +11,6 @@ set("v", ":", ";", { noremap = true })
 set("n", "<C-d>", "<C-d>zz")
 set("n", "<C-u>", "<C-u>zz")
 
--- Center screen after search
-set("n", "n", "nzzzv")
-set("n", "N", "Nzzzv")
-
 -- Copy to clipboard
 set("v", "<Leader>y", '"+y')
 set("n", "<leader>Y", '"+yg_')
