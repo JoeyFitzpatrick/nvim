@@ -123,7 +123,7 @@ return {
 		lazy = false, -- lazy loading handled internally
 
 		-- use a release tag to download pre-built binaries
-		version = "v0.*",
+		version = "v0.6.0",
 		-- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 		-- build = 'cargo build --release',
 		opts = {

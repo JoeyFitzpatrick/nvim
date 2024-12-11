@@ -23,9 +23,7 @@ return {
 				builtin.find_files({ default_text = require("global.utils").get_visual_selection() })
 			end, {})
 			vim.keymap.set("n", "<leader>th", builtin.help_tags, {})
-			vim.keymap.set("n", "<leader>th", builtin.help_tags, {})
 			vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
-			-- vim.keymap.set("n", "<leader>M", builtin.marks, {})
 
 			-- Enable telescope fzf native, if installed
 			pcall(require("telescope").load_extension, "fzf")
@@ -88,7 +86,7 @@ return {
 		dependencies = {
 			"kkharji/sqlite.lua",
 			-- Optional.  If installed, native fzy will be used when match_algorithm is fzy
-			{ "nvim-telescope/telescope-fzy-native.nvim" },
+			-- { "nvim-telescope/telescope-fzy-native.nvim" },
 		},
 	},
 }
