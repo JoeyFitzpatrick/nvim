@@ -17,15 +17,6 @@ return {
 		end,
 	},
 	{
-		"kdheepak/lazygit.nvim",
-		keys = {
-			{ "<leader>j", "<cmd>LazyGit<CR>", { silent = true } },
-		},
-		config = function()
-			vim.g.lazygit_floating_window_scaling_factor = 1
-		end,
-	},
-	{
 		"sindrets/diffview.nvim",
 		enabled = false,
 		event = "VeryLazy",

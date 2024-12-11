@@ -139,14 +139,15 @@ return {
 		end,
 	},
 	{
-		"sphamba/smear-cursor.nvim",
+		"folke/snacks.nvim",
 		opts = {
-			stiffness = 0.8,
-			trailing_stiffness = 0.6,
-			trailing_exponent = 0,
-			distance_stop_animating = 0.5,
-			hide_target_hack = false,
+			input = {},
+			lazygit = {},
 		},
-		event = "BufEnter",
+		config = function()
+			vim.keymap.set("n", "<leader>j", function()
+				Snacks.lazygit.open()
+			end)
+		end,
 	},
 }
