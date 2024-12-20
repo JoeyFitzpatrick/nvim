@@ -12,6 +12,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Lsp Rename" })
 		vim.keymap.set("n", "<leader>ic", vim.lsp.buf.incoming_calls)
 		vim.keymap.set("n", "<leader>oc", vim.lsp.buf.outgoing_calls)
+		-- vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+		-- vim.keymap.set("n", "gr", vim.lsp.buf.references)
 	end,
 })
 

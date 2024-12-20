@@ -18,7 +18,7 @@ return {
 		nmap("<leader>g", fzf.live_grep_glob)
 		vim.keymap.set("v", "<leader>g", fzf.grep_visual, { noremap = true, silent = true })
 		vim.keymap.set("n", "gr", fzf.lsp_references, { noremap = true, silent = true })
-		vim.keymap.set("n", "gd", fzf.lsp_definitions, { noremap = true, silent = true })
+		-- vim.keymap.set("n", "gd", fzf.lsp_definitions, { noremap = true, silent = true })
 		nmap("<leader><leader>g", fzf.resume)
 		nmap("<leader>n", ":FzfLua ")
 		fzf.register_ui_select()

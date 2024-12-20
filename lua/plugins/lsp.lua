@@ -121,10 +121,7 @@ return {
 	{
 		"saghen/blink.cmp",
 		lazy = false, -- lazy loading handled internally
-
-		-- use a release tag to download pre-built binaries
 		version = "v0.*",
-		-- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 		build = "cargo build --release",
 		opts = {
 			appearance = {
@@ -137,6 +134,9 @@ return {
 				nerd_font_variant = "mono",
 			},
 			completion = {
+				list = {
+					selection = "auto_insert",
+				},
 				accept = {
 					-- experimental auto-brackets support
 					auto_brackets = {

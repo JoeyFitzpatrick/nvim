@@ -24,6 +24,8 @@ return {
 			end, {})
 			vim.keymap.set("n", "<leader>th", builtin.help_tags, {})
 			vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
+			vim.keymap.set("n", "gd", builtin.lsp_definitions, {})
+			vim.keymap.set("n", "gr", builtin.lsp_references, {})
 			vim.keymap.set("n", "<leader>ep", function()
 				builtin.find_files({ cwd = "~/.local/share/nvim/lazy" })
 			end, {})
