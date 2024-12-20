@@ -24,6 +24,9 @@ return {
 			end, {})
 			vim.keymap.set("n", "<leader>th", builtin.help_tags, {})
 			vim.keymap.set("n", "<leader>dg", builtin.diagnostics, {})
+			vim.keymap.set("n", "<leader>ep", function()
+				builtin.find_files({ cwd = "~/.local/share/nvim/lazy" })
+			end, {})
 
 			-- Enable telescope fzf native, if installed
 			pcall(require("telescope").load_extension, "fzf")
