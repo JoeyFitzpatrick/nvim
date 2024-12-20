@@ -61,8 +61,20 @@ local lsp_capabilities = {
 			dynamicRegistration = false,
 			insertTextMode = 1,
 		},
+		signatureHelp = {
+			dynamicRegistration = true,
+			signatureInformation = {
+				documentationFormat = { "markdown", "plaintext" },
+				parameterInformation = {
+					labelOffsetSupport = true,
+				},
+				activeParameterSupport = true,
+			},
+			contextSupport = true, -- Support explicit triggers (e.g., typing '(')
+		},
 	},
 }
+
 local default_setup = function(server)
 	require("lspconfig")[server].setup({
 		capabilities = lsp_capabilities,
@@ -72,6 +84,7 @@ end
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = servers,
+	automatic_installation = true,
 	handlers = {
 		default_setup,
 		eslint = function()

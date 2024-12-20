@@ -133,6 +133,9 @@ return {
 				-- adjusts spacing to ensure icons are aligned
 				nerd_font_variant = "mono",
 			},
+			signature = {
+				enabled = true,
+			},
 			completion = {
 				list = {
 					selection = "auto_insert",
@@ -171,6 +174,7 @@ return {
 			keymap = {
 				preset = "enter",
 				["<C-y>"] = { "select_and_accept" },
+				["<C-n>"] = { "select_next", "show" },
 			},
 		},
 	},
