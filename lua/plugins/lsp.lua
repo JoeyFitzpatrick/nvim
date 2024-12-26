@@ -137,9 +137,7 @@ return {
 				enabled = true,
 			},
 			completion = {
-				list = {
-					selection = "auto_insert",
-				},
+				list = { selection = "auto_insert" },
 				accept = {
 					-- experimental auto-brackets support
 					auto_brackets = {
@@ -156,7 +154,7 @@ return {
 					auto_show_delay_ms = 200,
 				},
 				ghost_text = {
-					enabled = vim.g.ai_cmp,
+					enabled = true,
 				},
 			},
 
@@ -164,11 +162,19 @@ return {
 			-- signature = { enabled = true },
 
 			sources = {
-				-- adding any nvim-cmp sources here will enable them
-				-- with blink.compat
-				compat = {},
-				default = { "lsp", "path", "snippets", "buffer" },
-				cmdline = {},
+				default = { "lsp", "path", "snippets" },
+				cmdline = function()
+					local type = vim.fn.getcmdtype()
+					-- Search forward and backward
+					if type == "/" or type == "?" then
+						return { "buffer" }
+					end
+					-- Commands
+					if type == ":" then
+						return { "cmdline" }
+					end
+					return {}
+				end,
 			},
 
 			keymap = {

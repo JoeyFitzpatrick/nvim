@@ -7,12 +7,14 @@ return {
 		"AckslD/nvim-neoclip.lua",
 		event = "VeryLazy",
 		dependencies = {
-			"nvim-telescope/telescope.nvim",
+			"ibhagwan/fzf-lua",
 			{ "kkharji/sqlite.lua", module = "sqlite" },
 		},
 		config = function()
-			set("n", "<leader>tn", "<cmd>Telescope neoclip<CR>", { silent = true })
 			require("neoclip").setup()
+			set("n", "<leader>tn", function()
+				require("neoclip.fzf")()
+			end, { silent = true })
 		end,
 	},
 	{
@@ -37,16 +39,11 @@ return {
 	},
 	{
 		"johmsalas/text-case.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
 		config = function()
 			require("textcase").setup({})
-			require("telescope").load_extension("textcase")
 		end,
 		cmd = "Subs",
-		keys = {
-			"ga", -- Default invocation prefix
-			{ "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "v" }, desc = "Telescope" },
-		},
+		keys = { "ga" },
 	},
 	{
 		"mbbill/undotree",
@@ -122,20 +119,6 @@ return {
 			})
 			vim.keymap.set("n", "H", require("arrow.persist").previous)
 			vim.keymap.set("n", "L", require("arrow.persist").next)
-		end,
-	},
-	{
-		"gelguy/wilder.nvim",
-		config = function()
-			local wilder = require("wilder")
-			wilder.setup({ modes = { ":", "/", "?" } })
-			wilder.set_option(
-				"renderer",
-				wilder.popupmenu_renderer({
-					-- highlighter applies highlighting to the candidates
-					highlighter = wilder.basic_highlighter(),
-				})
-			)
 		end,
 	},
 	{
