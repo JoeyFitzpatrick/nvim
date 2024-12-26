@@ -43,13 +43,11 @@ ls.add_snippets("all", {
 
 ls.add_snippets("lua", {
 	s("fn", {
-		t({ "", "function " }),
+		t({ "function(" }),
 		i(1),
-		t("("),
-		i(2, "int foo"),
-		t({ ") {", "\t" }),
+		t({ ")", "\t" }),
 		i(0),
-		t({ "", "}" }),
+		t({ "", "end" }),
 	}),
 	s("mod", {
 		t({ "local M = {}", "", "" }),
