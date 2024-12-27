@@ -178,7 +178,7 @@ return {
 			},
 
 			keymap = {
-				preset = "enter",
+				preset = "default",
 				["<C-y>"] = { "select_and_accept" },
 				["<C-n>"] = { "select_next", "show" },
 			},
