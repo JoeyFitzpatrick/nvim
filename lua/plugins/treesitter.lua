@@ -67,5 +67,5 @@ return {
 			})
 		end,
 	},
-	{ "JoosepAlviste/nvim-ts-context-commentstring" },
+	{ "folke/ts-comments.nvim", opts = {}, event = "VeryLazy" },
 }

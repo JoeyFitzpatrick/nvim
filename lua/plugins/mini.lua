@@ -1,5 +1,6 @@
 return {
-	"echasnovski/mini.icons",
+	"echasnovski/mini.nvim",
+	version = false,
 	opts = {},
 	lazy = true,
 	init = function()
@@ -7,5 +8,10 @@ return {
 			require("mini.icons").mock_nvim_web_devicons()
 			return package.loaded["nvim-web-devicons"]
 		end
+	end,
+	config = function()
+		require("mini.icons").setup()
+		require("mini.surround").setup()
+		require("mini.pairs").setup()
 	end,
 }

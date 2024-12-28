@@ -1,8 +1,6 @@
 local set = vim.keymap.set
 
 return {
-	{ "tpope/vim-surround", event = "VeryLazy" },
-	{ "tpope/vim-commentary", event = "VeryLazy" },
 	{
 		"AckslD/nvim-neoclip.lua",
 		event = "VeryLazy",
@@ -16,26 +14,6 @@ return {
 				require("neoclip.fzf")()
 			end, { silent = true })
 		end,
-	},
-	{
-		"altermo/ultimate-autopair.nvim",
-		event = { "InsertEnter", "CmdlineEnter" },
-		branch = "v0.6",
-		opts = {
-			fastwarp = {
-				multi = true,
-				{},
-				{
-					enable_normal = true,
-					enable_reverse = true,
-					faster = false,
-					map = "<C-a>",
-					rmap = "<C-s>",
-					cmap = "<C-a>",
-					rcmap = "<C-s>",
-				},
-			},
-		},
 	},
 	{
 		"johmsalas/text-case.nvim",
@@ -119,18 +97,6 @@ return {
 			})
 			vim.keymap.set("n", "H", require("arrow.persist").previous)
 			vim.keymap.set("n", "L", require("arrow.persist").next)
-		end,
-	},
-	{
-		"folke/snacks.nvim",
-		opts = {
-			input = {},
-			lazygit = {},
-		},
-		config = function()
-			vim.keymap.set("n", "<leader>j", function()
-				Snacks.lazygit.open()
-			end)
 		end,
 	},
 }

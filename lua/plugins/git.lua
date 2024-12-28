@@ -1,8 +1,5 @@
 return {
-	{
-		"tpope/vim-fugitive",
-		enabled = true,
-	},
+	{ "tpope/vim-fugitive", enabled = true },
 	{
 		dir = "~/plugins/alien.nvim",
 		name = "alien",
