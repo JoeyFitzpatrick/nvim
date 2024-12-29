@@ -93,10 +93,15 @@ return {
 			require("arrow").setup({
 				show_icons = true,
 				leader_key = ",",
-				buffer_leader_key = "m",
 			})
 			vim.keymap.set("n", "H", require("arrow.persist").previous)
 			vim.keymap.set("n", "L", require("arrow.persist").next)
 		end,
+	},
+	{
+		"altermo/ultimate-autopair.nvim",
+		event = { "InsertEnter", "CmdlineEnter" },
+		branch = "v0.6",
+		opts = {},
 	},
 }
