@@ -54,6 +54,20 @@ ls.add_snippets("lua", {
 		i(0),
 		t({ "", "", "return M" }),
 	}),
+	s("desc", {
+		t('describe("'),
+		i(1, "description"),
+		t({ '", function()', "\t" }),
+		i(0),
+		t({ "", "end)" }),
+	}),
+	s("it", {
+		t('it("'),
+		i(1, "description"),
+		t({ '", function()', "\t" }),
+		i(0),
+		t({ "", "end)" }),
+	}),
 })
 
 ls.add_snippets("htmldjango", {
