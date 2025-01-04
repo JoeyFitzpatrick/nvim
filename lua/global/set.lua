@@ -16,7 +16,6 @@ vim.opt.updatetime = 300
 vim.opt.cursorline = true
 vim.opt.shortmess = "aoOtI" -- abbreviate messages and truncate file messages in cmd line
 vim.opt.cmdheight = 0
--- vim.opt.messagesopt = "wait:500,history:500"
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
