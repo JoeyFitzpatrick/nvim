@@ -67,11 +67,6 @@ local function run_in_tmux_pane(command_type)
 	os.execute("tmux select-pane -L")
 end
 
-local function run_raw_command_in_tmux_pane(command)
-	tmux_split()
-	os.execute("tmux send-keys '" .. command .. "' Enter")
-end
-
 vim.keymap.set("n", "<leader>mx", function()
 	tmux_close_split()
 end, { noremap = true, desc = "Close tmux split" })

@@ -137,7 +137,7 @@ return {
 				enabled = true,
 			},
 			completion = {
-				list = { selection = "auto_insert" },
+				list = { selection = { auto_insert = true } },
 				accept = {
 					-- experimental auto-brackets support
 					auto_brackets = {

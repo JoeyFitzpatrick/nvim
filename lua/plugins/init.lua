@@ -84,6 +84,7 @@ return {
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		ft = { "markdown" },
 		build = function()
+			vim.cmd([[Lazy load markdown-preview.nvim]])
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
@@ -104,4 +105,5 @@ return {
 		branch = "v0.6",
 		opts = {},
 	},
+	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 }
