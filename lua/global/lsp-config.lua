@@ -17,84 +17,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local servers = {
-	"pyright",
-	"svelte",
-	"lua_ls",
-	"eslint",
-}
-
-local lsp_capabilities = {
-	textDocument = {
-		completion = {
-			completionItem = {
-				commitCharactersSupport = true,
-				deprecatedSupport = true,
-				insertReplaceSupport = true,
-				insertTextModeSupport = {
-					valueSet = { 1, 2 },
+require("lspconfig").basedpyright.setup({
+	settings = {
+		basedpyright = {
+			analysis = {
+				useLibraryCodeForTypes = true,
+				diagnosticSeverityOverrides = {
+					reportUnusedVariable = "warning", -- or anything
 				},
-				labelDetailsSupport = true,
-				preselectSupport = true,
-				resolveSupport = {
-					properties = {
-						"documentation",
-						"detail",
-						"additionalTextEdits",
-						"sortText",
-						"filterText",
-						"insertText",
-						"textEdit",
-						"insertTextFormat",
-						"insertTextMode",
-					},
-				},
-				snippetSupport = true,
-				tagSupport = {
-					valueSet = { 1 },
-				},
+				typeCheckingMode = "basic",
 			},
-			completionList = {
-				itemDefaults = { "commitCharacters", "editRange", "insertTextFormat", "insertTextMode", "data" },
-			},
-			contextSupport = true,
-			dynamicRegistration = false,
-			insertTextMode = 1,
 		},
-		signatureHelp = {
-			dynamicRegistration = true,
-			signatureInformation = {
-				documentationFormat = { "markdown", "plaintext" },
-				parameterInformation = {
-					labelOffsetSupport = true,
-				},
-				activeParameterSupport = true,
-			},
-			contextSupport = true, -- Support explicit triggers (e.g., typing '(')
-		},
-	},
-}
-
-local default_setup = function(server)
-	require("lspconfig")[server].setup({
-		capabilities = lsp_capabilities,
-	})
-end
-
-require("mason").setup({})
-require("mason-lspconfig").setup({
-	ensure_installed = servers,
-	automatic_installation = true,
-	handlers = {
-		default_setup,
-		eslint = function()
-			-- Docs for this setup is here: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
-			require("lspconfig").eslint.setup({
-				rulesCustomizations = {
-					rule = "prettier/prettier",
-					severity = "off",
-				},
-			})
-		end,
 	},
 })
+require("lspconfig").lua_ls.setup({})
