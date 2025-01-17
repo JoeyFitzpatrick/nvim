@@ -114,9 +114,4 @@ set("n", "<leader>N", function()
 	print("Copied to clipboard: " .. filename)
 end)
 
-nmap("<M-down>", "<C-w>+<C-w>+", "Increase window height", { noremap = true })
-nmap("<M-up>", "<C-w>-<C-w>-", "Decrease window height", { noremap = true })
-nmap("<M-Left>", "<C-w><<C-w><", "Decrease window width", { noremap = true })
-nmap("<M-Right>", "<C-w>><C-w>>", "Increase window width", { noremap = true })
-
 vim.keymap.set("n", "M", "<cmd>messages<CR>", { noremap = true })

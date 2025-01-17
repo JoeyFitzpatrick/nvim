@@ -1,20 +1,4 @@
-local set = vim.keymap.set
-
 return {
-	{
-		"AckslD/nvim-neoclip.lua",
-		event = "VeryLazy",
-		dependencies = {
-			"ibhagwan/fzf-lua",
-			{ "kkharji/sqlite.lua", module = "sqlite" },
-		},
-		config = function()
-			require("neoclip").setup()
-			set("n", "<leader>tn", function()
-				require("neoclip.fzf")()
-			end, { silent = true })
-		end,
-	},
 	{
 		"johmsalas/text-case.nvim",
 		config = function()
@@ -30,34 +14,6 @@ return {
 		},
 	},
 	{
-		"christoomey/vim-tmux-navigator",
-		event = "VeryLazy",
-		cmd = {
-			"TmuxNavigateLeft",
-			"TmuxNavigateDown",
-			"TmuxNavigateUp",
-			"TmuxNavigateRight",
-			"TmuxNavigatePrevious",
-		},
-		keys = {
-			-- { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-		},
-		config = function()
-			set("n", "<c-h>", function()
-				local column = vim.api.nvim_win_get_position(0)[2]
-				if column == 0 then
-					vim.cmd("wincmd h")
-				else
-					vim.cmd("TmuxNavigateLeft")
-				end
-			end)
-		end,
-	},
-	{
 		"haya14busa/vim-asterisk",
 		event = "VeryLazy",
 		config = function()
@@ -71,14 +27,6 @@ return {
 		end,
 	},
 	{ "brenoprata10/nvim-highlight-colors", config = true, event = "BufEnter" },
-	{
-		"lervag/vimtex",
-		enabled = false,
-		lazy = false, -- we don't want to lazy load VimTeX
-		init = function()
-			vim.g.vimtex_view_method = "skim"
-		end,
-	},
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -106,4 +54,18 @@ return {
 		opts = {},
 	},
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
+			},
+		},
+	},
 }

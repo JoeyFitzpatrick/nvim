@@ -14,7 +14,7 @@ vim.opt.undofile = true
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.updatetime = 300
 vim.opt.cursorline = true
-vim.opt.shortmess = "aoOtI" -- abbreviate messages and truncate file messages in cmd line
+vim.opt.shortmess = "at" -- abbreviate messages and truncate file messages in cmd line
 vim.opt.cmdheight = 1
 
 -- [[ Highlight on yank ]]

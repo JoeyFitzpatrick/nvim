@@ -1,14 +1,15 @@
 return {
 	"folke/snacks.nvim",
+	lazy = false,
 	opts = {
+		bigfile = {},
 		input = {},
 		lazygit = {},
 		picker = {
 			win = {
 				input = {
-
 					keys = {
-						["<Esc>"] = { "close", mode = { "n", "i" } },
+						["<Esc>"] = { "close", mode = { "i" } },
 					},
 				},
 			},
@@ -35,7 +36,7 @@ return {
 	},
 	keys = {
 		{
-			"<leader>j",
+			"<leader>jk",
 			function()
 				Snacks.lazygit.open()
 			end,
