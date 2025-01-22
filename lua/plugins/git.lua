@@ -1,9 +1,17 @@
 return {
 	{ "tpope/vim-fugitive", enabled = true },
 	{
+		dir = "~/plugins/ever.nvim",
+		name = "ever",
+		enabled = true,
+		config = function()
+			vim.keymap.set("n", "g<space>", ":G ", { desc = "Ever Prefix" })
+		end,
+	},
+	{
 		dir = "~/plugins/alien.nvim",
 		name = "alien",
-		enabled = true,
+		enabled = false,
 		config = function()
 			vim.g.alien_configuration = { command_mode_commands = { "G" } }
 			require("alien").setup()
@@ -18,6 +26,13 @@ return {
 		event = "VeryLazy",
 		config = function()
 			vim.keymap.set("n", "<leader>jd", "<cmd>DiffviewOpen<CR>")
+			require("diffview").setup({
+				view = {
+					merge_tool = {
+						layout = "diff3_mixed",
+					},
+				},
+			})
 		end,
 	},
 }

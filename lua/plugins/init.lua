@@ -8,12 +8,6 @@ return {
 		keys = { "ga" },
 	},
 	{
-		"mbbill/undotree",
-		keys = {
-			{ "<leader>u", "<cmd>UndotreeToggle<CR>", { silent = true, desc = "Undo Tree" } },
-		},
-	},
-	{
 		"haya14busa/vim-asterisk",
 		event = "VeryLazy",
 		config = function()

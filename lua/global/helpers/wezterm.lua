@@ -11,8 +11,7 @@ local function wezterm_split()
 		if current_pane_id == nil then
 			return
 		end
-		print(current_pane_id)
-		vim.system({ "wezterm", "cli", "activate-pane", "--pane-id", current_pane_id }, { text = true })
+		vim.system({ "wezterm", "cli", "activate-pane", "--pane-id", current_pane_id }, { text = true }):wait()
 	else
 		vim.system({
 			"wezterm",
@@ -21,8 +20,8 @@ local function wezterm_split()
 			"--pane-id",
 			wezterm_pane_id,
 			"--no-paste",
-			"\x03\n\x03\nclear\n", -- \x03 = <ctrl-c>, \n = <enter>
-		})
+			"\x03\n\x03\nhello\n", -- \x03 = <ctrl-c>, \n = <enter>
+		}):wait()
 	end
 end
 
@@ -33,28 +32,48 @@ local function wezterm_close_split()
 	end
 end
 
+---@param command string[]
+local function wezterm_send_command(command)
+	if not wezterm_pane_id then
+		return
+	end
+	local wezterm_command = {
+		"wezterm",
+		"cli",
+		"send-text",
+		"--pane-id",
+		wezterm_pane_id,
+		"--no-paste",
+		table.concat(command, " ") .. "\n",
+	}
+	vim.system(wezterm_command, { text = true }):wait()
+end
+
 local typescript_commands = {
-	test = function(filename)
-		local path = vim.api.nvim_buf_get_name(0)
+	test = function(filename, path)
 		if string.match(path, "e2e") then
-			return "pnpm test:e2e --ui " .. filename
+			return { "pnpm", "test:e2e", "--ui", filename }
 		else
-			return "pnpm vitest " .. filename
+			return { "pnpm", "vitest", filename }
 		end
 	end,
 }
 
 local lua_commands = {
-	test = function()
-		local filename = vim.api.nvim_buf_get_name(0)
-		return "busted " .. filename
+	test = function(filename)
+		return { "busted", filename }
 	end,
 }
 
 local python_commands = {
-	run = function()
-		local filename = vim.api.nvim_buf_get_name(0)
-		return "python3 " .. filename
+	run = function(filename)
+		return { "python", filename }
+	end,
+	test = function(filename, path)
+		if string.match(path, "projects/api") then
+			return { "echo", filename }
+		end
+		return { "echo", path }
 	end,
 }
 
@@ -77,10 +96,11 @@ local function run_in_wezterm_pane(command_type)
 	end
 
 	local cmd = commands[filetype][command_type]
-	local full_command = cmd(filename)
+	local full_command = cmd(filename, full_path)
 	wezterm_split()
-	os.execute("wezterm send-keys '" .. full_command .. "' Enter")
-	os.execute("wezterm select-pane -L")
+	vim.defer_fn(function()
+		wezterm_send_command(full_command)
+	end, 1000)
 end
 
 vim.keymap.set("n", "<leader>ms", wezterm_split)

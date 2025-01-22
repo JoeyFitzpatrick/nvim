@@ -1,6 +1,8 @@
 return {
 	"folke/snacks.nvim",
 	lazy = false,
+	---@module "snacks"
+	---@type snacks.Config
 	opts = {
 		bigfile = {},
 		input = {},
@@ -39,6 +41,13 @@ return {
 			"<leader>jk",
 			function()
 				Snacks.lazygit.open()
+			end,
+			desc = "Lazygit",
+		},
+		{
+			"<leader>jl",
+			function()
+				Snacks.lazygit.log_file()
 			end,
 			desc = "Lazygit",
 		},
@@ -136,11 +145,25 @@ return {
 			desc = "Resume",
 		},
 		{
-			"<leader>uC",
+			"<leader>sC",
 			function()
 				Snacks.picker.colorschemes()
 			end,
 			desc = "Colorschemes",
+		},
+		{
+			"<leader>sh",
+			function()
+				Snacks.picker.highlights()
+			end,
+			desc = "Keymaps",
+		},
+		{
+			"<leader>su",
+			function()
+				Snacks.picker.undo()
+			end,
+			desc = "Undo Tree",
 		},
 		-- LSP
 		{
