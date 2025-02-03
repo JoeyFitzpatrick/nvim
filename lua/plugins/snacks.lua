@@ -8,6 +8,9 @@ return {
 		input = {},
 		lazygit = {},
 		picker = {
+			matcher = {
+				frecency = true,
+			},
 			win = {
 				input = {
 					keys = {
@@ -75,7 +78,7 @@ return {
 		{
 			"<leader>f",
 			function()
-				Snacks.picker.files()
+				Snacks.picker.smart()
 			end,
 			desc = "Find Files",
 		},
@@ -113,6 +116,13 @@ return {
 			"<leader>sc",
 			function()
 				Snacks.picker.commands()
+			end,
+			desc = "Commands",
+		},
+		{
+			"<leader>sl",
+			function()
+				Snacks.picker.git_log()
 			end,
 			desc = "Commands",
 		},

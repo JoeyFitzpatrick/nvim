@@ -48,8 +48,24 @@ set("v", "P", '"0P')
 vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
 
 -- better tab navigation
-set("n", "<leader><Tab>", "gt", { noremap = true, silent = true })
-set("n", "<leader>te", "<cmd>tabedit %<CR>", { noremap = true, silent = true })
+set({ "n", "t" }, "<C-n>", function()
+	vim.cmd("tabnext")
+end, { noremap = true, silent = true })
+set({ "n", "t" }, "<C-p>", function()
+	vim.cmd("tabprev")
+end, { noremap = true, silent = true })
+
+-- terminal mappings
+vim.keymap.set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
+vim.keymap.set({ "n", "t" }, "<C-t>", function()
+	vim.cmd("tabnew | term")
+end)
+vim.keymap.set({ "n", "t" }, "<C-s>", function()
+	vim.cmd("rightbelow vsplit | term")
+end)
+vim.keymap.set({ "n", "t" }, "<C-b>", function()
+	vim.cmd("rightbelow split | term")
+end, { noremap = true, silent = true })
 
 -- Custom text objects
 -- ie = inner entire buffer

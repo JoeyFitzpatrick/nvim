@@ -11,6 +11,17 @@ return {
 	config = function()
 		require("mini.icons").setup()
 		require("mini.surround").setup()
-		require("mini.ai").setup()
+
+		local spec_treesitter = require("mini.ai").gen_spec.treesitter
+		require("mini.ai").setup({
+			custom_textobjects = {
+				f = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
+				c = spec_treesitter({ a = "@class.outer", i = "@class.inner" }),
+				o = spec_treesitter({
+					a = { "@conditional.outer", "@loop.outer" },
+					i = { "@conditional.inner", "@loop.inner" },
+				}),
+			},
+		})
 	end,
 }

@@ -68,4 +68,5 @@ return {
 		end,
 	},
 	{ "folke/ts-comments.nvim", opts = {}, event = "VeryLazy" },
+	{ "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
 }

@@ -6,18 +6,23 @@ return {
 		enabled = true,
 		config = function()
 			vim.keymap.set("n", "g<space>", ":G ", { desc = "Ever Prefix" })
+			vim.keymap.set("n", "<leader>je", "<cmd>G<CR>", { desc = "Open Ever Home UI" })
+			vim.keymap.set("n", "<leader>jd", "<cmd>G difftool<CR>", { desc = "Open Ever Difftool" })
+			vim.keymap.set(
+				"n",
+				"<leader>jt",
+				"<cmd>G difftool status-file-tree<CR>",
+				{ desc = "Open Ever for testing" }
+			)
 		end,
 	},
 	{
 		dir = "~/plugins/alien.nvim",
 		name = "alien",
-		enabled = false,
+		enabled = true,
 		config = function()
-			vim.g.alien_configuration = { command_mode_commands = { "G" } }
+			vim.g.alien_configuration = { command_mode_commands = { "A" } }
 			require("alien").setup()
-			nmap("gs", "<cmd>G status<CR>", "Alien Status")
-			nmap("gb", "<cmd>G branch<CR>", "Alien Branches")
-			nmap("g<space>", ":G ", "Alien Prefix")
 		end,
 	},
 	{
@@ -25,7 +30,7 @@ return {
 		enabled = true,
 		event = "VeryLazy",
 		config = function()
-			vim.keymap.set("n", "<leader>jd", "<cmd>DiffviewOpen<CR>")
+			-- vim.keymap.set("n", "<leader>jd", "<cmd>DiffviewOpen<CR>", { desc = "Open Diffview" })
 			require("diffview").setup({
 				view = {
 					merge_tool = {
