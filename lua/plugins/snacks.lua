@@ -5,6 +5,7 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = {},
+		explorer = {},
 		input = {},
 		lazygit = {},
 		picker = {
@@ -88,6 +89,20 @@ return {
 				Snacks.picker.files({ cwd = "~/.local/share/nvim/lazy" })
 			end,
 			desc = "Edit Plugins",
+		},
+		{
+			"<leader>er",
+			function()
+				Snacks.picker.files({ cwd = "~/.config/scripts" })
+			end,
+			desc = "Edit Rest Request Files",
+		},
+		{
+			"<leader>ee",
+			function()
+				Snacks.explorer()
+			end,
+			desc = "File Explorer",
 		},
 		{
 			"<leader>sb",

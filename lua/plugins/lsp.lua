@@ -87,6 +87,7 @@ return {
 	},
 	{ "LuaCATS/luassert", name = "luassert-types", lazy = true },
 	{ "LuaCATS/busted", name = "busted-types", lazy = true },
+	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 	{
 		"folke/lazydev.nvim",
 		ft = "lua", -- only load on lua files
@@ -98,7 +99,6 @@ return {
 			},
 		},
 	},
-	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 	{
 		"saghen/blink.cmp",
 		lazy = false, -- lazy loading handled internally
@@ -162,6 +162,9 @@ return {
 				preset = "default",
 				["<C-y>"] = { "select_and_accept" },
 				["<C-n>"] = { "select_next", "show" },
+				["<Up>"] = {},
+				["<Down>"] = {},
+				["<C-k>"] = {},
 			},
 		},
 	},

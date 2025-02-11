@@ -15,18 +15,19 @@ return {
 
 		conform.setup({
 			formatters_by_ft = {
-				lua = { "stylua" },
 				-- Conform will run multiple formatters sequentially
-				python = { "isort", "black", "pylint" },
-				javascript = { "prettierd", "eslint_d" },
-				typescript = { "prettierd", "eslint_d" },
-				javascriptreact = { "prettierd", "eslint_d" },
-				typescriptreact = { "prettierd", "eslint_d" },
 				css = { "prettier" },
 				htmldjango = { "djlint" },
-				svelte = { "prettierd", "eslint_d" },
-				vue = { "prettierd", "eslint_d" },
+				javascript = { "prettierd", "eslint_d" },
+				javascriptreact = { "prettierd", "eslint_d" },
+				json = { "jq" },
+				lua = { "stylua" },
+				python = { "isort", "black", "pylint" },
 				sql = { "sql_formatter" },
+				svelte = { "prettierd", "eslint_d" },
+				typescript = { "prettierd", "eslint_d" },
+				typescriptreact = { "prettierd", "eslint_d" },
+				vue = { "prettierd", "eslint_d" },
 			},
 			format_on_save = {
 				timeout_ms = 1000,

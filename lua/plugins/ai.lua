@@ -12,7 +12,16 @@ return {
 			"GpChatNew",
 		},
 		config = function()
-			require("gp").setup()
+			require("gp").setup({
+				providers = {
+					anthropic = {
+						disable = false,
+					},
+					openai = {
+						disable = true,
+					},
+				},
+			})
 		end,
 	},
 }
