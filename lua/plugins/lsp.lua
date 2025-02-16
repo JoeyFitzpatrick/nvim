@@ -139,12 +139,11 @@ return {
 				},
 			},
 
-			-- experimental signature help support
-			-- signature = { enabled = true },
-
 			sources = {
 				default = { "lsp", "path", "snippets" },
-				cmdline = function()
+			},
+			cmdline = {
+				sources = function()
 					local type = vim.fn.getcmdtype()
 					-- Search forward and backward
 					if type == "/" or type == "?" then

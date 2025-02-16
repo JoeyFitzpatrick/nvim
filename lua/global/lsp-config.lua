@@ -31,6 +31,7 @@ require("lspconfig").basedpyright.setup({
 		},
 	},
 })
-require("lspconfig").lua_ls.setup({})
-require("lspconfig").ts_ls.setup({})
-require("lspconfig").bashls.setup({})
+local default_configs = { "lua_ls", "ts_ls", "bashls", "yamlls" }
+for _, server in ipairs(default_configs) do
+	require("lspconfig")[server].setup({})
+end
