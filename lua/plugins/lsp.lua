@@ -1,5 +1,5 @@
 return {
-	{ "neovim/nvim-lspconfig" },
+	{ "neovim/nvim-lspconfig", event = "VeryLazy" },
 	{
 		"kndndrj/nvim-dbee",
 		enabled = false,
@@ -166,5 +166,20 @@ return {
 				["<C-k>"] = {},
 			},
 		},
+	},
+	{
+		"pmizio/typescript-tools.nvim",
+		ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+		config = function()
+			require("typescript-tools").setup({
+				settings = {
+					tsserver_plugins = {
+						"@styled/typescript-styled-plugin",
+					},
+				},
+			})
+		end,
 	},
 }
