@@ -6,6 +6,11 @@ return {
 	opts = {
 		bigfile = {},
 		explorer = {},
+		indent = {
+			animate = {
+				enabled = false,
+			},
+		},
 		input = {},
 		lazygit = {},
 		picker = {
