@@ -14,6 +14,7 @@ return {
 					"typescript",
 					"tsx",
 					"javascript",
+					"styled", -- support for styled component highlighting
 				},
 				ignore_install = {},
 				modules = {},
