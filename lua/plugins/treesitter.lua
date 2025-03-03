@@ -70,4 +70,19 @@ return {
 	},
 	{ "folke/ts-comments.nvim", opts = {}, event = "VeryLazy" },
 	{ "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		event = "VeryLazy",
+		config = function()
+			require("treesitter-context").setup({
+				enable = false, -- off by default, turn on with command
+			})
+			vim.keymap.set("n", "[c", function()
+				require("treesitter-context").go_to_context(vim.v.count1)
+			end, { silent = true, desc = "Navigate to parent context" })
+			vim.keymap.set("n", "<leader>lc", function()
+				vim.cmd("TSContextToggle")
+			end, { silent = true, desc = "Toggle treesitter context" })
+		end,
+	},
 }
