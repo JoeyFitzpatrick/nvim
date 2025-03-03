@@ -17,6 +17,7 @@ vim.opt.cursorline = true
 vim.opt.shortmess = "at" -- abbreviate messages and truncate file messages in cmd line
 vim.opt.cmdheight = 1
 vim.opt.laststatus = 3
+vim.opt.diffopt = "internal,filler,closeoff,indent-heuristic,linematch:60,algorithm:histogram"
 
 -- Saved macros
 vim.cmd([[
