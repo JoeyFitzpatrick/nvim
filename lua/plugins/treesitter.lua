@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		event = "BufEnter",
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
@@ -43,6 +44,7 @@ return {
 	},
 	{
 		"https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+		event = "BufEnter",
 		config = function()
 			---@type rainbow_delimiters.config
 			vim.g.rainbow_delimiters = {
@@ -58,6 +60,7 @@ return {
 	},
 	{
 		"windwp/nvim-ts-autotag",
+		event = "BufEnter",
 		config = function()
 			require("nvim-ts-autotag").setup({
 				opts = {
@@ -87,6 +90,7 @@ return {
 	},
 	{
 		"aaronik/treewalker.nvim",
+		event = "BufEnter",
 		config = function()
 			-- movement
 			vim.keymap.set({ "n", "v" }, "<A-k>", "<cmd>Treewalker Up<cr>", { silent = true })

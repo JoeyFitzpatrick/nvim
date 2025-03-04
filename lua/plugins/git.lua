@@ -28,7 +28,7 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
-		enabled = true,
+		enabled = false,
 		event = "VeryLazy",
 		config = function()
 			-- vim.keymap.set("n", "<leader>jd", "<cmd>DiffviewOpen<CR>", { desc = "Open Diffview" })

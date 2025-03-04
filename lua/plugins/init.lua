@@ -85,4 +85,5 @@ return {
 			end,
 		},
 	},
+	{ "rhysd/clever-f.vim", event = "BufEnter" },
 }
