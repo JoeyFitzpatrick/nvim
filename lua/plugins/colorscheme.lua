@@ -1,5 +1,5 @@
 local function write_wezterm_colorscheme(colorscheme)
-	local filename = vim.fn.expand(os.getenv("HOME") .. "/wezterm/colorscheme")
+	local filename = vim.fn.expand(os.getenv("HOME") .. "/.config/wezterm/colorscheme")
 	assert(type(filename) == "string")
 	local file = io.open(filename, "w")
 	assert(file)
