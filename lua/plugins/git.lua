@@ -5,7 +5,7 @@ return {
 		name = "ever",
 		enabled = true,
 		config = function()
-			vim.keymap.set("n", "g<space>", ":G ", { desc = "Ever Prefix" })
+			vim.keymap.set({ "n", "v" }, "g<space>", ":G ", { desc = "Ever Prefix" })
 			vim.keymap.set("n", "<leader>je", "<cmd>G<CR>", { desc = "Open Ever Home UI" })
 			vim.keymap.set("n", "<leader>jd", "<cmd>G difftool<CR>", { desc = "Open Ever Difftool" })
 			vim.keymap.set("n", "<leader>jb", "<cmd>G blame<CR>", { desc = "Open Ever Blame" })
