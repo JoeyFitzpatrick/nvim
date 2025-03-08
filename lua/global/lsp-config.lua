@@ -36,6 +36,7 @@ local default_configs = {
 	"lua_ls",
 	"bashls",
 	"yamlls",
+	"zls",
 }
 for _, server in ipairs(default_configs) do
 	require("lspconfig")[server].setup({})

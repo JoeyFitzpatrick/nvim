@@ -103,7 +103,7 @@ return {
 			desc = "Edit Rest Request Files",
 		},
 		{
-			"<leader>ee",
+			"<leader>se",
 			function()
 				Snacks.explorer()
 			end,
