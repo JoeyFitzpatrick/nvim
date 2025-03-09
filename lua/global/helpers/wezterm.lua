@@ -77,6 +77,12 @@ local python_commands = {
 	end,
 }
 
+local zig_commands = {
+	run = function(filename)
+		return { "zig", "run", filename }
+	end,
+}
+
 local commands = {
 	javascript = typescript_commands,
 	typescript = typescript_commands,
@@ -84,19 +90,20 @@ local commands = {
 	typescriptreact = typescript_commands,
 	lua = lua_commands,
 	python = python_commands,
+	zig = zig_commands,
 }
 
 local function run_in_wezterm_pane(command_type)
 	local filetype = vim.bo.filetype
 	local full_path = vim.api.nvim_buf_get_name(0)
-	local filename = full_path:match("^.+/(.+)$")
+	local relative_filepath = vim.fn.expand("%:.")
 	if commands[filetype] == nil or commands[filetype][command_type] == nil then
 		print("No command found for " .. filetype .. " file type")
 		return
 	end
 
 	local cmd = commands[filetype][command_type]
-	local full_command = cmd(filename, full_path)
+	local full_command = cmd(relative_filepath, full_path)
 	wezterm_split()
 	vim.defer_fn(function()
 		wezterm_send_command(full_command)
