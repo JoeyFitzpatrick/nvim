@@ -3,9 +3,7 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.hlsearch = false
--- need both of these for hybrid line numbers
 vim.opt.number = true
-vim.opt.relativenumber = true
 vim.opt.showmode = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
