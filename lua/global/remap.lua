@@ -131,3 +131,5 @@ set("n", "<leader>N", function()
 end)
 
 vim.keymap.set("n", "M", "<cmd>messages<CR>", { noremap = true })
+
+vim.keymap.set("n", "<leader>x", "<cmd>w|so<CR>", { desc = "save and run file" })
