@@ -168,6 +168,13 @@ return {
 			desc = "Man Pages",
 		},
 		{
+			"<leader>sp",
+			function()
+				Snacks.picker.pickers()
+			end,
+			desc = "Search pickers",
+		},
+		{
 			"<leader><leader>g",
 			function()
 				Snacks.picker.resume()

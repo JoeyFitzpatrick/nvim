@@ -33,8 +33,9 @@ require("lspconfig").basedpyright.setup({
 })
 
 local default_configs = {
-	"lua_ls",
 	"bashls",
+	"gopls",
+	"lua_ls",
 	"yamlls",
 	"zls",
 }
