@@ -172,7 +172,7 @@ return {
 			function()
 				Snacks.picker.pickers()
 			end,
-			desc = "Search pickers",
+			desc = "Search Pickers",
 		},
 		{
 			"<leader><leader>g",
@@ -190,6 +190,13 @@ return {
 		},
 		{
 			"<leader>sh",
+			function()
+				Snacks.picker.search_history()
+			end,
+			desc = "Search History",
+		},
+		{
+			"<leader>sH",
 			function()
 				Snacks.picker.highlights()
 			end,
