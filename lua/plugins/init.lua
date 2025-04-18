@@ -88,4 +88,19 @@ return {
 		},
 	},
 	{ "rhysd/clever-f.vim", event = "BufEnter" },
+	{
+		"gbprod/yanky.nvim",
+		dependencies = { { "kkharji/sqlite.lua" } },
+		opts = { ring = { storage = "sqlite" }, highlight = { timer = 150, on_put = false } },
+		config = function(_, opts)
+			require("yanky").setup(opts)
+			vim.keymap.set("n", "<leader>rh", "<cmd>YankyRingHistory<cr>", { desc = "Open Yank History" })
+			vim.keymap.set("n", "p", "<Plug>(YankyPutAfter)", { desc = "Yanky Put After" })
+			vim.keymap.set("n", "P", "<Plug>(YankyPutBefore)", { desc = "Yanky Put After" })
+			vim.keymap.set("n", "gp", "<Plug>(YankyGPutAfter)", { desc = "Yanky GPut After" })
+			vim.keymap.set("n", "gP", "<Plug>(YankyGPutBefore)", { desc = "Yanky GPut After" })
+			vim.keymap.set("n", "<c-m-p>", "<Plug>(YankyPreviousEntry)")
+			vim.keymap.set("n", "<c-m-n>", "<Plug>(YankyNextEntry)")
+		end,
+	},
 }
