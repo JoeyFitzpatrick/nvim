@@ -19,7 +19,7 @@ vim.opt.diffopt = "internal,filler,closeoff,indent-heuristic,linematch:60,algori
 
 -- Saved macros
 vim.cmd([[
-    :let @a = '_vg_sa"A,' . "\<Esc>j"
+    :let @a = "_vg_sa'A," . "\<Esc>j"
 ]])
 
 vim.cmd([[ 

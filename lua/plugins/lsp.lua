@@ -112,6 +112,7 @@ return {
 					},
 				},
 			})
+			vim.keymap.set("n", "<leader>ts", ":TSTools", { desc = "Auto-populate partial TSTools command" })
 		end,
 	},
 }
