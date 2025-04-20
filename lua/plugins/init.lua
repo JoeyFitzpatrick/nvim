@@ -87,7 +87,6 @@ return {
 			global_keymaps = false,
 		},
 	},
-	{ "rhysd/clever-f.vim", event = "BufEnter" },
 	{
 		"gbprod/yanky.nvim",
 		dependencies = { { "kkharji/sqlite.lua" } },

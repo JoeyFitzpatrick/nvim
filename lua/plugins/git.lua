@@ -20,7 +20,7 @@ return {
 	{
 		dir = "~/plugins/alien.nvim",
 		name = "alien",
-		enabled = true,
+		enabled = false,
 		config = function()
 			vim.g.alien_configuration = { command_mode_commands = { "A" } }
 			require("alien").setup()
@@ -44,6 +44,7 @@ return {
 
 	{
 		"NeogitOrg/neogit",
+		enabled = false,
 		cmd = { "Neogit" },
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- required
