@@ -133,3 +133,5 @@ end)
 vim.keymap.set("n", "M", "<cmd>messages<CR>", { noremap = true })
 
 vim.keymap.set("n", "<leader>x", "<cmd>w|so<CR>", { desc = "save and run file" })
+
+vim.keymap.set("i", "<C-l>", "<right>", { desc = "Go right one char" })
