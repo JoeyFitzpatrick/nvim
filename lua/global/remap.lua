@@ -56,14 +56,14 @@ set({ "n", "t" }, "<C-p>", function()
 end, { noremap = true, silent = true })
 
 -- terminal mappings
-vim.keymap.set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
-vim.keymap.set({ "n", "t" }, "<C-t>", function()
+set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
+set({ "n", "t" }, "<C-t>", function()
 	vim.cmd("tabnew | term")
 end)
-vim.keymap.set({ "n", "t" }, "<C-s>", function()
+set({ "n", "t" }, "<C-s>", function()
 	vim.cmd("rightbelow vsplit | term")
 end)
-vim.keymap.set({ "n", "t" }, "<C-b>", function()
+set({ "n", "t" }, "<C-b>", function()
 	vim.cmd("rightbelow split | term")
 end, { noremap = true, silent = true })
 
@@ -130,8 +130,10 @@ set("n", "<leader>N", function()
 	print("Copied to clipboard: " .. filename)
 end)
 
-vim.keymap.set("n", "M", "<cmd>messages<CR>", { noremap = true })
+set("n", "M", "<cmd>messages<CR>", { noremap = true })
 
-vim.keymap.set("n", "<leader>x", "<cmd>w|so<CR>", { desc = "save and run file" })
+set("n", "<leader>x", "<cmd>w|so<CR>", { desc = "save and run file" })
 
-vim.keymap.set("i", "<C-l>", "<right>", { desc = "Go right one char" })
+set("i", "<C-l>", "<right>", { desc = "Go right one char" })
+
+set("n", "ycc", "yygccp", { remap = true, desc = "Copy-paste current line and comment it" })
