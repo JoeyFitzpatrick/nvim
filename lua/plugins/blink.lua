@@ -1,7 +1,7 @@
 return {
 	{
 		"saghen/blink.cmp",
-		-- version = "v0.12",
+		version = "v0.12",
 		build = "cargo build --release",
 		event = "BufEnter",
 		opts = {

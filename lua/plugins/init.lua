@@ -102,4 +102,6 @@ return {
 			vim.keymap.set("n", "<c-m-n>", "<Plug>(YankyNextEntry)")
 		end,
 	},
+	{ "kylechui/nvim-surround", event = "VeryLazy", config = true },
+	{ "nvim-tree/nvim-web-devicons", opts = {} },
 }
