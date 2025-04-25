@@ -93,6 +93,7 @@ return {
 		opts = { ring = { storage = "sqlite" }, highlight = { timer = 150, on_put = false } },
 		config = function(_, opts)
 			require("yanky").setup(opts)
+			vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
 			vim.keymap.set("n", "<leader>rh", "<cmd>YankyRingHistory<cr>", { desc = "Open Yank History" })
 			vim.keymap.set("n", "p", "<Plug>(YankyPutAfter)", { desc = "Yanky Put After" })
 			vim.keymap.set("n", "P", "<Plug>(YankyPutBefore)", { desc = "Yanky Put After" })
