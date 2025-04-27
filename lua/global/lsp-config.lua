@@ -36,6 +36,7 @@ local default_configs = {
 	"bashls",
 	"gopls",
 	"lua_ls",
+	"ruff",
 	"yamlls",
 	"zls",
 }
