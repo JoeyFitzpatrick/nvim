@@ -45,7 +45,7 @@ return {
 		"altermo/ultimate-autopair.nvim",
 		event = { "InsertEnter", "CmdlineEnter" },
 		branch = "v0.6",
-		opts = {},
+		opts = { cmap = false },
 	},
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{
