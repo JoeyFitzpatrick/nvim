@@ -28,6 +28,7 @@
   "oil.nvim": { "branch": "master", "commit": "302bbaceeafc690e6419e0c8296e804d60cb9446" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "55ad4fb76ab68460f700599b7449385f0c4e858e" },
+  "rustaceanvim": { "branch": "master", "commit": "3a6af933d5870a419ee2be6e1bd397dfe46c96d2" },
   "smart-splits.nvim": { "branch": "master", "commit": "26db22d9b09b7c82e1ff03affd64da3f5441febd" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
   "sqlite.lua": { "branch": "master", "commit": "50092d60feb242602d7578398c6eb53b4a8ffe7b" },

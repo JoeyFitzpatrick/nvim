@@ -115,4 +115,9 @@ return {
 			vim.keymap.set("n", "<leader>ts", ":TSTools", { desc = "Auto-populate partial TSTools command" })
 		end,
 	},
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^6", -- Recommended
+		lazy = false, -- This plugin is already lazy
+	},
 }
