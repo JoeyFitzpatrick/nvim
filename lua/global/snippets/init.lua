@@ -26,21 +26,6 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
-local function copy(args)
-	return args[1]
-end
-
-ls.add_snippets("all", {
-	s("t", {
-		-- equivalent to "${1:cond} ? ${2:then} : ${3:else}"
-		i(1, "cond"),
-		t(" ? "),
-		i(2, "then"),
-		t(" : "),
-		i(3, "else"),
-	}),
-})
-
 ls.add_snippets("lua", {
 	s("fn", {
 		t({ "function(" }),
@@ -117,6 +102,14 @@ ls.add_snippets("javascript", {
 		t('console.log("\\n\\n", '),
 		i(0),
 		t(', "\\n\\n")'),
+	}),
+})
+
+ls.add_snippets("rust", {
+	s("pr", {
+		t('println!("{'),
+		i(0),
+		t('}");'),
 	}),
 })
 
