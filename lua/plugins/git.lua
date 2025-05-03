@@ -7,7 +7,7 @@ return {
 		config = function()
 			---@module "ever"
 			---@type ever.Configuration
-			vim.g.ever_configuration = {}
+			vim.g.ever_configuration = { prevent_nvim_inception = false }
 			vim.keymap.set({ "n", "v" }, "g<space>", ":G ", { desc = "Ever Prefix" })
 			vim.keymap.set("n", "<leader>je", "<cmd>G<CR>", { desc = "Open Ever Home UI" })
 			vim.keymap.set("n", "<leader>jd", "<cmd>G difftool<CR>", { desc = "Open Ever Difftool" })
