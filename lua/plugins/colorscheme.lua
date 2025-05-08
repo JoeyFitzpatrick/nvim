@@ -28,6 +28,7 @@ local function setup_colorschemes(dark, light)
 	vim.cmd("command Dark silent lua set_dark()")
 end
 
+-- Colorscheme plugin used
 return {
 	"webhooked/kanso.nvim",
 	lazy = false,
