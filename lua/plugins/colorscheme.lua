@@ -30,13 +30,36 @@ end
 
 -- Colorscheme plugin used
 return {
-	"webhooked/kanso.nvim",
+	"rebelot/kanagawa.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function()
+		---@diagnostic disable-next-line: missing-fields
+		require("kanagawa").setup({
+			-- make gutter same color as everything else
+			colors = {
+				theme = {
+					all = {
+						ui = {
+							bg_gutter = "none",
+						},
+					},
+				},
+			},
+			-- make completion menu match colorscheme
+			overrides = function(colors)
+				local theme = colors.theme
+				return {
+					Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
+					PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+					PmenuSbar = { bg = theme.ui.bg_m1 },
+					PmenuThumb = { bg = theme.ui.bg_p2 },
+				}
+			end,
+		})
 		setup_colorschemes(
-			{ nvim_name = "kanso-ink", wezterm_name = "Kanagawa (Gogh)" },
-			{ nvim_name = "kanso-pearl", wezterm_name = "Tokyo Night Day" }
+			{ nvim_name = "kanagawa-wave", wezterm_name = "Kanagawa (Gogh)" },
+			{ nvim_name = "kanagawa-lotus", wezterm_name = "Kanagawa Lotus" }
 		)
 	end,
 }
