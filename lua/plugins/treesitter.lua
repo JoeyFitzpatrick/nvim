@@ -31,6 +31,29 @@ return {
 						node_decremental = "<BS>",
 					},
 				},
+				textobjects = {
+					select = {
+						enable = true,
+						-- Automatically jump forward to textobj, similar to targets.vim
+						lookahead = true,
+						keymaps = {
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+							["ac"] = { query = "@class.outer", desc = "Select outer part of a class region" },
+							["is"] = { query = "@scope.inner", desc = "Select inner part of a scope" },
+							["as"] = { query = "@scope.outer", desc = "Select outer part of a scope" },
+						},
+						selection_modes = {
+							["@parameter.outer"] = "v", -- charwise
+							["@function.outer"] = "V", -- linewise
+							["@class.outer"] = "V",
+							["@scope.outer"] = "V",
+							["@scope.inner"] = "v",
+						},
+						include_surrounding_whitespace = false,
+					},
+				},
 			})
 			-- folding config
 			vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
