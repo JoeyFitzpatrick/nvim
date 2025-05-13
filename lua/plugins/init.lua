@@ -47,7 +47,6 @@ return {
 		branch = "v0.6",
 		opts = { cmap = false },
 	},
-	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",

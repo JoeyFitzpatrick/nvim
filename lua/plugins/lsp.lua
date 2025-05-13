@@ -16,7 +16,7 @@ return {
 			require("dbee").setup({
 				sources = {},
 			})
-			nmap("do", function()
+			Nmap("do", function()
 				require("dbee").toggle()
 			end, "Toggle dbee")
 		end,
@@ -77,7 +77,7 @@ return {
 		version = "*",
 		config = function()
 			require("neogen").setup({})
-			nmap(
+			Nmap(
 				"<Leader>lg",
 				":lua require('neogen').generate()<CR>",
 				"Generate annotation",

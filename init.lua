@@ -7,7 +7,7 @@ vim.g.nvim_tree_disable_netrw = 0
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
-nmap = function(lhs, rhs, desc, opts)
+Nmap = function(lhs, rhs, desc, opts)
 	opts = opts or {}
 	opts.desc = desc
 	vim.keymap.set("n", lhs, rhs, opts)

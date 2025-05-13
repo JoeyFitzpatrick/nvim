@@ -113,7 +113,7 @@ ls.add_snippets("rust", {
 	}),
 })
 
-nmap("<leader><leader>s", function()
+Nmap("<leader><leader>s", function()
 	ls.cleanup()
 	vim.cmd("source ~/.config/nvim/lua/global/snippets/init.lua")
 	vim.print("Snippets reloaded")

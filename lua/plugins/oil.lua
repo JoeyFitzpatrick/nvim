@@ -11,7 +11,7 @@ return {
 			experimental_watch_for_changes = true,
 			skip_confirm_for_simple_edits = true,
 		})
-		nmap("-", "<cmd>Oil --float<cr>", "Oil")
+		Nmap("-", "<cmd>Oil --float<cr>", "Oil")
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = "oil",
 			callback = function()
