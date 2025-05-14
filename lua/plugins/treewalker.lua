@@ -1,18 +1,16 @@
 return {
 	"aaronik/treewalker.nvim",
-	-- This shouldn't be needed, but it is. Hopefully can remove soon
-	dependencies = "mrjones2014/smart-splits.nvim",
 	config = function()
 		-- movement
-		vim.keymap.set({ "n", "v" }, "<A-k>", "<cmd>Treewalker Up<cr>", { silent = true })
-		vim.keymap.set({ "n", "v" }, "<A-j>", "<cmd>Treewalker Down<cr>", { silent = true })
-		vim.keymap.set({ "n", "v" }, "<A-h>", "<cmd>Treewalker Left<cr>", { silent = true })
-		vim.keymap.set({ "n", "v" }, "<A-l>", "<cmd>Treewalker Right<cr>", { silent = true })
+		vim.keymap.set({ "n", "v" }, "<c-k>", "<cmd>Treewalker Up<cr>", { silent = true })
+		vim.keymap.set({ "n", "v" }, "<c-j>", "<cmd>Treewalker Down<cr>", { silent = true })
+		vim.keymap.set({ "n", "v" }, "<c-h>", "<cmd>Treewalker Left<cr>", { silent = true })
+		vim.keymap.set({ "n", "v" }, "<c-l>", "<cmd>Treewalker Right<cr>", { silent = true })
 
 		-- swapping
-		vim.keymap.set("n", "<A-S-k>", "<cmd>Treewalker SwapUp<cr>", { silent = true })
-		vim.keymap.set("n", "<A-S-j>", "<cmd>Treewalker SwapDown<cr>", { silent = true })
-		vim.keymap.set("n", "<A-S-h>", "<cmd>Treewalker SwapLeft<cr>", { silent = true })
-		vim.keymap.set("n", "<A-S-l>", "<cmd>Treewalker SwapRight<cr>", { silent = true })
+		vim.keymap.set("n", "<c-S-j>", "<cmd>Treewalker SwapDown<cr>", { silent = true })
+		vim.keymap.set("n", "<c-S-k>", "<cmd>Treewalker SwapUp<cr>", { silent = true })
+		vim.keymap.set("n", "<c-S-h>", "<cmd>Treewalker SwapLeft<cr>", { silent = true })
+		vim.keymap.set("n", "<c-S-l>", "<cmd>Treewalker SwapRight<cr>", { silent = true })
 	end,
 }
