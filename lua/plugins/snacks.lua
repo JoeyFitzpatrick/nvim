@@ -44,6 +44,15 @@ return {
 				},
 			},
 		},
+		scroll = {
+			animate = {
+				duration = {
+					step = 5,
+					total = 75,
+				},
+				easing = "linear",
+			},
+		},
 	},
 	keys = {
 		{
