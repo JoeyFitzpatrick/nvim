@@ -104,4 +104,5 @@ return {
 	},
 	{ "kylechui/nvim-surround", event = "VeryLazy", config = true },
 	{ "nvim-tree/nvim-web-devicons", opts = {} },
+	{ "karb94/neoscroll.nvim", opts = { duration_multiplier = 0.4 }, event = "VeryLazy" },
 }
