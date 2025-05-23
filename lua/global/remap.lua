@@ -137,3 +137,5 @@ set("n", "<leader>x", "<cmd>w|so<CR>", { desc = "save and run file" })
 set("i", "<C-l>", "<right>", { desc = "Go right one char" })
 
 set("n", "ycc", "yygccp", { remap = true, desc = "Copy-paste current line and comment it" })
+
+set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })

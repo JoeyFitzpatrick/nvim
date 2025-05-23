@@ -14,32 +14,60 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Lsp Restart" })
 		vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "Lsp Info" })
 		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Lsp Code Action" })
-		-- vim.keymap.set("n", "<leader>ic", vim.lsp.buf.incoming_calls)
-		-- vim.keymap.set("n", "<leader>oc", vim.lsp.buf.outgoing_calls)
-		-- vim.keymap.set("n", "gd", vim.lsp.buf.definition)
-		-- vim.keymap.set("n", "gr", vim.lsp.buf.references)
+
+		-- The following two autocommands are used to highlight references of the
+		-- word under your cursor when your cursor rests there for a little while.
+		--    See `:help CursorHold` for information about when this is executed
+		--
+		-- When you move your cursor, the highlights will be cleared (the second autocommand).
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+		if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
+			local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+				buffer = event.buf,
+				group = highlight_augroup,
+				callback = vim.lsp.buf.document_highlight,
+			})
+
+			vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+				buffer = event.buf,
+				group = highlight_augroup,
+				callback = vim.lsp.buf.clear_references,
+			})
+
+			vim.api.nvim_create_autocmd("LspDetach", {
+				group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+				callback = function(event2)
+					vim.lsp.buf.clear_references()
+					vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+				end,
+			})
+		end
 	end,
 })
 
-require("lspconfig").basedpyright.setup({
-	settings = {
-		basedpyright = {
-			analysis = {
-				useLibraryCodeForTypes = true,
-				typeCheckingMode = "standard",
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+local configs = {
+	basedpyright = {
+		settings = {
+			basedpyright = {
+				analysis = {
+					useLibraryCodeForTypes = true,
+					typeCheckingMode = "standard",
+				},
 			},
 		},
 	},
-})
-
-local default_configs = {
-	"bashls",
-	"gopls",
-	"lua_ls",
-	"ruff",
-	"yamlls",
-	"zls",
+	bashls = {},
+	gopls = {},
+	lua_ls = {},
+	ruff = {},
+	yamlls = {},
+	zls = {},
 }
-for _, server in ipairs(default_configs) do
-	require("lspconfig")[server].setup({})
+
+for server_name, server in pairs(configs) do
+	server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+	require("lspconfig")[server_name].setup(server)
 end

@@ -1,4 +1,5 @@
 return {
+	{ "https://github.com/tpope/vim-sleuth", event = "BufEnter" },
 	{
 		"johmsalas/text-case.nvim",
 		config = function()
@@ -50,7 +51,14 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		opts = {},
+		opts = {
+			spec = {
+				{ "<leader>l", group = "LSP" },
+				{ "<leader>j", group = "Git" },
+				{ "<leader>a", group = "AI" },
+				{ "<leader>s", group = "Search" },
+			},
+		},
 		keys = {
 			{
 				"<leader>?",

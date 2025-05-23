@@ -227,18 +227,27 @@ return {
 			desc = "References",
 		},
 		{
+			"gt",
+			function()
+				Snacks.picker.lsp_type_definitions()
+			end,
+			nowait = true,
+			desc = "Goto Type Definition",
+		},
+		{
+			"gw",
+			function()
+				Snacks.picker.lsp_workspace_symbols()
+			end,
+			nowait = true,
+			desc = "Workspace Symbols",
+		},
+		{
 			"gI",
 			function()
 				Snacks.picker.lsp_implementations()
 			end,
 			desc = "Goto Implementation",
-		},
-		{
-			"gy",
-			function()
-				Snacks.picker.lsp_type_definitions()
-			end,
-			desc = "Goto T[y]pe Definition",
 		},
 		{
 			"<leader>ds",

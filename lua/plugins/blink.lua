@@ -42,6 +42,7 @@ return {
 			sources = {
 				default = { "lsp", "path", "snippets" },
 			},
+			snippets = { preset = "luasnip" },
 			cmdline = {
 				sources = function()
 					local type = vim.fn.getcmdtype()
