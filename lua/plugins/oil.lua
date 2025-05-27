@@ -11,11 +11,13 @@ return {
 			experimental_watch_for_changes = true,
 			skip_confirm_for_simple_edits = true,
 		})
-		Nmap("-", "<cmd>Oil --float<cr>", "Oil")
+		Nmap("-", "<cmd>Oil<CR>", "Oil")
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = "oil",
 			callback = function()
-				vim.api.nvim_buf_set_keymap(0, "n", "q", ":q<CR>", { noremap = true, silent = true })
+				vim.keymap.set("n", "q", function()
+					vim.api.nvim_buf_delete(0, { force = true })
+				end, { noremap = true, silent = true, buffer = 0 })
 			end,
 		})
 	end,
