@@ -72,4 +72,12 @@ return {
 	{ "kylechui/nvim-surround", event = "VeryLazy", config = true },
 	{ "nvim-tree/nvim-web-devicons", opts = {} },
 	{ "karb94/neoscroll.nvim", opts = { duration_multiplier = 0.4 }, event = "VeryLazy" },
+	{
+		"https://github.com/jpalardy/vim-slime",
+		event = "VeryLazy",
+		config = function()
+			vim.g.slime_target = "wezterm"
+			vim.g.slime_default_config = { pane_direction = "right" }
+		end,
+	},
 }
