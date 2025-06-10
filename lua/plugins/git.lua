@@ -1,23 +1,36 @@
 return {
 	{ "tpope/vim-fugitive", enabled = true },
 	{
-		dir = "~/plugins/ever.nvim",
-		name = "ever",
+		dir = "~/plugins/trunks.nvim",
+		name = "trunks",
 		enabled = true,
 		config = function()
-			---@module "ever"
-			---@type ever.Configuration
-			vim.g.ever_configuration = { prevent_nvim_inception = true }
-			vim.keymap.set({ "n", "v" }, "g<space>", ":G ", { desc = "Ever Prefix" })
-			vim.keymap.set("n", "<leader>je", "<cmd>G<CR>", { desc = "Open Ever Home UI" })
-			vim.keymap.set("n", "<leader>jd", "<cmd>G difftool<CR>", { desc = "Open Ever Difftool" })
-			vim.keymap.set("n", "<leader>jb", "<cmd>G blame<CR>", { desc = "Open Ever Blame" })
+			---@module "trunks"
+			---@type trunks.Configuration
+			vim.g.trunks_configuration = { prevent_nvim_inception = true }
+			vim.keymap.set({ "n", "v" }, "g<space>", ":G ", { desc = "Trunks Prefix" })
+			vim.keymap.set("n", "<leader>je", "<cmd>G<CR>", { desc = "Open Trunks Home UI" })
+			vim.keymap.set("n", "<leader>jd", "<cmd>G difftool<CR>", { desc = "Open Trunks Difftool" })
+			vim.keymap.set("n", "<leader>jb", "<cmd>G blame<CR>", { desc = "Open Trunks Blame" })
 			vim.keymap.set("n", "<leader>jm", "<cmd>G mergetool<CR>", { desc = "Open Mergetool" })
-			vim.keymap.set("n", "<leader>jt", ":G branch test main", { desc = "Open Ever for testing" })
-			vim.keymap.set("n", "<leader>rb", "<Plug>(Ever-resolve-base)", { desc = "Ever merge conflict base" })
-			vim.keymap.set("n", "<leader>ro", "<Plug>(Ever-resolve-ours)", { desc = "Ever merge conflict ours" })
-			vim.keymap.set("n", "<leader>rt", "<Plug>(Ever-resolve-theirs)", { desc = "Ever merge conflict theirs" })
-			vim.keymap.set("n", "<leader>ra", "<Plug>(Ever-resolve-all)", { desc = "Ever merge conflict all" })
+			vim.keymap.set("n", "<leader>jt", function()
+				vim.print(require("trunks._core.register").buffers)
+			end, { desc = "Open Trunks for testing" })
+			vim.keymap.set("n", "<leader>rb", "<Plug>(Trunks-resolve-base)", { desc = "Trunks merge conflict base" })
+			vim.keymap.set("n", "<leader>ro", "<Plug>(Trunks-resolve-ours)", { desc = "Trunks merge conflict ours" })
+			vim.keymap.set(
+				"n",
+				"<leader>rt",
+				"<Plug>(Trunks-resolve-theirs)",
+				{ desc = "Trunks merge conflict theirs" }
+			)
+			vim.keymap.set("n", "<leader>ra", "<Plug>(Trunks-resolve-all)", { desc = "Trunks merge conflict all" })
+
+			-- Testing keymaps
+			vim.keymap.set("n", "<leader>jt", ":G log --graph<CR>", { desc = "Open Trunks for testing" })
+			vim.keymap.set("n", "<leader><leader>j", function()
+				vim.print(require("trunks._core.register").buffers)
+			end, { desc = "Open Trunks for testing" })
 		end,
 	},
 	{

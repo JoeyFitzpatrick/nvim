@@ -12,6 +12,9 @@ return {
 			skip_confirm_for_simple_edits = true,
 		})
 		Nmap("-", "<cmd>Oil<CR>", "Oil")
+		Nmap("<leader>-", function()
+			require("oil.actions").open_cwd.callback()
+		end, "Oil from cwd")
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = "oil",
 			callback = function()
