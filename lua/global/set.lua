@@ -45,6 +45,7 @@ vim.o.breakindent = true
 
 vim.o.laststatus = 3
 vim.o.diffopt = "internal,filler,closeoff,indent-heuristic,linematch:60,algorithm:histogram"
+vim.o.wrap = true
 
 -- Saved macros
 vim.cmd([[
@@ -53,4 +54,5 @@ vim.cmd([[
 
 vim.cmd([[ 
     :iabbrev flase false
+    :iabbrev teh the
 ]])
