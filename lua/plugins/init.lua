@@ -80,4 +80,32 @@ return {
 			vim.g.slime_default_config = { pane_direction = "right" }
 		end,
 	},
+	{
+		"chrisgrieser/nvim-recorder",
+		keys = {
+			{ "q", desc = " Start Recording" },
+			{ "Q", desc = " Play Recording" },
+		},
+		opts = {},
+	},
+	{
+		"chrisgrieser/nvim-various-textobjs",
+		event = "VeryLazy",
+		opts = {
+			keymaps = {
+				useDefaults = true,
+			},
+		},
+	},
+	{
+		"chrisgrieser/nvim-origami",
+		event = "VeryLazy",
+		opts = {},
+
+		-- recommended: disable vim's auto-folding
+		init = function()
+			vim.opt.foldlevel = 99
+			vim.opt.foldlevelstart = 99
+		end,
+	},
 }

@@ -68,4 +68,9 @@ return {
 		},
 		config = true,
 	},
+	{
+		"chrisgrieser/nvim-tinygit",
+		event = "VeryLazy",
+		enabled = true,
+	},
 }
