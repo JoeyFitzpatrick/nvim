@@ -107,7 +107,7 @@ return {
 				require("treesitter-context").go_to_context(vim.v.count1)
 			end, { silent = true, desc = "Navigate to parent context" })
 			vim.keymap.set("n", "<leader>lc", function()
-				vim.cmd("TSContextToggle")
+				vim.cmd("TSContext toggle")
 			end, { silent = true, desc = "Toggle treesitter context" })
 		end,
 	},
