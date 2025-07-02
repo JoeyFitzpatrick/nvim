@@ -113,6 +113,14 @@ ls.add_snippets("rust", {
 	}),
 })
 
+ls.add_snippets("python", {
+	s("pr", {
+		t("print('\\n\\n '"),
+		i(0),
+		t("' \\n\\n')"),
+	}),
+})
+
 Nmap("<leader><leader>s", function()
 	ls.cleanup()
 	vim.cmd("source ~/.config/nvim/lua/global/snippets/init.lua")

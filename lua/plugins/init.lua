@@ -100,7 +100,7 @@ return {
 	{
 		"chrisgrieser/nvim-origami",
 		event = "VeryLazy",
-		opts = {},
+		opts = { autoFold = { enabled = false } },
 
 		-- recommended: disable vim's auto-folding
 		init = function()

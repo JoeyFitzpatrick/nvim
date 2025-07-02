@@ -37,7 +37,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.o.completeopt = "menuone,noselect,popup"
 vim.o.updatetime = 300
 vim.o.cursorline = true
-vim.o.shortmess = "at" -- abbreviate messages and truncate file messages in cmd line
+vim.o.shortmess = "atF" -- abbreviate messages and truncate file messages in cmd line
 require("vim._extui").enable({})
 vim.o.cmdheight = 0
 vim.o.mouse = "a"
