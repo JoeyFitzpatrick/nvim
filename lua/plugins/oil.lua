@@ -11,10 +11,15 @@ return {
 			experimental_watch_for_changes = true,
 			skip_confirm_for_simple_edits = true,
 		})
-		Nmap("-", "<cmd>Oil<CR>", "Oil")
-		Nmap("<leader>-", function()
+		-- Open Oil with "-", press "-" again to keep going up directories
+		vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Oil" })
+
+		-- Open Oil at cwd with "<leader>-"
+		vim.keymap.set("n", "<leader>-", function()
 			require("oil.actions").open_cwd.callback()
-		end, "Oil from cwd")
+		end, { desc = "Oil from cwd" })
+
+		-- Close Oil with "q"
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = "oil",
 			callback = function()

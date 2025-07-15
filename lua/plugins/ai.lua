@@ -29,7 +29,7 @@ return {
 		build = "make tiktoken", -- Only on MacOS or Linux
 		opts = {},
 		config = function()
-			require("CopilotChat").setup()
+			require("CopilotChat").setup({ model = "claude-3.5-sonnet" })
 			vim.keymap.set("n", "<leader>ac", "<cmd>CopilotChatToggle<CR>", { desc = "Open copilot chat" })
 		end,
 	},
