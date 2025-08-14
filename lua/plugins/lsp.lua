@@ -1,27 +1,6 @@
 return {
 	{ "neovim/nvim-lspconfig", event = "VeryLazy" },
 	{
-		"kndndrj/nvim-dbee",
-		enabled = false,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-		},
-		build = function()
-			-- Install tries to automatically detect the install method.
-			-- if it fails, try calling it with one of these parameters:
-			--    "curl", "wget", "bitsadmin", "go"
-			require("dbee").install()
-		end,
-		config = function()
-			require("dbee").setup({
-				sources = {},
-			})
-			Nmap("do", function()
-				require("dbee").toggle()
-			end, "Toggle dbee")
-		end,
-	},
-	{
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
@@ -87,7 +66,6 @@ return {
 	},
 	{ "LuaCATS/luassert", name = "luassert-types", lazy = true },
 	{ "LuaCATS/busted", name = "busted-types", lazy = true },
-	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 	{
 		"folke/lazydev.nvim",
 		ft = "lua", -- only load on lua files
@@ -114,10 +92,5 @@ return {
 			})
 			vim.keymap.set("n", "<leader>ts", ":TSTools", { desc = "Auto-populate partial TSTools command" })
 		end,
-	},
-	{
-		"mrcjkb/rustaceanvim",
-		version = "^6", -- Recommended
-		lazy = false, -- This plugin is already lazy
 	},
 }

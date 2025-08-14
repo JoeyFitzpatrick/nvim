@@ -1,5 +1,4 @@
 return {
-	{ "https://github.com/tpope/vim-sleuth", event = "BufEnter" },
 	{
 		"johmsalas/text-case.nvim",
 		config = function()
@@ -48,30 +47,8 @@ return {
 		branch = "v0.6",
 		opts = { cmap = false },
 	},
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		opts = {
-			spec = {
-				{ "<leader>l", group = "LSP" },
-				{ "<leader>j", group = "Git" },
-				{ "<leader>a", group = "AI" },
-				{ "<leader>s", group = "Search" },
-			},
-		},
-		keys = {
-			{
-				"<leader>?",
-				function()
-					require("which-key").show({ global = false })
-				end,
-				desc = "Buffer Local Keymaps (which-key)",
-			},
-		},
-	},
 	{ "kylechui/nvim-surround", event = "VeryLazy", config = true },
 	{ "nvim-tree/nvim-web-devicons", opts = {} },
-	{ "karb94/neoscroll.nvim", opts = { duration_multiplier = 0.4 }, event = "VeryLazy" },
 	{
 		"https://github.com/jpalardy/vim-slime",
 		event = "VeryLazy",
@@ -89,23 +66,22 @@ return {
 		opts = {},
 	},
 	{
-		"chrisgrieser/nvim-various-textobjs",
+		"rlane/pounce.nvim",
 		event = "VeryLazy",
-		opts = {
-			keymaps = {
-				useDefaults = true,
-			},
-		},
-	},
-	{
-		"chrisgrieser/nvim-origami",
-		event = "VeryLazy",
-		opts = { autoFold = { enabled = false } },
-
-		-- recommended: disable vim's auto-folding
-		init = function()
-			vim.opt.foldlevel = 99
-			vim.opt.foldlevelstart = 99
+		config = function()
+			local map = vim.keymap.set
+			map("n", "s", function()
+				require("pounce").pounce({})
+			end)
+			map("n", "S", function()
+				require("pounce").pounce({ do_repeat = true })
+			end)
+			map("x", "s", function()
+				require("pounce").pounce({})
+			end)
+			map("o", "gs", function()
+				require("pounce").pounce({})
+			end)
 		end,
 	},
 }

@@ -8,6 +8,7 @@ return {
 			---@module "trunks"
 			---@type trunks.Configuration
 			vim.g.trunks_configuration = { prevent_nvim_inception = true }
+			vim.keymap.set({ "n", "v" }, "t<space>", ":Trunks ", { desc = "Trunks Prefix" })
 			vim.keymap.set({ "n", "v" }, "g<space>", ":G ", { desc = "Trunks Git Prefix" })
 			vim.keymap.set("n", "<leader>je", "<cmd>G<CR>", { desc = "Open Trunks Home UI" })
 			vim.keymap.set("n", "<leader>jd", "<cmd>G difftool<CR>", { desc = "Open Trunks Difftool" })
@@ -24,26 +25,14 @@ return {
 			vim.keymap.set("n", "<leader>ra", "<Plug>(Trunks-resolve-all)", { desc = "Trunks merge conflict all" })
 
 			-- Testing keymaps
-			vim.keymap.set("n", "<leader>jt", "<cmd>G difftool<CR>", { desc = "Open Trunks for testing" })
-			vim.keymap.set("n", "<leader><leader>j", function()
-				vim.print(require("trunks._core.register").buffers)
-			end, { desc = "Open Trunks for testing" })
+			vim.keymap.set("n", "<leader>jt", "<cmd>Trunks diff-qf HEAD~10<CR>", { desc = "Open Trunks for testing" })
 
-			vim.keymap.set({ "n", "v" }, "t<space>", ":Trunks ", { desc = "Trunks Prefix" })
-		end,
-	},
-	{
-		dir = "~/plugins/alien.nvim",
-		name = "alien",
-		enabled = false,
-		config = function()
-			vim.g.alien_configuration = { command_mode_commands = { "A" } }
-			require("alien").setup()
+			vim.keymap.set("n", "<leader>jT", "<cmd>Trunks time-machine-next<CR>", { desc = "Open Trunks for testing" })
 		end,
 	},
 	{
 		"NeogitOrg/neogit",
-		enabled = true,
+		enabled = false,
 		cmd = { "Neogit" },
 		keys = { { "<leader>jj", "<cmd>Neogit<CR>", desc = "Open Neogit" } },
 		dependencies = {
@@ -51,10 +40,5 @@ return {
 			"sindrets/diffview.nvim", -- optional - Diff integration
 		},
 		config = true,
-	},
-	{
-		"chrisgrieser/nvim-tinygit",
-		event = "VeryLazy",
-		enabled = true,
 	},
 }

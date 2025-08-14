@@ -59,7 +59,7 @@ return {
 		})
 		setup_colorschemes(
 			{ nvim_name = "kanagawa-wave", wezterm_name = "Kanagawa (Gogh)" },
-			{ nvim_name = "kanagawa-lotus", wezterm_name = "Kanagawa Lotus" }
+			{ nvim_name = "kanagawa-lotus", wezterm_name = "Gruvbox Light" }
 		)
 	end,
 }
