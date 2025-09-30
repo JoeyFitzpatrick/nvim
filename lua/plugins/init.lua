@@ -41,12 +41,6 @@ return {
 			vim.keymap.set("n", "L", require("arrow.persist").next)
 		end,
 	},
-	{
-		"altermo/ultimate-autopair.nvim",
-		event = { "InsertEnter", "CmdlineEnter" },
-		branch = "v0.6",
-		opts = { cmap = false },
-	},
 	{ "kylechui/nvim-surround", event = "VeryLazy", config = true },
 	{ "nvim-tree/nvim-web-devicons", opts = {} },
 	{

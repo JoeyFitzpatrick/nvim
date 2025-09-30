@@ -135,6 +135,7 @@ set("n", "M", "<cmd>messages<CR>", { noremap = true })
 set("n", "<leader>x", "<cmd>w|so<CR>", { desc = "save and run file" })
 
 set("i", "<C-l>", "<right>", { desc = "Go right one char" })
+set("i", "<C-h>", "<left>", { desc = "Go left one char" })
 
 set("n", "ycc", "yygccp", { remap = true, desc = "Copy-paste current line and comment it" })
 

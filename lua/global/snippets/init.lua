@@ -26,6 +26,24 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
+ls.add_snippets("all", {
+	s("{", {
+		t({ "{", "\t" }),
+		i(0),
+		t({ "", "}" }),
+	}),
+	s({
+		trig = "([^%s]+)%(", -- matches any non-whitespace chars followed by (
+		regTrig = true,
+	}, {
+		f(function(args, snip)
+			return snip.captures[1] .. '("'
+		end, {}),
+		i(0),
+		t('")'),
+	}),
+})
+
 ls.add_snippets("lua", {
 	s("fn", {
 		t({ "function(" }),

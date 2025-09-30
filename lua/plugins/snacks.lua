@@ -12,7 +12,6 @@ return {
 			},
 		},
 		input = {},
-		lazygit = {},
 		picker = {
 			matcher = {
 				frecency = true,
@@ -47,20 +46,6 @@ return {
 		statuscolumn = {},
 	},
 	keys = {
-		{
-			"<leader>jk",
-			function()
-				Snacks.lazygit.open()
-			end,
-			desc = "Lazygit",
-		},
-		{
-			"<leader>jl",
-			function()
-				Snacks.lazygit.log_file()
-			end,
-			desc = "Lazygit",
-		},
 		{
 			"<leader>,",
 			function()

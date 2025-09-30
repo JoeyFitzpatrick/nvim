@@ -1,6 +1,6 @@
 return {
 	"stevearc/quicker.nvim",
-	ft = "qf",
+	event = "VeryLazy",
 	---@module "quicker"
 	---@type quicker.SetupOptions
 	opts = {},
