@@ -78,4 +78,16 @@ return {
 			end)
 		end,
 	},
+	{
+		"jiaoshijie/undotree",
+		---@module 'undotree.collector'
+		---@type UndoTreeCollector.Opts
+		config = function()
+			local undotree = require("undotree")
+			undotree.setup({ window = { winblend = 0 } })
+			vim.keymap.set("n", "<leader>u", function()
+				undotree.toggle()
+			end)
+		end,
+	},
 }
