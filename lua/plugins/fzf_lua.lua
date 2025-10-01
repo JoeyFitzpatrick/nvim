@@ -16,6 +16,7 @@ return {
 		})
 
 		local fzf = require("fzf-lua")
+		fzf.register_ui_select()
 
 		-- General mappings
 		vim.keymap.set("n", "<leader>,", fzf.buffers, { desc = "Buffers" })
