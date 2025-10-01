@@ -5,6 +5,7 @@
   "busted-types": { "branch": "main", "commit": "5ed85d0e016a5eb5eca097aa52905eedf1b180f1" },
   "conform.nvim": { "branch": "master", "commit": "016bc8174a675e1dbf884b06a165cd0c6c03f9af" },
   "fzf-lua": { "branch": "main", "commit": "4be5156ea8fae0a4914e8c3a4f005dc133019599" },
+  "fzf-lua-frecency.nvim": { "branch": "master", "commit": "d776493e5586c6c203117f2433773538b388a44a" },
   "kanagawa.nvim": { "branch": "master", "commit": "debe91547d7fb1eef34ce26a5106f277fbfdd109" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lazydev.nvim": { "branch": "main", "commit": "258d2a5ef4a3e3d6d9ba9da72c9725c53e9afcbd" },
