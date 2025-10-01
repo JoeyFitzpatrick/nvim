@@ -66,10 +66,6 @@ local configs = {
 }
 
 for server_name, server in pairs(configs) do
-	require("lspconfig")[server_name].setup(server)
+	vim.lsp.config[server_name] = server
+	vim.lsp.enable(server_name)
 end
-
-vim.lsp.config("elixirls", {
-	cmd = { vim.fn.expand(os.getenv("HOME") .. "/elixir-ls/language_server.sh") },
-})
-vim.lsp.enable("elixirls")
