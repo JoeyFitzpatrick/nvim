@@ -121,6 +121,13 @@ ls.add_snippets("javascript", {
 		i(0),
 		t(', "\\n\\n")'),
 	}),
+	s("if", {
+		t("if ("),
+		i(1),
+		t({ ") {", "\t" }),
+		i(0),
+		t({ "", "}" }),
+	}),
 })
 
 ls.add_snippets("rust", {

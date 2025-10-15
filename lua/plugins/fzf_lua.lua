@@ -14,6 +14,12 @@ return {
 						scrollbar = "border",
 					},
 				},
+				keymap = {
+					fzf = {
+						true,
+						["ctrl-q"] = "select-all+accept", -- Sends all results to quickfix
+					},
+				},
 			})
 
 			local fzf = require("fzf-lua")
