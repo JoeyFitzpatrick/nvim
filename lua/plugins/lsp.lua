@@ -58,19 +58,6 @@ return {
 			)
 		end,
 	},
-	{ "LuaCATS/luassert", name = "luassert-types", lazy = true },
-	{ "LuaCATS/busted", name = "busted-types", lazy = true },
-	{
-		"folke/lazydev.nvim",
-		ft = "lua", -- only load on lua files
-		opts = {
-			library = {
-				{ path = "luassert-types/library" },
-				{ path = "busted-types/library" },
-				{ path = "luvit-meta/library", words = { "vim%.uv" } },
-			},
-		},
-	},
 	{
 		"pmizio/typescript-tools.nvim",
 		ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },

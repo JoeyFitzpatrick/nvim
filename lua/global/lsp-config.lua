@@ -58,16 +58,18 @@ local configs = {
 			},
 		},
 	},
-	bashls = {},
-	gopls = {},
-	emmylua_ls = {},
-	ruff = {},
-	-- vtsls = {},
-	yamlls = {},
-	zls = {},
+	bashls = false,
+	gopls = false,
+	emmylua_ls = false,
+	ruff = false,
+	-- vtsls = false,
+	yamlls = false,
+	zls = false,
 }
 
 for server_name, server in pairs(configs) do
-	vim.lsp.config[server_name] = server
+	if server then
+		vim.lsp.config[server_name] = server
+	end
 	vim.lsp.enable(server_name)
 end
