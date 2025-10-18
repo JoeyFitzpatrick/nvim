@@ -1,3 +1,6 @@
+vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Lsp Restart" })
+vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "Lsp Info" })
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function(event)
@@ -11,8 +14,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = event.buf, desc = "LSP Rename" })
 		vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, { buffer = event.buf, desc = "Open Error" })
-		vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Lsp Restart" })
-		vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "Lsp Info" })
 		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Lsp Code Action" })
 
 		-- The following two autocommands are used to highlight references of the
@@ -59,8 +60,9 @@ local configs = {
 	},
 	bashls = {},
 	gopls = {},
-	lua_ls = {},
+	emmylua_ls = {},
 	ruff = {},
+	-- vtsls = {},
 	yamlls = {},
 	zls = {},
 }

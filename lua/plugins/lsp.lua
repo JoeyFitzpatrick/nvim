@@ -27,12 +27,6 @@ return {
 	},
 	-- other lsp plugins
 	{
-		"dmmulroy/tsc.nvim",
-		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-		config = true,
-		cmd = "TSC",
-	},
-	{
 		"dmmulroy/ts-error-translator.nvim",
 		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
 		config = true,
