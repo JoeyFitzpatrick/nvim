@@ -62,7 +62,6 @@ local configs = {
 	gopls = false,
 	emmylua_ls = false,
 	ruff = false,
-	-- vtsls = false,
 	yamlls = false,
 	zls = false,
 }

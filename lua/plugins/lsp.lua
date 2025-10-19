@@ -59,19 +59,12 @@ return {
 		end,
 	},
 	{
-		"pmizio/typescript-tools.nvim",
+		"yioneko/nvim-vtsls",
 		ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
 		config = function()
-			require("typescript-tools").setup({
-				settings = {
-					tsserver_plugins = {
-						"@styled/typescript-styled-plugin",
-					},
-				},
-			})
-			vim.keymap.set("n", "<leader>ts", ":TSTools", { desc = "Auto-populate partial TSTools command" })
+			vim.lsp.config.vtsls = require("vtsls").lspconfig
+			vim.lsp.enable("vtsls")
+			vim.keymap.set("n", "<leader>ts", ":VtsExec", { desc = "Execute vtsls command" })
 		end,
 	},
 }
