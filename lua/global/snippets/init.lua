@@ -1,170 +1,79 @@
-local ls = require("luasnip")
-local s = ls.snippet
-local sn = ls.snippet_node
-local isn = ls.indent_snippet_node
-local t = ls.text_node
-local i = ls.insert_node
-local f = ls.function_node
-local c = ls.choice_node
-local d = ls.dynamic_node
-local r = ls.restore_node
-local events = require("luasnip.util.events")
-local ai = require("luasnip.nodes.absolute_indexer")
-local extras = require("luasnip.extras")
-local l = extras.lambda
-local rep = extras.rep
-local p = extras.partial
-local m = extras.match
-local n = extras.nonempty
-local dl = extras.dynamic_lambda
-local fmt = require("luasnip.extras.fmt").fmt
-local fmta = require("luasnip.extras.fmt").fmta
-local conds = require("luasnip.extras.expand_conditions")
-local postfix = require("luasnip.extras.postfix").postfix
-local types = require("luasnip.util.types")
-local parse = require("luasnip.util.parser").parse_snippet
-local ms = ls.multi_snippet
-local k = require("luasnip.nodes.key_indexer").new_key
+local M = {}
 
-ls.add_snippets("all", {
-	s("{", {
-		t({ "{", "\t" }),
-		i(0),
-		t({ "", "}" }),
-	}),
-	s({
-		trig = "([^%s]+)%(", -- matches any non-whitespace chars followed by (
-		regTrig = true,
-	}, {
-		f(function(args, snip)
-			return snip.captures[1] .. '("'
-		end, {}),
-		i(0),
-		t('")'),
-	}),
-})
+M.snippets = {
+	all = {
+		["{"] = "{\n\t$0\n}",
+	},
+	lua = {
+		fn = "function($1)\n\t$0\nend",
+		mod = "local M = {}\n\n$0\n\nreturn M",
+		desc = 'describe("${1:description}", function()\n\t$0\nend)',
+		it = 'it("${1:description}", function()\n\t$0\nend)',
+	},
+	htmldjango = {
+		b = "{% block $1 %}\n\t$2\n{% endblock %}",
+	},
+	javascript = {
+		desc = 'describe("${1:description}", () => {\n\t$0\n});',
+		it = 'it("${1:description}", () => {\n\t$0\n});',
+		logn = 'console.log("\\n\\n", $0, "\\n\\n")',
+		["if"] = "if ($1) {\n\t$0\n}",
+	},
+	python = {
+		pr = "print('\\n\\n '$0' \\n\\n')",
+	},
+}
 
-ls.add_snippets("lua", {
-	s("fn", {
-		t({ "function(" }),
-		i(1),
-		t({ ")", "\t" }),
-		i(0),
-		t({ "", "end" }),
-	}),
-	s("mod", {
-		t({ "local M = {}", "", "" }),
-		i(0),
-		t({ "", "", "return M" }),
-	}),
-	s("desc", {
-		t('describe("'),
-		i(1, "description"),
-		t({ '", function()', "\t" }),
-		i(0),
-		t({ "", "end)" }),
-	}),
-	s("it", {
-		t('it("'),
-		i(1, "description"),
-		t({ '", function()', "\t" }),
-		i(0),
-		t({ "", "end)" }),
-	}),
-})
+-- Extend filetypes (typescript variants use javascript snippets)
+M.snippets.typescript = M.snippets.javascript
+M.snippets.typescriptreact = M.snippets.javascript
+M.snippets.javascriptreact = M.snippets.javascript
 
-ls.add_snippets("htmldjango", {
-	s("b", {
-		t("{% block "),
-		i(1),
-		t({ " %}", "\t" }),
-		i(2),
-		t({ "", "{% endblock %}" }),
-	}),
-})
+local function get_snippets()
+	local ft = vim.bo.filetype
+	local result = vim.tbl_extend("force", M.snippets.all or {}, M.snippets[ft] or {})
+	return result
+end
 
-ls.filetype_extend("typescript", { "javascript" })
-ls.filetype_extend("typescriptreact", { "javascript" })
-ls.filetype_extend("javascriptreact", { "javascript" })
+-- Check if a snippet exists and expand it
+local function try_expand_snippet()
+	local line = vim.api.nvim_get_current_line()
+	local col = vim.api.nvim_win_get_cursor(0)[2]
+	local before_cursor = line:sub(1, col)
 
-ls.add_snippets("javascript", {
-	s(
-		-- example of a snippet with filename
-		"fi",
-		{
-			t("export function "),
-			f(function(args, snip)
-				local env = snip.env
-				return env.TM_FILENAME:match("^[^.]*")
-			end, {}),
-			t("("),
-			i(1, "args"),
-			t({ ") {", "\t", "}" }),
-		}
-	),
-	s("desc", {
-		t('describe("'),
-		i(1, "description"),
-		t({ '", () => {', "\t" }),
-		i(0),
-		t({ "", "});" }),
-	}),
-	s("it", {
-		t('it("'),
-		i(1, "description"),
-		t({ '", () => {', "\t" }),
-		i(0),
-		t({ "", "});" }),
-	}),
-	s("logn", {
-		t('console.log("\\n\\n", '),
-		i(0),
-		t(', "\\n\\n")'),
-	}),
-	s("if", {
-		t("if ("),
-		i(1),
-		t({ ") {", "\t" }),
-		i(0),
-		t({ "", "}" }),
-	}),
-})
-
-ls.add_snippets("rust", {
-	s("pr", {
-		t('println!("{'),
-		i(0),
-		t('}");'),
-	}),
-})
-
-ls.add_snippets("python", {
-	s("pr", {
-		t("print('\\n\\n '"),
-		i(0),
-		t("' \\n\\n')"),
-	}),
-})
-
-Nmap("<leader><leader>s", function()
-	ls.cleanup()
-	vim.cmd("source ~/.config/nvim/lua/global/snippets/init.lua")
-	vim.print("Snippets reloaded")
-end, "reload snippets")
-
-vim.keymap.set({ "i" }, "<C-k>", function()
-	if ls.expand_or_jumpable() then
-		ls.expand_or_jump()
+	-- Get the word before cursor
+	local trigger = before_cursor:match("(%S+)$")
+	if not trigger then
+		return false
 	end
-end, { silent = true })
--- vim.keymap.set({ "i", "s" }, "<C-L>", function()
--- 	ls.jump(1)
--- end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-J>", function()
-	ls.jump(-1)
-end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-E>", function()
-	if ls.choice_active() then
-		ls.change_choice(1)
+
+	local snippets = get_snippets()
+	local snippet_text = snippets[trigger]
+
+	if snippet_text then
+		-- Delete the trigger text
+		local start_col = col - #trigger
+		vim.api.nvim_buf_set_text(0, vim.fn.line(".") - 1, start_col, vim.fn.line(".") - 1, col, {})
+		vim.api.nvim_win_set_cursor(0, { vim.fn.line("."), start_col })
+
+		vim.snippet.expand(snippet_text)
+		return true
 	end
-end, { silent = true })
+
+	return false
+end
+
+vim.keymap.set({ "i", "s" }, "<C-k>", function()
+	if vim.snippet.active({ direction = 1 }) then
+		vim.snippet.jump(1)
+	elseif not try_expand_snippet() then
+	end
+end, { silent = true, desc = "Expand snippet or jump forward" })
+
+vim.keymap.set({ "i", "s" }, "<C-j>", function()
+	if vim.snippet.active({ direction = -1 }) then
+		vim.snippet.jump(-1)
+	end
+end, { silent = true, desc = "Jump backward in snippet" })
+
+return M

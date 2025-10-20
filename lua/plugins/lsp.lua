@@ -1,30 +1,5 @@
 return {
 	{ "neovim/nvim-lspconfig", event = "VeryLazy" },
-	{
-		{
-			"L3MON4D3/LuaSnip",
-			version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-			-- install jsregexp (optional!).
-			build = "make install_jsregexp",
-			config = function()
-				local types = require("luasnip.util.types")
-				require("luasnip").setup({
-					keep_roots = true,
-					link_roots = true,
-					link_children = true,
-					update_events = { "TextChanged", "TextChangedI" },
-					delete_check_events = "TextChanged",
-					ext_opts = {
-						[types.choiceNode] = {
-							active = {
-								virt_text = { { "choiceNode", "Comment" } },
-							},
-						},
-					},
-				})
-			end,
-		},
-	},
 	-- other lsp plugins
 	{
 		"dmmulroy/ts-error-translator.nvim",
