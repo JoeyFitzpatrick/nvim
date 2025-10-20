@@ -34,7 +34,7 @@ vim.o.splitbelow = false
 vim.o.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
-vim.o.completeopt = "menuone,noselect,popup"
+vim.o.completeopt = "menuone,noselect,popup,fuzzy"
 vim.o.updatetime = 300
 vim.o.cursorline = true
 vim.o.shortmess = "atF" -- abbreviate messages and truncate file messages in cmd line

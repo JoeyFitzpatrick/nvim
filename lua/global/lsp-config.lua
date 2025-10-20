@@ -1,6 +1,8 @@
 vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Lsp Restart" })
 vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "Lsp Info" })
 
+require("global.lsp-completion").setup()
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function(event)
@@ -15,6 +17,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = event.buf, desc = "LSP Rename" })
 		vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, { buffer = event.buf, desc = "Open Error" })
 		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Lsp Code Action" })
+
+		local client_id = event.data.client_id
+		vim.lsp.completion.enable(true, client_id, event.buf, { autotrigger = true })
 
 		-- The following two autocommands are used to highlight references of the
 		-- word under your cursor when your cursor rests there for a little while.
@@ -67,8 +72,8 @@ local configs = {
 }
 
 for server_name, server in pairs(configs) do
-	if server then
-		vim.lsp.config[server_name] = server
-	end
+	-- if server then
+	-- 	vim.lsp.config[server_name] = server
+	-- end
 	vim.lsp.enable(server_name)
 end

@@ -1,6 +1,5 @@
 {
   "arrow.nvim": { "branch": "master", "commit": "6e0f726f55f99332dd726a53effd6813786b6d49" },
-  "blink.cmp": { "branch": "main", "commit": "18b352d12b35bca148427b607098df14b75a218f" },
   "conform.nvim": { "branch": "master", "commit": "fbcb4fa7f34bfea9be702ffff481a8e336ebf6ed" },
   "fzf-lua": { "branch": "main", "commit": "d45ce947b9e2b30dc564e9ea11a2e30f7a7b686d" },
   "fzf-lua-frecency.nvim": { "branch": "master", "commit": "392bcd1f5053e5a6bb0d77e8f81d56712f362343" },
