@@ -55,6 +55,7 @@ vim.keymap.set("n", "<M-h>", function()
 		if line_content:match("%S") then
 			local indent = get_indent_level(line_content)
 			if indent < current_indent then
+				vim.cmd("normal! m'")
 				vim.fn.cursor(line, indent + 1)
 				return
 			end
@@ -74,9 +75,61 @@ vim.keymap.set("n", "<M-l>", function()
 		if line_content:match("%S") then
 			local indent = get_indent_level(line_content)
 			if indent > current_indent then
+				vim.cmd("normal! m'")
 				vim.fn.cursor(line, indent + 1)
 				return
 			end
 		end
 	end
 end, { desc = "Move down to next indentation level" })
+
+-- Move up to previous line with same indentation (after encountering a different level)
+vim.keymap.set("n", "<M-k>", function()
+	local current_line = vim.fn.line(".")
+	local current_indent = get_indent_level(vim.fn.getline(current_line))
+	local found_different = false
+
+	-- Move up until we find a line with same indentation after encountering a different level
+	for line = current_line - 1, 1, -1 do
+		local line_content = vim.fn.getline(line)
+		-- Empty lines count as different indentation
+		if not line_content:match("%S") then
+			found_different = true
+		else
+			local indent = get_indent_level(line_content)
+			if indent ~= current_indent then
+				found_different = true
+			elseif found_different and indent == current_indent then
+				vim.cmd("normal! m'")
+				vim.fn.cursor(line, indent + 1)
+				return
+			end
+		end
+	end
+end, { desc = "Move up to previous same indentation level" })
+
+-- Move down to next line with same indentation (after encountering a different level)
+vim.keymap.set("n", "<M-j>", function()
+	local current_line = vim.fn.line(".")
+	local current_indent = get_indent_level(vim.fn.getline(current_line))
+	local last_line = vim.fn.line("$")
+	local found_different = false
+
+	-- Move down until we find a line with same indentation after encountering a different level
+	for line = current_line + 1, last_line do
+		local line_content = vim.fn.getline(line)
+		-- Empty lines count as different indentation
+		if not line_content:match("%S") then
+			found_different = true
+		else
+			local indent = get_indent_level(line_content)
+			if indent ~= current_indent then
+				found_different = true
+			elseif found_different and indent == current_indent then
+				vim.cmd("normal! m'")
+				vim.fn.cursor(line, indent + 1)
+				return
+			end
+		end
+	end
+end, { desc = "Move down to next same indentation level" })
