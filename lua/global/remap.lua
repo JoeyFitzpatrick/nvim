@@ -57,47 +57,10 @@ end, { noremap = true, silent = true })
 
 -- terminal mappings
 set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
-set({ "n", "t" }, "<C-t>", function()
-	vim.cmd("tabnew | term")
-end)
-set({ "n", "t" }, "<C-s>", function()
-	vim.cmd("rightbelow vsplit | term")
-end)
-set({ "n", "t" }, "<C-b>", function()
-	vim.cmd("rightbelow split | term")
-end, { noremap = true, silent = true })
 
 -- Custom text objects
 -- ie = inner entire buffer
 set("o", "ie", ':exec "normal! ggVG"<cr>')
-
--- "A" in visual mode select around a text objext in visual line mode
-local text_object_chars = {
-	"(",
-	")",
-	"[",
-	"]",
-	"{",
-	"}",
-	"<",
-	">",
-	"'",
-	'"',
-	"`",
-}
-local operations = {
-	"d",
-	"y",
-	"c",
-}
-for _, char in pairs(text_object_chars) do
-	set("v", "A" .. char, "a" .. char .. "V", { remap = true })
-	for _, op in pairs(operations) do
-		local leader_op = "<leader>" .. op
-		set("n", op .. "A" .. char, "<esc>vA" .. char .. op, { remap = true })
-		set("n", leader_op .. "A" .. char, "<esc>vA" .. char .. leader_op, { remap = true })
-	end
-end
 
 -- Remap for surround to avoid clashing with leap
 set("v", "S", "<Plug>VSurround", { remap = false })
@@ -131,8 +94,6 @@ set("n", "<leader>N", function()
 end)
 
 set("n", "M", "<cmd>messages<CR>", { noremap = true })
-
-set("n", "<leader>x", "<cmd>w|so<CR>", { desc = "save and run file" })
 
 set("i", "<C-l>", "<right>", { desc = "Go right one char" })
 set("i", "<C-h>", "<left>", { desc = "Go left one char" })
