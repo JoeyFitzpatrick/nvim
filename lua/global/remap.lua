@@ -101,3 +101,9 @@ set("i", "<C-h>", "<left>", { desc = "Go left one char" })
 set("n", "ycc", "yygccp", { remap = true, desc = "Copy-paste current line and comment it" })
 
 set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })
+
+-- better window navigation.
+set("n", "<C-H>", "<C-W>h", { noremap = true })
+set("n", "<C-J>", "<C-W>j", { noremap = true })
+set("n", "<C-K>", "<C-W>k", { noremap = true })
+set("n", "<C-L>", "<C-W>l", { noremap = true })
