@@ -1,7 +1,10 @@
 vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Lsp Restart" })
 vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "Lsp Info" })
+local use_builtin_completion = false
 
-require("global.lsp-completion").setup()
+if use_builtin_completion then
+	require("global.lsp-completion").setup()
+end
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
@@ -19,7 +22,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Lsp Code Action" })
 
 		local client_id = event.data.client_id
-		vim.lsp.completion.enable(true, client_id, event.buf, { autotrigger = true })
+
+		if use_builtin_completion then
+			vim.lsp.completion.enable(true, client_id, event.buf, { autotrigger = true })
+		end
 
 		-- The following two autocommands are used to highlight references of the
 		-- word under your cursor when your cursor rests there for a little while.

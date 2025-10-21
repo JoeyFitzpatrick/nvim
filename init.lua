@@ -22,4 +22,8 @@ require("global.utils")
 require("global.helpers.wezterm")
 require("global.tabs").setup()
 require("global.instant_transmission")
-require("global.cmdline-completion")
+
+local use_builtin_completion = false
+if use_builtin_completion then
+	require("global.cmdline-completion")
+end
