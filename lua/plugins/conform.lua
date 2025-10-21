@@ -32,11 +32,6 @@ return {
 			format_on_save = {
 				timeout_ms = 1000,
 				lsp_fallback = true,
-				-- use a filter to not format some file types on save
-				filter = function()
-					local filetype = vim.bo.filetype
-					return filetype ~= "prisma"
-				end,
 			},
 		})
 
