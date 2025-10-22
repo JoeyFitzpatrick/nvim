@@ -32,7 +32,7 @@ vim.o.splitbelow = false
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
 vim.o.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "│ ", trail = "·", nbsp = "␣" }
 
 vim.o.completeopt = "menuone,noselect,popup,fuzzy"
 vim.o.updatetime = 300
