@@ -42,18 +42,7 @@ return {
 				default = { "lsp", "path", "snippets" },
 			},
 			cmdline = {
-				sources = function()
-					local type = vim.fn.getcmdtype()
-					-- Search forward and backward
-					if type == "/" or type == "?" then
-						return { "buffer" }
-					end
-					-- Commands
-					if type == ":" then
-						return { "cmdline" }
-					end
-					return {}
-				end,
+				completion = { menu = { auto_show = true } },
 			},
 
 			keymap = {

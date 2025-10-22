@@ -61,7 +61,8 @@ return {
 			vim.keymap.set("n", "gw", fzf.lsp_workspace_symbols, { desc = "Workspace Symbols", nowait = true })
 			vim.keymap.set("n", "gI", fzf.lsp_implementations, { desc = "Goto Implementation" })
 			vim.keymap.set("n", "<leader>ds", fzf.lsp_document_symbols, { desc = "[D]ocument [S]ymbols" })
-			vim.keymap.set("n", "<leader>lw", fzf.diagnostics_document, { desc = "Diagnostics" })
+			vim.keymap.set("n", "<leader>ld", fzf.diagnostics_document, { desc = "Document diagnostics" })
+			vim.keymap.set("n", "<leader>lw", fzf.diagnostics_workspace, { desc = "Workspace diagnostics" })
 
 			-- Additional mappings
 			vim.keymap.set("n", "<leader>so", fzf.oldfiles, { desc = "Recent Files" })
