@@ -58,28 +58,34 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local configs = {
-	basedpyright = {
-		settings = {
-			basedpyright = {
-				analysis = {
-					useLibraryCodeForTypes = true,
-					typeCheckingMode = "standard",
-				},
-			},
-		},
-	},
-	bashls = false,
-	gopls = false,
-	emmylua_ls = false,
-	ruff = false,
-	yamlls = false,
-	zls = false,
-}
+vim.lsp.config("pyrefly", { cmd = { "uvx", "pyrefly", "lsp" }, filetypes = { "python" } })
 
-for server_name, server in pairs(configs) do
-	-- if server then
-	-- 	vim.lsp.config[server_name] = server
-	-- end
-	vim.lsp.enable(server_name)
-end
+vim.lsp.config("ocamllsp", {
+	cmd = { "ocamllsp" },
+	filetypes = {
+		"ocaml",
+		"ocaml.interface",
+		"ocaml.menhir",
+		"ocaml.ocamllex",
+		"dune",
+		"reason",
+	},
+	root_markers = {
+		{ "dune-project", "dune-workspace" },
+		{ "*.opam", "esy.json", "package.json" },
+		".git",
+	},
+	settings = {},
+})
+
+vim.lsp.enable({
+	-- "basedpyright",
+	"bashls",
+	"gopls",
+	"emmylua_ls",
+	"ocamllsp",
+	"pyrefly",
+	"ruff",
+	"yamlls",
+	"zls",
+})
