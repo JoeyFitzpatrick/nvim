@@ -103,7 +103,7 @@ set("n", "ycc", "yygccp", { remap = true, desc = "Copy-paste current line and co
 set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })
 
 -- better window navigation.
-set("n", "<C-H>", "<C-W>h", { noremap = true })
-set("n", "<C-J>", "<C-W>j", { noremap = true })
-set("n", "<C-K>", "<C-W>k", { noremap = true })
-set("n", "<C-L>", "<C-W>l", { noremap = true })
+set({ "n", "t" }, "<C-H>", "<cmd>wincmd h<CR>", { noremap = true })
+set({ "n", "t" }, "<C-J>", "<cmd>wincmd j<CR>", { noremap = true })
+set({ "n", "t" }, "<C-K>", "<cmd>wincmd k<CR>", { noremap = true })
+set({ "n", "t" }, "<C-L>", "<cmd>wincmd l<CR>", { noremap = true })
