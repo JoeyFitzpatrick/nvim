@@ -19,6 +19,9 @@ M.snippets = {
 		logn = 'console.log("\\n\\n", $0, "\\n\\n")',
 		["if"] = "if ($1) {\n\t$0\n}",
 	},
+	java = {
+		["if"] = "if ($1) {\n\t$0\n}",
+	},
 	python = {
 		pr = "print('\\n\\n '$0' \\n\\n')",
 	},

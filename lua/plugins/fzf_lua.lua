@@ -18,6 +18,8 @@ return {
 					fzf = {
 						true,
 						["ctrl-q"] = "select-all+accept", -- Sends all results to quickfix
+						["ctrl-n"] = "down",
+						["ctrl-p"] = "up",
 					},
 				},
 			})

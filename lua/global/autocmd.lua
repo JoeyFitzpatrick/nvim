@@ -33,3 +33,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
+
+-- vim.api.nvim_create_autocmd({ "TermOpen" }, {
+-- 	desc = "Add <C-hjkl> mappings in terminal mode",
+-- 	group = vim.api.nvim_create_augroup("WindowNavigationTerminalMode", { clear = true }),
+-- 	callback = function()
+-- 		vim.keymap.set("t", "<C-H>", "<cmd>wincmd h<CR>", { noremap = true })
+-- 		vim.keymap.set("t", "<C-J>", "<cmd>wincmd j<CR>", { noremap = true })
+-- 		vim.keymap.set("t", "<C-K>", "<cmd>wincmd k<CR>", { noremap = true })
+-- 		vim.keymap.set("t", "<C-L>", "<cmd>wincmd l<CR>", { noremap = true })
+-- 	end,
+-- })
