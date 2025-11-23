@@ -9,21 +9,13 @@ return {
 			{
 				mode = { "n", "x" },
 				{ "<leader><tab>", group = "tabs" },
-				{ "<leader>c", group = "code" },
-				{ "<leader>d", group = "debug" },
-				{ "<leader>dp", group = "profiler" },
-				{ "<leader>f", group = "file/find" },
-				{ "<leader>g", group = "git" },
-				{ "<leader>gh", group = "hunks" },
-				{ "<leader>q", group = "quit/session" },
+				{ "<leader>b", group = "buffer" },
 				{ "<leader>s", group = "search" },
 				{ "<leader>t", group = "terminal" },
-				{ "<leader>u", group = "ui" },
 				{ "<leader>x", group = "diagnostics/quickfix" },
 				{ "[", group = "prev" },
 				{ "]", group = "next" },
 				{ "g", group = "goto" },
-				{ "gs", group = "surround" },
 				{ "z", group = "fold" },
 				{
 					"<leader>b",
@@ -40,8 +32,6 @@ return {
 						return require("which-key.extras").expand.win()
 					end,
 				},
-				-- better descriptions
-				{ "gx", desc = "Open with system app" },
 			},
 		},
 	},
@@ -52,13 +42,6 @@ return {
 				require("which-key").show({ global = false })
 			end,
 			desc = "Buffer Keymaps (which-key)",
-		},
-		{
-			"<c-w><space>",
-			function()
-				require("which-key").show({ keys = "<c-w>", loop = true })
-			end,
-			desc = "Window Hydra Mode (which-key)",
 		},
 	},
 	config = function(_, opts)

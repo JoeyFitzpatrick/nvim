@@ -47,14 +47,6 @@ set("v", "P", '"0P')
 -- Same thing for x
 vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
 
--- better tab navigation
-set("n", "<C-n>", function()
-	vim.cmd("tabnext")
-end, { noremap = true, silent = true })
-set("n", "<C-p>", function()
-	vim.cmd("tabprev")
-end, { noremap = true, silent = true })
-
 -- terminal mappings
 set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
 
@@ -113,3 +105,18 @@ set("n", "<leader>th", "<cmd>vsplit | term<CR>", { noremap = true, desc = "Open 
 set("n", "<leader>tj", "<cmd>rightbelow split | term<CR>", { noremap = true, desc = "Open term below" })
 set("n", "<leader>tk", "<cmd>split | term<CR>", { noremap = true, desc = "Open term above" })
 set("n", "<leader>tl", "<cmd>rightbelow vsplit | term<CR>", { noremap = true, desc = "Open term right" })
+
+-- tabs
+set("n", "[t", "<cmd>tabprevious<CR>", { noremap = true, desc = "Previous tab" })
+set("n", "]t", "<cmd>tabnext<CR>", { noremap = true, desc = "Next tab" })
+set("n", "<leader><tab>n", "<cmd>tabnew<CR>", { noremap = true, desc = "New tab" })
+set("n", "<leader><tab>q", "<cmd>tabclose<CR>", { noremap = true, desc = "Close tab" })
+
+-- buffers
+set("n", "<leader>bd", "<cmd>bd<CR>", { noremap = true, desc = "Delete buffer" })
+
+-- some [ and ] mappings
+set("n", "[q", "<cmd>cprevious<CR>", { noremap = true, desc = "Previous quickfix item" })
+set("n", "]q", "<cmd>cnext<CR>", { noremap = true, desc = "Next quickfix item" })
+set("n", "[r", "<cmd>Trunks time-machine-previous<CR>", { noremap = true, desc = "Previous time-machine item" })
+set("n", "]r", "<cmd>Trunks time-machine-next<CR>", { noremap = true, desc = "Next time-machine item" })
