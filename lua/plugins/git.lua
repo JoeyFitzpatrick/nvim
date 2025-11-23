@@ -25,12 +25,7 @@ return {
 			vim.keymap.set("n", "<leader>ra", "<Plug>(Trunks-resolve-all)", { desc = "Trunks merge conflict all" })
 
 			-- Testing keymaps
-			vim.keymap.set(
-				{ "n", "x" },
-				"<leader>jt",
-				"<cmd>Trunks commit-instant-fixup<CR>",
-				{ desc = "Open Trunks for testing" }
-			)
+			vim.keymap.set({ "n", "x" }, "<leader>jt", "<cmd>G grep test<CR>", { desc = "Open Trunks for testing" })
 		end,
 	},
 	{

@@ -48,10 +48,10 @@ set("v", "P", '"0P')
 vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
 
 -- better tab navigation
-set({ "n", "t" }, "<C-n>", function()
+set("n", "<C-n>", function()
 	vim.cmd("tabnext")
 end, { noremap = true, silent = true })
-set({ "n", "t" }, "<C-p>", function()
+set("n", "<C-p>", function()
 	vim.cmd("tabprev")
 end, { noremap = true, silent = true })
 
@@ -103,7 +103,13 @@ set("n", "ycc", "yygccp", { remap = true, desc = "Copy-paste current line and co
 set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })
 
 -- better window navigation.
-set("n", "<C-H>", "<C-W>h", { noremap = true })
-set("n", "<C-J>", "<C-W>j", { noremap = true })
-set("n", "<C-K>", "<C-W>k", { noremap = true })
-set("n", "<C-L>", "<C-W>l", { noremap = true })
+set({ "n", "t" }, "<C-h>", "<C-W>h", { noremap = true })
+set({ "n", "t" }, "<C-k>", "<C-W>j", { noremap = true })
+set({ "n", "t" }, "<C-k>", "<C-W>k", { noremap = true })
+set({ "n", "t" }, "<C-l>", "<C-W>l", { noremap = true })
+
+-- open term splits
+set("n", "<leader>th", "<cmd>vsplit | term<CR>", { noremap = true, desc = "Open term left" })
+set("n", "<leader>tj", "<cmd>rightbelow split | term<CR>", { noremap = true, desc = "Open term below" })
+set("n", "<leader>tk", "<cmd>split | term<CR>", { noremap = true, desc = "Open term above" })
+set("n", "<leader>tl", "<cmd>rightbelow vsplit | term<CR>", { noremap = true, desc = "Open term right" })
