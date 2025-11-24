@@ -12,7 +12,6 @@ return {
 				{ "<leader>b", group = "buffer" },
 				{ "<leader>s", group = "search" },
 				{ "<leader>t", group = "terminal" },
-				{ "<leader>x", group = "diagnostics/quickfix" },
 				{ "[", group = "prev" },
 				{ "]", group = "next" },
 				{ "g", group = "goto" },
