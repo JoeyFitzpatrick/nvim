@@ -18,12 +18,6 @@ require("global.remap")
 require("global.autocmd")
 require("global.lsp-config")
 require("global.snippets")
-require("global.utils")
 require("global.helpers.wezterm")
 require("global.tabs").setup()
 require("global.instant_transmission")
-
-local use_builtin_completion = false
-if use_builtin_completion then
-	require("global.cmdline-completion")
-end

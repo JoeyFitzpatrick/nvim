@@ -145,30 +145,7 @@ M.tabline = function()
 	return line
 end
 
-local setup = function(opts)
-	opts = opts or {}
-	if opts.title then
-		M.title = opts.title
-	end
-	if opts.modified then
-		M.modified = opts.modified
-	end
-	if opts.windowCount then
-		M.windowCount = opts.windowCount
-	end
-	if opts.devicon then
-		M.devicon = opts.devicon
-	end
-	if opts.separator then
-		M.separator = opts.separator
-	end
-	if opts.cell then
-		M.cell = opts.cell
-	end
-	if opts.tabline then
-		M.tabline = opts.tabline
-	end
-
+local setup = function()
 	vim.opt.tabline = "%!v:lua.require'global.tabs'.helpers.tabline()"
 end
 

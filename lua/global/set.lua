@@ -39,7 +39,7 @@ vim.o.updatetime = 300
 vim.o.cursorline = true
 vim.o.shortmess = "atF" -- abbreviate messages and truncate file messages in cmd line
 require("vim._extui").enable({})
-vim.o.cmdheight = 0
+vim.o.cmdheight = 1
 vim.o.mouse = "a"
 vim.o.breakindent = true
 
