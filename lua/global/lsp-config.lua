@@ -16,8 +16,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, { buffer = event.buf, desc = "Open Error" })
 		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Lsp Code Action" })
 
-		local client_id = event.data.client_id
-
 		-- The following two autocommands are used to highlight references of the
 		-- word under your cursor when your cursor rests there for a little while.
 		--    See `:help CursorHold` for information about when this is executed
@@ -71,6 +69,7 @@ vim.lsp.config("ocamllsp", {
 
 vim.lsp.enable({
 	"bashls",
+	"copilot",
 	"gopls",
 	"emmylua_ls",
 	"ocamllsp",
