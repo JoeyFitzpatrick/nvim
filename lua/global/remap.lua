@@ -47,9 +47,6 @@ set("v", "P", '"0P')
 -- Same thing for x
 vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true })
 
--- terminal mappings
-set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
-
 -- Custom text objects
 -- ie = inner entire buffer
 set("o", "ie", ':exec "normal! ggVG"<cr>')
@@ -95,12 +92,21 @@ set("n", "ycc", "yygccp", { remap = true, desc = "Copy-paste current line and co
 set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })
 
 -- better window navigation.
-set({ "n", "t" }, "<C-h>", "<C-W>h", { noremap = true })
-set({ "n", "t" }, "<C-k>", "<C-W>j", { noremap = true })
-set({ "n", "t" }, "<C-k>", "<C-W>k", { noremap = true })
-set({ "n", "t" }, "<C-l>", "<C-W>l", { noremap = true })
+set({ "n", "t" }, "<C-h>", function()
+	vim.cmd("wincmd h")
+end, { noremap = true })
+set({ "n", "t" }, "<C-j>", function()
+	vim.cmd("wincmd j")
+end, { noremap = true })
+set({ "n", "t" }, "<C-k>", function()
+	vim.cmd("wincmd k")
+end, { noremap = true })
+set({ "n", "t" }, "<C-l>", function()
+	vim.cmd("wincmd l")
+end, { noremap = true })
 
--- open term splits
+-- terminal mappings
+set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
 set("n", "<leader>th", "<cmd>vsplit | term<CR>", { noremap = true, desc = "Open term left" })
 set("n", "<leader>tj", "<cmd>rightbelow split | term<CR>", { noremap = true, desc = "Open term below" })
 set("n", "<leader>tk", "<cmd>split | term<CR>", { noremap = true, desc = "Open term above" })
