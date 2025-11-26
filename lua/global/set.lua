@@ -47,6 +47,8 @@ vim.o.laststatus = 3
 vim.o.diffopt = "internal,filler,closeoff,indent-heuristic,linematch:60,algorithm:histogram"
 vim.o.wrap = true
 
+vim.o.statusline = "%f %h%w%m%r%=%-15.(%l,%c%V%) %P %{&filetype}"
+
 -- Saved macros
 vim.cmd([[
     :let @a = "_vg_sa'A," . "\<Esc>j"
