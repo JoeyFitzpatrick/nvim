@@ -44,14 +44,6 @@ return {
 	{ "kylechui/nvim-surround", event = "VeryLazy", config = true },
 	{ "nvim-tree/nvim-web-devicons", opts = {} },
 	{
-		"https://github.com/jpalardy/vim-slime",
-		event = "VeryLazy",
-		config = function()
-			vim.g.slime_target = "wezterm"
-			vim.g.slime_default_config = { pane_direction = "right" }
-		end,
-	},
-	{
 		"chrisgrieser/nvim-recorder",
 		keys = {
 			{ "q", desc = " Start Recording" },
@@ -90,4 +82,5 @@ return {
 			end)
 		end,
 	},
+	{ "rhysd/clever-f.vim", event = "BufEnter" },
 }
