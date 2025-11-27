@@ -105,13 +105,6 @@ set({ "n", "t" }, "<C-l>", function()
 	vim.cmd("wincmd l")
 end, { noremap = true })
 
--- terminal mappings
-set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
-set("n", "<leader>th", "<cmd>vsplit | term<CR>", { noremap = true, desc = "Open term left" })
-set("n", "<leader>tj", "<cmd>rightbelow split | term<CR>", { noremap = true, desc = "Open term below" })
-set("n", "<leader>tk", "<cmd>split | term<CR>", { noremap = true, desc = "Open term above" })
-set("n", "<leader>tl", "<cmd>rightbelow vsplit | term<CR>", { noremap = true, desc = "Open term right" })
-
 -- tabs
 set("n", "[t", "<cmd>tabprevious<CR>", { noremap = true, desc = "Previous tab" })
 set("n", "]t", "<cmd>tabnext<CR>", { noremap = true, desc = "Next tab" })
