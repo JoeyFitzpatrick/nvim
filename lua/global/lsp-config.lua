@@ -69,7 +69,6 @@ vim.lsp.config("ocamllsp", {
 
 vim.lsp.enable({
 	"bashls",
-	"copilot",
 	"gopls",
 	"emmylua_ls",
 	"ocamllsp",

@@ -143,3 +143,49 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 		end, { buffer = 0, desc = "Close term with <C-d> in normal mode" })
 	end,
 })
+
+local ai_term_buf = nil
+local ai_term_win = nil
+local ai_term_chan = nil
+
+vim.keymap.set({ "n", "t" }, "<C-.>", function()
+	if not ai_term_buf or not vim.api.nvim_buf_is_valid(ai_term_buf) then
+		ai_term_buf = vim.api.nvim_create_buf(false, true)
+
+		vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+			desc = "Config for special terms",
+			group = vim.api.nvim_create_augroup("SpecialTermBufferSetup", { clear = true }),
+			buffer = ai_term_buf,
+			callback = function()
+				vim.cmd("startinsert")
+			end,
+		})
+
+		vim.api.nvim_create_autocmd({ "TermClose" }, {
+			desc = "Reset buf variables",
+			group = vim.api.nvim_create_augroup("SpecialTermBufferClose", { clear = true }),
+			buffer = ai_term_buf,
+			callback = function()
+				ai_term_buf = nil
+				ai_term_win = nil
+				ai_term_chan = nil
+			end,
+		})
+	end
+
+	if not ai_term_win or not vim.api.nvim_win_is_valid(ai_term_win) then
+		local width = math.floor(vim.o.columns * 0.618) -- Golden ratio
+		ai_term_win = vim.api.nvim_open_win(ai_term_buf, true, {
+			width = width,
+			split = "right",
+		})
+		if not ai_term_chan then
+			ai_term_chan = vim.fn.jobstart("claude", {
+				term = true,
+			})
+		end
+	else
+		vim.api.nvim_win_close(ai_term_win, true)
+		ai_term_win = nil
+	end
+end)

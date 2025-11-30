@@ -105,6 +105,8 @@ set({ "n", "t" }, "<C-l>", function()
 	vim.cmd("wincmd l")
 end, { noremap = true })
 
+set("n", "<leader>rl", "<cmd>w | so<CR>", { desc = "Reload and source buffer" })
+
 -- tabs
 set("n", "[t", "<cmd>tabprevious<CR>", { noremap = true, desc = "Previous tab" })
 set("n", "]t", "<cmd>tabnext<CR>", { noremap = true, desc = "Next tab" })
