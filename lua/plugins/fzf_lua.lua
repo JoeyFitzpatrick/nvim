@@ -10,9 +10,9 @@ return {
 					row = 0.5,
 					col = 0.5,
 					preview = {
-						layout = "horizontal",
-						horizontal = "right:50%",
-						scrollbar = "border",
+						layout = "vertical",
+						-- horizontal = "right:50%",
+						-- scrollbar = "border",
 					},
 				},
 				keymap = {

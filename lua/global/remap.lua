@@ -2,10 +2,11 @@ local opts = { silent = true, noremap = true }
 local set = vim.keymap.set
 
 -- Sick of pressing shift colon
-set("n", ";", ":", { noremap = true })
-set("v", ";", ":", { noremap = true })
-set("n", ":", ";", { noremap = true })
-set("v", ":", ";", { noremap = true })
+set("n", ";", ":")
+set("v", ";", ":")
+set("n", ":", ";")
+set("v", ":", ";")
+set("n", "<leader>;", ":<C-f>", { desc = "Enter command-mode buffer" })
 
 -- Center screen after vertical navigation
 set("n", "<C-d>", "<C-d>zz")
