@@ -7,7 +7,7 @@ return {
 		config = function()
 			---@module "trunks"
 			---@type trunks.Configuration
-			vim.g.trunks_configuration = { prevent_nvim_inception = true }
+			vim.g.trunks_configuration = { pager = "delta", prevent_nvim_inception = true }
 			vim.keymap.set({ "n", "v" }, "t<space>", ":Trunks ", { desc = "Trunks Prefix" })
 			vim.keymap.set({ "n", "v" }, "g<space>", ":G ", { desc = "Trunks Git Prefix" })
 			vim.keymap.set("n", "<leader>je", "<cmd>G<CR>", { desc = "Open Trunks Home UI" })

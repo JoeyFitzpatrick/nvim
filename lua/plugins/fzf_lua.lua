@@ -33,8 +33,7 @@ return {
 			vim.keymap.set("n", "<leader>g", fzf.live_grep, { desc = "Grep" })
 			vim.keymap.set("n", "<leader>G", fzf.global, { desc = "Global picker" })
 			vim.keymap.set("n", "<leader>:", fzf.command_history, { desc = "Command History" })
-			-- handling this with the fzf-lua-frecency plugin
-			-- vim.keymap.set("n", "<leader>f", fzf.files, { desc = "Find Files" })
+			vim.keymap.set("n", "<leader>f", fzf.files, { desc = "Find Files" })
 			vim.keymap.set("n", "<leader>ep", function()
 				fzf.files({ cwd = "~/.local/share/nvim/lazy" })
 			end, { desc = "Edit Plugins" })
@@ -71,18 +70,6 @@ return {
 			vim.keymap.set("n", "<leader>so", fzf.oldfiles, { desc = "Recent Files" })
 			vim.keymap.set("n", "<leader>sj", fzf.jumps, { desc = "Jumplist" })
 			vim.keymap.set("n", "<leader>/", fzf.grep_curbuf, { desc = "Search in current buffer" })
-		end,
-	},
-	{
-		"elanmed/fzf-lua-frecency.nvim",
-		event = "VeryLazy",
-		config = function()
-			vim.keymap.set("n", "<leader>f", function()
-				require("fzf-lua-frecency").frecency({
-					cwd_only = true,
-					display_score = false,
-				})
-			end)
 		end,
 	},
 }

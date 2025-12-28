@@ -5,10 +5,11 @@ M.snippets = {
 		["{"] = "{\n\t$0\n}",
 	},
 	lua = {
-		fn = "function($1)\n\t$0\nend",
-		mod = "local M = {}\n\n$0\n\nreturn M",
 		desc = 'describe("${1:description}", function()\n\t$0\nend)',
+		fn = "function($1)\n\t$0\nend",
 		it = 'it("${1:description}", function()\n\t$0\nend)',
+		mod = "local M = {}\n\n$0\n\nreturn M",
+		req = 'require("$0")',
 	},
 	htmldjango = {
 		b = "{% block $1 %}\n\t$2\n{% endblock %}",

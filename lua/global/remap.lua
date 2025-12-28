@@ -122,3 +122,5 @@ set("n", "[q", "<cmd>cprevious<CR>", { noremap = true, desc = "Previous quickfix
 set("n", "]q", "<cmd>cnext<CR>", { noremap = true, desc = "Next quickfix item" })
 set("n", "[r", "<cmd>Trunks time-machine-previous<CR>", { noremap = true, desc = "Previous time-machine item" })
 set("n", "]r", "<cmd>Trunks time-machine-next<CR>", { noremap = true, desc = "Next time-machine item" })
+
+set("n", "<leader>rs", "<cmd>w | restart<CR>", { desc = "Call :restart" })
