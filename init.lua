@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
-
-vim.g.nvim_tree_disable_netrw = 0
+vim.g.did_install_default_menus = 1
+vim.g.loaded_netrwPlugin = 0
+vim.o.synmaxcol = 500
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
