@@ -28,6 +28,7 @@
   "text-case.nvim": { "branch": "main", "commit": "e898cfd46fa6cde0e83abb624a16e67d2ffc6457" },
   "ts-comments.nvim": { "branch": "main", "commit": "123a9fb12e7229342f807ec9e6de478b1102b041" },
   "ts-error-translator.nvim": { "branch": "main", "commit": "2dca715053bb78c1aae9af46d3f8060d001ec58f" },
+  "tv.nvim": { "branch": "main", "commit": "e22cf23e141b77d0e1719700775d5a85b129c98a" },
   "undotree": { "branch": "main", "commit": "3976ed63d7fb0cc47f6a778e230a390a399df69c" },
   "vim-asterisk": { "branch": "master", "commit": "77e97061d6691637a034258cc415d98670698459" },
   "vim-fugitive": { "branch": "master", "commit": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4" },

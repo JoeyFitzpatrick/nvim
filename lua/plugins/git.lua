@@ -14,6 +14,7 @@ return {
 			vim.keymap.set("n", "<leader>jd", "<cmd>G difftool<CR>", { desc = "Open Trunks Difftool" })
 			vim.keymap.set("n", "<leader>jb", "<cmd>G blame<CR>", { desc = "Open Trunks Blame" })
 			vim.keymap.set("n", "<leader>jm", "<cmd>G mergetool<CR>", { desc = "Open Mergetool" })
+			vim.keymap.set("n", "<leader>jl", "<cmd>G log<CR>", { desc = "Open Git Log" })
 			vim.keymap.set("n", "<leader>rb", "<Plug>(Trunks-resolve-base)", { desc = "Trunks merge conflict base" })
 			vim.keymap.set("n", "<leader>ro", "<Plug>(Trunks-resolve-ours)", { desc = "Trunks merge conflict ours" })
 			vim.keymap.set(
@@ -25,7 +26,12 @@ return {
 			vim.keymap.set("n", "<leader>ra", "<Plug>(Trunks-resolve-all)", { desc = "Trunks merge conflict all" })
 
 			-- Testing keymaps
-			vim.keymap.set({ "n", "x" }, "<leader>jt", "<cmd>G grep test<CR>", { desc = "Open Trunks for testing" })
+			vim.keymap.set(
+				{ "n", "x" },
+				"<leader>jt",
+				"<cmd>Trunks time-machine<CR>",
+				{ desc = "Open Trunks for testing" }
+			)
 		end,
 	},
 	{
