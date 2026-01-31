@@ -72,8 +72,8 @@ vim.lsp.enable({
 	"gopls",
 	"emmylua_ls",
 	"ocamllsp",
-	"pyrefly",
 	"ruff",
+	"ty",
 	"yamlls",
 	"zls",
 })
