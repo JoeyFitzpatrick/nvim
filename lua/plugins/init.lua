@@ -83,10 +83,4 @@ return {
 		end,
 	},
 	{ "rhysd/clever-f.vim", event = "BufEnter" },
-	{
-		"alexpasmantier/tv.nvim",
-		config = function()
-			require("tv").setup({ window = { width = 0.95, height = 0.95 } })
-		end,
-	},
 }

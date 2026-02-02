@@ -61,6 +61,7 @@ return {
 	{
 		"windwp/nvim-ts-autotag",
 		event = "BufEnter",
+		enabled = false,
 		config = function()
 			require("nvim-ts-autotag").setup({
 				opts = {
@@ -71,7 +72,7 @@ return {
 			})
 		end,
 	},
-	{ "folke/ts-comments.nvim", opts = {}, event = "VeryLazy" },
+	{ "folke/ts-comments.nvim", enabled = false, opts = {}, event = "VeryLazy" },
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		event = "VeryLazy",
