@@ -44,14 +44,6 @@ return {
 	{ "kylechui/nvim-surround", event = "VeryLazy", config = true },
 	{ "nvim-tree/nvim-web-devicons", opts = {} },
 	{
-		"chrisgrieser/nvim-recorder",
-		keys = {
-			{ "q", desc = " Start Recording" },
-			{ "Q", desc = " Play Recording" },
-		},
-		opts = {},
-	},
-	{
 		"rlane/pounce.nvim",
 		event = "VeryLazy",
 		config = function()

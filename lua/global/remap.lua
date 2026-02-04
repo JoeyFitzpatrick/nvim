@@ -115,7 +115,7 @@ set("n", "<leader><tab>n", "<cmd>tabnew<CR>", { noremap = true, desc = "New tab"
 set("n", "<leader><tab>q", "<cmd>tabclose<CR>", { noremap = true, desc = "Close tab" })
 
 -- buffers
-set("n", "<leader>bd", "<cmd>bd<CR>", { noremap = true, desc = "Delete buffer" })
+set("n", "<leader>bd", "<cmd>bd!<CR>", { noremap = true, desc = "Delete buffer" })
 
 -- some [ and ] mappings
 set("n", "[q", "<cmd>cprevious<CR>", { noremap = true, desc = "Previous quickfix item" })
@@ -124,3 +124,11 @@ set("n", "[r", "<cmd>Trunks time-machine-previous<CR>", { noremap = true, desc =
 set("n", "]r", "<cmd>Trunks time-machine-next<CR>", { noremap = true, desc = "Next time-machine item" })
 
 set("n", "<leader>rs", "<cmd>w | restart<CR>", { desc = "Call :restart" })
+
+set("n", "cq", function()
+	vim.cmd("call inputsave()")
+	local current_macro = vim.fn.getreg("q")
+	local new_macro = vim.fn.input("Change macro @q: ", current_macro)
+	vim.fn.setreg("q", new_macro)
+	vim.cmd("call inputrestore()")
+end, { desc = "Change macro at q register" })

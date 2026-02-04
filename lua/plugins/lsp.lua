@@ -28,11 +28,4 @@ return {
 			vim.keymap.set("n", "<leader>ts", ":VtsExec", { desc = "Execute vtsls command" })
 		end,
 	},
-	{
-		"mfussenegger/nvim-jdtls",
-		ft = { "java" },
-		config = function()
-			vim.lsp.enable({ "jdtls" })
-		end,
-	},
 }
