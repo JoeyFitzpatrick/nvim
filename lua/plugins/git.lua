@@ -26,17 +26,12 @@ return {
 			vim.keymap.set("n", "<leader>ra", "<Plug>(Trunks-resolve-all)", { desc = "Trunks merge conflict all" })
 
 			-- Testing keymaps
-			vim.keymap.set(
-				{ "n", "x" },
-				"<leader>jt",
-				"<cmd>Trunks time-machine<CR>",
-				{ desc = "Open Trunks for testing" }
-			)
+			vim.keymap.set({ "n", "x" }, "<leader>jt", "<cmd>G log -S<CR>", { desc = "Open Trunks for testing" })
 		end,
 	},
 	{
 		"NeogitOrg/neogit",
-		enabled = false,
+		enabled = true,
 		cmd = { "Neogit" },
 		keys = { { "<leader>jj", "<cmd>Neogit<CR>", desc = "Open Neogit" } },
 		dependencies = {
