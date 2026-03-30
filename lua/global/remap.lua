@@ -120,3 +120,5 @@ set("n", "[q", "<cmd>cprevious<CR>", { noremap = true, desc = "Previous quickfix
 set("n", "]q", "<cmd>cnext<CR>", { noremap = true, desc = "Next quickfix item" })
 
 set("n", "<leader>rs", "<cmd>w | restart<CR>", { desc = "Call :restart" })
+
+set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
