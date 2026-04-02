@@ -47,17 +47,29 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-vim.lsp.config("expert", {
-	cmd = { "expert_darwin_arm64", "--stdio" },
-	filetypes = { "elixir", "eelixir", "heex" },
-	root_markers = { "mix.exs", ".git" },
+vim.lsp.config("ocamllsp", {
+	cmd = { "ocamllsp" },
+	filetypes = {
+		"ocaml",
+		"ocaml.interface",
+		"ocaml.menhir",
+		"ocaml.ocamllex",
+		"dune",
+		"reason",
+	},
+	root_markers = {
+		{ "dune-project", "dune-workspace" },
+		{ "*.opam", "esy.json", "package.json" },
+		".git",
+	},
+	settings = {},
 })
 
 vim.lsp.enable({
 	"bashls",
-	"expert",
 	"gopls",
 	"emmylua_ls",
+	"ocamllsp",
 	"ruff",
 	"ty",
 	"yamlls",

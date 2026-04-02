@@ -1,6 +1,5 @@
 return {
 	{ "neovim/nvim-lspconfig", event = "VeryLazy" },
-	-- other lsp plugins
 	{
 		"dmmulroy/ts-error-translator.nvim",
 		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
