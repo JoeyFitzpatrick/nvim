@@ -65,10 +65,25 @@ vim.lsp.config("ocamllsp", {
 	settings = {},
 })
 
+vim.lsp.config("lua-language-server", {
+	cmd = { "lua-language-server" },
+	filetypes = { "lua" },
+	settings = {
+		Lua = {
+			runtime = { version = "LuaJIT" },
+			workspace = {
+				checkThirdParty = false,
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			diagnostics = { globals = { "vim" } },
+		},
+	},
+})
+
 vim.lsp.enable({
-	"bashls",
+	-- "bashls",
 	"gopls",
-	"emmylua_ls",
+	"lua-language-server",
 	"ocamllsp",
 	"ruff",
 	"ty",

@@ -6,14 +6,22 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	group = last_position_group,
 })
 
-local html_filetype_group = vim.api.nvim_create_augroup("UpdateHtmlFiletype", { clear = true })
+local filetype_group = vim.api.nvim_create_augroup("UpdateFiletype", { clear = true })
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	desc = "Change html filetypes to htmldjango",
 	pattern = { "html", "htmlangular" },
 	callback = function()
 		vim.bo.filetype = "htmldjango"
 	end,
-	group = html_filetype_group,
+	group = filetype_group,
+})
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+	desc = "Change eliom filetypes to ocaml",
+	pattern = { "*.eliom" },
+	callback = function()
+		vim.bo.filetype = "ocaml"
+	end,
+	group = filetype_group,
 })
 
 -- See `:help vim.highlight.on_yank()`
