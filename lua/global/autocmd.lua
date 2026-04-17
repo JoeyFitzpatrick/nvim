@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 	desc = "Change eliom filetypes to ocaml",
-	pattern = { "*.eliom" },
+	pattern = { "*.eliom", "*.eliomi" },
 	callback = function()
 		vim.bo.filetype = "ocaml"
 	end,
