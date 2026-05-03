@@ -1,4 +1,3 @@
-local opts = { silent = true, noremap = true }
 local set = vim.keymap.set
 
 -- Sick of pressing shift colon
@@ -120,6 +119,7 @@ set("n", "[q", "<cmd>cprevious<CR>", { noremap = true, desc = "Previous quickfix
 set("n", "]q", "<cmd>cnext<CR>", { noremap = true, desc = "Next quickfix item" })
 
 set("n", "<leader>rs", function()
+	vim.cmd("wa")
 	local session = vim.fn.stdpath("state") .. "/restart_session.vim"
 	vim.cmd("mksession! " .. vim.fn.fnameescape(session))
 	vim.cmd("restart source " .. vim.fn.fnameescape(session))

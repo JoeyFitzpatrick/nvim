@@ -30,7 +30,9 @@ return {
 
 			-- General mappings
 			vim.keymap.set("n", "<leader>,", fzf.buffers, { desc = "Buffers" })
-			vim.keymap.set("n", "<leader>g", fzf.live_grep, { desc = "Grep" })
+			vim.keymap.set("n", "<leader>g", function()
+				fzf.live_grep({ cwd = vim.fs.root(0, ".git") })
+			end, { desc = "Grep" })
 			vim.keymap.set("n", "<leader>G", fzf.global, { desc = "Global picker" })
 			vim.keymap.set("n", "<leader>f", fzf.files, { desc = "Find Files" })
 			vim.keymap.set("n", "<leader>ep", function()
