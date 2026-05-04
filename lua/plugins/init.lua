@@ -1,5 +1,6 @@
 return {
 	{ dir = "~/plugins/the-bag.nvim", name = "the bag" },
+	{ dir = "~/plugins/swordbill.nvim", name = "swordbill" },
 	{
 		"johmsalas/text-case.nvim",
 		config = function()
