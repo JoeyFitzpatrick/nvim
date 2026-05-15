@@ -1,6 +1,13 @@
 return {
 	{ dir = "~/plugins/the-bag.nvim", name = "the bag" },
-	{ dir = "~/plugins/swordbill.nvim", name = "swordbill" },
+	{
+		dir = "~/plugins/swordbill.nvim",
+		name = "swordbill",
+		config = function()
+			vim.keymap.set("n", "zz", "<cmd>Swordbill<CR>", { desc = "Open Swordbill" })
+			vim.keymap.set("n", "z<space>", ":Swordbill ", { desc = "Swordbill commands" })
+		end,
+	},
 	{
 		"johmsalas/text-case.nvim",
 		config = function()

@@ -58,19 +58,10 @@ set("v", "y", "ygv<esc>", { remap = false })
 set("v", "<leader>y", '"+ygv<esc>', { remap = false })
 
 -- quickfix
--- Create an autocmd for FileType with pattern "qf"
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "qf",
 	callback = function()
-		-- Set 'q' to close the quickfix window in normal mode
 		set("n", "q", ":q<CR>", { buffer = true })
-		-- Set 'dd' to remove an item from the quickfix list in normal mode
-		set("n", "dd", function()
-			local qf_idx = vim.fn.line(".") -- Get the current line number, which corresponds to the quickfix item index
-			local qf_list = vim.fn.getqflist() -- Get the current quickfix list
-			table.remove(qf_list, qf_idx)
-			vim.fn.setqflist(qf_list)
-		end, { buffer = true })
 	end,
 })
 
