@@ -119,3 +119,5 @@ end, { desc = "Restart" })
 set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
 
 set("n", "<leader>u", "<cmd>Undotree<CR>", { desc = "Open undotree" })
+
+set("n", "<leader>cb", "<cmd>%bd|e#|bd#<CR>", { desc = "close all buffers except current" })

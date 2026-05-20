@@ -3,6 +3,20 @@ return {
 	{
 		dir = "~/plugins/swordbill.nvim",
 		name = "swordbill",
+		init = function()
+			vim.g.swordbill_configuration = {
+				default_connections = {
+					{
+						filename = "/Users/jfitzpatrick/.local/share/nvim/swordbill/queries/scratch.sql",
+						connection_id = "local flask",
+					},
+					{
+						filename = "/Users/jfitzpatrick/.local/share/nvim/swordbill/queries/coreapi.sql",
+						connection_id = "local core-api",
+					},
+				},
+			}
+		end,
 		config = function()
 			vim.keymap.set("n", "zz", "<cmd>Swordbill<CR>", { desc = "Open Swordbill" })
 			vim.keymap.set("n", "z<space>", ":Swordbill ", { desc = "Swordbill commands" })
