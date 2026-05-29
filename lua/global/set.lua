@@ -49,6 +49,10 @@ vim.o.wrap = true
 
 vim.o.statusline = "%f %h%w%m%r%=%-15.(%l,%c%V%) %P %{&filetype}"
 
+vim.o.foldmethod = "indent"
+vim.o.foldlevel = 99
+vim.o.foldnestmax = 4
+
 vim.cmd('set rtp^="/Users/jfitzpatrick/.opam/default/share/ocp-indent/vim"')
 
 -- Saved macros

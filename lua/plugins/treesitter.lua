@@ -32,14 +32,6 @@ return {
 					},
 				},
 			})
-			-- folding config
-			vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-			vim.wo.foldtext = "v:lua.vim.treesitter.foldtext()"
-			vim.opt.foldcolumn = "0"
-			vim.opt.foldtext = ""
-			vim.opt.foldlevel = 99
-			vim.opt.foldlevelstart = 1
-			vim.opt.foldnestmax = 4
 		end,
 	},
 	{
