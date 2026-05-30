@@ -16,7 +16,7 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				-- Conform will run multiple formatters sequentially
-				css = { "prettier" },
+				css = { "biome" },
 				htmldjango = { "djlint" },
 				javascript = { "prettierd", "eslint_d" },
 				javascriptreact = { "prettierd", "eslint_d" },
