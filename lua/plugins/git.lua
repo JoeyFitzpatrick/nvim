@@ -1,5 +1,13 @@
 return {
 	{ "tpope/vim-fugitive", enabled = true },
+	-- {
+	-- 	dir = "~/plugins/vim-fugitive/",
+	-- 	enabled = false,
+	-- 	name = "vim-fugitive",
+	-- 	config = function()
+	-- 		vim.keymap.set({ "n", "v" }, "g<space>", ":G ", { desc = "Fugitive Prefix" })
+	-- 	end,
+	-- },
 	{
 		dir = "~/plugins/trunks.nvim",
 		name = "trunks",
@@ -26,7 +34,12 @@ return {
 			vim.keymap.set("n", "<leader>ra", "<Plug>(Trunks-resolve-all)", { desc = "Trunks merge conflict all" })
 
 			-- Testing keymaps
-			vim.keymap.set({ "n", "x" }, "<leader>jt", "<cmd>G log --graph<CR>", { desc = "Open Trunks for testing" })
+			vim.keymap.set(
+				{ "n", "x" },
+				"<leader>jt",
+				"<cmd>G difftool HEAD~3<CR>",
+				{ desc = "Open Trunks for testing" }
+			)
 		end,
 	},
 	{

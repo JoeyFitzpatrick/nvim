@@ -106,8 +106,8 @@ set("n", "<leader><tab>q", "<cmd>tabclose<CR>", { noremap = true, desc = "Close 
 set("n", "<leader>bd", "<cmd>bd!<CR>", { noremap = true, desc = "Delete buffer" })
 
 -- some [ and ] mappings
-set("n", "[q", "<cmd>cprevious<CR>", { noremap = true, desc = "Previous quickfix item" })
-set("n", "]q", "<cmd>cnext<CR>", { noremap = true, desc = "Next quickfix item" })
+set("n", "<M-p>", "<cmd>cprevious<CR>", { noremap = true, desc = "Previous quickfix item" })
+set("n", "<M-n>", "<cmd>cnext<CR>", { noremap = true, desc = "Next quickfix item" })
 
 set("n", "<leader>rs", function()
 	vim.cmd("wa")
@@ -120,4 +120,5 @@ set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
 
 set("n", "<leader>u", "<cmd>Undotree<CR>", { desc = "Open undotree" })
 
-set("n", "<leader>cb", "<cmd>%bd|e#|bd#<CR>", { desc = "close all buffers except current" })
+set("n", "<leader>cb", "<cmd>%bd|e#|bd#<CR>", { desc = "Close all buffers except current" })
+set("n", "<leader>ct", "<cmd>tabclose<CR>", { desc = "Close the current tab" })
