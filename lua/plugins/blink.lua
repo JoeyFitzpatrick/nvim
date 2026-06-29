@@ -1,8 +1,12 @@
 return {
 	{
 		"saghen/blink.cmp",
-		build = "cargo build --release",
+		enabled = false,
+		build = function()
+			require("blink.cmp").build():pwait()
+		end,
 		event = "BufEnter",
+		dependencies = { "saghen/blink.lib" },
 		opts = {
 			appearance = {
 				-- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'

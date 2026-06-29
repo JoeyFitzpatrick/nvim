@@ -38,7 +38,7 @@ vim.o.completeopt = "menuone,noselect,popup,fuzzy"
 vim.o.updatetime = 300
 vim.o.cursorline = true
 vim.o.shortmess = "atF" -- abbreviate messages and truncate file messages in cmd line
-require("vim._extui").enable({})
+require("vim._core.ui2").enable({})
 vim.o.cmdheight = 1
 vim.o.mouse = "a"
 vim.o.breakindent = true
