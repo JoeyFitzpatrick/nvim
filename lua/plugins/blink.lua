@@ -1,7 +1,6 @@
 return {
 	{
 		"saghen/blink.cmp",
-		enabled = false,
 		build = function()
 			require("blink.cmp").build():pwait()
 		end,
