@@ -7,22 +7,11 @@ return {
 		event = "BufEnter",
 		dependencies = { "saghen/blink.lib" },
 		opts = {
-			appearance = {
-				-- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-				-- adjusts spacing to ensure icons are aligned
-				nerd_font_variant = "mono",
-			},
 			signature = {
 				enabled = true,
 			},
 			completion = {
 				list = { selection = { auto_insert = true } },
-				accept = {
-					-- experimental auto-brackets support
-					auto_brackets = {
-						enabled = true,
-					},
-				},
 				menu = {
 					draw = {
 						treesitter = { "lsp" },
