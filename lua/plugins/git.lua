@@ -42,15 +42,4 @@ return {
 			)
 		end,
 	},
-	{
-		"NeogitOrg/neogit",
-		enabled = true,
-		cmd = { "Neogit" },
-		keys = { { "<leader>jj", "<cmd>Neogit<CR>", desc = "Open Neogit" } },
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"sindrets/diffview.nvim", -- optional - Diff integration
-		},
-		config = true,
-	},
 }

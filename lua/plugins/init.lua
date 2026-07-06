@@ -85,7 +85,6 @@ return {
 			end)
 		end,
 	},
-	{ "rhysd/clever-f.vim", event = "BufEnter" },
 	{
 		{
 			"igorlfs/nvim-dap-view",
