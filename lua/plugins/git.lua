@@ -1,5 +1,6 @@
 return {
 	{ "tpope/vim-fugitive", enabled = true },
+	{ "justinmk/guh.nvim" },
 	-- {
 	-- 	dir = "~/plugins/vim-fugitive/",
 	-- 	enabled = false,
