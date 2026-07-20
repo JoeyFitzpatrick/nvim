@@ -35,10 +35,7 @@ return {
 		event = "VeryLazy",
 		config = function()
 			vim.cmd([[
-                            map *  <Plug>(asterisk-z*)
-                            map #  <Plug>(asterisk-z#)
-                            map g* <Plug>(asterisk-gz*)
-                            map g# <Plug>(asterisk-gz#)
+                            map #  <Plug>(asterisk-z*)
                             let g:asterisk#keeppos = 1
                         ]])
 		end,

@@ -138,3 +138,5 @@ vim.keymap.set({ "n", "x", "o" }, "<A-i>", function()
 		vim.lsp.buf.selection_range(-vim.v.count1)
 	end
 end, { desc = "Select child treesitter node or inner incremental lsp selections" })
+
+set("n", "<leader>o", "<cmd>only<CR>", { desc = "Run :only" })

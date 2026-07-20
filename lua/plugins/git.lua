@@ -8,7 +8,12 @@ vim.keymap.set("n", "<leader>jl", "<cmd>G log --oneline<CR>", { desc = "Open Git
 return {
 	{ dir = "~/plugins/vim-fugitive", name = "vim-fugitive", enabled = true },
 	{ "justinmk/guh.nvim" },
-	{ "barrettruth/diffs.nvim", enabled = true },
+	{
+		"barrettruth/diffs.nvim",
+		init = function()
+			vim.g.diffs = { integrations = { fugitive = true } }
+		end,
+	},
 	{
 		dir = "~/plugins/trunks.nvim",
 		name = "trunks",
@@ -40,6 +45,7 @@ return {
 	{
 		"m00qek/baleia.nvim",
 		version = "*",
+		enabled = false,
 		config = function()
 			vim.g.baleia = require("baleia").setup({})
 
