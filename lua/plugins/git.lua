@@ -5,6 +5,8 @@ vim.keymap.set("n", "<leader>jb", "<cmd>G blame<CR>", { desc = "Open Trunks Blam
 vim.keymap.set("n", "<leader>jm", "<cmd>G mergetool<CR>", { desc = "Open Mergetool" })
 vim.keymap.set("n", "<leader>jl", "<cmd>G log --oneline<CR>", { desc = "Open Git Log" })
 
+vim.keymap.set("n", "<leader>jg", "<cmd>Guh<CR>", { desc = "Open Guh" })
+
 return {
 	{ dir = "~/plugins/vim-fugitive", name = "vim-fugitive", enabled = true },
 	{ "justinmk/guh.nvim" },
