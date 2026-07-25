@@ -2,8 +2,9 @@ vim.keymap.set({ "n", "v" }, "g<space>", ":G ", { desc = "Trunks Git Prefix" })
 vim.keymap.set("n", "<leader>je", "<cmd>G<CR>", { desc = "Open Trunks Home UI" })
 vim.keymap.set("n", "<leader>jd", "<cmd>G difftool<CR>", { desc = "Open Trunks Difftool" })
 vim.keymap.set("n", "<leader>jb", "<cmd>G blame<CR>", { desc = "Open Trunks Blame" })
+vim.keymap.set("n", "<leader>jB", "<cmd>G branch<CR>", { desc = "Open Git Branch" })
 vim.keymap.set("n", "<leader>jm", "<cmd>G mergetool<CR>", { desc = "Open Mergetool" })
-vim.keymap.set("n", "<leader>jl", "<cmd>G log --oneline<CR>", { desc = "Open Git Log" })
+vim.keymap.set("n", "<leader>jl", "<cmd>G log<CR>", { desc = "Open Git Log" })
 
 vim.keymap.set("n", "<leader>jg", "<cmd>Guh<CR>", { desc = "Open Guh" })
 
