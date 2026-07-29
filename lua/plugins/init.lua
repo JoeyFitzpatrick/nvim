@@ -5,7 +5,12 @@ return {
 		name = "swordbill",
 		init = function()
 			vim.g.swordbill_configuration = {
+				entrypoint = vim.fn.stdpath("data") .. "/swordbill/queries/restaurant.sql",
 				default_connections = {
+					{
+						filename = "/Users/jfitzpatrick/.local/share/nvim/swordbill/queries/restaurant.sql",
+						connection_id = "restaurant",
+					},
 					{
 						filename = "/Users/jfitzpatrick/.local/share/nvim/swordbill/queries/scratch.sql",
 						connection_id = "local flask",

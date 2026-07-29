@@ -23,7 +23,7 @@ return {
 				json = { "jq" },
 				lua = { "stylua" },
 				python = { "isort", "black", "pylint" },
-				sql = { "sql_formatter" },
+				sql = { "sleek" },
 				svelte = { "prettierd", "eslint_d" },
 				typescript = { "prettierd", "eslint_d" },
 				typescriptreact = { "prettierd", "eslint_d" },

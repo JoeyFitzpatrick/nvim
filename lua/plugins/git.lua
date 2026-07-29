@@ -2,14 +2,16 @@ vim.keymap.set({ "n", "v" }, "g<space>", ":G ", { desc = "Trunks Git Prefix" })
 vim.keymap.set("n", "<leader>je", "<cmd>G<CR>", { desc = "Open Trunks Home UI" })
 vim.keymap.set("n", "<leader>jd", "<cmd>G difftool<CR>", { desc = "Open Trunks Difftool" })
 vim.keymap.set("n", "<leader>jb", "<cmd>G blame<CR>", { desc = "Open Trunks Blame" })
-vim.keymap.set("n", "<leader>jB", "<cmd>G branch<CR>", { desc = "Open Git Branch" })
+vim.keymap.set("n", "<leader>jt", "<cmd>Twiggy<CR>", { desc = "Open Git Branch with Twiggy" })
 vim.keymap.set("n", "<leader>jm", "<cmd>G mergetool<CR>", { desc = "Open Mergetool" })
 vim.keymap.set("n", "<leader>jl", "<cmd>G log<CR>", { desc = "Open Git Log" })
 
 vim.keymap.set("n", "<leader>jg", "<cmd>Guh<CR>", { desc = "Open Guh" })
 
 return {
-	{ dir = "~/plugins/vim-fugitive", name = "vim-fugitive", enabled = true },
+	{ dir = "~/plugins/vim-fugitive", name = "vim-fugitive" },
+	{ "tpope/vim-rhubarb" },
+	{ "sodapopcan/vim-twiggy" },
 	{ "justinmk/guh.nvim" },
 	{
 		"barrettruth/diffs.nvim",
@@ -43,19 +45,6 @@ return {
 				"<cmd>G difftool HEAD~3<CR>",
 				{ desc = "Open Trunks for testing" }
 			)
-		end,
-	},
-	{
-		"m00qek/baleia.nvim",
-		version = "*",
-		enabled = false,
-		config = function()
-			vim.g.baleia = require("baleia").setup({})
-
-			-- Command to colorize the current buffer
-			vim.api.nvim_create_user_command("BaleiaColorize", function()
-				vim.g.baleia.once(vim.api.nvim_get_current_buf())
-			end, { bang = true })
 		end,
 	},
 }
