@@ -22,6 +22,7 @@ return {
 				javascriptreact = { "prettierd", "eslint_d" },
 				json = { "jq" },
 				lua = { "stylua" },
+				ocaml = { "ocamlformat" },
 				python = { "isort", "black", "pylint" },
 				sql = { "sleek" },
 				svelte = { "prettierd", "eslint_d" },

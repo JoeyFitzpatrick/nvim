@@ -1,5 +1,6 @@
 return {
-	{ "neovim/nvim-lspconfig", event = "VeryLazy" },
+	{ "dmmulroy/tsc.nvim", event = "VeryLazy", opts = { bin_name = "tsgo" } },
+	{ "neovim/nvim-lspconfig", lazy = false },
 	{
 		"dmmulroy/ts-error-translator.nvim",
 		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
@@ -16,15 +17,6 @@ return {
 				"Generate annotation",
 				{ noremap = true, silent = true }
 			)
-		end,
-	},
-	{
-		"yioneko/nvim-vtsls",
-		ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
-		config = function()
-			vim.lsp.config.vtsls = require("vtsls").lspconfig
-			vim.lsp.enable("vtsls")
-			vim.keymap.set("n", "<leader>ts", ":VtsExec", { desc = "Execute vtsls command" })
 		end,
 	},
 }

@@ -12,6 +12,15 @@ Nmap = function(lhs, rhs, desc, opts)
 	vim.keymap.set("n", lhs, rhs, opts)
 end
 
+local nvm_default = vim.fn.expand("~/.nvm/alias/default")
+if vim.fn.filereadable(nvm_default) == 1 then
+	local version = vim.fn.readfile(nvm_default)[1]:gsub("^v", "")
+	local node_bin = vim.fn.expand("~/.nvm/versions/node/v") .. version .. "/bin"
+	if vim.fn.isdirectory(node_bin) == 1 and not vim.env.PATH:find(node_bin, 1, true) then
+		vim.env.PATH = node_bin .. ":" .. vim.env.PATH
+	end
+end
+
 require("config.lazy")
 
 require("global.set")

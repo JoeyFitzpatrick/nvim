@@ -166,7 +166,7 @@ return {
 			})
 		end,
 	},
-	{ "folke/ts-comments.nvim", enabled = false, opts = {}, event = "VeryLazy" },
+	{ "folke/ts-comments.nvim", enabled = true, opts = {}, event = "VeryLazy" },
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		event = "VeryLazy",
