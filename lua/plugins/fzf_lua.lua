@@ -30,17 +30,17 @@ return {
 
 			-- General mappings
 			vim.keymap.set("n", "<leader>,", fzf.buffers, { desc = "Buffers" })
-			-- vim.keymap.set("n", "<leader>g", function()
-			-- 	fzf.live_grep({ cwd = vim.fs.root(0, ".git") })
-			-- end, { desc = "Grep" })
-			-- vim.keymap.set("n", "<leader>f", fzf.files, { desc = "Find Files" })
-			-- vim.keymap.set("n", "<leader>ep", function()
-			-- 	fzf.files({ cwd = "~/.local/share/nvim/lazy" })
-			-- end, { desc = "Edit Plugins" })
-			-- vim.keymap.set("n", "<leader>er", function()
-			-- 	fzf.files({ cwd = "~/.config/scripts" })
-			-- end, { desc = "Edit Rest Request Files" })
-			-- vim.keymap.set("x", "<leader>g", fzf.grep_visual, { desc = "Visual selection or word" })
+			vim.keymap.set("n", "<leader>g", function()
+				fzf.live_grep({ cwd = vim.fs.root(0, ".git") })
+			end, { desc = "Grep" })
+			vim.keymap.set("n", "<leader>f", fzf.files, { desc = "Find Files" })
+			vim.keymap.set("n", "<leader>ep", function()
+				fzf.files({ cwd = "~/.local/share/nvim/lazy" })
+			end, { desc = "Edit Plugins" })
+			vim.keymap.set("n", "<leader>er", function()
+				fzf.files({ cwd = "~/.config/scripts" })
+			end, { desc = "Edit Rest Request Files" })
+			vim.keymap.set("x", "<leader>g", fzf.grep_visual, { desc = "Visual selection or word" })
 			vim.keymap.set("n", "<leader>sb", fzf.blines, { desc = "Buffer Lines" })
 
 			-- Search mappings
