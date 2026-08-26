@@ -55,6 +55,9 @@ vim.o.foldnestmax = 4
 
 vim.cmd('set rtp^="/Users/jfitzpatrick/.opam/default/share/ocp-indent/vim"')
 
+vim.o.grepprg = "rg --vimgrep"
+vim.o.grepformat = "%f:%l:%c:%m"
+
 -- Saved macros
 vim.cmd([[
     :let @a = "_vg_sa'A," . "\<Esc>j"

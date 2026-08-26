@@ -7,6 +7,7 @@ vim.keymap.set("n", "<leader>jm", "<cmd>G mergetool<CR>", { desc = "Open Mergeto
 vim.keymap.set("n", "<leader>jl", "<cmd>G log<CR>", { desc = "Open Git Log" })
 
 vim.keymap.set("n", "<leader>jg", "<cmd>Guh<CR>", { desc = "Open Guh" })
+vim.keymap.set("n", "<leader>jc", "<cmd>term gh pr create<CR>", { desc = "Create GitHub pull request" })
 
 return {
 	{ dir = "~/plugins/vim-fugitive", name = "vim-fugitive" },
