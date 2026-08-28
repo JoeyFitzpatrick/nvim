@@ -2,7 +2,12 @@ vim.keymap.set({ "n", "v" }, "g<space>", ":G ", { desc = "Trunks Git Prefix" })
 vim.keymap.set("n", "<leader>je", "<cmd>G<CR>", { desc = "Open Trunks Home UI" })
 vim.keymap.set("n", "<leader>jd", "<cmd>G difftool<CR>", { desc = "Open Trunks Difftool" })
 vim.keymap.set("n", "<leader>jb", "<cmd>G blame<CR>", { desc = "Open Trunks Blame" })
-vim.keymap.set("n", "<leader>jt", "<cmd>Twiggy<CR>", { desc = "Open Git Branch with Twiggy" })
+vim.keymap.set("n", "<leader>jt", function()
+	if vim.bo.filetype ~= "futitive" then
+		vim.cmd("Git")
+	end
+	vim.cmd("Twiggy")
+end, { desc = "Open Git Branch with Twiggy" })
 vim.keymap.set("n", "<leader>jm", "<cmd>G mergetool<CR>", { desc = "Open Mergetool" })
 vim.keymap.set("n", "<leader>jl", "<cmd>G log<CR>", { desc = "Open Git Log" })
 
