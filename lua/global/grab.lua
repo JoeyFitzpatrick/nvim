@@ -9,19 +9,44 @@ local function get_commit_hash()
 end
 
 local function get_pull_request(hash)
-	local result = vim.system({
-		"sh",
-		"-c",
-		"gh pr list --search "
-			.. hash
-			.. " --state merged --json number --jq '.[0].number'"
-			.. " | xargs -I {} gh pr view {} --json body --jq '.body'",
+	local list_result = vim.system({
+		"gh",
+		"pr",
+		"list",
+		"--search",
+		hash,
+		"--state",
+		"merged",
+		"--json",
+		"number",
+		"--jq",
+		".[0].number",
 	}):wait()
 
-	if result.code ~= 0 then
-		return { description = nil, err = "grab: unable to fetch PR: " .. result.stderr }
+	if list_result.code ~= 0 then
+		return { number = nil, description = nil, err = "grab: unable to find PR: " .. list_result.stderr }
 	end
-	return { description = result.stdout, err = nil }
+
+	local number = vim.trim(list_result.stdout)
+	if not number then
+		return { number = nil, description = nil, err = "grab: no merged PR found for " .. hash }
+	end
+
+	local view_result = vim.system({
+		"gh",
+		"pr",
+		"view",
+		number,
+		"--json",
+		"body",
+		"--jq",
+		".body",
+	}):wait()
+
+	if view_result.code ~= 0 then
+		return { number = number, description = nil, err = "grab: unable to fetch PR body: " .. view_result.stderr }
+	end
+	return { number = number, description = view_result.stdout, err = nil }
 end
 
 local function set_buf_opts(bufnr)
@@ -55,8 +80,14 @@ vim.api.nvim_create_user_command("Grab", function(args)
 		return
 	end
 	local desc_as_tbl = vim.split(pull_request_result.description, "\r?\n", { plain = false })
-	pull_request_data.description = desc_as_tbl
-	table.insert(qflist, { filename = "github://" .. hash, module = "Pull Request: " .. hash:sub(1, 8) })
+	pull_request_data = {
+		description = desc_as_tbl,
+		number = pull_request_result.number,
+	}
+	table.insert(qflist, {
+		filename = "github://" .. pull_request_result.number,
+		module = "Pull Request: " .. pull_request_result.number:sub(1, 8),
+	})
 
 	vim.fn.setqflist(qflist)
 	vim.cmd.copen()
