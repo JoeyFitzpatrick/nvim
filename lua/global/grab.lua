@@ -24,16 +24,14 @@ local function get_pull_request(hash)
 	return { description = result.stdout, err = nil }
 end
 
----@param description string
-local function display_pull_request(description)
-	vim.cmd("tabnew")
-	vim.bo.filetype = "markdown"
-	vim.bo.buftype = "nofile"
-	vim.bo.bufhidden = "hide"
-	vim.bo.swapfile = false
-	local desc_as_tbl = vim.split(description, "\r?\n", { plain = false })
-	vim.api.nvim_buf_set_lines(0, 0, -1, false, desc_as_tbl)
+local function set_buf_opts(bufnr)
+	vim.bo[bufnr].filetype = "markdown"
+	vim.bo[bufnr].buftype = "nofile"
+	vim.bo[bufnr].bufhidden = "hide"
+	vim.bo[bufnr].swapfile = false
 end
+
+local pull_request_data = {}
 
 vim.api.nvim_create_user_command("Grab", function(args)
 	local qflist = {}
@@ -44,16 +42,34 @@ vim.api.nvim_create_user_command("Grab", function(args)
 	end
 
 	local hash = hash_result.hash
-	local fugitive_uri = string.format("fugitive://%s/.git//%s", vim.fn.expand("%:p:h"), hash)
-	table.insert(qflist, { filename = fugitive_uri })
+	local fugitive_path = vim.fn.FugitiveFind(hash)
+	if fugitive_path == "" then
+		vim.notify("grab: not in a git repository", vim.log.levels.ERROR)
+		return
+	end
+	table.insert(qflist, { filename = fugitive_path, module = "Commit: " .. hash:sub(1, 8) })
+
 	local pull_request_result = get_pull_request(hash)
 	if pull_request_result.err then
 		vim.notify(pull_request_result.err, vim.log.levels.ERROR)
 		return
 	end
-	display_pull_request(pull_request_result.description)
+	local desc_as_tbl = vim.split(pull_request_result.description, "\r?\n", { plain = false })
+	pull_request_data.description = desc_as_tbl
+	table.insert(qflist, { filename = "github://" .. hash, module = "Pull Request: " .. hash:sub(1, 8) })
+
 	vim.fn.setqflist(qflist)
 	vim.cmd.copen()
 end, {})
 
 vim.keymap.set("n", "gb", "<cmd>Grab<CR>", { desc = "Run Grab" })
+
+local augroup = vim.api.nvim_create_augroup("Grab", {})
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = augroup,
+	callback = function(data)
+		set_buf_opts(data.buf)
+		vim.api.nvim_buf_set_lines(data.buf, 0, -1, false, pull_request_data.description)
+	end,
+	pattern = "github://*",
+})
