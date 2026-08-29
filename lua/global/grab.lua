@@ -1,3 +1,8 @@
+local state = {
+	pull_request = {},
+	links = {},
+}
+
 local function get_commit_hash()
 	local line_num = tostring(vim.api.nvim_win_get_cursor(0)[1])
 	local result = vim.system({ "git", "blame", "-l", "-L", line_num .. "," .. line_num, vim.api.nvim_buf_get_name(0) })
@@ -46,7 +51,14 @@ local function get_pull_request(hash)
 	if view_result.code ~= 0 then
 		return { number = number, description = nil, err = "grab: unable to fetch PR body: " .. view_result.stderr }
 	end
-	return { number = number, description = view_result.stdout, err = nil }
+	local desc_as_tbl = vim.split(view_result.stdout, "\r?\n", { plain = false })
+	for _, line in ipairs(desc_as_tbl) do
+		for link in line:gmatch("https?://[%w_.~!*'();:@&=+$,/?%%#%[%]-]+") do
+			table.insert(state.links, link)
+		end
+	end
+	vim.print(state.links)
+	return { number = number, description = desc_as_tbl, err = nil }
 end
 
 local function set_buf_opts(bufnr)
@@ -55,8 +67,6 @@ local function set_buf_opts(bufnr)
 	vim.bo[bufnr].bufhidden = "hide"
 	vim.bo[bufnr].swapfile = false
 end
-
-local pull_request_data = {}
 
 vim.api.nvim_create_user_command("Grab", function(args)
 	local qflist = {}
@@ -79,9 +89,8 @@ vim.api.nvim_create_user_command("Grab", function(args)
 		vim.notify(pull_request_result.err, vim.log.levels.ERROR)
 		return
 	end
-	local desc_as_tbl = vim.split(pull_request_result.description, "\r?\n", { plain = false })
-	pull_request_data = {
-		description = desc_as_tbl,
+	state.pull_request = {
+		description = pull_request_result.description,
 		number = pull_request_result.number,
 	}
 	table.insert(qflist, {
@@ -100,7 +109,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	group = augroup,
 	callback = function(data)
 		set_buf_opts(data.buf)
-		vim.api.nvim_buf_set_lines(data.buf, 0, -1, false, pull_request_data.description)
+		vim.api.nvim_buf_set_lines(data.buf, 0, -1, false, state.pull_request.description)
 	end,
 	pattern = "github://*",
 })
