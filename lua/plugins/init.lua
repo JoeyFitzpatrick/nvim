@@ -1,5 +1,7 @@
 return {
 	{ dir = "~/plugins/the-bag.nvim", name = "the bag" },
+	{ "https://github.com/tpope/vim-sleuth" },
+	{ "https://github.com/tpope/vim-speeddating" },
 	{
 		dir = "~/plugins/swordbill.nvim",
 		name = "swordbill",

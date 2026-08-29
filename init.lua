@@ -30,6 +30,7 @@ require("global.lsp-config")
 require("global.snippets")
 require("global.tabs").setup()
 require("global.instant_transmission")
+require("global.grab")
 
 vim.cmd("packadd nohlsearch")
 vim.cmd("packadd nvim.undotree")
