@@ -1,6 +1,6 @@
 local function get_commit_hash()
 	local line_num = tostring(vim.api.nvim_win_get_cursor(0)[1])
-	local result = vim.system({ "git", "blame", "-L", line_num .. "," .. line_num, vim.api.nvim_buf_get_name(0) })
+	local result = vim.system({ "git", "blame", "-l", "-L", line_num .. "," .. line_num, vim.api.nvim_buf_get_name(0) })
 		:wait()
 	if result.code ~= 0 then
 		return { hash = nil, err = "grab: unable to run git blame: " .. result.stderr }
@@ -36,6 +36,7 @@ local function display_pull_request(description)
 end
 
 vim.api.nvim_create_user_command("Grab", function(args)
+	local qflist = {}
 	local hash_result = get_commit_hash()
 	if hash_result.err then
 		vim.notify(hash_result.err, vim.log.levels.ERROR)
@@ -43,12 +44,16 @@ vim.api.nvim_create_user_command("Grab", function(args)
 	end
 
 	local hash = hash_result.hash
+	local fugitive_uri = string.format("fugitive://%s/.git//%s", vim.fn.expand("%:p:h"), hash)
+	table.insert(qflist, { filename = fugitive_uri })
 	local pull_request_result = get_pull_request(hash)
 	if pull_request_result.err then
 		vim.notify(pull_request_result.err, vim.log.levels.ERROR)
 		return
 	end
 	display_pull_request(pull_request_result.description)
+	vim.fn.setqflist(qflist)
+	vim.cmd.copen()
 end, {})
 
 vim.keymap.set("n", "gb", "<cmd>Grab<CR>", { desc = "Run Grab" })
