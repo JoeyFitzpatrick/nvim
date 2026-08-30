@@ -3,6 +3,13 @@ return {
 	{ "https://github.com/tpope/vim-sleuth" },
 	{ "https://github.com/tpope/vim-speeddating" },
 	{
+		dir = "~/plugins/periphery.nvim",
+		name = "periphery",
+		config = function()
+			vim.keymap.set("n", "gp", "<cmd>Periphery<CR>", { desc = "Run Periphery" })
+		end,
+	},
+	{
 		dir = "~/plugins/swordbill.nvim",
 		name = "swordbill",
 		init = function()
