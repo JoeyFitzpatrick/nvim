@@ -109,12 +109,7 @@ set("n", "<leader>bd", "<cmd>bd!<CR>", { noremap = true, desc = "Delete buffer" 
 set("n", "<M-p>", "<cmd>cprevious<CR>", { noremap = true, desc = "Previous quickfix item" })
 set("n", "<M-n>", "<cmd>cnext<CR>", { noremap = true, desc = "Next quickfix item" })
 
-set("n", "<leader>rs", function()
-	vim.cmd("wa")
-	local session = vim.fn.stdpath("state") .. "/restart_session.vim"
-	vim.cmd("mksession! " .. vim.fn.fnameescape(session))
-	vim.cmd("restart source " .. vim.fn.fnameescape(session))
-end, { desc = "Restart" })
+set("n", "<leader>rs", "<cmd>restart<CR>", { desc = "Restart" })
 
 set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
 
