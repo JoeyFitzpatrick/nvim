@@ -140,3 +140,8 @@ vim.keymap.set({ "n", "x", "o" }, "<A-i>", function()
 end, { desc = "Select child treesitter node or inner incremental lsp selections" })
 
 set("n", "<leader>o", "<cmd>only<CR>", { desc = "Run :only" })
+
+set("n", "<leader>jj", function()
+	vim.cmd("tab term lazyjira")
+	vim.cmd("startinsert")
+end, { desc = "Open lazyjira in new tab" })

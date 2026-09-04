@@ -2,6 +2,7 @@ return {
 	{ dir = "~/plugins/the-bag.nvim", name = "the bag" },
 	{ "https://github.com/tpope/vim-sleuth" },
 	{ "https://github.com/tpope/vim-speeddating" },
+	{ "https://github.com/brianhuster/unnest.nvim" },
 	{
 		dir = "~/plugins/periphery.nvim",
 		name = "periphery",
