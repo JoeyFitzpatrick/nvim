@@ -78,7 +78,10 @@ set("i", "<C-h>", "<left>", { desc = "Go left one char" })
 
 set("n", "ycc", "yygccp", { remap = true, desc = "Copy-paste current line and comment it" })
 
-set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })
+set("n", "<Esc>", function()
+	local mc_ns = vim.api.nvim_create_namespace("nvim.multicursor")
+	vim.api.nvim_buf_clear_namespace(0, mc_ns, 0, -1)
+end, { noremap = true, silent = true, desc = "Clear multicursors" })
 
 -- better window navigation.
 set({ "n", "t" }, "<C-h>", function()
@@ -109,7 +112,8 @@ set("n", "<leader>bd", "<cmd>bd!<CR>", { noremap = true, desc = "Delete buffer" 
 set("n", "<M-p>", "<cmd>cprevious<CR>", { noremap = true, desc = "Previous quickfix item" })
 set("n", "<M-n>", "<cmd>cnext<CR>", { noremap = true, desc = "Next quickfix item" })
 
-set("n", "<leader>rs", "<cmd>restart<CR>", { desc = "Restart" })
+local mc_ns = vim.api.nvim_create_namespace("nvim.multicursor")
+vim.api.nvim_buf_clear_namespace(0, mc_ns, 0, -1)
 
 set("t", "<A-esc>", "<C-\\><C-n>") -- leave insert mode in terminal
 
