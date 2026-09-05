@@ -1,36 +1,32 @@
-local last_position_group = vim.api.nvim_create_augroup("OpenAtLastPosition", { clear = true })
+local augroup = vim.api.nvim_create_augroup("Joey", { clear = true })
+
 vim.api.nvim_create_autocmd("BufReadPost", {
 	desc = "Open file at the last position it was edited earlier",
 	pattern = "*",
-	command = 'silent! normal! g`"zv',
-	group = last_position_group,
+	callback = function()
+		vim.cmd('silent! normal! g`"zv')
+	end,
+	group = augroup,
 })
 
-local filetype_group = vim.api.nvim_create_augroup("UpdateFiletype", { clear = true })
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	desc = "Change html filetypes to htmldjango",
-	pattern = { "html", "htmlangular" },
-	callback = function()
-		vim.bo.filetype = "htmldjango"
+local closable_buftypes = { quickfix = true, help = true, nofile = true }
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	desc = "Close utility buffers with q",
+	pattern = "*",
+	callback = function(data)
+		if closable_buftypes[vim.bo[data.buf].buftype] then
+			vim.keymap.set("n", "q", "<cmd>close<CR>", { buf = data.buf, desc = "Close buffer" })
+		end
 	end,
-	group = filetype_group,
-})
-vim.api.nvim_create_autocmd({ "BufReadPost" }, {
-	desc = "Change eliom filetypes to ocaml",
-	pattern = { "*.eliom", "*.eliomi" },
-	callback = function()
-		vim.bo.filetype = "ocaml"
-	end,
-	group = filetype_group,
+	group = augroup,
 })
 
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
-		vim.highlight.on_yank()
+		vim.hl.hl_op({ higroup = "IncSearch", timeout = 200 })
 	end,
-	group = highlight_group,
+	group = augroup,
 	pattern = "*",
 })
 

@@ -70,6 +70,7 @@ return {
 			vim.keymap.set("n", "<leader>so", fzf.oldfiles, { desc = "Recent Files" })
 			vim.keymap.set("n", "<leader>sj", fzf.jumps, { desc = "Jumplist" })
 			vim.keymap.set("n", "<leader>/", fzf.grep_curbuf, { desc = "Search in current buffer" })
+			vim.keymap.set("n", "<C-q>", fzf.quickfix, { desc = "Open quickfix in fzf-lua" })
 		end,
 	},
 }

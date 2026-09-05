@@ -1,43 +1,6 @@
 return {
-	-- {
-	-- 	"nvim-treesitter/nvim-treesitter",
-	-- 	build = ":TSUpdate",
-	-- 	branch = "master",
-	-- 	event = "BufEnter",
-	-- 	config = function()
-	-- 		require("nvim-treesitter.configs").setup({
-	-- 			ensure_installed = {
-	-- 				"lua",
-	-- 				"vim",
-	-- 				"vimdoc",
-	-- 				"query",
-	-- 				"html",
-	-- 				"python",
-	-- 				"typescript",
-	-- 				"tsx",
-	-- 				"javascript",
-	-- 				"styled", -- support for styled component highlighting
-	-- 			},
-	-- 			ignore_install = {},
-	-- 			modules = {},
-	-- 			sync_install = false,
-	-- 			auto_install = true,
-	-- 			highlight = { enable = true },
-	-- 			indent = { enable = true },
-	-- 			incremental_selection = {
-	-- 				enable = true,
-	-- 				keymaps = {
-	-- 					init_selection = "<Enter>",
-	-- 					node_incremental = "<Enter>",
-	-- 					node_decremental = "<BS>",
-	-- 				},
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"nvim-treesitter/nvim-treesitter",
-		-- build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
 		init = function()
 			local ts_ensure_installed = {
@@ -180,6 +143,15 @@ return {
 			vim.keymap.set("n", "<leader>lc", function()
 				vim.cmd("TSContext toggle")
 			end, { silent = true, desc = "Toggle treesitter context" })
+		end,
+	},
+	{
+		"aaronik/treewalker.nvim",
+		config = function()
+			vim.keymap.set({ "n", "v" }, "<M-k>", "<cmd>Treewalker Up<cr>", { silent = true })
+			vim.keymap.set({ "n", "v" }, "<M-j>", "<cmd>Treewalker Down<cr>", { silent = true })
+			vim.keymap.set({ "n", "v" }, "<M-h>", "<cmd>Treewalker Left<cr>", { silent = true })
+			vim.keymap.set({ "n", "v" }, "<M-l>", "<cmd>Treewalker Right<cr>", { silent = true })
 		end,
 	},
 }
