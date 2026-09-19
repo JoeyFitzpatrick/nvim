@@ -1,3 +1,15 @@
+vim.opt.wildmenu = true
+vim.opt.wildoptions = "pum"
+vim.o.wildmode = "noselect:lastused,full"
+vim.api.nvim_create_autocmd("CmdlineChanged", {
+	pattern = { ":", "/", "?" },
+	callback = function()
+		local info = vim.fn.cmdcomplete_info()
+		-- vim.print({ info = info })
+		vim.fn.wildtrigger()
+	end,
+})
+
 return {
 	{ dir = "~/plugins/the-bag.nvim", name = "the bag" },
 	{

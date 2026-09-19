@@ -29,9 +29,7 @@ return {
 			sources = {
 				default = { "lsp", "path", "snippets" },
 			},
-			cmdline = {
-				completion = { menu = { auto_show = true } },
-			},
+			cmdline = { enabled = false },
 
 			keymap = {
 				preset = "default",
