@@ -1,11 +1,14 @@
+local typescript_filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" }
+
 return {
 	{ "dmmulroy/tsc.nvim", event = "VeryLazy", opts = { bin_name = "tsgo" } },
 	{ "neovim/nvim-lspconfig", lazy = false },
 	{
 		"dmmulroy/ts-error-translator.nvim",
-		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+		ft = typescript_filetypes,
 		config = true,
 	},
+	{ "https://github.com/enochchau/nvim-pretty-ts-errors", ft = typescript_filetypes },
 	{
 		"danymat/neogen",
 		version = "*",
