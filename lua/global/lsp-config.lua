@@ -86,7 +86,7 @@ vim.lsp.enable({
 	"lua-language-server",
 	"ocamllsp",
 	"ruff",
-	"tsgo",
+	"tsc",
 	"ty",
 	"yamlls",
 	"zls",
